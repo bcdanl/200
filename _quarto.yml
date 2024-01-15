@@ -15,7 +15,7 @@ website:
     pinned: true
     right:
       - icon: github
-        href: https://github.com/bcdanl/danl-200
+        href: https://github.com/bcdanl/200
         target: _blank
         rel: me
 
