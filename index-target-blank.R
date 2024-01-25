@@ -1,7 +1,5 @@
-# system("quarto render")
-
-# Must close all index.html if it is opened on a web-browser.
-quarto::quarto_render("index.qmd")
+system("quarto render")
+quarto::quarto_render("index.qmd") # Must close all index.html if it is opened on a web-browser.
 
 library(stringr)
 
@@ -31,11 +29,6 @@ writeLines(html_as_text,
            "index.html")
 
 
-
-# file.copy("tmp/index.html", "index.html")
-
-# Use system() to execute the rm command
-# system(paste("rm", shQuote("index.html")))
-# Sys.sleep(2)
-# 
-# file.rename("index2.html", "index.html")
+system('git add .')
+system('git commit -m "lec02"')
+system('git push -u origin main')
