@@ -1,0 +1,492 @@
+---
+title: Lecture 2
+subtitle: Installing the DANL Tools
+format:
+  clean-revealjs:
+    self-contained: true
+    # logo: logo-title-slide.png
+author:
+  - name: Byeong-Hak Choe
+    email: bchoe@geneseo.edu
+    affiliations: SUNY Geneseo
+date: 2024-01-25
+execute: 
+  eval: false
+  echo: true
+callout-icon: false
+
+from: markdown+emoji
+
+# bibliography: refs.bib
+# include-after-body: backwards.html
+---
+
+
+```{r setup}
+#| include: false
+#| eval: true
+
+library(knitr)
+library(tidyverse)
+# set default options
+opts_chunk$set(echo = FALSE,
+               fig.width = 7.252,
+               fig.height = 4,
+               comment = "#",
+               dpi = 300)
+
+knitr::knit_engines$set("markdown")
+```
+
+
+## Announcement
+
+- Office Hours
+  1. Tuesdays 12:30 P.M.---1:30 P.M.
+  2. Wednesdays 12:30 P.M.---2:30 P.M.
+
+
+# Today's Learning Objectives {background-color="#1c4982"}
+
+## Learning Objectives
+
+:::{}
+
+- Set up the DANL tools in your laptop.
+  - R
+  - RStudio
+  - R Packages
+
+
+- Basic Usage of Windows/Mac
+
+- Practice Markdown 
+
+:::
+
+
+
+
+# DANL Tools {background-color="#1c4982"}
+
+## Git vs. GitHub
+
+
+::: {.panel-tabset}
+
+### Git
+- Git is a distributed **version control** system. 
+
+- Git keeps track of changes in files and directories.
+
+- Git is optimized for the things that economists and data scientists spend a lot of time working on (e.g. code).
+
+- There is a learning curve, so we use only three commands---`add`, `commit`, and `push`!
+
+
+### GitHub
+
+- It is important to realize that Git and GitHub are distinct things.
+
+- GitHub is an online hosting platform that provides an array of services built on top of the Git system.
+
+- Just like we do not *need* Rstudio to run R code, we do not *need* GitHub to use Git... But it will make our lives so much easier.
+
+:::
+
+
+
+## Data Science Process
+
+
+![](https://bcdanl.github.io/lec_figs/data-process.png){style="margin: auto; display: block"}
+
+
+<!-- ![](https://bcdanl.github.io/lec_figs/data-process.png){width=50%} -->
+
+::: {.incremental}
+
+- Communication is the final part of the data science process.
+  - If you cannot communicate your results to other humans, it does not matter how great your analysis is!
+
+
+- Quarto (`*.qmd`) is a great tool for producing a document that integrates your Python/R code, its results, and your insights on the results.
+
+
+- We will use Quarto files to both
+  - Save and execute programming codes, and
+  - Generate high quality reports that can be shared with an audience.
+
+:::
+
+
+## What is Quarto?
+:::: {.incremental}
+:::{}
+- A [Quarto](https://quarto.org) is an interactive computational environment that enables users to create and share documents that contain code, equations, visualizations, and narrative text. 
+  
+- **Mululti-language Support**: Quarto supports not only R but also other languages such as Python, Julia, C++, SQL. 
+  - We will use only **R**.
+
+- **Publishing Quality**: Quarto documents are designed with publishing in mind, offering superior customization for document layouts and high-quality outputs suitable for academic and professional publications.
+  
+:::
+:::: 
+
+# Installing the DANL Tools {background-color="#1c4982"}
+
+## Installing the Tools
+### Getting a GitHub account
+
+:::: {.incremental}
+
+::: {}
+- Create the GitHub account with your Geneseo email.
+  1. Go to [GitHub](https://github.com){target="_blank"}.
+  2. Click "Sign up for GitHub".
+:::
+
+::: {}
+- Choose your GitHub username carefully:
+  - `https://YOUR_GITHUB_USERNAME.github.io` will be the address for your website.
+  - Byeong-Hak's GitHub username is `bcdanl`, so that Byeong-Hak owns the web address `https://bcdanl.github.io`.
+:::
+
+::: {}
+- It is better to have a username with *all lower cases*.
+:::
+
+::::
+
+
+
+
+## Installing the Tools
+### Participate in the Discussions!
+
+- Go to [Lecture 2 - Q & A](https://bcdanl.github.io/200/danl-qa/danl-210-qa-02.html).
+
+- Sign in with GitHub account, and then add comments to the board.
+
+
+
+## Installing the Tools
+### R programming
+
+- The R language is available as a free download from the R Project website at:
+  - Windows: [R for Windows](https://cran.r-project.org/bin/windows/base/){target="_blank"}
+  - Mac: [R for Mac](https://cran.r-project.org/bin/macosx/){target="_blank"}
+  - Download the file of R that corresponds to your Mac OS (Big Sur, Apple silicon arm64, High Sierra, El Capitan, Mavericks, etc.)
+
+
+
+
+## Installing the Tools
+### R Studio
+
+:::{}
+- The RStudio Desktop is available as a free download from the following webpage:
+    - [RStudio Download](https://www.rstudio.com/products/rstudio/download/#download){target="_blank"}
+    
+- A recent version of RStudio includes Quarto, so that we do not need to install Quarto separately.
+
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- For **Mac** users, try below steps:
+  1. Run **`RStudio-*.dmg`** file.
+  2. From the Pop-up menu, click the RStudio icon.
+  3. While clicking the RStudio icon, drag it to the **Applications** directory.
+
+:::
+
+::: {.column width="50%"}
+![](https://bcdanl.github.io/lec_figs/rstudio-mac-install.gif)
+:::
+::::
+
+
+
+## Installing the Tools
+### RStudio Environment
+:::: {.columns}
+::: {.column width="50%"}
+![](lec_figs/rstudio_env.png)
+:::
+
+::: {.column width="50%"}
+
+
+- **Script Pane** is where you write R commands in a script file that you can save.
+
+:::{.incremental}
+  - An R script is simply a text file containing R commands. 
+  - RStudio will color-code different elements of your code to make it easier to read.
+
+:::
+
+:::
+::::
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+:::{.incremental}
+- To open an R script, 
+  - File $>$ New File  $>$ R Script
+
+:::
+:::
+
+::: {.column width="50%"}
+:::{.incremental}
+- To save the R script, 
+  - File $>$ Save
+
+:::
+:::
+
+::::
+
+## Installing the Tools
+### RStudio Environment
+:::: {.columns}
+::: {.column width="50%"}
+![](lec_figs/rstudio_env.png)
+:::
+
+::: {.column width="50%"}
+- **Console Pane** allows you to interact directly with the R interpreter and type commands where R will immediately execute them.
+:::
+::::
+
+## Installing the Tools
+### RStudio Environment
+:::: {.columns}
+::: {.column width="50%"}
+![](lec_figs/rstudio_env.png)
+:::
+
+::: {.column width="50%"}
+- **Environment Pane** is where you can see the values of variables, data frames, and other objects that are currently stored in memory.
+
+- Type below in the Console Pane, and then hit *Enter*:
+```{.r}
+a <- 1
+```
+
+:::
+::::
+
+## Installing the Tools
+### RStudio Environment
+
+:::: {.columns}
+::: {.column width="50%"}
+![](lec_figs/rstudio_env.png)
+:::
+
+::: {.column width="50%"}
+- **Plots Pane** contains any graphics that you generate from your R code.
+
+:::
+::::
+
+
+
+
+## Installing the Tools
+### R Packages and `tidyverse`
+
+- **R packages** are collections of R functions, compiled code, and data that are combined in a structured format.
+
+
+
+## Installing the Tools
+### `tidyverse`
+
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- The `tidyverse` is a collection of R packages designed for data science that share an underlying design philosophy, grammar, and data structures. 
+
+
+:::{.incremental}
+
+- `tidyverse` includes a lot of R packages, including `ggplot2`, `dplyr`, and `tidyr`.
+  
+- The `tidyverse` packages work harmoniously together to make data manipulation, exploration, and visualization more.
+
+:::
+:::
+
+::: {.column width="50%"}
+
+![](https://bcdanl.github.io/lec_figs/ggplot2-part-of-tidyverse.png){width="80%"}
+:::
+::::
+
+## Installing the Tools
+### Installing R packages with `install.packages("packageName")`
+
+- R packages can be easily installed from within R using functions  `install.packages("packageName")`. 
+  - To install the R package `tidyverse`, type and run the following from R console:
+
+:::{.incremental}
+```{.r}
+install.packages("tidyverse")
+```
+
+
+- While running the above codes, you may encounter the question below from the R Console:
+
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- **Mac**: *"Do you want to install from sources the packages which need compilation?"* from Console Pane.
+:::
+
+::: {.column width="50%"}
+
+- **Windows**: *"Would you like to use a personal library instead?"* from Pop-up message.
+:::
+::::
+
+- Type `no` in the R Console, and then hit *Enter*.
+
+:::
+
+## Installing the Tools
+### Loading R packages with `library(packageName)`
+
+- Once installed, a package is loaded into an R session using `library(packageName)` so that its functions and data can be used.
+  - To load the R package `tidyverse`, type and run the following command from a R script:
+
+```{.r}
+library(tidyverse)
+df_mpg <- mpg
+```
+
+:::{.incremental}
+- `mpg` is the data.frame provided by the R package `ggplot2`, one of the R pakcages in `tidyverse`.
+  - Since `tidyverse` is installed, `ggplot2` package is already installed.
+:::
+
+## Installing the Tools
+### RStudio Options Setting
+
+:::: {.columns}
+::: {.column width="50%"}
+![](https://bcdanl.github.io/lec_figs/RStudio_options.png)
+:::
+
+::: {.column width="50%"}
+- This option menu is found by menus as follows:
+  - **Tools** $>$ **Global Options**
+
+- Check the boxes as in the left.
+- Choose the option __*Never*__ for <u> Save workspace to .RData on exit: </u>
+:::
+
+::::
+
+
+
+# Windows/Mac Basics {background-color="#1c4982"}
+
+## Windows/Mac Basics
+
+
+- I expect you to know:
+
+::: {.incremental}
+- Where downloaded files are located;
+- How to extract a ZIP file, a compressed file that supports lossless file compression and that can contain multiple files;
+- How to copy and paste files using short cuts;
+- How to find a pathname of a file/directory in your laptop.
+
+:::
+
+
+
+
+
+## Management of Files and Directories
+### Finding a path name of a file/directory
+
+::: {.panel-tabset}
+### Windows 11
+
+- **Step 1.** Go to your folder using the File Explorer.
+- **Step 2.** Right-click the file.
+- **Step 3.** Click "Copy as path".
+- **Step 4.** Paste the path name of the file to the R script (Ctrl+V).
+- **Step 5.** 
+  - *Option 1.* Replace backslash(`\`) with slash(`/`) in the path name.
+  - *Option 2.* Replace backslash(`\`) with double-backslash(`\\`) in the path name.
+
+
+
+### Windows 10
+
+- **Step 1.** Go to your folder using the File Explorer.
+- **Step 2.** Keep pressing the "Shift" key
+- **Step 3.** Right-click the file.
+- **Step 4.** Click "Copy as path".
+- **Step 5.** Paste the path name of the file to the R script (Ctrl+V).
+- **Step 6.**  
+  - *Option 1.* Replace backslash(`\`) with slash(`/`) in the path name, or
+  - *Option 2.* Replace backslash(`\`) with double-backslash(`\\`) in the path name.
+
+
+### Mac
+
+- **Step 1.** Go to your folder using the Finder.
+- **Step 2.** Right-click the file in the folder
+- **Step 3.** Keep pressing "option"
+- **Step 4.** Click "Copy 'PATH\_FOR\_YOUR\_FILE' as Pathname" from the menu.
+- **Step 5.** Paste it to the R script (**command + V**).
+
+
+### Mac
+
+- **Step 1.** Go to your folder using the Finder.
+- **Step 2.** Select the file in the folder by clicking it.
+- **Step 3.** Press **option + command + C**.
+- **Step 4.** Paste it to the R script (**command + V**).
+
+:::
+
+
+## Installing the Tools
+### Building a Website
+
+- Let's do [Classwork 1](https://bcdanl.github.io/200/danl-cw/danl-200-cw-01.html).
+
+
+## Installing the Tools
+### Markdown
+
+- Python Notebook, Quarto, and GitHub-based Discussion Boards use **markdown** as its underlying document syntax.
+
+- Let's do [Classwork 2](https://bcdanl.github.io/200/danl-cw/danl-200-cw-02.html).
+
+
+
+
+
+
+<script>
+document.addEventListener('wheel', function(event) {
+    if (event.deltaY > 0) {
+        Reveal.next(); // Scroll down to go to the next slide
+    } else {
+        Reveal.prev(); // Scroll up to go to the previous slide
+    }
+}, false);
+</script>
