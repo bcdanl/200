@@ -381,6 +381,8 @@ a <- 1
 
 - **R packages** are collections of R functions, compiled code, and data that are combined in a structured format.
 
+- Several R packages come with numerous pre-built functions that can perform a wide range of data analysis tasks.
+
 
 
 ## Installing the Tools
@@ -411,7 +413,7 @@ a <- 1
 ## Installing the Tools
 ### Installing R packages with `install.packages("packageName")`
 
-- R packages can be easily installed from within R using functions  `install.packages("packageName")`. 
+- R packages can be easily installed from within R using a base-R function `install.packages("packageName")`. 
   - To install the R package `tidyverse`, type and run the following command from R console:
 
 :::{.incremental}
@@ -431,7 +433,7 @@ install.packages("tidyverse")
 
 ::: {.column width="50%"}
 
-- **Windows**: *"Would you like to use a personal library instead?"* from Pop-up message.
+- **Windows**: *"Would you like to use a personal library instead?"* from pop-up message.
 :::
 ::::
 
@@ -442,7 +444,7 @@ install.packages("tidyverse")
 ## Installing the Tools
 ### Loading R packages with `library(packageName)`
 
-- Once installed, a package is loaded into an R session using `library(packageName)` so that its functions and data can be used.
+- Once installed, a package is loaded into an R session using a base-R function `library(packageName)` so that R package's functions and data can be used.
   - To load the R package `tidyverse`, type and run the following commands from a R script:
 
 ```{.r}
