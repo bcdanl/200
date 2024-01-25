@@ -28,7 +28,3 @@ for (i in 1:length(lec_nos)){
 writeLines(html_as_text, 
            "index.html")
 
-
-system('git add .')
-system('git commit -m "lec02"')
-system('git push -u origin main')
