@@ -52,13 +52,14 @@ knitr::knit_engines$set("markdown")
 
 :::{}
 
+- Check Data Science Process
+
 - Set up the DANL tools in your laptop.
   - R
   - RStudio
   - R Packages
 
-
-- Basic Usage of Windows/Mac
+- Check Your Basic Usage of Windows/Mac
 
 - Practice Markdown 
 
@@ -81,7 +82,7 @@ knitr::knit_engines$set("markdown")
 
 - Git is optimized for the things that economists and data scientists spend a lot of time working on (e.g. code).
 
-- There is a learning curve, so we use only three commands---`add`, `commit`, and `push`!
+- Git has a steep learning curve, so we would use only three commands---`add`, `commit`, and `push`!
 
 
 ### GitHub
@@ -135,6 +136,27 @@ knitr::knit_engines$set("markdown")
 
 # Installing the DANL Tools {background-color="#1c4982"}
 
+
+
+## Installing the Tools
+### Computer Basics
+
+
+::: {.incremental}
+- I expect you to know:
+  - Where downloaded files are located in your laptop
+    - By default, `Downloads` is the directory where downloaded files are stored.
+  - How to extract a Zip file, a compressed file that supports lossless file compression and that can contain multiple files;
+  - How to copy and paste files using short cuts 
+    - **Copy**: Ctrl/command + C
+    - **Paste**: Ctrl/command + V
+  - How to find a pathname of a file/directory in your laptop.
+
+:::
+
+
+
+
 ## Installing the Tools
 ### Getting a GitHub account
 
@@ -148,7 +170,7 @@ knitr::knit_engines$set("markdown")
 
 ::: {}
 - Choose your GitHub username carefully:
-  - `https://YOUR_GITHUB_USERNAME.github.io` will be the address for your website.
+  - `https://USERNAME.github.io` will be the address for your website.
   - Byeong-Hak's GitHub username is `bcdanl`, so that Byeong-Hak owns the web address `https://bcdanl.github.io`.
 :::
 
@@ -174,8 +196,8 @@ knitr::knit_engines$set("markdown")
 ### R programming
 
 - The R language is available as a free download from the R Project website at:
-  - Windows: [R for Windows](https://cran.r-project.org/bin/windows/base/){target="_blank"}
-  - Mac: [R for Mac](https://cran.r-project.org/bin/macosx/){target="_blank"}
+  - [R for Windows Users](https://cran.r-project.org/bin/windows/base/){target="_blank"}
+  - [R for Mac Users](https://cran.r-project.org/bin/macosx/){target="_blank"}
   - Download the file of R that corresponds to your Mac OS (Big Sur, Apple silicon arm64, High Sierra, El Capitan, Mavericks, etc.)
 
 
@@ -219,11 +241,10 @@ knitr::knit_engines$set("markdown")
 ::: {.column width="50%"}
 
 
-- **Script Pane** is where you write R commands in a script file that you can save.
+- **Script Pane** is where you write an R script or a Quarto document that you can save.
 
 :::{.incremental}
   - An R script is simply a text file containing R commands. 
-  - RStudio will color-code different elements of your code to make it easier to read.
 
 :::
 
@@ -250,6 +271,10 @@ knitr::knit_engines$set("markdown")
 :::
 
 ::::
+
+
+
+
 
 ## Installing the Tools
 ### RStudio Environment
@@ -296,6 +321,59 @@ a <- 1
 ::::
 
 
+## Installing the Tools
+### Finding a path name of a file/directory
+
+::: {.panel-tabset}
+### Windows 11
+
+- **Step 1.** Go to your folder using the File Explorer.
+- **Step 2.** Right-click the file.
+- **Step 3.** Click "Copy as path".
+- **Step 4.** Paste the path name of the file to the R script (Ctrl+V).
+- **Step 5.** 
+  - *Option 1.* Replace backslash(`\`) with slash(`/`) in the path name.
+  - *Option 2.* Replace backslash(`\`) with double-backslash(`\\`) in the path name.
+
+
+
+### Windows 10
+
+- **Step 1.** Go to your folder using the File Explorer.
+- **Step 2.** Keep pressing the "Shift" key
+- **Step 3.** Right-click the file.
+- **Step 4.** Click "Copy as path".
+- **Step 5.** Paste the path name of the file to the R script (Ctrl+V).
+- **Step 6.**  
+  - *Option 1.* Replace backslash(`\`) with slash(`/`) in the path name, or
+  - *Option 2.* Replace backslash(`\`) with double-backslash(`\\`) in the path name.
+
+
+### Mac 1
+
+- **Step 1.** Go to your folder using the Finder.
+- **Step 2.** Right-click the file in the folder
+- **Step 3.** Keep pressing "option"
+- **Step 4.** Click "Copy 'PATH\_FOR\_YOUR\_FILE' as Pathname" from the menu.
+- **Step 5.** Paste it to the R script (**command + V**).
+
+
+### Mac 2
+
+- **Step 1.** Go to your folder using the Finder.
+- **Step 2.** Select the file in the folder by clicking it.
+- **Step 3.** Press **option + command + C**.
+- **Step 4.** Paste it to the R script (**command + V**).
+
+:::
+
+
+
+## Installing the Tools
+### Computer Basics
+- Let's do [Classwork 1](https://bcdanl.github.io/200/danl-cw/danl-200-cw-01.html).
+
+
 
 
 ## Installing the Tools
@@ -334,7 +412,7 @@ a <- 1
 ### Installing R packages with `install.packages("packageName")`
 
 - R packages can be easily installed from within R using functions  `install.packages("packageName")`. 
-  - To install the R package `tidyverse`, type and run the following from R console:
+  - To install the R package `tidyverse`, type and run the following command from R console:
 
 :::{.incremental}
 ```{.r}
@@ -365,7 +443,7 @@ install.packages("tidyverse")
 ### Loading R packages with `library(packageName)`
 
 - Once installed, a package is loaded into an R session using `library(packageName)` so that its functions and data can be used.
-  - To load the R package `tidyverse`, type and run the following command from a R script:
+  - To load the R package `tidyverse`, type and run the following commands from a R script:
 
 ```{.r}
 library(tidyverse)
@@ -373,6 +451,7 @@ df_mpg <- mpg
 ```
 
 :::{.incremental}
+
 - `mpg` is the data.frame provided by the R package `ggplot2`, one of the R pakcages in `tidyverse`.
   - Since `tidyverse` is installed, `ggplot2` package is already installed.
 :::
@@ -396,85 +475,18 @@ df_mpg <- mpg
 ::::
 
 
-
-# Windows/Mac Basics {background-color="#1c4982"}
-
-## Windows/Mac Basics
-
-
-- I expect you to know:
-
-::: {.incremental}
-- Where downloaded files are located;
-- How to extract a ZIP file, a compressed file that supports lossless file compression and that can contain multiple files;
-- How to copy and paste files using short cuts;
-- How to find a pathname of a file/directory in your laptop.
-
-:::
-
-
-
-
-
-## Management of Files and Directories
-### Finding a path name of a file/directory
-
-::: {.panel-tabset}
-### Windows 11
-
-- **Step 1.** Go to your folder using the File Explorer.
-- **Step 2.** Right-click the file.
-- **Step 3.** Click "Copy as path".
-- **Step 4.** Paste the path name of the file to the R script (Ctrl+V).
-- **Step 5.** 
-  - *Option 1.* Replace backslash(`\`) with slash(`/`) in the path name.
-  - *Option 2.* Replace backslash(`\`) with double-backslash(`\\`) in the path name.
-
-
-
-### Windows 10
-
-- **Step 1.** Go to your folder using the File Explorer.
-- **Step 2.** Keep pressing the "Shift" key
-- **Step 3.** Right-click the file.
-- **Step 4.** Click "Copy as path".
-- **Step 5.** Paste the path name of the file to the R script (Ctrl+V).
-- **Step 6.**  
-  - *Option 1.* Replace backslash(`\`) with slash(`/`) in the path name, or
-  - *Option 2.* Replace backslash(`\`) with double-backslash(`\\`) in the path name.
-
-
-### Mac
-
-- **Step 1.** Go to your folder using the Finder.
-- **Step 2.** Right-click the file in the folder
-- **Step 3.** Keep pressing "option"
-- **Step 4.** Click "Copy 'PATH\_FOR\_YOUR\_FILE' as Pathname" from the menu.
-- **Step 5.** Paste it to the R script (**command + V**).
-
-
-### Mac
-
-- **Step 1.** Go to your folder using the Finder.
-- **Step 2.** Select the file in the folder by clicking it.
-- **Step 3.** Press **option + command + C**.
-- **Step 4.** Paste it to the R script (**command + V**).
-
-:::
-
-
 ## Installing the Tools
 ### Building a Website
 
-- Let's do [Classwork 1](https://bcdanl.github.io/200/danl-cw/danl-200-cw-01.html).
+- Let's do [Classwork 2](https://bcdanl.github.io/200/danl-cw/danl-200-cw-02.html).
 
 
 ## Installing the Tools
-### Markdown
+### Practice Markdown
 
-- Python Notebook, Quarto, and GitHub-based Discussion Boards use **markdown** as its underlying document syntax.
+- Quarto and GitHub-based Discussion Boards use **markdown** as its underlying document syntax.
 
-- Let's do [Classwork 2](https://bcdanl.github.io/200/danl-cw/danl-200-cw-02.html).
+- Let's do [Classwork 3](https://bcdanl.github.io/200/danl-cw/danl-200-cw-03.html).
 
 
 

@@ -46,7 +46,7 @@
     "href": "index.html#bullet-classwork",
     "title": "DANL 200-02: Introduction to Data Analytics, Spring 2024",
     "section": "\\(\\bullet\\,\\) Classwork ⌨️",
-    "text": "\\(\\bullet\\,\\) Classwork ⌨️\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nClasswork 2\n\n\nJanuary 25, 2024\n\n\n\n\nClasswork 1\n\n\nJanuary 24, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Classwork ⌨️\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nClasswork 1\n\n\nJanuary 25, 2024\n\n\n\n\nClasswork 3\n\n\nJanuary 25, 2024\n\n\n\n\nClasswork 2\n\n\nJanuary 25, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-homework",
@@ -60,42 +60,168 @@
     "href": "danl-cw/danl-200-cw-02.html",
     "title": "Classwork 2",
     "section": "",
-    "text": "Markdown is a lightweight markup language with plain-text formatting syntax. Its main goal is to be readable and easy to write, even when viewed as plain text. Markdown is widely used for creating formatted text on the web and in various applications such as Quarto.\n\n\n\n\nHeadings are created by adding one or more # symbols before your heading text. The number of # symbols indicates the level of the heading.\n# Heading 1\n## Heading 2\n### Heading 3\n\n\n\nYou can make text bold by wrapping it with two asterisks **, and italic by using one asterisk *.\n*italic* or _italic_\n**bold** or __bold__\n\n\n\nUnordered lists are created using *, -, or +, while ordered lists are numbered.\n- Item 1\n- Item 2\n  - Subitem 2.1\n  - Subitem 2.2\n1. First item\n2. Second item\n\n\n\nLinks are created using [Link Text](URL), and images with ![Alt Text](Image URL).\n[DANL 200-02](https://bcdanl.github.io/200)\n![Geneseo Logo](https://bcdanl.github.io/img/geneseo-logo.gif)\n\n\n\n\n\n\n&gt; Be yourself. Everyone else is already taken. - Oscar Wilde.\n\n\n\n\nA ton of markdown emojis are available here 😄 (:smile:)\n\nhttps://github.com/ikatyang/emoji-cheat-sheet\n\n\n\n\n\nCode blocks are created by using triple backticks (```). Optionally, you can specify the language for syntax highlighting.\n```\n\"character\"\n```\n```r\n# R code block\nlibrary(tidyverse)\n```\n\n\n\n\n\nDo the following on this Classwork 2 Discussion Board:\n\nBasic Syntax: Write a comment with a heading, an unordered list, an ordered list, a link, and an image.\nAdvanced Syntax: Write a comment that includes an R code block, a blockquote, and an emoji.\n\n\n\n\n\n\nQuarto Markdown Basics\nStart writing on GitHub"
+    "text": "Getting a GitHub account\nStep 1. Create the GitHub account with your Geneseo email.\n\nGo to GitHub.\nClick “Sign up for GitHub”.\n\n\nChoose your GitHub username carefully:\n\nhttps://USERNAME.github.io will be the address for your website.\nByeong-Hak’s GitHub username is bcdanl, so that Byeong-Hak owns the web address https://bcdanl.github.io.\n\nIt is recommended to have a username with all lower cases.\n\n\n\n\nInstalling git if you do not have one.\nStep 2.\n\nCheck whether git is installed in your laptop.\n\n\nFrom the Console Pane in RStudio, click Terminal tab.\n\n\n\n\n\nFrom the Terminal, run the following command to check if your laptop has git installed.\n\ngit --version\n\nIf your computer has git installed, you will see the message below and you do not need to install git:\n\ngit version 2.xx\n\nIf your computer does not have git installed, you will see the message below and you need to install git:\n\n'git' is not recognized as an internal or external command\n\n\nInstall git if you do not have one. Move to the next step if you have git installed in your laptop.\n\n\n\n\nMac\n\nGo to http://git-scm.com/downloads, and download the file.\nClick “macOS”, scroll down the webpage, and then click “installer” from the Binary installer section.\nRun the downloaded file.\n\n\n\n\nWindows\n\nGo to https://gitforwindows.org, and download the file.\nRun the downloaded file.\n\n\n\n\n\nKeep clicking “Next” to complete the installation of git.\nAfter the git installation is done, close RStudio and re-open it.\n\n\n\n\nSetting up GitHub Credential on your local Git.\nStep 3. In Terminal, run the following commands one by one:\ngit config --global user.email \"YOUR_EMAIL_ADDRESS\"\ngit config --global user.name \"YOUR_USERNAME\"\nFor example, the email address for my GitHub account is bchoe@geneseo.edu, and my GitHub username is bcdanl, so that I ran below:\ngit config --global user.email \"bchoe@geneseo.edu\"\ngit config --global user.name \"bcdanl\"\n\nStep 4. Obtain a personal access token (PAT) from GitHub.\n\nIn RStudio Console, run the followings line by line:\n\ninstall.packages(\"usethis\")\nusethis::create_github_token()\n\nThen, click “Generate token” in the pop-upped web browser.\nThen, copy the generated PAT, and paste it to your clipboard or R script.\n\n\nStep 5. Set the GitHub credential using the PAT.\n\nIn RStudio Console, run the followings line by line:\n\ninstall.packages(\"gitcreds\")\ngitcreds::gitcreds_set()\n\nYou will be asked to provide your PAT.\nPaste your PAT to the RStudio Console, and hit Enter.\n\n\n\n\nEstablishing the Connection between GitHub repo and your Git\nStep 6. Login to your GitHib and make the repository.\n\nFrom https://github.com, click the plus [+] icon in the upper right corner and select “New repository”.\nName this repo USERNAME.github.io, which will be the domain for your website.\n\n\ne.g., If your GitHub username is abc9, the name of your repo should be abc9.github.io, not abc_9.github.io.\n\n\nThen, copy the web address of your GitHub repo, https://github.com/USERNAME/USERNAME.github.io\n\n\nFor example, the web address for Byeong-Hak’s GitHub repo is https://github.com/bcdanl/bcdanl.github.io.\n\n\nStep 7. Create a RStudio project with Version Control\n\n\n\n\nClick “Project (None)” at the top-right corner in RStudio.\nClick “New Project” &gt; “Version Control” &gt; “Git”\nPaste the web address of your GitHub repo to the Repository URL menu.\nClick “Browse” to select the parent directory for your local project directory (I recommend “Documents” folder.)\nClick “Create”\n\n\n\n\n\n\n\nNote\n\n\n\nInstead of Step 7 above, we can follow Steps 7-1 and 7-2. For those who have errors in Step 7, do Steps 7-1 and 7-2 instead.\n\n\nStep 7-1. Use git clone to establish the connection between GitHub repo and your local laptop:\n\nChange directory to “Documents” in Terminal using cd command.\n\ncd &lt;pathname of \"Documents\" directory&gt;\n\nHere, you need to know the pathname of “Documents” directory.\nFor example, LAPTOP_USERNAME below is not your GitHub username but one for your local laptop.\n\nMac\ncd /Users/LAPTOP_USERNAME/Documents\nWindows\ncd C:/Users/LAPTOP_USERNAME/Documents\n\nUse git clone to creates a local copy of the GitHub Repository.\n\ngit clone &lt;repository-url&gt;\n\nFor example,\n\ngit clone https://github.com/USERNAME/USERNAME.github.io\n\nStep 7-2. Create a RStudio project from Existing Directory\n\nClick “Project (None)” at the top-right corner in RStudio.\nClick “New Project” &gt; “Existing Directory”\nClick “Browse” to select the local copy of the GitHub Repository\nClick “Create Project”\n\n\n\n\nDownloading Website Template Files\nStep 8. Download the files of website template:\n\nGo to the following webpage: https://github.com/bcdanl/danl-website-template\nFrom the webpage above, click the green icon &lt; &gt; Code, and then click “Download ZIP”\nExtract the ZIP file you have downloaded\nIf there are the files, .gitignore, .DS_Store, or *.Rproj, in the folder, delete all of them.\nMove all the files that were compressed in the ZIP file to your local project directory.\n\n\nCtrl/cmd + A selects all files in a folder.\nAll the website files should be located at the same level with the R Project file (USERNAME.github.io.Rproj), shown below.\n\n\n\n\n\n\n\nPushing the Website Files to the GitHub repository\n\n\n\nStep 8. Push the files to your GitHub repository\n\nOn Terminal within RStudio, execute the following 3-step git commands, which will stage, commit, and push all the new files in the local working directory to your GitHub repository:\n\n\ngit add . adds changes in your local working directory (e.g., edited files, new files, deleted files) to the staging area, which is a temporary area where you can prepare your next commit\n\ngit add .\n\ngit commit -m \"...\" records the changes in the staging area as a new snapshot in the local working directory, along with a message describing the changes.\n\ngit commit -m \"any message to describe the changes\"\n\ngit push -u origin main uploads the local changes to the online repository in GitHub.\n\ngit push -u origin main\n\n\n\n\n\n\nNote\n\n\n\nIf git push -u origin main gives error, try the following:\ngit push -u origin master\n\nThe name of the default branch in a GitHub repo is usually main, but sometimes GitHub gives master default branch instead.\n\n\n\n\nStep 9. Check whether the files are well uploaded.\n\nGo to the webpages of your GitHub repository and your website:\n\nhttps://github.com/USERNAME/USERNAME.github.io.git\nhttps://USERNAME.github.io\nRefresh the webpage (cmd/Ctrl + R)\n\n\n\n\n\n\n Back to topReuse© 2024 Byeong-Hak Choe | This post is licensed under &lt;a href='http://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'&gt;CC BY-NC-SA 4.0&lt;/a&gt;.CitationFor attribution, please cite this work as:\nChoe, Byeong-Hak. 2024. “Classwork 2.” January 25, 2024."
   },
   {
-    "objectID": "danl-cw/danl-200-cw-02.html#basic-syntax",
-    "href": "danl-cw/danl-200-cw-02.html#basic-syntax",
-    "title": "Classwork 2",
-    "section": "",
-    "text": "Headings are created by adding one or more # symbols before your heading text. The number of # symbols indicates the level of the heading.\n# Heading 1\n## Heading 2\n### Heading 3\n\n\n\nYou can make text bold by wrapping it with two asterisks **, and italic by using one asterisk *.\n*italic* or _italic_\n**bold** or __bold__\n\n\n\nUnordered lists are created using *, -, or +, while ordered lists are numbered.\n- Item 1\n- Item 2\n  - Subitem 2.1\n  - Subitem 2.2\n1. First item\n2. Second item\n\n\n\nLinks are created using [Link Text](URL), and images with ![Alt Text](Image URL).\n[DANL 200-02](https://bcdanl.github.io/200)\n![Geneseo Logo](https://bcdanl.github.io/img/geneseo-logo.gif)"
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#announcement",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#announcement",
+    "title": "Lecture 2",
+    "section": "Announcement",
+    "text": "Announcement\n\nOffice Hours\n\nTuesdays 12:30 P.M.—1:30 P.M.\nWednesdays 12:30 P.M.—2:30 P.M."
   },
   {
-    "objectID": "danl-cw/danl-200-cw-02.html#advanced-syntax",
-    "href": "danl-cw/danl-200-cw-02.html#advanced-syntax",
-    "title": "Classwork 2",
-    "section": "",
-    "text": "&gt; Be yourself. Everyone else is already taken. - Oscar Wilde.\n\n\n\n\nA ton of markdown emojis are available here 😄 (:smile:)\n\nhttps://github.com/ikatyang/emoji-cheat-sheet\n\n\n\n\n\nCode blocks are created by using triple backticks (```). Optionally, you can specify the language for syntax highlighting.\n```\n\"character\"\n```\n```r\n# R code block\nlibrary(tidyverse)\n```"
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#learning-objectives",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#learning-objectives",
+    "title": "Lecture 2",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\n\nCheck Data Science Process\nSet up the DANL tools in your laptop.\n\nR\nRStudio\nR Packages\n\nCheck Your Basic Usage of Windows/Mac\nPractice Markdown"
   },
   {
-    "objectID": "danl-cw/danl-200-cw-02.html#emojis",
-    "href": "danl-cw/danl-200-cw-02.html#emojis",
-    "title": "Classwork 2",
-    "section": "",
-    "text": "A ton of markdown emojis are available here 😄 (:smile:)\n\nhttps://github.com/ikatyang/emoji-cheat-sheet"
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#git-vs.-github",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#git-vs.-github",
+    "title": "Lecture 2",
+    "section": "Git vs. GitHub",
+    "text": "Git vs. GitHub\n\nGitGitHub\n\n\n\nGit is a distributed version control system.\nGit keeps track of changes in files and directories.\nGit is optimized for the things that economists and data scientists spend a lot of time working on (e.g. code).\nGit has a steep learning curve, so we would use only three commands—add, commit, and push!\n\n\n\n\nIt is important to realize that Git and GitHub are distinct things.\nGitHub is an online hosting platform that provides an array of services built on top of the Git system.\nJust like we do not need Rstudio to run R code, we do not need GitHub to use Git… But it will make our lives so much easier."
   },
   {
-    "objectID": "danl-cw/danl-200-cw-02.html#practice-problems",
-    "href": "danl-cw/danl-200-cw-02.html#practice-problems",
-    "title": "Classwork 2",
-    "section": "",
-    "text": "Do the following on this Classwork 2 Discussion Board:\n\nBasic Syntax: Write a comment with a heading, an unordered list, an ordered list, a link, and an image.\nAdvanced Syntax: Write a comment that includes an R code block, a blockquote, and an emoji."
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#data-science-process",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#data-science-process",
+    "title": "Lecture 2",
+    "section": "Data Science Process",
+    "text": "Data Science Process\n\n\n\n\nCommunication is the final part of the data science process.\n\nIf you cannot communicate your results to other humans, it does not matter how great your analysis is!\n\nQuarto (*.qmd) is a great tool for producing a document that integrates your Python/R code, its results, and your insights on the results.\nWe will use Quarto files to both\n\nSave and execute programming codes, and\nGenerate high quality reports that can be shared with an audience."
   },
   {
-    "objectID": "danl-cw/danl-200-cw-02.html#references",
-    "href": "danl-cw/danl-200-cw-02.html#references",
-    "title": "Classwork 2",
-    "section": "",
-    "text": "Quarto Markdown Basics\nStart writing on GitHub"
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#what-is-quarto",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#what-is-quarto",
+    "title": "Lecture 2",
+    "section": "What is Quarto?",
+    "text": "What is Quarto?\n\n\n\nA Quarto is an interactive computational environment that enables users to create and share documents that contain code, equations, visualizations, and narrative text.\nMululti-language Support: Quarto supports not only R but also other languages such as Python, Julia, C++, SQL.\n\nWe will use only R.\n\nPublishing Quality: Quarto documents are designed with publishing in mind, offering superior customization for document layouts and high-quality outputs suitable for academic and professional publications."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nComputer Basics\n\n\nI expect you to know:\n\nWhere downloaded files are located in your laptop\n\nBy default, Downloads is the directory where downloaded files are stored.\n\nHow to extract a Zip file, a compressed file that supports lossless file compression and that can contain multiple files;\nHow to copy and paste files using short cuts\n\nCopy: Ctrl/command + C\nPaste: Ctrl/command + V\n\nHow to find a pathname of a file/directory in your laptop."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-1",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-1",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nGetting a GitHub account\n\n\n\nCreate the GitHub account with your Geneseo email.\n\nGo to GitHub.\nClick “Sign up for GitHub”.\n\n\n\n\n\nChoose your GitHub username carefully:\n\nhttps://USERNAME.github.io will be the address for your website.\nByeong-Hak’s GitHub username is bcdanl, so that Byeong-Hak owns the web address https://bcdanl.github.io.\n\n\n\n\n\nIt is better to have a username with all lower cases."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-2",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-2",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nParticipate in the Discussions!\n\nGo to Lecture 2 - Q & A.\nSign in with GitHub account, and then add comments to the board."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-3",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-3",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nR programming\n\nThe R language is available as a free download from the R Project website at:\n\nR for Windows Users\nR for Mac Users\nDownload the file of R that corresponds to your Mac OS (Big Sur, Apple silicon arm64, High Sierra, El Capitan, Mavericks, etc.)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-4",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-4",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nR Studio\n\n\nThe RStudio Desktop is available as a free download from the following webpage:\n\nRStudio Download\n\nA recent version of RStudio includes Quarto, so that we do not need to install Quarto separately.\n\n\n\n\n\nFor Mac users, try below steps:\n\nRun RStudio-*.dmg file.\nFrom the Pop-up menu, click the RStudio icon.\nWhile clicking the RStudio icon, drag it to the Applications directory."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-5",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-5",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nRStudio Environment\n\n\n\n\n\nScript Pane is where you write an R script or a Quarto document that you can save.\n\n\n\nAn R script is simply a text file containing R commands.\n\n\n\n\n\n\n\n\nTo open an R script,\n\nFile \\(&gt;\\) New File \\(&gt;\\) R Script\n\n\n\n\n\n\nTo save the R script,\n\nFile \\(&gt;\\) Save"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-6",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-6",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nRStudio Environment\n\n\n\n\n\nConsole Pane allows you to interact directly with the R interpreter and type commands where R will immediately execute them."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-7",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-7",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nRStudio Environment\n\n\n\n\n\nEnvironment Pane is where you can see the values of variables, data frames, and other objects that are currently stored in memory.\nType below in the Console Pane, and then hit Enter:\n\na &lt;- 1"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-8",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-8",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nRStudio Environment\n\n\n\n\n\nPlots Pane contains any graphics that you generate from your R code."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-9",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-9",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nFinding a path name of a file/directory\n\nWindows 11Windows 10Mac 1Mac 2\n\n\n\nStep 1. Go to your folder using the File Explorer.\nStep 2. Right-click the file.\nStep 3. Click “Copy as path”.\nStep 4. Paste the path name of the file to the R script (Ctrl+V).\nStep 5.\n\nOption 1. Replace backslash(\\) with slash(/) in the path name.\nOption 2. Replace backslash(\\) with double-backslash(\\\\) in the path name.\n\n\n\n\n\nStep 1. Go to your folder using the File Explorer.\nStep 2. Keep pressing the “Shift” key\nStep 3. Right-click the file.\nStep 4. Click “Copy as path”.\nStep 5. Paste the path name of the file to the R script (Ctrl+V).\nStep 6.\n\nOption 1. Replace backslash(\\) with slash(/) in the path name, or\nOption 2. Replace backslash(\\) with double-backslash(\\\\) in the path name.\n\n\n\n\n\nStep 1. Go to your folder using the Finder.\nStep 2. Right-click the file in the folder\nStep 3. Keep pressing “option”\nStep 4. Click “Copy ‘PATH_FOR_YOUR_FILE’ as Pathname” from the menu.\nStep 5. Paste it to the R script (command + V).\n\n\n\n\nStep 1. Go to your folder using the Finder.\nStep 2. Select the file in the folder by clicking it.\nStep 3. Press option + command + C.\nStep 4. Paste it to the R script (command + V)."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-10",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-10",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nComputer Basics\n\nLet’s do Classwork 1."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-11",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-11",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nR Packages and tidyverse\n\nR packages are collections of R functions, compiled code, and data that are combined in a structured format."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-12",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-12",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\ntidyverse\n\n\n\nThe tidyverse is a collection of R packages designed for data science that share an underlying design philosophy, grammar, and data structures.\n\n\n\ntidyverse includes a lot of R packages, including ggplot2, dplyr, and tidyr.\nThe tidyverse packages work harmoniously together to make data manipulation, exploration, and visualization more."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#windowsmac-basics-1",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#windowsmac-basics-1",
+    "title": "Lecture 2",
+    "section": "Windows/Mac Basics",
+    "text": "Windows/Mac Basics\n\n\nI expect you to know:\n\nWhere downloaded files are located in your laptop;\nHow to extract a Zip file, a compressed file that supports lossless file compression and that can contain multiple files;\nHow to copy and paste files using short cuts\n\nCopy: Ctrl/command + C\nPaste: Ctrl/command + V\n\nHow to find a pathname of a file/directory in your laptop."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#windowsmac-basics-2",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#windowsmac-basics-2",
+    "title": "Lecture 2",
+    "section": "Windows/Mac Basics",
+    "text": "Windows/Mac Basics\nFinding a path name of a file/directory\n\nWindows 11Windows 10Mac 1Mac 2\n\n\n\nStep 1. Go to your folder using the File Explorer.\nStep 2. Right-click the file.\nStep 3. Click “Copy as path”.\nStep 4. Paste the path name of the file to the R script (Ctrl+V).\nStep 5.\n\nOption 1. Replace backslash(\\) with slash(/) in the path name.\nOption 2. Replace backslash(\\) with double-backslash(\\\\) in the path name.\n\n\n\n\n\nStep 1. Go to your folder using the File Explorer.\nStep 2. Keep pressing the “Shift” key\nStep 3. Right-click the file.\nStep 4. Click “Copy as path”.\nStep 5. Paste the path name of the file to the R script (Ctrl+V).\nStep 6.\n\nOption 1. Replace backslash(\\) with slash(/) in the path name, or\nOption 2. Replace backslash(\\) with double-backslash(\\\\) in the path name.\n\n\n\n\n\nStep 1. Go to your folder using the Finder.\nStep 2. Right-click the file in the folder\nStep 3. Keep pressing “option”\nStep 4. Click “Copy ‘PATH_FOR_YOUR_FILE’ as Pathname” from the menu.\nStep 5. Paste it to the R script (command + V).\n\n\n\n\nStep 1. Go to your folder using the Finder.\nStep 2. Select the file in the folder by clicking it.\nStep 3. Press option + command + C.\nStep 4. Paste it to the R script (command + V)."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#windowsmac-basics-3",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#windowsmac-basics-3",
+    "title": "Lecture 2",
+    "section": "Windows/Mac Basics",
+    "text": "Windows/Mac Basics\nFinding a path name of a file/directory\n\nLet’s do Classwork 1."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-13",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-13",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nInstalling R packages with install.packages(\"packageName\")\n\nR packages can be easily installed from within R using functions install.packages(\"packageName\").\n\nTo install the R package tidyverse, type and run the following command from R console:\n\n\n\ninstall.packages(\"tidyverse\")\n\nWhile running the above codes, you may encounter the question below from the R Console:\n\n\n\n\nMac: “Do you want to install from sources the packages which need compilation?” from Console Pane.\n\n\n\nWindows: “Would you like to use a personal library instead?” from Pop-up message.\n\n\n\n\nType no in the R Console, and then hit Enter."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-14",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-14",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nLoading R packages with library(packageName)\n\nOnce installed, a package is loaded into an R session using library(packageName) so that its functions and data can be used.\n\nTo load the R package tidyverse, type and run the following commands from a R script:\n\n\nlibrary(tidyverse)\ndf_mpg &lt;- mpg\n\n\nmpg is the data.frame provided by the R package ggplot2, one of the R pakcages in tidyverse.\n\nSince tidyverse is installed, ggplot2 package is already installed."
   },
   {
     "objectID": "danl-lec/danl-200-lec-01-2024-0123.html#instructor-1",
@@ -427,165 +553,53 @@
     "text": "Installing the Tools\nRStudio Options Setting\n\n\n\n\n\nThis option menu is found by menus as follows:\n\nTools \\(&gt;\\) Global Options\n\nCheck the boxes as in the left.\nChoose the option Never for  Save workspace to .RData on exit:"
   },
   {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#announcement",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#announcement",
-    "title": "Lecture 2",
-    "section": "Announcement",
-    "text": "Announcement\n\nOffice Hours\n\nTuesdays 12:30 P.M.—1:30 P.M.\nWednesdays 12:30 P.M.—2:30 P.M."
+    "objectID": "danl-cw/danl-200-cw-03.html",
+    "href": "danl-cw/danl-200-cw-03.html",
+    "title": "Classwork 3",
+    "section": "",
+    "text": "Markdown is a lightweight markup language with plain-text formatting syntax. Its main goal is to be readable and easy to write, even when viewed as plain text. Markdown is widely used for creating formatted text on the web and in various applications such as Quarto.\n\n\n\n\nHeadings are created by adding one or more # symbols before your heading text. The number of # symbols indicates the level of the heading.\n# Heading 1\n## Heading 2\n### Heading 3\n\n\n\nYou can make text bold by wrapping it with two asterisks **, and italic by using one asterisk *.\n*italic* or _italic_\n**bold** or __bold__\n\n\n\nUnordered lists are created using *, -, or +, while ordered lists are numbered.\n- Item 1\n- Item 2\n  - Subitem 2.1\n  - Subitem 2.2\n1. First item\n2. Second item\n\n\n\nLinks are created using [Link Text](URL), and images with ![Alt Text](Image URL).\n[DANL 200-02](https://bcdanl.github.io/200)\n![Geneseo Logo](https://bcdanl.github.io/img/geneseo-logo.gif)\n\n\n\n\n\n\n&gt; Be yourself. Everyone else is already taken. - Oscar Wilde.\n\n\n\n\nA ton of markdown emojis are available here 😄 (:smile:)\n\nhttps://github.com/ikatyang/emoji-cheat-sheet\n\n\n\n\n\nCode blocks are created by using triple backticks (```). Optionally, you can specify the language for syntax highlighting.\n```\n\"character\"\n```\n```r\n# R code block\nlibrary(tidyverse)\n```\n\n\n\n\n\nDo the following tasks on this Classwork 2 Discussion Board:\n\nBasic Syntax: Write a comment with a heading, an unordered list, an ordered list, a link, and an image.\nAdvanced Syntax: Write a comment that includes an R code block, a blockquote, and an emoji.\n\n\n\n\n\n\nQuarto Markdown Basics\nStart writing on GitHub"
   },
   {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#learning-objectives",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#learning-objectives",
-    "title": "Lecture 2",
-    "section": "Learning Objectives",
-    "text": "Learning Objectives\n\n\nSet up the DANL tools in your laptop.\n\nR\nRStudio\nR Packages\n\nBasic Usage of Windows/Mac\nPractice Markdown"
+    "objectID": "danl-cw/danl-200-cw-03.html#basic-syntax",
+    "href": "danl-cw/danl-200-cw-03.html#basic-syntax",
+    "title": "Classwork 3",
+    "section": "",
+    "text": "Headings are created by adding one or more # symbols before your heading text. The number of # symbols indicates the level of the heading.\n# Heading 1\n## Heading 2\n### Heading 3\n\n\n\nYou can make text bold by wrapping it with two asterisks **, and italic by using one asterisk *.\n*italic* or _italic_\n**bold** or __bold__\n\n\n\nUnordered lists are created using *, -, or +, while ordered lists are numbered.\n- Item 1\n- Item 2\n  - Subitem 2.1\n  - Subitem 2.2\n1. First item\n2. Second item\n\n\n\nLinks are created using [Link Text](URL), and images with ![Alt Text](Image URL).\n[DANL 200-02](https://bcdanl.github.io/200)\n![Geneseo Logo](https://bcdanl.github.io/img/geneseo-logo.gif)"
   },
   {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#git-vs.-github",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#git-vs.-github",
-    "title": "Lecture 2",
-    "section": "Git vs. GitHub",
-    "text": "Git vs. GitHub\n\nGitGitHub\n\n\n\nGit is a distributed version control system.\nGit keeps track of changes in files and directories.\nGit is optimized for the things that economists and data scientists spend a lot of time working on (e.g. code).\nThere is a learning curve, so we use only three commands—add, commit, and push!\n\n\n\n\nIt is important to realize that Git and GitHub are distinct things.\nGitHub is an online hosting platform that provides an array of services built on top of the Git system.\nJust like we do not need Rstudio to run R code, we do not need GitHub to use Git… But it will make our lives so much easier."
+    "objectID": "danl-cw/danl-200-cw-03.html#advanced-syntax",
+    "href": "danl-cw/danl-200-cw-03.html#advanced-syntax",
+    "title": "Classwork 3",
+    "section": "",
+    "text": "&gt; Be yourself. Everyone else is already taken. - Oscar Wilde.\n\n\n\n\nA ton of markdown emojis are available here 😄 (:smile:)\n\nhttps://github.com/ikatyang/emoji-cheat-sheet\n\n\n\n\n\nCode blocks are created by using triple backticks (```). Optionally, you can specify the language for syntax highlighting.\n```\n\"character\"\n```\n```r\n# R code block\nlibrary(tidyverse)\n```"
   },
   {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#data-science-process",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#data-science-process",
-    "title": "Lecture 2",
-    "section": "Data Science Process",
-    "text": "Data Science Process\n\n\n\n\nCommunication is the final part of the data science process.\n\nIf you cannot communicate your results to other humans, it does not matter how great your analysis is!\n\nQuarto (*.qmd) is a great tool for producing a document that integrates your Python/R code, its results, and your insights on the results.\nWe will use Quarto files to both\n\nSave and execute programming codes, and\nGenerate high quality reports that can be shared with an audience."
+    "objectID": "danl-cw/danl-200-cw-03.html#practice-problems",
+    "href": "danl-cw/danl-200-cw-03.html#practice-problems",
+    "title": "Classwork 3",
+    "section": "",
+    "text": "Do the following tasks on this Classwork 2 Discussion Board:\n\nBasic Syntax: Write a comment with a heading, an unordered list, an ordered list, a link, and an image.\nAdvanced Syntax: Write a comment that includes an R code block, a blockquote, and an emoji."
   },
   {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#what-is-quarto",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#what-is-quarto",
-    "title": "Lecture 2",
-    "section": "What is Quarto?",
-    "text": "What is Quarto?\n\n\n\nA Quarto is an interactive computational environment that enables users to create and share documents that contain code, equations, visualizations, and narrative text.\nMululti-language Support: Quarto supports not only R but also other languages such as Python, Julia, C++, SQL.\n\nWe will use only R.\n\nPublishing Quality: Quarto documents are designed with publishing in mind, offering superior customization for document layouts and high-quality outputs suitable for academic and professional publications."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nGetting a GitHub account\n\n\n\nCreate the GitHub account with your Geneseo email.\n\nGo to GitHub.\nClick “Sign up for GitHub”.\n\n\n\n\n\nChoose your GitHub username carefully:\n\nhttps://YOUR_GITHUB_USERNAME.github.io will be the address for your website.\nByeong-Hak’s GitHub username is bcdanl, so that Byeong-Hak owns the web address https://bcdanl.github.io.\n\n\n\n\n\nIt is better to have a username with all lower cases."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-1",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-1",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nParticipate in the Discussions!\n\nGo to Lecture 2 - Q & A.\nSign in with GitHub account, and then add comments to the board."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-2",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-2",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nR programming\n\nThe R language is available as a free download from the R Project website at:\n\nWindows: R for Windows\nMac: R for Mac\nDownload the file of R that corresponds to your Mac OS (Big Sur, Apple silicon arm64, High Sierra, El Capitan, Mavericks, etc.)"
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-3",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-3",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nR Studio\n\n\nThe RStudio Desktop is available as a free download from the following webpage:\n\nRStudio Download\n\nA recent version of RStudio includes Quarto, so that we do not need to install Quarto separately.\n\n\n\n\n\nFor Mac users, try below steps:\n\nRun RStudio-*.dmg file.\nFrom the Pop-up menu, click the RStudio icon.\nWhile clicking the RStudio icon, drag it to the Applications directory."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-4",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-4",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nRStudio Environment\n\n\n\n\n\nScript Pane is where you write R commands in a script file that you can save.\n\n\n\nAn R script is simply a text file containing R commands.\nRStudio will color-code different elements of your code to make it easier to read.\n\n\n\n\n\n\n\n\nTo open an R script,\n\nFile \\(&gt;\\) New File \\(&gt;\\) R Script\n\n\n\n\n\n\nTo save the R script,\n\nFile \\(&gt;\\) Save"
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-5",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-5",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nRStudio Environment\n\n\n\n\n\nConsole Pane allows you to interact directly with the R interpreter and type commands where R will immediately execute them."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-6",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-6",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nRStudio Environment\n\n\n\n\n\nEnvironment Pane is where you can see the values of variables, data frames, and other objects that are currently stored in memory.\nType below in the Console Pane, and then hit Enter:\n\na &lt;- 1"
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-7",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-7",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nRStudio Environment\n\n\n\n\n\nPlots Pane contains any graphics that you generate from your R code."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-8",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-8",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nR Packages and tidyverse\n\nR packages are collections of R functions, compiled code, and data that are combined in a structured format."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-9",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-9",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\ntidyverse\n\n\n\nThe tidyverse is a collection of R packages designed for data science that share an underlying design philosophy, grammar, and data structures.\n\n\n\ntidyverse includes a lot of R packages, including ggplot2, dplyr, and tidyr.\nThe tidyverse packages work harmoniously together to make data manipulation, exploration, and visualization more."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-10",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-10",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nInstalling R packages with install.packages(\"packageName\")\n\nR packages can be easily installed from within R using functions install.packages(\"packageName\").\n\nTo install the R package tidyverse, type and run the following from R console:\n\n\n\ninstall.packages(\"tidyverse\")\n\nWhile running the above codes, you may encounter the question below from the R Console:\n\n\n\n\nMac: “Do you want to install from sources the packages which need compilation?” from Console Pane.\n\n\n\nWindows: “Would you like to use a personal library instead?” from Pop-up message.\n\n\n\n\nType no in the R Console, and then hit Enter."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-11",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-11",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nLoading R packages with library(packageName)\n\nOnce installed, a package is loaded into an R session using library(packageName) so that its functions and data can be used.\n\nTo load the R package tidyverse, type and run the following command from a R script:\n\n\nlibrary(tidyverse)\ndf_mpg &lt;- mpg\n\n\nmpg is the data.frame provided by the R package ggplot2, one of the R pakcages in tidyverse.\n\nSince tidyverse is installed, ggplot2 package is already installed."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-12",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-12",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nRStudio Options Setting\n\n\n\n\n\nThis option menu is found by menus as follows:\n\nTools \\(&gt;\\) Global Options\n\nCheck the boxes as in the left.\nChoose the option Never for  Save workspace to .RData on exit:"
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#windowsmac-basics-1",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#windowsmac-basics-1",
-    "title": "Lecture 2",
-    "section": "Windows/Mac Basics",
-    "text": "Windows/Mac Basics\n\nI expect you to know:\n\n\n\nWhere downloaded files are located;\nHow to extract a ZIP file, a compressed file that supports lossless file compression and that can contain multiple files;\nHow to copy and paste files using short cuts;\nHow to find a pathname of a file/directory in your laptop."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#management-of-files-and-directories",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#management-of-files-and-directories",
-    "title": "Lecture 2",
-    "section": "Management of Files and Directories",
-    "text": "Management of Files and Directories\nFinding a path name of a file/directory\n\nWindows 11Windows 10MacMac\n\n\n\nStep 1. Go to your folder using the File Explorer.\nStep 2. Right-click the file.\nStep 3. Click “Copy as path”.\nStep 4. Paste the path name of the file to the R script (Ctrl+V).\nStep 5.\n\nOption 1. Replace backslash(\\) with slash(/) in the path name.\nOption 2. Replace backslash(\\) with double-backslash(\\\\) in the path name.\n\n\n\n\n\nStep 1. Go to your folder using the File Explorer.\nStep 2. Keep pressing the “Shift” key\nStep 3. Right-click the file.\nStep 4. Click “Copy as path”.\nStep 5. Paste the path name of the file to the R script (Ctrl+V).\nStep 6.\n\nOption 1. Replace backslash(\\) with slash(/) in the path name, or\nOption 2. Replace backslash(\\) with double-backslash(\\\\) in the path name.\n\n\n\n\n\nStep 1. Go to your folder using the Finder.\nStep 2. Right-click the file in the folder\nStep 3. Keep pressing “option”\nStep 4. Click “Copy ‘PATH_FOR_YOUR_FILE’ as Pathname” from the menu.\nStep 5. Paste it to the R script (command + V).\n\n\n\n\nStep 1. Go to your folder using the Finder.\nStep 2. Select the file in the folder by clicking it.\nStep 3. Press option + command + C.\nStep 4. Paste it to the R script (command + V)."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-13",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-13",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nBuilding a Website\n\nLet’s do Classwork 1."
-  },
-  {
-    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-14",
-    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-14",
-    "title": "Lecture 2",
-    "section": "Installing the Tools",
-    "text": "Installing the Tools\nMarkdown\n\nPython Notebook, Quarto, and GitHub-based Discussion Boards use markdown as its underlying document syntax.\nLet’s do Classwork 2."
+    "objectID": "danl-cw/danl-200-cw-03.html#references",
+    "href": "danl-cw/danl-200-cw-03.html#references",
+    "title": "Classwork 3",
+    "section": "",
+    "text": "Quarto Markdown Basics\nStart writing on GitHub"
   },
   {
     "objectID": "danl-cw/danl-200-cw-01.html",
     "href": "danl-cw/danl-200-cw-01.html",
     "title": "Classwork 1",
     "section": "",
-    "text": "Getting a GitHub account\nStep 1. Create the GitHub account with your Geneseo email.\n\nGo to GitHub.\nClick “Sign up for GitHub”.\n\n\nChoose your GitHub username carefully:\n\nhttps://USERNAME.github.io will be the address for your website.\nByeong-Hak’s GitHub username is bcdanl, so that Byeong-Hak owns the web address https://bcdanl.github.io.\n\nIt is recommended to have a username with all lower cases.\n\n\n\n\nInstalling git if you do not have one.\nStep 2.\n\nCheck whether git is installed in your laptop.\n\n\nFrom the Console Pane in RStudio, click Terminal tab.\n\n\n\n\n\nFrom the Terminal, run the following command to check if your laptop has git installed.\n\ngit --version\n\nIf your computer has git installed, you will see the message below and you do not need to install git:\n\ngit version 2.xx\n\nIf your computer does not have git installed, you will see the message below and you need to install git:\n\n'git' is not recognized as an internal or external command\n\n\nInstall git if you do not have one. Move to the next step if you have git installed in your laptop.\n\n\n\n\nMac\n\nGo to http://git-scm.com/downloads, and download the file.\nClick “macOS”, scroll down the webpage, and then click “installer” from the Binary installer section.\nRun the downloaded file.\n\n\n\n\nWindows\n\nGo to https://gitforwindows.org, and download the file.\nRun the downloaded file.\n\n\n\n\n\nKeep clicking “Next” to complete the installation of git.\nAfter the git installation is done, close RStudio and re-open it.\n\n\n\n\nSetting up GitHub Credential on your local Git.\nStep 3. In Terminal, run the following commands one by one:\ngit config --global user.email \"YOUR_EMAIL_ADDRESS\"\ngit config --global user.name \"YOUR_USERNAME\"\nFor example, the email address for my GitHub account is bchoe@geneseo.edu, and my GitHub username is bcdanl, so that I ran below:\ngit config --global user.email \"bchoe@geneseo.edu\"\ngit config --global user.name \"bcdanl\"\n\nStep 4. Obtain a personal access token (PAT) from GitHub.\n\nIn RStudio Console, run the followings line by line:\n\ninstall.packages(\"usethis\")\nusethis::create_github_token()\n\nThen, click “Generate token” in the pop-upped web browser.\nThen, copy the generated PAT, and paste it to your clipboard or R script.\n\n\nStep 5. Set the GitHub credential using the PAT.\n\nIn RStudio Console, run the followings line by line:\n\ninstall.packages(\"gitcreds\")\ngitcreds::gitcreds_set()\n\nYou will be asked to provide your PAT.\nPaste your PAT to the RStudio Console, and hit Enter.\n\n\n\n\nEstablishing the Connection between GitHub repo and your Git\nStep 6. Login to your GitHib and make the repository.\n\nFrom https://github.com, click the plus [+] icon in the upper right corner and select “New repository”.\nName this repo USERNAME.github.io, which will be the domain for your website.\n\n\ne.g., If your GitHub username is abc9, the name of your repo should be abc9.github.io, not abc_9.github.io.\n\n\nThen, copy the web address of your GitHub repo, https://github.com/USERNAME/USERNAME.github.io\n\n\nFor example, the web address for Byeong-Hak’s GitHub repo is https://github.com/bcdanl/bcdanl.github.io.\n\n\nStep 7. Create a RStudio project with Version Control\n\n\n\n\nClick “Project (None)” at the top-right corner in RStudio.\nClick “New Project” &gt; “Version Control” &gt; “Git”\nPaste the web address of your GitHub repo to the Repository URL menu.\nClick “Browse” to select the parent directory for your local project directory (I recommend “Documents” folder.)\nClick “Create”\n\n\n\n\n\n\n\nNote\n\n\n\nInstead of Step 7 above, we can follow Steps 7-1 and 7-2. For those who have errors in Step 7, do Steps 7-1 and 7-2 instead.\n\n\nStep 7-1. Use git clone to establish the connection between GitHub repo and your local laptop:\n\nChange directory to “Documents” in Terminal using cd command.\n\ncd &lt;pathname of \"Documents\" directory&gt;\n\nHere, you need to know the pathname of “Documents” directory.\nFor example, LAPTOP_USERNAME below is not your GitHub username but one for your local laptop.\n\nMac\ncd /Users/LAPTOP_USERNAME/Documents\nWindows\ncd C:/Users/LAPTOP_USERNAME/Documents\n\nUse git clone to creates a local copy of the GitHub Repository.\n\ngit clone &lt;repository-url&gt;\n\nFor example,\n\ngit clone https://github.com/USERNAME/USERNAME.github.io\n\nStep 7-2. Create a RStudio project from Existing Directory\n\nClick “Project (None)” at the top-right corner in RStudio.\nClick “New Project” &gt; “Existing Directory”\nClick “Browse” to select the local copy of the GitHub Repository\nClick “Create Project”\n\n\n\n\nDownloading Website Template Files\nStep 8. Download the files of website template:\n\nGo to the following webpage: https://github.com/bcdanl/danl-website-template\nFrom the webpage above, click the green icon &lt; &gt; Code, and then click “Download ZIP”\nExtract the ZIP file you have downloaded\nIf there are the files, .gitignore, .DS_Store, or *.Rproj, in the folder, delete all of them.\nMove all the files that were compressed in the ZIP file to your local project directory.\n\n\nCtrl/cmd + A selects all files in a folder.\nAll the website files should be located at the same level with the R Project file (USERNAME.github.io.Rproj), shown below.\n\n\n\n\n\n\n\nPushing the Website Files to the GitHub repository\n\n\n\nStep 8. Push the files to your GitHub repository\n\nOn Terminal within RStudio, execute the following 3-step git commands, which will stage, commit, and push all the new files in the local working directory to your GitHub repository:\n\n\ngit add . adds changes in your local working directory (e.g., edited files, new files, deleted files) to the staging area, which is a temporary area where you can prepare your next commit\n\ngit add .\n\ngit commit -m \"...\" records the changes in the staging area as a new snapshot in the local working directory, along with a message describing the changes.\n\ngit commit -m \"any message to describe the changes\"\n\ngit push -u origin main uploads the local changes to the online repository in GitHub.\n\ngit push -u origin main\n\n\n\n\n\n\nNote\n\n\n\nIf git push -u origin main gives error, try the following:\ngit push -u origin master\n\nThe name of the default branch in a GitHub repo is usually main, but sometimes GitHub gives master default branch instead.\n\n\n\n\nStep 9. Check whether the files are well uploaded.\n\nGo to the webpages of your GitHub repository and your website:\n\nhttps://github.com/USERNAME/USERNAME.github.io.git\nhttps://USERNAME.github.io\nRefresh the webpage (cmd/Ctrl + R)\n\n\n\n\n\n\n Back to topReuse© 2024 Byeong-Hak Choe | This post is licensed under &lt;a href='http://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'&gt;CC BY-NC-SA 4.0&lt;/a&gt;.CitationFor attribution, please cite this work as:\nChoe, Byeong-Hak. 2024. “Classwork 1.” January 24, 2024."
+    "text": "Do the following tasks:\n\nDownload the file nbc_show.zip from Brightspace.\nExtract the file nbc_show.zip.\nCopy the pathname of nbc_show.csv\nType the following on an R script:\n\n\n\npathname &lt;- \"PATHNAME_OF_nbc_show.csv\"\n\n\nFor example, in Byeong-Hak’s computer, /Users/bchoe/My Drive/suny-geneseo/teaching-materials/lecture-data/nbc_show.csv is the pathname of nbc_show.csv.\n\nIn your R script, locate your mouse cursor on any part of the line with pathname by clicking the line or using arrow keys.\nHit Ctrl + Enter (Windows users) / command + Enter (Mac users) to run the line of code.\nSave an R script to Documents folder or a new directory for the course.\n\n\nIf you use a new directory for the course, I recommend you to use the name without any space. For example, do not use name like DANL 200. Instead, use DANL200 for the working directory.\n\nLet Byeong-Hak know if you have issues with the tasks!"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-01.html#practice-problems",
+    "href": "danl-cw/danl-200-cw-01.html#practice-problems",
+    "title": "Classwork 1",
+    "section": "",
+    "text": "Do the following tasks:\n\nDownload the file nbc_show.zip from Brightspace.\nExtract the file nbc_show.zip.\nCopy the pathname of nbc_show.csv\nType the following on an R script:\n\n\n\npathname &lt;- \"PATHNAME_OF_nbc_show.csv\"\n\n\nFor example, in Byeong-Hak’s computer, /Users/bchoe/My Drive/suny-geneseo/teaching-materials/lecture-data/nbc_show.csv is the pathname of nbc_show.csv.\n\nIn your R script, locate your mouse cursor on any part of the line with pathname by clicking the line or using arrow keys.\nHit Ctrl + Enter (Windows users) / command + Enter (Mac users) to run the line of code.\nSave an R script to Documents folder or a new directory for the course.\n\n\nIf you use a new directory for the course, I recommend you to use the name without any space. For example, do not use name like DANL 200. Instead, use DANL200 for the working directory.\n\nLet Byeong-Hak know if you have issues with the tasks!"
   },
   {
     "objectID": "listing-danl-200-lec.html",
@@ -606,7 +620,7 @@
     "href": "listing-danl-200-cw.html",
     "title": "DANL 200 - Classwork",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 2\n\n\nMarkdown Basics\n\n\nJanuary 25, 2024\n\n\n\n\nClasswork 1\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio\n\n\nJanuary 24, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 1\n\n\nComputer Basics\n\n\nJanuary 25, 2024\n\n\n\n\nClasswork 3\n\n\nMarkdown Basics\n\n\nJanuary 25, 2024\n\n\n\n\nClasswork 2\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio\n\n\nJanuary 25, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "listing-danl-200-hw.html",
@@ -614,5 +628,26 @@
     "title": "DANL 200 - Homework",
     "section": "",
     "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nR Basics and Personal Website\n\n\nJanuary 22, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-15",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-15",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nRStudio Options Setting\n\n\n\n\n\nThis option menu is found by menus as follows:\n\nTools \\(&gt;\\) Global Options\n\nCheck the boxes as in the left.\nChoose the option Never for  Save workspace to .RData on exit:"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-16",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-16",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nBuilding a Website\n\nLet’s do Classwork 2."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-17",
+    "href": "danl-lec/danl-200-lec-02-2024-0125.html#installing-the-tools-17",
+    "title": "Lecture 2",
+    "section": "Installing the Tools",
+    "text": "Installing the Tools\nPractice Markdown\n\nQuarto and GitHub-based Discussion Boards use markdown as its underlying document syntax.\nLet’s do Classwork 3."
   }
 ]

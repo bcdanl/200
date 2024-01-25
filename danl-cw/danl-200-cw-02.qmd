@@ -1,9 +1,7 @@
 ---
 title: Classwork 2
-subtitle: Markdown Basics
+subtitle: Building a Personal Website using Git, GitHub, and RStudio
 date: last-modified
-
-from: markdown+emoji
 
 comments:
   hypothesis: 
@@ -11,93 +9,309 @@ comments:
 ---
 
 
+### Getting a GitHub account
 
-# Introduction to Markdown
+**Step 1.** Create the GitHub account with your Geneseo email.
 
-Markdown is a lightweight markup language with plain-text formatting syntax. Its main goal is to be readable and easy to write, even when viewed as plain text. Markdown is widely used for creating formatted text on the web and in various applications such as Quarto.
+  1. Go to [GitHub](https://github.com){target="_blank"}.
+  2. Click "Sign up for GitHub".
+  
+- Choose your GitHub username carefully:
+  - `https://USERNAME.github.io` will be the address for your website.
+  - Byeong-Hak's GitHub username is `bcdanl`, so that Byeong-Hak owns the web address `https://bcdanl.github.io`.
+  
+- It is recommended to have a username with *all lower cases*.
 
-## Basic Syntax
 
-### Headings
-Headings are created by adding one or more `#` symbols before your heading text. The number of `#` symbols indicates the level of the heading.
+<br><br>
 
-```markdown
-# Heading 1
-## Heading 2
-### Heading 3
+### Installing `git` if you do not have one.
+
+**Step 2**. 
+
+1. Check whether `git` is installed in your laptop.
+
+- From the Console Pane in RStudio, click **Terminal** tab.
+
+
+<p align="center" >
+  <img src="https://bcdanl.github.io/lec_figs/rstudio-git-ver.gif" style="width: 67%;">
+</p>
+
+
+- From the Terminal, run the following command to check if your laptop has `git` installed.
+
+
+```{.bash}
+git --version
 ```
 
-### Emphasis
-You can make text **bold** by wrapping it with two asterisks `**`, and *italic* by using one asterisk `*`.
+- If your computer has `git` installed, you will see the message below and you do not need to install `git`:
 
-```markdown
-*italic* or _italic_
-**bold** or __bold__
+```{.bash}
+git version 2.xx
 ```
 
-### Lists
-Unordered lists are created using `*`, `-`, or `+`, while ordered lists are numbered.
+- If your computer does not have `git` installed, you will see the message below and you need to install `git`:
 
-```markdown
-- Item 1
-- Item 2
-  - Subitem 2.1
-  - Subitem 2.2
-```
-
-```markdown
-1. First item
-2. Second item
-```
-
-### Links and Images
-Links are created using `[Link Text](URL)`, and images with `![Alt Text](Image URL)`.
-
-```markdown
-[DANL 200-02](https://bcdanl.github.io/200)
-![Geneseo Logo](https://bcdanl.github.io/img/geneseo-logo.gif)
-```
-
-## Advanced Syntax
-
-### Blockquote
-
-```markdown
-> Be yourself. Everyone else is already taken. - Oscar Wilde.
+```{.bash}
+'git' is not recognized as an internal or external command
 ```
 
 
-### Emojis
-
-- A ton of markdown emojis are available here :smile: (`:smile:`)
-  - [https://github.com/ikatyang/emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet)
+<br>
 
 
+2. Install `git` if you do not have one. Move to the next step if you have `git` installed in your laptop.
 
-### Code Blocks
-Code blocks are created by using triple backticks (```). Optionally, you can specify the language for syntax highlighting.
+::::{.columns}
 
-````markdown
+
+::: {.column width="50%"}
+
+#### Mac
+  - Go to [http://git-scm.com/downloads](http://git-scm.com/downloads){target="_blank"}, and download the file.
+  - Click "macOS", scroll down the webpage, and then click "installer" from the **Binary installer** section.
+  - Run the downloaded file.
+
+:::
+
+::: {.column width="50%"}
+
+#### Windows
+  - Go to [https://gitforwindows.org](https://gitforwindows.org){target="_blank"}, and download the file.
+  - Run the downloaded file.
+
+:::
+::::
+
+- Keep clicking "Next" to complete the installation of `git`.
+
+- After the `git` installation is done, close RStudio and re-open it.
+
+
+<br><br>
+
+###  Setting up GitHub Credential on your local Git.
+
+**Step 3**. In Terminal, run the following commands one by one:
+```{.bash}
+git config --global user.email "YOUR_EMAIL_ADDRESS"
 ```
-"character"
+
+```{.bash}
+git config --global user.name "YOUR_USERNAME"
 ```
-````
 
+For example, the email address for my GitHub account is `bchoe@geneseo.edu`, and my GitHub username is `bcdanl`, so that I ran below:
 
-````markdown
-```r
-# R code block
-library(tidyverse)
+```{.bash}
+git config --global user.email "bchoe@geneseo.edu"
 ```
-````
+
+```{.bash}
+git config --global user.name "bcdanl"
+```
+
+<br>
+
+**Step 4**. Obtain a personal access token (PAT) from GitHub. 
+
+  - In RStudio Console, run the followings line by line:
+```{.r}
+install.packages("usethis")
+```
+
+```{.r}
+usethis::create_github_token()
+```
+
+  - Then, click “Generate token” in the pop-upped web browser. 
+  - Then, copy the generated PAT, and paste it to your clipboard or R script.
 
 
-## Practice Problems
-- Do the following on this Classwork 2 Discussion Board:
-  1. **Basic Syntax**: Write a comment with a heading, an unordered list, an ordered list, a link, and an image.
-  2. **Advanced Syntax**: Write a comment that includes an R code block, a blockquote, and an emoji.
+<br>
 
 
-## References
-- [Quarto Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html)
-- [Start writing on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+**Step 5**. Set the GitHub credential using the PAT. 
+
+  - In RStudio **Console**, run the followings line by line:
+```{.r}
+install.packages("gitcreds")
+```
+
+```{.r}
+gitcreds::gitcreds_set()
+```
+
+  - You will be asked to provide your PAT.
+  - Paste your PAT to the RStudio Console, and hit *Enter*.
+  
+
+
+<br><br>
+
+
+###  Establishing the Connection between GitHub repo and your Git
+
+**Step 6**. Login to your GitHib and make the repository.
+
+  1. From [https://github.com](https://github.com){target="_blank"}, click the plus **[+]** icon in the upper right corner and select "New repository".
+
+  2. Name this repo `USERNAME.github.io`, which will be the domain for your website.
+    
+  - e.g., If your GitHub username is `abc9`, the name of your repo should be `abc9.github.io`, not `abc_9.github.io`.
+  
+  
+  3. Then, copy the web address of your GitHub repo, `https://github.com/USERNAME/USERNAME.github.io`
+    
+  - For example, the web address for Byeong-Hak's GitHub repo is `https://github.com/bcdanl/bcdanl.github.io`.
+
+<br>
+
+**Step 7**. Create a RStudio project with Version Control
+
+
+<p align="center" >
+  <img src="https://bcdanl.github.io/lec_figs/rstudio-proj.gif" style="width: 67%;">
+</p>
+
+
+  1. Click "Project (None)" at the top-right corner in RStudio.
+  
+  2. Click "New Project" > "Version Control" > "Git"
+  
+  3. Paste the web address of your GitHub repo to the Repository URL menu.
+  
+  4. Click "Browse" to select the parent directory for your local project directory (I recommend "Documents" folder.)
+  
+  5. Click "Create"
+
+:::{.callout-note}
+Instead of Step 7 above, we can follow Steps 7-1 and 7-2. For those who have errors in Step 7, do Steps 7-1 and 7-2 instead. 
+:::
+
+**Step 7-1**. Use `git clone` to establish the connection between GitHub repo and your local laptop:
+
+  1. **C**hange **d**irectory to "Documents" in Terminal using `cd` command.
+
+```{.bash}
+cd <pathname of "Documents" directory>
+```
+
+  - Here, you need to know the pathname of "Documents" directory.
+
+  - For example, `LAPTOP_USERNAME` below is not your GitHub username but one for your local laptop.
+
+**Mac**
+```{.bash}
+cd /Users/LAPTOP_USERNAME/Documents
+```
+
+**Windows**
+```{.bash}
+cd C:/Users/LAPTOP_USERNAME/Documents
+```
+
+
+  2. Use `git clone` to creates a local copy of the GitHub Repository.
+```{.bash}
+git clone <repository-url>
+```
+
+- For example,
+
+```{.bash}
+git clone https://github.com/USERNAME/USERNAME.github.io
+```
+
+
+<br>
+
+**Step 7-2**. Create a RStudio project from Existing Directory
+
+  1. Click "Project (None)" at the top-right corner in RStudio.
+  
+  2. Click "New Project" > "Existing Directory" 
+  
+  3. Click "Browse" to select the local copy of the GitHub Repository
+  
+  4. Click "Create Project"
+
+
+<br><br>
+
+
+### Downloading Website Template Files
+
+**Step 8**. Download the files of website template:
+
+  1. Go to the following webpage: 
+  [https://github.com/bcdanl/danl-website-template](https://github.com/bcdanl/danl-website-template){target="_blank"}
+  2. From the webpage above, click the green icon <span style="background-color: #329932">< > Code</span>, and then click “Download ZIP”
+
+  3. Extract the ZIP file you have downloaded
+  
+  4. If there are the files, `.gitignore`, `.DS_Store`, or `*.Rproj`, in the folder, delete all of them.
+
+  5. Move all the files that were compressed in the ZIP file to your local project directory.
+  - **Ctrl/cmd + A** selects all files in a folder.
+
+
+- All the website files should be located at the same level with the R Project file (`USERNAME.github.io.Rproj`), shown below.
+
+<p align="center" >
+  <img src="https://bcdanl.github.io/lec_figs/website-files.png" style="width: 67%;">
+</p>
+
+
+
+<br><br>
+
+### Pushing the Website Files to the GitHub repository
+
+<p align="center" >
+  <img src="https://bcdanl.github.io/lec_figs/git-process.png" style="width: 67%;">
+</p>
+
+
+
+**Step 8**. Push the files to your GitHub repository
+
+  - On Terminal within RStudio, execute the following 3-step `git` commands, which will *stage*, *commit*, and *push* all the new files in the local working directory to your GitHub repository:
+
+  1. `git add .` adds changes in your local working directory (e.g., edited files, new files, deleted files) to the *staging area*, which is a temporary area where you can prepare your next *commit*
+```{.bash}
+git add .
+```
+
+  2. `git commit -m "..."` records the changes in the *staging area* as a new snapshot in the local working directory, along with a *message* describing the changes.
+```{.bash}
+git commit -m "any message to describe the changes"
+```
+
+  3. `git push -u origin main` uploads the local changes to the online repository in GitHub.
+```{.bash}
+git push -u origin main
+```
+
+
+:::{.callout-note}
+If `git push -u origin main` gives error, try the following:
+```{.bash}
+git push -u origin master
+```
+
+- The name of the default branch in a GitHub repo is usually `main`, but sometimes GitHub gives `master` default branch instead.
+
+:::
+
+<br>
+
+**Step 9**. Check whether the files are well uploaded.
+
+- Go to the webpages of your GitHub repository and your website:
+  - [https://github.com/USERNAME/USERNAME.github.io.git](https://github.com/USERNAME/USERNAME.github.io.git){target="_blank"}
+  - [https://USERNAME.github.io](https://USERNAME.github.io){target="_blank"}
+  - Refresh the webpage (**cmd/Ctrl + R**)
+
