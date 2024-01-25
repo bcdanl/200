@@ -148,8 +148,8 @@ knitr::knit_engines$set("markdown")
     - By default, `Downloads` is the directory where downloaded files are stored.
   - How to extract a Zip file, a compressed file that supports lossless file compression and that can contain multiple files;
   - How to copy and paste files using short cuts 
-    - **Copy**: Ctrl/command + C
-    - **Paste**: Ctrl/command + V
+    - **Copy**: **Ctrl + C** for Windows users; **command + C** for Mac users
+    - **Paste**: **Ctrl + V** for Windows users; **command + V** for Mac users
   - How to find a pathname of a file/directory in your laptop.
 
 :::
@@ -353,7 +353,7 @@ a <- 1
 
 - **Step 1.** Go to your folder using the Finder.
 - **Step 2.** Right-click the file in the folder
-- **Step 3.** Keep pressing "option"
+- **Step 3.** Keep pressing the "option" key
 - **Step 4.** Click "Copy 'PATH\_FOR\_YOUR\_FILE' as Pathname" from the menu.
 - **Step 5.** Paste it to the R script (**command + V**).
 
