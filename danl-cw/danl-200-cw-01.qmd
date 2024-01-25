@@ -1,7 +1,7 @@
 ---
 title: Classwork 1
 subtitle: Computer Basics
-date: last-modified
+date: 2023-01-24
 
 from: markdown+emoji
 
