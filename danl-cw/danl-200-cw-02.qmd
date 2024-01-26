@@ -2,10 +2,6 @@
 title: Classwork 2
 subtitle: Building a Personal Website using Git, GitHub, and RStudio
 date: last-modified
-
-comments:
-  hypothesis: 
-    theme: clean
 ---
 
 

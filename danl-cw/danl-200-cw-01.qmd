@@ -4,10 +4,6 @@ subtitle: Computer Basics
 date: 2023-01-24
 
 from: markdown+emoji
-
-comments:
-  hypothesis: 
-    theme: clean
 ---
 
 

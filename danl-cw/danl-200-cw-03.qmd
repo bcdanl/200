@@ -4,10 +4,6 @@ subtitle: Markdown Basics
 date: last-modified
 
 from: markdown+emoji
-
-comments:
-  hypothesis: 
-    theme: clean
 ---
 
 
