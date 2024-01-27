@@ -1,6 +1,6 @@
 ---
 title: Classwork 2
-subtitle: Building a Personal Website using Git, GitHub, and RStudio
+subtitle: Building a Personal Website using Git, GitHub, and RStudio with Quarto
 date: 2023-01-30
 from: markdown+emoji
 ---
@@ -279,8 +279,7 @@ git clone https://github.com/USERNAME/USERNAME.github.io
   4. If there are the files, `.gitignore`, `.DS_Store`, or `*.Rproj`, in the folder, delete all of them.
 
   5. Move all the files that were compressed in the Zip file to your local project directory, `USERNAME.github.io`.
-  - Tip: **Ctrl + A** (Windows) / **command + A** (Mac)  selects all files in a directory.
-  - Select all the files from the `danl-website-template` folder.
+  - Select all the files in the `danl-website-template` folder (Tip: **Ctrl + A** (Windows) / **command + A** (Mac)  selects all files in a directory).
   - Then, **Ctrl + C** (Windows) / **command + C** (Mac) to copy them.
   - Then, go to your local project directory `USERNAME.github.io`.
   - Then, **Ctrl + V** (Windows) / **command + V** (Mac) to paste them to your local project directory `USERNAME.github.io`.
