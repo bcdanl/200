@@ -585,14 +585,14 @@
     "href": "danl-lec/danl-200-lec-03-2024-0130.html#announcement-1",
     "title": "Lecture 3",
     "section": "Announcement",
-    "text": "Announcement\nGitHub Notifications Setting\n\n\n\nTo avoid a ton of notification emails, you can de-select “Email” for notification options:\n\nGo to https://github.com, and log in.\nClick the mailbox icon at the top right corner next to the profile icon.\n\n\nThis leads to the page of GitHub Notifications.\n\n\nClick “Manage notifications” at the bottom of the side bar.\nClick “Notification settings”.\nScroll down to the “Subscriptions” menu.\nClick “Notify me on …” from the “Watching” sub-menu, uncheck “Email”, and save it.\nClick “Notify me on …” from the “Participating, …” sub-menu, uncheck “Email”, and save it."
+    "text": "Announcement\nGitHub Notifications Setting\n\nStepsgif description\n\n\n\nIf you want to avoid a ton of notification emails,\n\nGo to https://github.com, and log in.\nClick the mailbox icon at the top right corner next to the profile icon. \nClick “Manage notifications” at the bottom of the side bar.\nClick “Notification settings”.\nScroll down to the “Subscriptions” menu.\nClick “Notify me on …” from the “Watching” sub-menu, uncheck “Email”, and save it.\nClick “Notify me on …” from the “Participating, …” sub-menu, uncheck “Email”, and save it."
   },
   {
     "objectID": "danl-lec/danl-200-lec-03-2024-0130.html#learning-objectives",
     "href": "danl-lec/danl-200-lec-03-2024-0130.html#learning-objectives",
     "title": "Lecture 3",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\n\n\nCheck Data Science Process\nSet up the DANL tools in your laptop.\n\nR/RStudio if you have not\nR Package tidyverse if you have not\nPersonal Website\n\nPractice Markdown\n\n\n::: ::::"
+    "text": "Learning Objectives\n\nSet up the DANL tools in your laptop.\n\nR/RStudio if you have not\nR Package tidyverse if you have not\n\nBuild your personal website\nPractice Markdown (if we have time)"
   },
   {
     "objectID": "danl-lec/danl-200-lec-03-2024-0130.html#rstudio",

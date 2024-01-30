@@ -52,51 +52,43 @@ knitr::knit_engines$set("markdown")
 ## Announcement
 ### GitHub Notifications Setting
 
+::: {.panel-tabset}
 
-:::: {.columns}
-
-::: {.column width="50%"}
-- To avoid a ton of notification emails, you can de-select "Email" for notification options:
+### Steps
+- If you want to avoid a ton of notification emails,
   1. Go to [https://github.com](https://github.com), and log in.
   2. Click the mailbox icon at the top right corner next to the profile icon.
-    - This leads to the page of [GitHub Notifications](https://github.com/notifications).
+    <!-- - This leads to the page of [GitHub Notifications](https://github.com/notifications). -->
   3. Click "Manage notifications" at the bottom of the side bar.
   4. Click "Notification settings".
   5. Scroll down to the "Subscriptions" menu.
   6. Click "Notify me on ..." from the "Watching" sub-menu, uncheck "Email", and save it.
   7. Click "Notify me on ..." from the "Participating, ..." sub-menu, uncheck "Email", and save it.
 
+### gif description
+
+
+
+<p align="center" >
+  <img src="https://bcdanl.github.io/lec_figs/github-notification.gif" style="width: 50%;">
+</p>
 :::
 
-::: {.column width="50%"}
-
-![](https://bcdanl.github.io/lec_figs/github-notification.gif)
-:::
-
-::::
 
 
 
 
 ## Learning Objectives
 
-:::{}
-
-- Check Data Science Process
 
 - Set up the DANL tools in your laptop.
   - R/RStudio if you have not
   - R Package `tidyverse` if you have not
-  - Personal Website
 
-- Practice Markdown 
+- Build your personal website
 
-:::
+- Practice Markdown (if we have time)
 
-
-
-:::
-::::
 
 # RStudio and `tidyverse` {background-color="#1c4982"}
 
