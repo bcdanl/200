@@ -4,8 +4,8 @@ date-modified: ""
 listing:
   contents: "danl-lec/*.qmd"
   type: table
-  fields: [title, date]
-  sort: "date desc"
+  fields: [title, subtitle, date]
+  sort: "title"
   sort-ui: false
   page-size: 36
 
