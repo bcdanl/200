@@ -24,6 +24,40 @@ from: markdown+emoji
 
 <br><br>
 
+
+### Posit Cloud
+
+- If you use RStudio on your laptop, skip this section and move to the next section with Step 2.
+
+- A Posit cloud user sets up GitHub credential on its Posit Cloud project.
+- A Posit cloud user establishes the connection between the GitHub repo and its Posit Cloud project.
+- Below is the Steps Posit Cloud users should follow:
+
+<p align="center" >
+  <img src="https://bcdanl.github.io/lec_figs/posit-cloud-github.gif" style="width: 67%;">
+</p>
+
+- Do only Steps 3, 4, 5, and 6 below. Skip Steps 7 and 8 below. Instead, do the following **Step 8-1** and **Step 8-2**. Then, do Steps 9 and 10 below.
+
+**Step 8-1**
+
+- Download the files of website template:
+
+  1. Go to the following webpage: 
+  [https://github.com/bcdanl/danl-website-template](https://github.com/bcdanl/danl-website-template){target="_blank"}
+  2. From the webpage above, click the green icon <span style="background-color: #329932">< > Code</span>, and then click “Download Zip”
+
+
+
+**Step 8-2**
+
+- Upload `danl-website-template.zip` to your Posit Cloud Project.
+
+- Move all the files in `danl-website-template` sub-directory to the `project` directory.
+
+
+<br><br>
+
 ### Installing `git` if you do not have one.
 
 **Step 2**. 
@@ -87,6 +121,18 @@ git version 2.xx
 - Keep clicking "Next" to complete the installation of `git`.
 
 - After the `git` installation is done, close RStudio and re-open it.
+
+#### How to open git installation file on Mac?
+
+1. Run the downloaded file.
+2. Click Okay
+3. Go to "Setting" > "Privacy and Security"
+4. Go to "General" or scroll down
+5. Click "Open Anyway"
+
+<p align="center" >
+  <img src="https://bcdanl.github.io/lec_figs/mac-git-security.gif" style="width: 67%;">
+</p>
 
 
 <br><br>
@@ -305,7 +351,7 @@ git clone https://github.com/USERNAME/USERNAME.github.io
 
 
 
-**Step 8**. Push the files to your GitHub repository
+**Step 9**. Push the files to your GitHub repository
 
   - On Terminal within RStudio, execute the following 3-step `git` commands, which will *stage*, *commit*, and *push* all the files in the local working directory to your GitHub repository:
 
@@ -337,10 +383,13 @@ git push -u origin master
 
 <br>
 
-**Step 9**. Check whether the files are well uploaded.
+**Step 10**. Check whether the files are well uploaded.
 
 - Go to the webpages of your GitHub repository and your website:
   - [https://github.com/USERNAME/USERNAME.github.io.git](https://github.com/USERNAME/USERNAME.github.io.git){target="_blank"}
   - [https://USERNAME.github.io](https://USERNAME.github.io){target="_blank"}
   - Refresh the webpages (**Ctrl + R** for Windows users; **cmd + R** for Mac users)
+
+
+
 

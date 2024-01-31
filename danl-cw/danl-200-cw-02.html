@@ -208,7 +208,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#getting-a-github-account" id="toc-getting-a-github-account" class="nav-link active" data-scroll-target="#getting-a-github-account">Getting a GitHub account</a></li>
-  <li><a href="#installing-git-if-you-do-not-have-one." id="toc-installing-git-if-you-do-not-have-one." class="nav-link" data-scroll-target="#installing-git-if-you-do-not-have-one.">Installing <code>git</code> if you do not have one.</a></li>
+  <li><a href="#posit-cloud" id="toc-posit-cloud" class="nav-link" data-scroll-target="#posit-cloud">Posit Cloud</a></li>
+  <li><a href="#installing-git-if-you-do-not-have-one." id="toc-installing-git-if-you-do-not-have-one." class="nav-link" data-scroll-target="#installing-git-if-you-do-not-have-one.">Installing <code>git</code> if you do not have one.</a>
+  <ul>
+  <li><a href="#how-to-open-git-installation-file-on-mac" id="toc-how-to-open-git-installation-file-on-mac" class="nav-link" data-scroll-target="#how-to-open-git-installation-file-on-mac">How to open git installation file on Mac?</a></li>
+  </ul></li>
   <li><a href="#setting-up-github-credential-on-your-local-git." id="toc-setting-up-github-credential-on-your-local-git." class="nav-link" data-scroll-target="#setting-up-github-credential-on-your-local-git.">Setting up GitHub Credential on your local Git.</a></li>
   <li><a href="#establishing-the-connection-between-github-repo-and-your-local-git" id="toc-establishing-the-connection-between-github-repo-and-your-local-git" class="nav-link" data-scroll-target="#establishing-the-connection-between-github-repo-and-your-local-git">Establishing the Connection between GitHub repo and your local Git</a></li>
   <li><a href="#downloading-website-template-files" id="toc-downloading-website-template-files" class="nav-link" data-scroll-target="#downloading-website-template-files">Downloading Website Template Files</a></li>
@@ -273,6 +277,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/pBy1zgt0XPc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p><br><br></p>
 </section>
+<section id="posit-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="posit-cloud">Posit Cloud</h3>
+<ul>
+<li><p>If you use RStudio on your laptop, skip this section and move to the next section with Step 2.</p></li>
+<li><p>A Posit cloud user sets up GitHub credential on its Posit Cloud project.</p></li>
+<li><p>A Posit cloud user establishes the connection between the GitHub repo and its Posit Cloud project.</p></li>
+<li><p>Below is the Steps Posit Cloud users should follow:</p></li>
+</ul>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/posit-cloud-github.gif" style="width: 67%;">
+</p>
+<ul>
+<li>Do only Steps 3, 4, 5, and 6 below. Skip Steps 7 and 8 below. Instead, do the following <strong>Step 8-1</strong> and <strong>Step 8-2</strong>. Then, do Steps 9 and 10 below.</li>
+</ul>
+<p><strong>Step 8-1</strong></p>
+<ul>
+<li><p>Download the files of website template:</p>
+<ol type="1">
+<li>Go to the following webpage: <a href="https://github.com/bcdanl/danl-website-template" target="_blank">https://github.com/bcdanl/danl-website-template</a></li>
+<li>From the webpage above, click the green icon <span style="background-color: #329932">&lt; &gt; Code</span>, and then click “Download Zip”</li>
+</ol></li>
+</ul>
+<p><strong>Step 8-2</strong></p>
+<ul>
+<li><p>Upload <code>danl-website-template.zip</code> to your Posit Cloud Project.</p></li>
+<li><p>Move all the files in <code>danl-website-template</code> sub-directory to the <code>project</code> directory.</p></li>
+</ul>
+<p><br><br></p>
+</section>
 <section id="installing-git-if-you-do-not-have-one." class="level3">
 <h3 class="anchored" data-anchor-id="installing-git-if-you-do-not-have-one.">Installing <code>git</code> if you do not have one.</h3>
 <p><strong>Step 2</strong>.</p>
@@ -325,7 +358,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Keep clicking “Next” to complete the installation of <code>git</code>.</p></li>
 <li><p>After the <code>git</code> installation is done, close RStudio and re-open it.</p></li>
 </ul>
+<section id="how-to-open-git-installation-file-on-mac" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-open-git-installation-file-on-mac">How to open git installation file on Mac?</h4>
+<ol type="1">
+<li>Run the downloaded file.</li>
+<li>Click Okay</li>
+<li>Go to “Setting” &gt; “Privacy and Security”</li>
+<li>Go to “General” or scroll down</li>
+<li>Click “Open Anyway”</li>
+</ol>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/mac-git-security.gif" style="width: 67%;">
+</p>
 <p><br><br></p>
+</section>
 </section>
 <section id="setting-up-github-credential-on-your-local-git." class="level3">
 <h3 class="anchored" data-anchor-id="setting-up-github-credential-on-your-local-git.">Setting up GitHub Credential on your local Git.</h3>
@@ -496,7 +542,7 @@ Note
 <p align="center">
 <img src="https://bcdanl.github.io/lec_figs/git-process.png" style="width: 67%;">
 </p>
-<p><strong>Step 8</strong>. Push the files to your GitHub repository</p>
+<p><strong>Step 9</strong>. Push the files to your GitHub repository</p>
 <ul>
 <li>On Terminal within RStudio, execute the following 3-step <code>git</code> commands, which will <em>stage</em>, <em>commit</em>, and <em>push</em> all the files in the local working directory to your GitHub repository:</li>
 </ul>
@@ -530,7 +576,7 @@ Note
 </div>
 </div>
 <p><br></p>
-<p><strong>Step 9</strong>. Check whether the files are well uploaded.</p>
+<p><strong>Step 10</strong>. Check whether the files are well uploaded.</p>
 <ul>
 <li>Go to the webpages of your GitHub repository and your website:
 <ul>
