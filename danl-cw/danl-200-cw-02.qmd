@@ -56,6 +56,14 @@ from: markdown+emoji
 - Move all the files in `danl-website-template` sub-directory to the `project` directory.
 
 
+
+:::{.callout-note}
+- For each logging on Posit Cloud, a user will need to run `gitcreds::gitcreds_set()` with a GitHub token to set password authentication for a GitHub account.
+
+  - A Posit Cloud user should copy and paste the GitHub token (PAT) to somewhere, and need to use it with `gitcreds::gitcreds_set()`.
+
+:::
+
 <br><br>
 
 ### Installing `git` if you do not have one.
@@ -390,6 +398,11 @@ git push -u origin master
   - [https://USERNAME.github.io](https://USERNAME.github.io){target="_blank"}
   - Refresh the webpages (**Ctrl + R** for Windows users; **cmd + R** for Mac users)
 
-
+- Add a URL for your website (`https://YOUR_GITHUB_USERNAME.github.io/`) in About section in your GihtHub repository webpage by clicking the setting. Below describes how to do it:
+  
+```{r}
+#| fig-align: center
+knitr::include_graphics("github-repo.png")
+```
 
 
