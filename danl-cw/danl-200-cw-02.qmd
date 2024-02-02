@@ -402,6 +402,7 @@ git push -u origin master
   
 ```{r}
 #| fig-align: center
+#| echo: false
 knitr::include_graphics("github-repo.png")
 ```
 
