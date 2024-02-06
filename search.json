@@ -840,6 +840,13 @@
     "text": "Installing the Tools\nPractice Markdown\n\nQuarto and GitHub-based Discussion Boards use markdown as its underlying document syntax.\nLet’s do Classwork 3."
   },
   {
+    "objectID": "danl-lec/danl-200-lec-05-2024-0206.html#announcement",
+    "href": "danl-lec/danl-200-lec-05-2024-0206.html#announcement",
+    "title": "Lecture 5",
+    "section": "Announcement",
+    "text": "Announcement\n\n\nDANL Tutoring Schedule, Spring 2024\n\n\n\n\nLiza Mitchell\n\nWednesday 9:00 AM – 10:00 AM\nFriday 8:00 AM – 9:00 AM\n\nNada Trabelsi\n\nTuesday 12:30 PM – 1:30 PM\nThursday 12:30 PM – 1:30 PM\n\n\n\n\nDaniel Noone\n\nTuesday 5:00 PM - 6:00 PM\nThursday 5:00 PM - 6:00 PM\n\nDominic Rodriguez-Donohue\n\nTuesday 11:00 AM – 12:15 PM\nThursday 11:00 AM – 12:15 PM\n\n\n\nDaniel Noone’s tutoring session today (February 6, 2024) is cancelled."
+  },
+  {
     "objectID": "danl-lec/danl-200-lec-05-2024-0206.html#tasks-objectives",
     "href": "danl-lec/danl-200-lec-05-2024-0206.html#tasks-objectives",
     "title": "Lecture 5",
@@ -872,7 +879,7 @@
     "href": "danl-lec/danl-200-lec-05-2024-0206.html#getting-started-with-quarto-and-html",
     "title": "Lecture 5",
     "section": "Getting Started with Quarto and HTML",
-    "text": "Getting Started with Quarto and HTML\nMarkdown, Quarto, and HTML\ntitle: \"Habits\"\nauthor: YOUR_NAME\ndate: January 30, 2024\nformat: \n  html\n\n\nTo create an HTML document from Quarto, we specify the html output format in the YAML metadata of our document.\n\nBy default, format: html is set.\n\nIn RStudio, we can create a new Quarto file from the menu, File -&gt; New File -&gt; Quarto Document.\nOpen an empty Quarto file.\n\nType the following YAML metadata to the empty Quarto file."
+    "text": "Getting Started with Quarto and HTML\nMarkdown, Quarto, and HTML\ntitle: \"Habits\"\nauthor: YOUR_NAME\ndate: January 30, 2024\nformat: \n  html\n\n\nTo create an HTML document from Quarto, we specify the html output format in the YAML metadata of our document.\n\nBy default, format: html is set.\n\nIn RStudio, we can create a new Quarto file from the menu,\n\nFile -&gt; New File -&gt; Quarto Document.\n\nOpen an empty Quarto file.\n\nType the above YAML metadata to the empty Quarto file.\nIn YAML, indentation really matters!\n\ntab (or four spaces) defines a level in YAML."
   },
   {
     "objectID": "danl-lec/danl-200-lec-05-2024-0206.html#getting-started-with-quarto-4",
@@ -886,7 +893,14 @@
     "href": "danl-lec/danl-200-lec-05-2024-0206.html#getting-started-with-quarto-5",
     "title": "Lecture 5",
     "section": "Getting Started with Quarto",
-    "text": "Getting Started with Quarto\nQuarto Basics\ntitle: \nsubtitle: \nauthor: \ndate: last-modified\n\nformat: \n  html:\n  \nexecute: \n  echo: true\n  eval: true\n\nThe following syntax is part of YAML metadata in danl-210-quarto.qmd.\n\nIn YAML, indentation really matters!\ntab (or four spaces) defines a level in YAML."
+    "text": "Getting Started with Quarto\nQuarto Basics\ntitle: \nsubtitle: \nauthor: \ndate: last-modified\n\nformat: \n  html:\n  \nexecute: \n  echo: true\n  eval: true\n\nThe above syntax is part of YAML metadata in danl-210-quarto.qmd."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-05-2024-0206.html#getting-started-with-quarto-6",
+    "href": "danl-lec/danl-200-lec-05-2024-0206.html#getting-started-with-quarto-6",
+    "title": "Lecture 5",
+    "section": "Getting Started with Quarto",
+    "text": "Getting Started with Quarto\nWorkflow: Shortcuts for Quarto Document\n\n\nMac\n\ncommand + shift + K renders a Quarto document.\noption + command + I create a code block.\ncommand + return runs a current line of code.\ncommand + shift + C is the shortcut for # (commenting).\n\n\nWindows\n\nCtrl + Shift + K renders a Quarto document.\nAlt + Ctrl + I create a code block.\nCtrl + Enter runs a current line of code.\nCtrl + Shift + C is the shortcut for # (commenting)."
   },
   {
     "objectID": "danl-lec/danl-200-lec-05-2024-0206.html#managing-a-website-with-quarto-1",
@@ -914,7 +928,7 @@
     "href": "danl-lec/danl-200-lec-05-2024-0206.html#quarto-websites-2",
     "title": "Lecture 5",
     "section": "Quarto Websites",
-    "text": "Quarto Websites\nRendering\n\nMake changes only from your local laptop (or Posit Cloud).\n\nDo not make any change from the GitHub repo webpage."
+    "text": "Quarto Websites\nUpdating a Website\n\nMake changes only from your local laptop (or Posit Cloud).\n\nDo not make any change from the GitHub repo webpage."
   },
   {
     "objectID": "danl-lec/danl-200-lec-05-2024-0206.html#quarto-websites-3",

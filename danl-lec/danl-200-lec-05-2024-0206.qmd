@@ -41,6 +41,43 @@ knitr::knit_engines$set("markdown")
 
 
 
+## Announcement
+::: {.nonincremental}
+- DANL Tutoring Schedule, Spring 2024
+
+
+:::: {.columns}
+::: {.column width="50%"}
+- Liza Mitchell
+  - Wednesday 9:00 AM – 10:00 AM
+  - Friday 8:00 AM – 9:00 AM
+
+- Nada Trabelsi
+  - Tuesday 12:30 PM – 1:30 PM
+  - Thursday 12:30 PM – 1:30 PM
+  
+:::
+
+::: {.column width="50%"}
+
+- Daniel Noone
+  - Tuesday 5:00 PM - 6:00 PM
+  - Thursday 5:00 PM - 6:00 PM	
+
+- Dominic Rodriguez-Donohue
+  - Tuesday 11:00 AM – 12:15 PM
+  - Thursday 11:00 AM – 12:15 PM
+
+:::
+
+- Daniel Noone's tutoring session today (February 6, 2024) is cancelled.
+
+
+::::
+
+:::
+
+
 
 ## Tasks & Objectives
 
@@ -132,7 +169,6 @@ author: YOUR_NAME
 date: January 30, 2024
 format: 
   html
-
 ```
 
 
@@ -142,11 +178,14 @@ format:
 - To create an HTML document from Quarto, we specify the `html` output format in the YAML metadata of our document.
   - By default, `format: html` is set.
 
-- In RStudio, we can create a new Quarto file from the menu, File -> New File -> Quarto Document.
+- In RStudio, we can create a new Quarto file from the menu, 
+  - *File* -> *New File* -> *Quarto Document*.
 
 - Open an empty Quarto file.
-  - Type the following YAML metadata to the empty Quarto file.
-
+  - Type the above YAML metadata to the empty Quarto file.
+  - In YAML, indentation really matters!
+    - **tab** (or four spaces) defines a level in YAML.
+    
 :::
 
 
@@ -186,9 +225,37 @@ execute:
 ```
 
 
-- The following syntax is part of YAML metadata in `danl-210-quarto.qmd`.
-  - In YAML, indentation really matters!
-  - **tab** (or four spaces) defines a level in YAML.
+- The above syntax is part of YAML metadata in `danl-210-quarto.qmd`.
+  
+
+
+
+## Getting Started with Quarto
+### Workflow: Shortcuts for Quarto Document
+
+
+:::: {.columns}
+::: {.column width="50%"}
+**Mac**
+
+- **command + shift + K** renders a Quarto document.
+- **option + command + I** create a code block.
+- **command + return** runs a current line of code.
+- **command + shift + C** is the shortcut for # (commenting).
+
+:::
+
+::: {.column width="50%"}
+
+**Windows**
+
+- **Ctrl + Shift + K** renders a Quarto document.
+- **Alt + Ctrl + I** create a code block.
+- **Ctrl + Enter** runs a current line of code.
+- **Ctrl + Shift + C** is the shortcut for # (commenting).
+
+:::
+::::
 
 
 
@@ -281,7 +348,7 @@ quarto render
 
 
 ## Quarto Websites
-### Rendering
+### Updating a Website
 
 
 - Make changes only from your local laptop (or Posit Cloud). 
