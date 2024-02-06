@@ -9,7 +9,7 @@ author:
   - name: Byeong-Hak Choe
     email: bchoe@geneseo.edu
     affiliations: SUNY Geneseo
-date: 2024-01-30
+date: 2024-02-01
 execute: 
   eval: false
   echo: true
@@ -255,7 +255,7 @@ format:
   2. Click *Close Project*.
   
 
-- Download the Quarto file, `danl-210-quarto.qmd` from Brightspace, and open it from RStudio.
+- Download the Quarto file, `danl-200-quarto.qmd` from Brightspace, and open it from RStudio.
 
 :::
 
@@ -263,7 +263,7 @@ format:
 ## Getting Started with Quarto
 ### Quarto Basics
 
-- The following syntax is part of YAML metadata in `danl-210-quarto.qmd`.
+- The following syntax is part of YAML metadata in `danl-200-quarto.qmd`.
   - In YAML, indentation really matters!
   - **tab** (or four spaces) defines a level in YAML.
 
@@ -376,18 +376,6 @@ quarto render
 
 :::
 
-
-## Quarto Websites
-### Adding `*.ipynb` to Quarto websites
-
-:::{.incremental}
-- By default, `quarto render` doesn’t execute any code in `.ipynb` notebooks. 
-
-- `quarto render` renders `.ipynb` notebooks, so that corresponding `html` files are rendered. 
-
-  - If we need to update cell outputs in `*.ipynb`, run that `*.ipynb` on Google Colab, and save the notebook.
-
-:::
 
 
 ## Quarto Websites
