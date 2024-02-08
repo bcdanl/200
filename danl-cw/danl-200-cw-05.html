@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -175,12 +209,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question">Question</a></li>
-  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question</a></li>
-  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question</a></li>
-  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question</a></li>
-  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question</a></li>
-  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question</a></li>
+  <li><a href="#direction" id="toc-direction" class="nav-link active" data-scroll-target="#direction">Direction</a></li>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a></li>
+  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
   </ul>
 </nav>
@@ -224,28 +258,80 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="question" class="level1">
-<h1>Question</h1>
-<p><br><br></p>
+<section id="direction" class="level1">
+<h1>Direction</h1>
+<ul>
+<li><p>Open the Quarto document, <code>danl-200-quarto.qmd</code>.</p></li>
+<li><p>Use <code>danl-200-quarto.qmd</code> as a template to answer the following questions.</p></li>
+<li><p>Shortcut for creating a code chunk</p>
+<ul>
+<li>Windows: <strong>Alt + Ctrl + I</strong></li>
+<li>Mac: <strong>option + command + I</strong></li>
+</ul></li>
+<li><p>To run a code code chunk:</p>
+<ul>
+<li>Click the play button in a code chunk at the top right corner.</li>
+<li>Shortcut:
+<ul>
+<li>Windows: <strong>Ctrl + Shift + Enter</strong></li>
+<li>Mac: <strong>command + shift + return</strong></li>
+</ul></li>
+</ul></li>
+<li><p>To run a current line of code in a code chunk:</p>
+<ul>
+<li>Shortcut:
+<ul>
+<li>Windows: <strong>Ctrl + Enter</strong></li>
+<li>Mac: <strong>command + return</strong></li>
+</ul></li>
+</ul></li>
+</ul>
 </section>
 <section id="question-1" class="level1">
-<h1>Question</h1>
+<h1>Question 1</h1>
+<p>In R, what are the different data types and data structures we discuss in our course? Provide an example of each.</p>
+<p><em>Answer</em></p>
 <p><br><br></p>
 </section>
 <section id="question-2" class="level1">
-<h1>Question</h1>
+<h1>Question 2</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fare <span class="ot">&lt;-</span> <span class="st">"10.00"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>tip <span class="ot">&lt;-</span> <span class="st">"2.00"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>tax <span class="ot">&lt;-</span> <span class="st">"0.80"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Write an R code that uses <code>str_c()</code> function to print out the following message:</p>
+<div style="font-family:courier">
+The total trip cost is: $12.80
+</div>
+<p><em>Answer</em></p>
 <p><br><br></p>
 </section>
 <section id="question-3" class="level1">
-<h1>Question</h1>
+<h1>Question 3</h1>
+<ul>
+<li>Read the following CSV file as an object, <code>tips</code>.
+<ul>
+<li><code>https://bcdanl.github.io/data/tips_seaborn.csv</code></li>
+</ul></li>
+</ul>
+<p><em>Answer</em></p>
 <p><br><br></p>
 </section>
 <section id="question-4" class="level1">
-<h1>Question</h1>
+<h1>Question 4</h1>
+<ul>
+<li>Use <code>DT::datatable()</code> for the <code>tips</code> data.frame from Question 3.</li>
+</ul>
+<p><em>Answer</em></p>
 <p><br><br></p>
 </section>
 <section id="question-5" class="level1">
-<h1>Question</h1>
+<h1>Question 5</h1>
+<ul>
+<li>Use <code>skimr::skim()</code> for the <code>tips</code> data.frame from Question 3.</li>
+</ul>
+<p><em>Answer</em></p>
 <p><br><br></p>
 </section>
 <section id="discussion" class="level1">

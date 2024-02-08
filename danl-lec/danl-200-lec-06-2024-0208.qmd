@@ -525,7 +525,7 @@ x <- "hello
 
 
 
-## Python Basics
+## R Basics
 ### Functions, Arguments, and Parameters
 
 ```{.r}
@@ -737,7 +737,7 @@ class(mod_number)
 ## R Basics
 ### Working with Data from Files
 
-- We use the `read_csv()` function to read a CSV file.
+- We use the `read_csv()` function to read a comma-separated values (CSV) file.
 
 :::{.nonincremental}
 - Step 1. Download the CSV file, `car_data.csv` from the Class Files module in our Brightspace.
@@ -791,12 +791,31 @@ skim(uciCar)
 ## R Basics
 ### Reading data.frames from an URL
 
-- We can import the data file from the web.
 
 ```{.r}
 tvshows <- read_csv(
 		'https://bcdanl.github.io/data/tvshows.csv')
 ```
+
+- We can import the CSV file from the web.
+
+
+## R Basics
+### Tidy `data.frame`: Variables, Observations, and Values
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/tidy-1.png">
+</p>
+
+
+- There are three rules which make a `data.frame` tidy:
+
+  1. Each **variable** must have its own *column*.
+  2. Each **observation** must have its own *row*.
+  3. Each **value** must have its own *cell*.
+
+
 
 
 

@@ -6,39 +6,92 @@ from: markdown+emoji
 ---
 
 
+# Direction
+- Open the Quarto document, `danl-200-quarto.qmd`.
+- Use `danl-200-quarto.qmd` as a template to answer the following questions.
 
-# Question 
+- Shortcut for creating a code chunk
+  - Windows: **Alt + Ctrl + I**
+  - Mac: **option + command + I**
+
+- To run a code code chunk:
+  - Click the play button in a code chunk at the top right corner.
+  - Shortcut:
+    - Windows: **Ctrl + Shift + Enter**
+    - Mac: **command + shift + return**
+
+
+- To run a current line of code in a code chunk:
+  - Shortcut:
+    - Windows: **Ctrl + Enter**
+    - Mac: **command + return**
+
+
+
+# Question 1
+In R, what are the different data types and data structures we discuss in our course? Provide an example of each.
+
+*Answer*
+```{r}
+
+```
+
+<br><br>
+
+
+# Question 2
+
+```{r}
+fare <- "10.00"
+tip <- "2.00"
+tax <- "0.80"
+```
+
+Write an R code that uses `str_c()` function to print out the following message: 
+
+<div style="font-family:courier">The total trip cost is: $12.80</div>
+  
+*Answer*
+```{r}
+
+```
 
 
 <br><br>
 
 
-# Question 
+# Question 3
+- Read the following CSV file as an object, `tips`.
+  - `https://bcdanl.github.io/data/tips_seaborn.csv`
+
+*Answer*
+```{r}
+
+```
 
 
 <br><br>
 
 
-# Question 
+# Question 4
+- Use `DT::datatable()` for the `tips` data.frame from Question 3.
+
+*Answer*
+```{r}
+
+```
 
 
 <br><br>
 
 
-# Question 
+# Question 5
+- Use `skimr::skim()` for the `tips` data.frame from Question 3.
 
+*Answer*
+```{r}
 
-<br><br>
-
-
-# Question 
-
-
-<br><br>
-
-
-# Question 
-
+```
 
 <br><br>
 
