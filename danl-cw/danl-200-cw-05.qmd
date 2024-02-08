@@ -9,6 +9,7 @@ from: markdown+emoji
 # Direction
 - Open the Quarto document, `danl-200-quarto.qmd`.
 - Use `danl-200-quarto.qmd` as a template to answer the following questions.
+  - Delete everything except for the YAML header.
 
 - Shortcut for creating a code chunk
   - Windows: **Alt + Ctrl + I**
