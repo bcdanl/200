@@ -405,7 +405,7 @@ y <- x + 12
 
 
 ## R Basics
-### R variable and data types
+### R Variable and Data Types
 
 - `class()` function returns the data **type** of an object.
 
@@ -509,6 +509,13 @@ x <- "hello
   - If not, Console Pane will show you the continuation character `+`:
   
 - The `+` tells you that R is waiting for more input; it doesn’t think you’re done yet. 
+
+
+
+## R Basics
+### R Variable and Data Types
+
+- **Q**. [Classwork 1.1](https://bcdanl.github.io/200/danl-cw/danl-200-cw-5.html#question-1)
 
 
 
