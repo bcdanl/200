@@ -515,7 +515,7 @@ x <- "hello
 ## R Basics
 ### R Variable and Data Types
 
-- **Q**. [Classwork 1.1](https://bcdanl.github.io/200/danl-cw/danl-200-cw-5.html#question-1)
+- **Q**. [Classwork 5.1](https://bcdanl.github.io/200/danl-cw/danl-200-cw-5.html#question-1)
 
 
 
@@ -671,6 +671,8 @@ $$
 \overline{s} = \sqrt{ \left( \frac{(x_{1}-\overline{x})^{2} + (x_{2}-\overline{x})^{2} + \cdots + (x_{N}-\overline{x})^{2}}{N-1}\;\, \right) }
 $$
 
+
+
 ## R Basics
 ### `NULL` and `NA` values
 
@@ -712,6 +714,14 @@ class(mod_number)
 
   - We can do this using built-in functions like `as.character()`, `as.integer()`, `as.numeric()`, and `as.factor()`. 
   - If we try these, R will do its best to interpret the input and convert it to the output type we'd like and, if they can't, the code will throw `NA`.
+
+
+
+
+## R Basics
+### R Variable and Data Types
+
+- **Q**. [Classwork 5.2](https://bcdanl.github.io/200/danl-cw/danl-200-cw-5.html#question-2)
 
 
 
@@ -824,6 +834,12 @@ tvshows <- read_csv(
 
 
 
+
+
+## R Basics
+### R Variable and Data Types
+
+- **Q**. [Classwork 5.3](https://bcdanl.github.io/200/danl-cw/danl-200-cw-5.html#question-2)
 
 
 <script>
