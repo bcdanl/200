@@ -25,7 +25,7 @@ website:
           target: _blank
           rel: me
 
-  sidebar:
+  sidebar: 
     # title: "Welcome!"
     style: docked
     logo: img/geneseo-logo-squared.png
