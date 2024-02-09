@@ -38,3 +38,10 @@ format:
         }
         </style>
 ---
+
+- All class Quarto documents will be stored in:\
+[this GitHub Repository.](https://github.com/bcdanl/200/tree/main/danl-class){target="_blank"}
+
+- HTML outputs from the class Quarto documents are provided below:
+
+
