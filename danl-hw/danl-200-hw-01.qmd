@@ -48,6 +48,17 @@ Please complete the following survey:
 
 # Part 3. R Basics
 
+## Question 0.
+Provide your GitHub username.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
 ## Question 1.
 base-R provides the R object `state.name`. Write an R code to assign `state.name` to a variable, `US_states`.
 
