@@ -515,7 +515,7 @@ x <- "hello
 ## R Basics
 ### R Variable and Data Types
 
-- **Q**. [Classwork 5.1](https://bcdanl.github.io/200/danl-cw/danl-200-cw-5.html#question-1)
+- **Q**. [Classwork 5.1](https://bcdanl.github.io/200/danl-cw/danl-200-cw-5.html)
 
 
 
@@ -721,7 +721,7 @@ class(mod_number)
 ## R Basics
 ### R Variable and Data Types
 
-- **Q**. [Classwork 5.2](https://bcdanl.github.io/200/danl-cw/danl-200-cw-5.html#question-2)
+- **Q**. [Classwork 5.2](https://bcdanl.github.io/200/danl-cw/danl-200-cw-5.html)
 
 
 
@@ -839,7 +839,7 @@ tvshows <- read_csv(
 ## R Basics
 ### R Variable and Data Types
 
-- **Q**. [Classwork 5.3](https://bcdanl.github.io/200/danl-cw/danl-200-cw-5.html#question-2)
+- **Q**. [Classwork 5.3](https://bcdanl.github.io/200/danl-cw/danl-200-cw-5.html)
 
 
 <script>

@@ -24,6 +24,10 @@ website:
           href: https://github.com/bcdanl/200/discussions
           target: _blank
           rel: me
+        - text: Class Notes
+          href: https://github.com/bcdanl/200/tree/main/danl-class
+          target: _blank
+          rel: me
 
   sidebar:
     # title: "Welcome!"
