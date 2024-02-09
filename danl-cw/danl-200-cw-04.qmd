@@ -89,3 +89,21 @@ from: markdown+emoji
 - [Quarto - HTML Code Blocks](https://quarto.org/docs/output-formats/html-code.html)
 - [Quarto - HTML Theming](https://quarto.org/docs/output-formats/html-themes.html)
 - [Quarto - Creating a Blog](https://quarto.org/docs/websites/website-blog.html)
+
+
+
+<br><br>
+
+# Discussion
+
+<font size = "5">Welcome to our Classwork 4 Discussion Board! 👋 </font>
+
+This space is designed for you to engage with your classmates about the material covered in Classwork 4.
+
+Whether you are looking to delve deeper into the content, share thoughts, or have questions about the content, this is the perfect place for you.
+
+If you have any specific questions for Byeong-Hak (**@bcdanl**) or peer classmate (@GitHub-Username) regarding the Classwork 4 materials or need clarification on any points, don't hesitate to ask here. 
+
+Let's collaborate and learn from each other!
+
+

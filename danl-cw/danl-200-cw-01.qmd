@@ -26,3 +26,20 @@ pathname <- "PATHNAME_OF_nbc_show.csv"
     - If you use a new directory for the course, I recommend you to use the name without any space. For example, do not use name like `DANL 200`. Instead, use `DANL200` for the working directory.
   
 - Let Byeong-Hak know if you have issues with the tasks!
+
+
+<br><br>
+
+# Discussion
+
+<font size = "5">Welcome to our Classwork 1 Discussion Board! 👋 </font>
+
+This space is designed for you to engage with your classmates about the material covered in Classwork 1.
+
+Whether you are looking to delve deeper into the content, share thoughts, or have questions about the content, this is the perfect place for you.
+
+
+If you have any specific questions for Byeong-Hak (**@bcdanl**) or peer classmate (@GitHub-Username) regarding the Classwork 1 materials or need clarification on any points, don't hesitate to ask here. 
+
+Let's collaborate and learn from each other!
+

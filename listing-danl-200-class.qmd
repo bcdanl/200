@@ -1,5 +1,5 @@
 ---
-title: '<font style="font-family:Optima"><b>DANL 200 - Class Note</b></font>'
+title: '<font style="font-family:Optima"><b>DANL 200 - Class Notes</b></font>'
 date-modified: ""
 listing:
   contents: "danl-class/*.qmd"

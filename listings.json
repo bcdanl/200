@@ -32,6 +32,12 @@
     ]
   },
   {
+    "listing": "/listing-danl-200-class.html",
+    "items": [
+      "/danl-class/danl-200-lec-06-2024-0208.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/danl-lec/danl-200-lec-06-2024-0208.html",
@@ -62,12 +68,6 @@
     "listing": "/listing-danl-200-hw.html",
     "items": [
       "/danl-hw/danl-200-hw-01.html"
-    ]
-  },
-  {
-    "listing": "/listing-danl-200-class.html",
-    "items": [
-      "/danl-class/danl-200-lec-06-2024-0208.html"
     ]
   }
 ]

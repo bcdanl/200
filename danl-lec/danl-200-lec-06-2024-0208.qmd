@@ -660,18 +660,28 @@ mean(x)
 sd(x)
 ```
 
+::: {.panel-tabset}
+
+## Sum
+
 - `sum()` calculates the sum of all numbers in a vector.
+
+## Mean
+
 - `mean()` calculates the arithmetic mean of the values in a vector.
 $$
 \overline{x} = \frac{x_{1} + x_{2} + \cdots + x_{N}}{N}
 $$
+
+## Standard Deviation
+
 - `sd()` calculates the standard deviation (SD) of the values in a vector. 
   - SD measures the amount of variation or dispersion of a set of values.
 $$
 \overline{s} = \sqrt{ \left( \frac{(x_{1}-\overline{x})^{2} + (x_{2}-\overline{x})^{2} + \cdots + (x_{N}-\overline{x})^{2}}{N-1}\;\, \right) }
 $$
 
-
+:::
 
 ## R Basics
 ### `NULL` and `NA` values
@@ -687,6 +697,19 @@ c("a", NA, "c")
 - `NA` indicates missing or unavailable data.
 
 
+## R Basics
+### `NULL` and `NA` values
+
+- `is.na()` is to check whether expression evaluates to `NA`.
+
+```{r}
+is.na(NA)
+is.na(c())
+is.na("A")
+```
+
+
+- **Q**. Why does `"A" == NA` evaluate to `NA`?
 
 
 ## R Basics
@@ -697,14 +720,17 @@ c("a", NA, "c")
 ```{.r}
 orig_number <- 4.39898498
 class(orig_number)
+mod_number <- as.integer(orig_number)
+class(mod_number)
 ```
 :::
 
 ::: {.column width="50%"}
+
 ```{.r}
-mod_number <- as.integer(orig_number)
-mod_number
-class(mod_number)
+# TRUE converts to 1; FALSE does to 0.
+as.numeric(TRUE)
+as.numeric(FALSE)
 ```
 :::
 ::::
@@ -736,17 +762,17 @@ class(mod_number)
 - Complete path from the root directory to the target file or directory.
 - Independent of the current working directory.
 
-- Example (Mac): `/home/user/documents/car_data.csv`
-- Example (Windows): `C:\\Users\\User\\Documents\\car_data.csv`
+- Example (Mac): `/Users/user/documents/car_data.csv`
+- Example (Windows): `C:\\Users\\user\\Documents\\car_data.csv`
 
 
 ## Relative Path
 
 - Path relative to the current working directory.
 - Changes based on the current directory.
-- Uses '.' for current directory and '..' for parent directory.
-- Example: If the current directory is `/home/user`, the relative path to `car_data.csv` would be `documents/report.txt`
-
+<!-- - Uses '.' for current directory and '..' for parent directory. -->
+- Example: If the current directory is `/Users/user`, the relative path to `car_data.csv` would be `documents/car_data.csv`
+- For the website R project, we can use a relative path.
 
 :::
 
@@ -754,17 +780,18 @@ class(mod_number)
 ## R Basics
 ### Working with Data from Files
 
-- We use the `read_csv()` function to read a comma-separated values (CSV) file.
 
 :::{.nonincremental}
-- Step 1. Download the CSV file, `car_data.csv` from the Class Files module in our Brightspace.
+- We use the `read_csv()` function to read a comma-separated values (CSV) file.
 
-- Step 2. Find the path name for the file, `car_data.csv` from the File Explorer / Finder.
+1. Download the CSV file, `car_data.csv` from the Class Files module in our Brightspace.
 
-- Step 3. Provide the path name for the file, `car_data.csv`, to the `read_csv()` function.
+2. Find the path name for the file, `car_data.csv` from the File Explorer / Finder.
+
+3. Provide the path name for the file, `car_data.csv`, to the `read_csv()` function.
 
 ```{.r}
-uciCar <- read_csv('PATH_NAME_FOR_THE_FILE_car_data.csv')
+uciCar <- read_csv('HERE WE PROVIDE A PATHNAME FOR car_data.csv')
 View(uciCar)
 ```
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Byeong-Hak Choe">
-<meta name="dcterms.date" content="2024-01-26">
+<meta name="dcterms.date" content="2024-02-09">
 
 <title>Homework 1 | Byeong-Hak Choe</title>
 <style>
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -66,11 +100,13 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../assets/css/font.css">
 <meta property="og:title" content="Homework 1 | Byeong-Hak Choe">
-<meta property="og:description" content="R Basics and Personal Website">
+<meta property="og:description" content="Survey, Personal Website, and R Basics">
 <meta property="og:image" content="/assets/img/posts.png">
 <meta property="og:site-name" content="B.H. CHOE&amp;nbsp;&amp;nbsp;&amp;nbsp;">
 </head>
@@ -132,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -169,21 +205,43 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><font size="5"><b>- Homework </b></font><font size="5" color="#194493"><i class="fa-solid fa-level-up" aria-label="level-up"></i></font></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../listing-danl-200-class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font size="5"><b>- Class Notes </b></font><font size="5" color="#194493"><i class="fa-solid fa-pencil" aria-label="pencil"></i></font></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#direction" id="toc-direction" class="nav-link active" data-scroll-target="#direction">Direction</a></li>
+  <li><a href="#part-1.-survey" id="toc-part-1.-survey" class="nav-link" data-scroll-target="#part-1.-survey">Part 1. Survey</a></li>
+  <li><a href="#part-2.-quarto-website" id="toc-part-2.-quarto-website" class="nav-link" data-scroll-target="#part-2.-quarto-website">Part 2. Quarto Website</a></li>
+  <li><a href="#part-3.-r-basics" id="toc-part-3.-r-basics" class="nav-link" data-scroll-target="#part-3.-r-basics">Part 3. R Basics</a>
+  <ul>
+  <li><a href="#question-1." id="toc-question-1." class="nav-link" data-scroll-target="#question-1.">Question 1.</a></li>
+  <li><a href="#question-2." id="toc-question-2." class="nav-link" data-scroll-target="#question-2.">Question 2.</a></li>
+  <li><a href="#question-3." id="toc-question-3." class="nav-link" data-scroll-target="#question-3.">Question 3.</a></li>
+  <li><a href="#question-4." id="toc-question-4." class="nav-link" data-scroll-target="#question-4.">Question 4.</a></li>
+  <li><a href="#question-5." id="toc-question-5." class="nav-link" data-scroll-target="#question-5.">Question 5.</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Homework 1</h1>
-<p class="subtitle lead">R Basics and Personal Website</p>
+<p class="subtitle lead">Survey, Personal Website, and R Basics</p>
 </div>
 
 
@@ -200,14 +258,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 26, 2024</p>
+      <p class="date">February 9, 2024</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 26, 2024</p>
+      <p class="date-modified">February 9, 2024</p>
     </div>
   </div>
     
@@ -216,8 +274,101 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="direction" class="level1">
+<h1>Direction</h1>
+<ul>
+<li><p>Please submit your <strong>Quarto document for Part 3 in Homework 1</strong> to the Brightspace with the name below:</p>
+<ul>
+<li><code>danl-200-hw1-LASTNAME-FIRSTNAME.qmd</code><br>
+( e.g., <code>danl-200-hw1-choe-byeonghak.qmd</code> )</li>
+</ul></li>
+<li><p>The due is February 20, 2024, 2:00 P.M.</p></li>
+<li><p>Please send Byeong-Hak an email (<code>bchoe@geneseo.edu</code>) if you have any questions.</p></li>
+</ul>
+<p><br><br><br></p>
+</section>
+<section id="part-1.-survey" class="level1">
+<h1>Part 1. Survey</h1>
+<p>Please complete the following survey:</p>
+<ul>
+<li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd9_zJ3lzcbcGpEPCWCSBL7q7ZSRX5Gxkot-fIaQQupPmCcSg/viewform?usp=sf_link">Link to Google Form Survey</a></li>
+</ul>
+<p><br><br><br></p>
+</section>
+<section id="part-2.-quarto-website" class="level1">
+<h1>Part 2. Quarto Website</h1>
+<ol type="1">
+<li>Decorate your website:</li>
+</ol>
+<ul>
+<li>Replace <code>YOUR NAME</code> with your name in <code>_quarto.yml</code> and <code>index.qmd</code>.</li>
+<li>Describe yourself in <code>index.qmd</code>.</li>
+<li>Add the picture file (e.g., <code>png</code>) of your profile photo to <code>img</code> directory. Then correct <code>img/profile.png</code> in <code>index.qmd</code> accordingly.</li>
+<li>Add the PDF file of your resumé to the website working directory in your laptop (or Posit Cloud).</li>
+<li>Correct links for your resumé, LinkedIn, email, and optionally social media.</li>
+<li>Make sure that you do not have any broken links in your website.</li>
+</ul>
+<ol start="2" type="1">
+<li><p>Add a link to the page of “R Basics” to the navigation bar using <code>danl-200-quarto.qmd</code>.</p></li>
+<li><p>Use the 3-step git commands (<code>git add</code>, <code>git commit</code>, and <code>git push</code>) to update your online website.</p></li>
+</ol>
+<p><br><br><br></p>
+</section>
+<section id="part-3.-r-basics" class="level1">
+<h1>Part 3. R Basics</h1>
+<section id="question-1." class="level2">
+<h2 class="anchored" data-anchor-id="question-1.">Question 1.</h2>
+<p>base-R provides the R object <code>state.name</code>. Write an R code to assign <code>state.name</code> to a variable, <code>US_states</code>.</p>
+<p><em>Answer</em>:</p>
+<p><br><br></p>
+</section>
+<section id="question-2." class="level2">
+<h2 class="anchored" data-anchor-id="question-2.">Question 2.</h2>
+<p>The <code>temp_F</code> vector contains the average high temperatures in January for the following cities: Seoul, Lagos, Paris, Rio de Janeiro, San Juan, and Rochester.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>temp_F <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">88</span>, <span class="dv">42</span>, <span class="dv">84</span>, <span class="dv">81</span>, <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Create a new vector named <code>temp_C</code> that stores the converted Celsius temperatures. Below is the conversion formula:</p>
+<p><span class="math display">\[
+C = \frac{5}{9}\times(F - 32)
+\]</span></p>
+<p><em>Answer</em>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>temp_F <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">88</span>, <span class="dv">42</span>, <span class="dv">84</span>, <span class="dv">81</span>, <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br></p>
+</section>
+<section id="question-3." class="level2">
+<h2 class="anchored" data-anchor-id="question-3.">Question 3.</h2>
+<ul>
+<li>Write an R code to calculate the standard deviation (SD) of an integer vector <code>x</code> manually. That is to calculate the SD without using the <code>sd()</code> function.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Write an R code to test whether the standard deviation you calculate manually above is equal to <code>sd(x)</code>.</li>
+</ul>
+<p><em>Answer</em>:</p>
+<p><br><br></p>
+</section>
+<section id="question-4." class="level2">
+<h2 class="anchored" data-anchor-id="question-4.">Question 4.</h2>
+<ul>
+<li>Write an R code to read the CSV file, <code>https://bcdanl.github.io/data/mlb_teams.csv</code> using the <code>tidyverse</code>’s <code>read_csv()</code> function, and assign it to <code>MLB_teams</code>.</li>
+</ul>
+<p><em>Answer</em>:</p>
+<p><br><br></p>
+</section>
+<section id="question-5." class="level2">
+<h2 class="anchored" data-anchor-id="question-5.">Question 5.</h2>
+<p>Write an R code to provide summary statistics—mean, standard deviation, minimum, first quartile, median, third quartile, and maximum—for variables in the <code>MLB_teams</code> data.frame.</p>
+<p><em>Answer</em>:</p>
+<p><br><br><br></p>
 
 
+</section>
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
