@@ -3,6 +3,7 @@ title: Homework 1
 subtitle: Survey, Personal Website, and R Basics
 date: last-modified
 from: markdown+emoji
+comments: false
 ---
 
 # Direction
