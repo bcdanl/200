@@ -1,0 +1,164 @@
+---
+title: Lecture 6 - Class Note
+subtitle: "DANL 200: Introduction to Data Analytics"
+author: 
+  - name: Byeong-Hak
+date: last-modified
+
+execute: 
+  echo: true    # true false
+  eval: true    # true false
+  warning: false    # true false
+  message: false    # true false
+  fig-width: 9
+  # fig-height: 5
+  
+format: 
+  html:
+    toc: true    # true false
+    number-sections: true    # true false
+    code-fold: show    # true false show       # https://quarto.org/docs/output-formats/html-code.html
+    code-tools: true    # true false
+    highlight-style: atom-one        # atom-one tango espresso   # https://quarto.org/docs/output-formats/html-code.html#highlighting
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(hrbrthemes)
+library(skimr)
+library(DT)
+
+```
+
+# Auto-completion
+
+```{r}
+#| eval: false
+libr
+
+```
+
+
+```{r}
+x <- 2
+x < - 3
+```
+
+# Variable and data type
+
+```{r}
+# TRUE can be just T
+# FALSE can be just F
+
+T
+F
+
+
+```
+
+```{r}
+color <- c("Green", "Blue", "Red", "Red")
+color <- as.factor(color)
+color
+
+levels(color)
+
+mpg <- mpg
+```
+
+
+
+```{r}
+vec_example <- c("a", 1, 2, 2.512)
+
+num_vec <- c(1,2,3)
+chr_vec <- c("a", "b", "c")
+
+vec_ex <- c("1", 2, 3)
+
+```
+
+```{r}
+myname <- "my_name"
+myname <- 'my_name'
+class(myname)
+```
+
+```{r}
+favorite.integer <- 2
+class(favorite.integer)
+
+favorite.integer <- as.integer(2)
+class(favorite.integer)
+
+favorite.numeric <- as.numeric(8.8)
+class(favorite.numeric)
+```
+
+
+```{r}
+class(F)
+```
+```{r}
+favorite.numeric == 8.8
+favorite.numeric == 8.9
+
+```
+
+```{r}
+# integer
+favorite.integer <- 2L
+```
+
+```{r}
+a <- 1:10
+class(a)
+a <- c(1,2,3,4,5,6,7,8,9,10)
+class(a)
+```
+
+```{r}
+a <- 1:10  # colon operator
+b <- c("3", 4, 5)
+beers <- c("BUD LIGHT", "BUSCH LIGHT", "COORS LIGHT", 
+           "MILLER LITE", "NATURAL LIGHT")
+class(a)
+class(b)
+class(beers)
+```
+
+```{r}
+beers <- as.factor(beers)
+class(beers)
+class( levels(beers) )
+levels(beers)
+nlevels(beers)
+beers
+```
+
+
+Ctrl + C cancels runnig a code:
+```{r}
+#| eval: false
+x <- "hello
+```
+
+# Functions
+
+```{r}
+# The function `str_c()`, provided by `tidyverse`, concatenates characters.
+str_c("Data", "Analytics")
+str_c("Data", "Analytics", sep = "!")
+```
+
+
+
+```{r}
+str_c("Data", "Analytics", sep = "")
+str_c("Data", "Analytics")
+```
+
+
+
