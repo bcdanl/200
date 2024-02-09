@@ -1349,5 +1349,19 @@
     "title": "DANL 200 - Homework",
     "section": "",
     "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nR Basics and Personal Website\n\n\nJanuary 26, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "listing-danl-200-class.html",
+    "href": "listing-danl-200-class.html",
+    "title": "DANL 200 - Class Note",
+    "section": "",
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 8, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "danl-class/danl-200-lec-06-2024-0208.html",
+    "href": "danl-class/danl-200-lec-06-2024-0208.html",
+    "title": "Lecture 6 - Note",
+    "section": "",
+    "text": "1 Auto-completion\n\nlibr\n\n\nx &lt;- 2\nx &lt; - 3\n\n[1] FALSE\n\n\n\n\n2 Variable and data type\n\n# TRUE can be just T\n# FALSE can be just F\n\nT\n\n[1] TRUE\n\nF\n\n[1] FALSE\n\n\n\ncolor &lt;- c(\"Green\", \"Blue\", \"Red\", \"Red\")\ncolor &lt;- as.factor(color)\ncolor\n\n[1] Green Blue  Red   Red  \nLevels: Blue Green Red\n\nlevels(color)\n\n[1] \"Blue\"  \"Green\" \"Red\"  \n\nmpg &lt;- mpg\n\n\nvec_example &lt;- c(\"a\", 1, 2, 2.512)\n\nnum_vec &lt;- c(1,2,3)\nchr_vec &lt;- c(\"a\", \"b\", \"c\")\n\nvec_ex &lt;- c(\"1\", 2, 3)\n\n\nmyname &lt;- \"my_name\"\nmyname &lt;- 'my_name'\nclass(myname)\n\n[1] \"character\"\n\n\n\nfavorite.integer &lt;- 2\nclass(favorite.integer)\n\n[1] \"numeric\"\n\nfavorite.integer &lt;- as.integer(2)\nclass(favorite.integer)\n\n[1] \"integer\"\n\nfavorite.numeric &lt;- as.numeric(8.8)\nclass(favorite.numeric)\n\n[1] \"numeric\"\n\n\n\nclass(F)\n\n[1] \"logical\"\n\n\n\nfavorite.numeric == 8.8\n\n[1] TRUE\n\nfavorite.numeric == 8.9\n\n[1] FALSE\n\n\n\n# integer\nfavorite.integer &lt;- 2L\n\n\na &lt;- 1:10\nclass(a)\n\n[1] \"integer\"\n\na &lt;- c(1,2,3,4,5,6,7,8,9,10)\nclass(a)\n\n[1] \"numeric\"\n\n\n\na &lt;- 1:10  # colon operator\nb &lt;- c(\"3\", 4, 5)\nbeers &lt;- c(\"BUD LIGHT\", \"BUSCH LIGHT\", \"COORS LIGHT\", \n           \"MILLER LITE\", \"NATURAL LIGHT\")\nclass(a)\n\n[1] \"integer\"\n\nclass(b)\n\n[1] \"character\"\n\nclass(beers)\n\n[1] \"character\"\n\n\n\nbeers &lt;- as.factor(beers)\nclass(beers)\n\n[1] \"factor\"\n\nclass( levels(beers) )\n\n[1] \"character\"\n\nlevels(beers)\n\n[1] \"BUD LIGHT\"     \"BUSCH LIGHT\"   \"COORS LIGHT\"   \"MILLER LITE\"  \n[5] \"NATURAL LIGHT\"\n\nnlevels(beers)\n\n[1] 5\n\nbeers\n\n[1] BUD LIGHT     BUSCH LIGHT   COORS LIGHT   MILLER LITE   NATURAL LIGHT\nLevels: BUD LIGHT BUSCH LIGHT COORS LIGHT MILLER LITE NATURAL LIGHT\n\n\nCtrl + C cancels runnig a code:\n\nx &lt;- \"hello\n\n\n\n3 Functions\n\n# The function `str_c()`, provided by `tidyverse`, concatenates characters.\nstr_c(\"Data\", \"Analytics\")\n\n[1] \"DataAnalytics\"\n\nstr_c(\"Data\", \"Analytics\", sep = \"!\")\n\n[1] \"Data!Analytics\"\n\n\n\nstr_c(\"Data\", \"Analytics\", sep = \"\")\n\n[1] \"DataAnalytics\"\n\nstr_c(\"Data\", \"Analytics\")\n\n[1] \"DataAnalytics\"\n\n\n\n\n\n\n Back to top"
   }
 ]

@@ -1,6 +1,6 @@
 ---
-title: Lecture 6 - Class Note
-subtitle: "DANL 200: Introduction to Data Analytics"
+title: Lecture 6 - Note
+subtitle: R Basics
 author: 
   - name: Byeong-Hak
 date: last-modified
@@ -17,8 +17,8 @@ format:
   html:
     toc: true    # true false
     number-sections: true    # true false
-    code-fold: show    # true false show       # https://quarto.org/docs/output-formats/html-code.html
-    code-tools: true    # true false
+    code-fold: false    # true false show       # https://quarto.org/docs/output-formats/html-code.html
+    code-tools: false    # true false
     highlight-style: atom-one        # atom-one tango espresso   # https://quarto.org/docs/output-formats/html-code.html#highlighting
 ---
 
