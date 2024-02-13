@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Byeong-Hak">
-<meta name="dcterms.date" content="2024-02-08">
+<meta name="dcterms.date" content="2024-02-07">
 
 <title>Lecture 6 - Note | Byeong-Hak Choe</title>
 <style>
@@ -230,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lecture 6 - Note</h1>
+<div class="quarto-title-block"><div><h1 class="title">Lecture 6 - Note</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">R Basics</p>
 </div>
 
@@ -248,16 +248,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 8, 2024</p>
+      <p class="date">February 7, 2024</p>
     </div>
   </div>
   
-    <div>
-    <div class="quarto-title-meta-heading">Modified</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 8, 2024</p>
-    </div>
-  </div>
     
   </div>
   
@@ -443,6 +437,8 @@ Levels: BUD LIGHT BUSCH LIGHT COORS LIGHT MILLER LITE NATURAL LIGHT</code></pre>
 </div>
 </div>
 
+
+<!-- -->
 
 </section>
 
@@ -641,6 +637,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -808,7 +855,172 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb58" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Lecture 6 - Note</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> R Basics</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> </span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - name: Byeong-Hak</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2024-02-07</span></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span><span class="co"> </span></span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true    # true false</span></span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: true    # true false</span></span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false    # true false</span></span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false    # true false</span></span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a><span class="co">  fig-width: 9</span></span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a><span class="co">  # fig-height: 5</span></span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a><span class="co">  </span></span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true    # true false</span></span>
+<span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true    # true false</span></span>
+<span id="cb58-20"><a href="#cb58-20" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false    # true false show       # https://quarto.org/docs/output-formats/html-code.html</span></span>
+<span id="cb58-21"><a href="#cb58-21" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true    # true false</span></span>
+<span id="cb58-22"><a href="#cb58-22" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: atom-one        # atom-one tango espresso   # https://quarto.org/docs/output-formats/html-code.html#highlighting</span></span>
+<span id="cb58-23"><a href="#cb58-23" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb58-24"><a href="#cb58-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-25"><a href="#cb58-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-26"><a href="#cb58-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
+<span id="cb58-27"><a href="#cb58-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb58-28"><a href="#cb58-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb58-29"><a href="#cb58-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hrbrthemes)</span>
+<span id="cb58-30"><a href="#cb58-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb58-31"><a href="#cb58-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb58-32"><a href="#cb58-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-33"><a href="#cb58-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-34"><a href="#cb58-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-35"><a href="#cb58-35" aria-hidden="true" tabindex="-1"></a><span class="fu"># Auto-completion</span></span>
+<span id="cb58-36"><a href="#cb58-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-39"><a href="#cb58-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-40"><a href="#cb58-40" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb58-41"><a href="#cb58-41" aria-hidden="true" tabindex="-1"></a>libr</span>
+<span id="cb58-42"><a href="#cb58-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-43"><a href="#cb58-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-44"><a href="#cb58-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-45"><a href="#cb58-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-48"><a href="#cb58-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-49"><a href="#cb58-49" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb58-50"><a href="#cb58-50" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="sc">-</span> <span class="dv">3</span></span>
+<span id="cb58-51"><a href="#cb58-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-52"><a href="#cb58-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-53"><a href="#cb58-53" aria-hidden="true" tabindex="-1"></a><span class="fu"># Variable and data type</span></span>
+<span id="cb58-54"><a href="#cb58-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-57"><a href="#cb58-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-58"><a href="#cb58-58" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE can be just T</span></span>
+<span id="cb58-59"><a href="#cb58-59" aria-hidden="true" tabindex="-1"></a><span class="co"># FALSE can be just F</span></span>
+<span id="cb58-60"><a href="#cb58-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-61"><a href="#cb58-61" aria-hidden="true" tabindex="-1"></a>T</span>
+<span id="cb58-62"><a href="#cb58-62" aria-hidden="true" tabindex="-1"></a>F</span>
+<span id="cb58-63"><a href="#cb58-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-64"><a href="#cb58-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-65"><a href="#cb58-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-66"><a href="#cb58-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-69"><a href="#cb58-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-70"><a href="#cb58-70" aria-hidden="true" tabindex="-1"></a>color <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Green"</span>, <span class="st">"Blue"</span>, <span class="st">"Red"</span>, <span class="st">"Red"</span>)</span>
+<span id="cb58-71"><a href="#cb58-71" aria-hidden="true" tabindex="-1"></a>color <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(color)</span>
+<span id="cb58-72"><a href="#cb58-72" aria-hidden="true" tabindex="-1"></a>color</span>
+<span id="cb58-73"><a href="#cb58-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-74"><a href="#cb58-74" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(color)</span>
+<span id="cb58-75"><a href="#cb58-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-76"><a href="#cb58-76" aria-hidden="true" tabindex="-1"></a>mpg <span class="ot">&lt;-</span> mpg</span>
+<span id="cb58-77"><a href="#cb58-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-78"><a href="#cb58-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-79"><a href="#cb58-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-80"><a href="#cb58-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-83"><a href="#cb58-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-84"><a href="#cb58-84" aria-hidden="true" tabindex="-1"></a>vec_example <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">2.512</span>)</span>
+<span id="cb58-85"><a href="#cb58-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-86"><a href="#cb58-86" aria-hidden="true" tabindex="-1"></a>num_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb58-87"><a href="#cb58-87" aria-hidden="true" tabindex="-1"></a>chr_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)</span>
+<span id="cb58-88"><a href="#cb58-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-89"><a href="#cb58-89" aria-hidden="true" tabindex="-1"></a>vec_ex <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb58-90"><a href="#cb58-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-91"><a href="#cb58-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-92"><a href="#cb58-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-95"><a href="#cb58-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-96"><a href="#cb58-96" aria-hidden="true" tabindex="-1"></a>myname <span class="ot">&lt;-</span> <span class="st">"my_name"</span></span>
+<span id="cb58-97"><a href="#cb58-97" aria-hidden="true" tabindex="-1"></a>myname <span class="ot">&lt;-</span> <span class="st">'my_name'</span></span>
+<span id="cb58-98"><a href="#cb58-98" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(myname)</span>
+<span id="cb58-99"><a href="#cb58-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-100"><a href="#cb58-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-103"><a href="#cb58-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-104"><a href="#cb58-104" aria-hidden="true" tabindex="-1"></a>favorite.integer <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb58-105"><a href="#cb58-105" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(favorite.integer)</span>
+<span id="cb58-106"><a href="#cb58-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-107"><a href="#cb58-107" aria-hidden="true" tabindex="-1"></a>favorite.integer <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">2</span>)</span>
+<span id="cb58-108"><a href="#cb58-108" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(favorite.integer)</span>
+<span id="cb58-109"><a href="#cb58-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-110"><a href="#cb58-110" aria-hidden="true" tabindex="-1"></a>favorite.numeric <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fl">8.8</span>)</span>
+<span id="cb58-111"><a href="#cb58-111" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(favorite.numeric)</span>
+<span id="cb58-112"><a href="#cb58-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-113"><a href="#cb58-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-114"><a href="#cb58-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-117"><a href="#cb58-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-118"><a href="#cb58-118" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(F)</span>
+<span id="cb58-119"><a href="#cb58-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-122"><a href="#cb58-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-123"><a href="#cb58-123" aria-hidden="true" tabindex="-1"></a>favorite.numeric <span class="sc">==</span> <span class="fl">8.8</span></span>
+<span id="cb58-124"><a href="#cb58-124" aria-hidden="true" tabindex="-1"></a>favorite.numeric <span class="sc">==</span> <span class="fl">8.9</span></span>
+<span id="cb58-125"><a href="#cb58-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-126"><a href="#cb58-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-127"><a href="#cb58-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-130"><a href="#cb58-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-131"><a href="#cb58-131" aria-hidden="true" tabindex="-1"></a><span class="co"># integer</span></span>
+<span id="cb58-132"><a href="#cb58-132" aria-hidden="true" tabindex="-1"></a>favorite.integer <span class="ot">&lt;-</span> 2L</span>
+<span id="cb58-133"><a href="#cb58-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-134"><a href="#cb58-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-137"><a href="#cb58-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-138"><a href="#cb58-138" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb58-139"><a href="#cb58-139" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span>
+<span id="cb58-140"><a href="#cb58-140" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span>
+<span id="cb58-141"><a href="#cb58-141" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span>
+<span id="cb58-142"><a href="#cb58-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-143"><a href="#cb58-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-146"><a href="#cb58-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-147"><a href="#cb58-147" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>  <span class="co"># colon operator</span></span>
+<span id="cb58-148"><a href="#cb58-148" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"3"</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb58-149"><a href="#cb58-149" aria-hidden="true" tabindex="-1"></a>beers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"BUD LIGHT"</span>, <span class="st">"BUSCH LIGHT"</span>, <span class="st">"COORS LIGHT"</span>, </span>
+<span id="cb58-150"><a href="#cb58-150" aria-hidden="true" tabindex="-1"></a>           <span class="st">"MILLER LITE"</span>, <span class="st">"NATURAL LIGHT"</span>)</span>
+<span id="cb58-151"><a href="#cb58-151" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span>
+<span id="cb58-152"><a href="#cb58-152" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(b)</span>
+<span id="cb58-153"><a href="#cb58-153" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(beers)</span>
+<span id="cb58-154"><a href="#cb58-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-155"><a href="#cb58-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-158"><a href="#cb58-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-159"><a href="#cb58-159" aria-hidden="true" tabindex="-1"></a>beers <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(beers)</span>
+<span id="cb58-160"><a href="#cb58-160" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(beers)</span>
+<span id="cb58-161"><a href="#cb58-161" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>( <span class="fu">levels</span>(beers) )</span>
+<span id="cb58-162"><a href="#cb58-162" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(beers)</span>
+<span id="cb58-163"><a href="#cb58-163" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(beers)</span>
+<span id="cb58-164"><a href="#cb58-164" aria-hidden="true" tabindex="-1"></a>beers</span>
+<span id="cb58-165"><a href="#cb58-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-166"><a href="#cb58-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-167"><a href="#cb58-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-168"><a href="#cb58-168" aria-hidden="true" tabindex="-1"></a>Ctrl + C cancels runnig a code:</span>
+<span id="cb58-171"><a href="#cb58-171" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-172"><a href="#cb58-172" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb58-173"><a href="#cb58-173" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"hello</span></span>
+<span id="cb58-174"><a href="#cb58-174" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb58-175"><a href="#cb58-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-176"><a href="#cb58-176" aria-hidden="true" tabindex="-1"></a><span class="st"># Functions</span></span>
+<span id="cb58-177"><a href="#cb58-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-180"><a href="#cb58-180" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-181"><a href="#cb58-181" aria-hidden="true" tabindex="-1"></a><span class="st"># The function `str_c()`, provided by `tidyverse`, concatenates characters.</span></span>
+<span id="cb58-182"><a href="#cb58-182" aria-hidden="true" tabindex="-1"></a><span class="st">str_c("</span>Data<span class="st">", "</span>Analytics<span class="st">")</span></span>
+<span id="cb58-183"><a href="#cb58-183" aria-hidden="true" tabindex="-1"></a><span class="st">str_c("</span>Data<span class="st">", "</span>Analytics<span class="st">", sep = "</span><span class="sc">!</span><span class="st">")</span></span>
+<span id="cb58-184"><a href="#cb58-184" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb58-185"><a href="#cb58-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-186"><a href="#cb58-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-187"><a href="#cb58-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-190"><a href="#cb58-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-191"><a href="#cb58-191" aria-hidden="true" tabindex="-1"></a><span class="st">str_c("</span>Data<span class="st">", "</span>Analytics<span class="st">", sep = "")</span></span>
+<span id="cb58-192"><a href="#cb58-192" aria-hidden="true" tabindex="-1"></a><span class="st">str_c("</span>Data<span class="st">", "</span>Analytics<span class="st">")</span></span>
+<span id="cb58-193"><a href="#cb58-193" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb58-194"><a href="#cb58-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-195"><a href="#cb58-195" aria-hidden="true" tabindex="-1"></a></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

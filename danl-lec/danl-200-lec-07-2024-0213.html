@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Byeong-Hak Choe">
+<meta name="dcterms.date" content="2024-02-13">
+
+<title>B.H. CHOE&nbsp;&nbsp;&nbsp; - Lecture 7</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../img/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../assets/css/font.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">B.H. CHOE&nbsp;&nbsp;&nbsp;</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-github" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-github">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/bcdanl/200" rel="me" target="_blank">
+ <span class="dropdown-text">Website Repo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/bcdanl/200/discussions" rel="me" target="_blank">
+ <span class="dropdown-text">Discussions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/bcdanl/200/tree/main/danl-class" rel="me" target="_blank">
+ <span class="dropdown-text">Class Notes</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lecture 7</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../img/geneseo-logo-squared.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+ <span class="menu-text"><a href="./index.html"><font size="6"><b>Welcome! </b></font><font size="5" color="#194493"><i class="fa fa-user-circle" aria-hidden="true"></i> <i class="fa fa-sun" aria-hidden="true"></i></font></a></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../listing-danl-200-lec.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font size="5"><b>- Lecture </b></font><font size="5" color="#194493"><i class="fa-solid fa-laptop" aria-label="laptop"></i></font></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../listing-danl-200-qa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font size="5"><b>- Q &amp; A </b></font><font size="5" color="#194493"><i class="fa-solid fa-commenting" aria-label="commenting"></i></font></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../listing-danl-200-cw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font size="5"><b>- Classwork </b></font><font size="5" color="#194493"><i class="fa-solid fa-keyboard" aria-label="keyboard"></i></font></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../listing-danl-200-hw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font size="5"><b>- Homework </b></font><font size="5" color="#194493"><i class="fa-solid fa-level-up" aria-label="level-up"></i></font></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../listing-danl-200-class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font size="5"><b>- Class Notes </b></font><font size="5" color="#194493"><i class="fa-solid fa-pencil" aria-label="pencil"></i></font></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#announcement" id="toc-announcement" class="nav-link active" data-scroll-target="#announcement">Announcement</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#r-basics" id="toc-r-basics" class="nav-link" data-scroll-target="#r-basics">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#rstudio-workflow" id="toc-rstudio-workflow" class="nav-link" data-scroll-target="#rstudio-workflow">RStudio Workflow</a>
+  <ul class="collapse">
+  <li><a href="#must-know-quarto-shortcuts" id="toc-must-know-quarto-shortcuts" class="nav-link" data-scroll-target="#must-know-quarto-shortcuts">Must-know Quarto Shortcuts</a></li>
+  </ul></li>
+  <li><a href="#rstudio-workflow-1" id="toc-rstudio-workflow-1" class="nav-link" data-scroll-target="#rstudio-workflow-1">RStudio Workflow</a>
+  <ul class="collapse">
+  <li><a href="#shortcuts-for-rstudio-and-rscript" id="toc-shortcuts-for-rstudio-and-rscript" class="nav-link" data-scroll-target="#shortcuts-for-rstudio-and-rscript">Shortcuts for RStudio and RScript</a></li>
+  </ul></li>
+  <li><a href="#rstudio-workflow-2" id="toc-rstudio-workflow-2" class="nav-link" data-scroll-target="#rstudio-workflow-2">RStudio Workflow</a>
+  <ul class="collapse">
+  <li><a href="#shortcuts-in-rstudio-and-rscript" id="toc-shortcuts-in-rstudio-and-rscript" class="nav-link" data-scroll-target="#shortcuts-in-rstudio-and-rscript">Shortcuts in RStudio and RScript</a></li>
+  </ul></li>
+  <li><a href="#rstudio-workflow-3" id="toc-rstudio-workflow-3" class="nav-link" data-scroll-target="#rstudio-workflow-3">RStudio Workflow</a>
+  <ul class="collapse">
+  <li><a href="#adding-quotes-in-rstudio" id="toc-adding-quotes-in-rstudio" class="nav-link" data-scroll-target="#adding-quotes-in-rstudio">Adding Quotes in RStudio</a></li>
+  </ul></li>
+  <li><a href="#rstudio-workflow-4" id="toc-rstudio-workflow-4" class="nav-link" data-scroll-target="#rstudio-workflow-4">RStudio Workflow</a>
+  <ul class="collapse">
+  <li><a href="#computer-shortcuts" id="toc-computer-shortcuts" class="nav-link" data-scroll-target="#computer-shortcuts">Computer Shortcuts</a></li>
+  </ul></li>
+  <li><a href="#rstudio-workflow-5" id="toc-rstudio-workflow-5" class="nav-link" data-scroll-target="#rstudio-workflow-5">RStudio Workflow</a>
+  <ul class="collapse">
+  <li><a href="#cleaning-r-environment-and-console" id="toc-cleaning-r-environment-and-console" class="nav-link" data-scroll-target="#cleaning-r-environment-and-console">Cleaning R Environment and Console</a></li>
+  </ul></li>
+  <li><a href="#r-basics-1" id="toc-r-basics-1" class="nav-link" data-scroll-target="#r-basics-1">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#values-variables-and-types" id="toc-values-variables-and-types" class="nav-link" data-scroll-target="#values-variables-and-types">Values, Variables, and Types</a></li>
+  </ul></li>
+  <li><a href="#r-basics-2" id="toc-r-basics-2" class="nav-link" data-scroll-target="#r-basics-2">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  </ul></li>
+  <li><a href="#r-basics-3" id="toc-r-basics-3" class="nav-link" data-scroll-target="#r-basics-3">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#functions-arguments-and-parameters" id="toc-functions-arguments-and-parameters" class="nav-link" data-scroll-target="#functions-arguments-and-parameters">Functions, Arguments, and Parameters</a></li>
+  </ul></li>
+  <li><a href="#r-basics-4" id="toc-r-basics-4" class="nav-link" data-scroll-target="#r-basics-4">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#r-variable-and-data-types" id="toc-r-variable-and-data-types" class="nav-link" data-scroll-target="#r-variable-and-data-types">R Variable and Data Types</a></li>
+  </ul></li>
+  <li><a href="#a-little-bit-of-math-for-log" id="toc-a-little-bit-of-math-for-log" class="nav-link" data-scroll-target="#a-little-bit-of-math-for-log">A Little Bit of Math for <code>log()</code></a></li>
+  <li><a href="#math-functions" id="toc-math-functions" class="nav-link" data-scroll-target="#math-functions">Math functions</a></li>
+  <li><a href="#r-basics-5" id="toc-r-basics-5" class="nav-link" data-scroll-target="#r-basics-5">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#vectorized-operations" id="toc-vectorized-operations" class="nav-link" data-scroll-target="#vectorized-operations">Vectorized Operations</a></li>
+  </ul></li>
+  <li><a href="#r-basics-6" id="toc-r-basics-6" class="nav-link" data-scroll-target="#r-basics-6">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#more-math-functions" id="toc-more-math-functions" class="nav-link" data-scroll-target="#more-math-functions">More Math Functions</a></li>
+  </ul></li>
+  <li><a href="#r-basics-7" id="toc-r-basics-7" class="nav-link" data-scroll-target="#r-basics-7">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#null-and-na-values" id="toc-null-and-na-values" class="nav-link" data-scroll-target="#null-and-na-values"><code>NULL</code> and <code>NA</code> values</a></li>
+  </ul></li>
+  <li><a href="#r-basics-8" id="toc-r-basics-8" class="nav-link" data-scroll-target="#r-basics-8">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#null-and-na-values-1" id="toc-null-and-na-values-1" class="nav-link" data-scroll-target="#null-and-na-values-1"><code>NULL</code> and <code>NA</code> values</a></li>
+  </ul></li>
+  <li><a href="#r-basics-9" id="toc-r-basics-9" class="nav-link" data-scroll-target="#r-basics-9">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#casting-variables" id="toc-casting-variables" class="nav-link" data-scroll-target="#casting-variables">Casting Variables</a></li>
+  </ul></li>
+  <li><a href="#r-basics-10" id="toc-r-basics-10" class="nav-link" data-scroll-target="#r-basics-10">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#absolute-vs.-relative-pathnames" id="toc-absolute-vs.-relative-pathnames" class="nav-link" data-scroll-target="#absolute-vs.-relative-pathnames">Absolute vs.&nbsp;Relative Pathnames</a></li>
+  </ul></li>
+  <li><a href="#r-basics-11" id="toc-r-basics-11" class="nav-link" data-scroll-target="#r-basics-11">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#working-with-data-from-files" id="toc-working-with-data-from-files" class="nav-link" data-scroll-target="#working-with-data-from-files">Working with Data from Files</a></li>
+  </ul></li>
+  <li><a href="#r-basics-12" id="toc-r-basics-12" class="nav-link" data-scroll-target="#r-basics-12">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#examining-data.frames" id="toc-examining-data.frames" class="nav-link" data-scroll-target="#examining-data.frames">Examining data.frames</a></li>
+  </ul></li>
+  <li><a href="#r-basics-13" id="toc-r-basics-13" class="nav-link" data-scroll-target="#r-basics-13">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#reading-data.frames-from-an-url" id="toc-reading-data.frames-from-an-url" class="nav-link" data-scroll-target="#reading-data.frames-from-an-url">Reading data.frames from an URL</a></li>
+  </ul></li>
+  <li><a href="#r-basics-14" id="toc-r-basics-14" class="nav-link" data-scroll-target="#r-basics-14">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#tidy-data.frame-variables-observations-and-values" id="toc-tidy-data.frame-variables-observations-and-values" class="nav-link" data-scroll-target="#tidy-data.frame-variables-observations-and-values">Tidy <code>data.frame</code>: Variables, Observations, and Values</a></li>
+  </ul></li>
+  <li><a href="#r-basics-15" id="toc-r-basics-15" class="nav-link" data-scroll-target="#r-basics-15">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#r-variable-and-data-types-1" id="toc-r-variable-and-data-types-1" class="nav-link" data-scroll-target="#r-variable-and-data-types-1">R Variable and Data Types</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#data-visualization-with-ggplot" id="toc-data-visualization-with-ggplot" class="nav-link" data-scroll-target="#data-visualization-with-ggplot">Data Visualization with <code>ggplot()</code></a>
+  <ul class="collapse">
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data visualization</a></li>
+  <li><a href="#grammar-of-graphics" id="toc-grammar-of-graphics" class="nav-link" data-scroll-target="#grammar-of-graphics">Grammar of Graphics</a></li>
+  <li><a href="#data-visualization---first-steps" id="toc-data-visualization---first-steps" class="nav-link" data-scroll-target="#data-visualization---first-steps">Data Visualization - First Steps</a></li>
+  <li><a href="#data-visualization---first-steps-1" id="toc-data-visualization---first-steps-1" class="nav-link" data-scroll-target="#data-visualization---first-steps-1">Data Visualization - First Steps</a>
+  <ul class="collapse">
+  <li><a href="#creating-a-ggplot" id="toc-creating-a-ggplot" class="nav-link" data-scroll-target="#creating-a-ggplot">Creating a <code>ggplot</code></a></li>
+  </ul></li>
+  <li><a href="#data-visualization---first-steps-2" id="toc-data-visualization---first-steps-2" class="nav-link" data-scroll-target="#data-visualization---first-steps-2">Data Visualization - First Steps</a>
+  <ul class="collapse">
+  <li><a href="#graphing-template" id="toc-graphing-template" class="nav-link" data-scroll-target="#graphing-template">Graphing Template</a></li>
+  </ul></li>
+  <li><a href="#r-basics-16" id="toc-r-basics-16" class="nav-link" data-scroll-target="#r-basics-16">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#r-variable-and-data-types-2" id="toc-r-variable-and-data-types-2" class="nav-link" data-scroll-target="#r-variable-and-data-types-2">R Variable and Data Types</a></li>
+  </ul></li>
+  <li><a href="#aesthetic-mappings" id="toc-aesthetic-mappings" class="nav-link" data-scroll-target="#aesthetic-mappings">Aesthetic Mappings</a></li>
+  <li><a href="#aesthetic-mappings-1" id="toc-aesthetic-mappings-1" class="nav-link" data-scroll-target="#aesthetic-mappings-1">Aesthetic Mappings</a></li>
+  <li><a href="#aesthetic-mappings-2" id="toc-aesthetic-mappings-2" class="nav-link" data-scroll-target="#aesthetic-mappings-2">Aesthetic Mappings</a></li>
+  <li><a href="#aesthetic-mappings-3" id="toc-aesthetic-mappings-3" class="nav-link" data-scroll-target="#aesthetic-mappings-3">Aesthetic Mappings</a>
+  <ul class="collapse">
+  <li><a href="#adding-a-color-to-the-plot" id="toc-adding-a-color-to-the-plot" class="nav-link" data-scroll-target="#adding-a-color-to-the-plot">Adding a <code>color</code> to the plot</a></li>
+  </ul></li>
+  <li><a href="#aesthetic-mappings-4" id="toc-aesthetic-mappings-4" class="nav-link" data-scroll-target="#aesthetic-mappings-4">Aesthetic Mappings</a>
+  <ul class="collapse">
+  <li><a href="#adding-a-shape-to-the-plot" id="toc-adding-a-shape-to-the-plot" class="nav-link" data-scroll-target="#adding-a-shape-to-the-plot">Adding a <code>shape</code> to the plot</a></li>
+  </ul></li>
+  <li><a href="#aesthetic-mappings-5" id="toc-aesthetic-mappings-5" class="nav-link" data-scroll-target="#aesthetic-mappings-5">Aesthetic Mappings</a>
+  <ul class="collapse">
+  <li><a href="#adding-a-size-to-the-plot" id="toc-adding-a-size-to-the-plot" class="nav-link" data-scroll-target="#adding-a-size-to-the-plot">Adding a <code>size</code> to the plot</a></li>
+  </ul></li>
+  <li><a href="#aesthetic-mappings-6" id="toc-aesthetic-mappings-6" class="nav-link" data-scroll-target="#aesthetic-mappings-6">Aesthetic Mappings</a>
+  <ul class="collapse">
+  <li><a href="#adding-an-alpha-transparency-to-the-plot" id="toc-adding-an-alpha-transparency-to-the-plot" class="nav-link" data-scroll-target="#adding-an-alpha-transparency-to-the-plot">Adding an <code>alpha</code> (transparency) to the plot</a></li>
+  </ul></li>
+  <li><a href="#aesthetic-mappings-7" id="toc-aesthetic-mappings-7" class="nav-link" data-scroll-target="#aesthetic-mappings-7">Aesthetic Mappings</a>
+  <ul class="collapse">
+  <li><a href="#overplotting-problem" id="toc-overplotting-problem" class="nav-link" data-scroll-target="#overplotting-problem">Overplotting problem</a></li>
+  </ul></li>
+  <li><a href="#aesthetic-mappings-8" id="toc-aesthetic-mappings-8" class="nav-link" data-scroll-target="#aesthetic-mappings-8">Aesthetic Mappings</a>
+  <ul class="collapse">
+  <li><a href="#overplotting-and-alpha" id="toc-overplotting-and-alpha" class="nav-link" data-scroll-target="#overplotting-and-alpha">Overplotting and <code>alpha</code></a></li>
+  </ul></li>
+  <li><a href="#aesthetic-mappings-9" id="toc-aesthetic-mappings-9" class="nav-link" data-scroll-target="#aesthetic-mappings-9">Aesthetic Mappings</a>
+  <ul class="collapse">
+  <li><a href="#specifying-a-color-to-the-plot" id="toc-specifying-a-color-to-the-plot" class="nav-link" data-scroll-target="#specifying-a-color-to-the-plot">Specifying a <code>color</code> to the plot</a></li>
+  </ul></li>
+  <li><a href="#aesthetic-mappings-10" id="toc-aesthetic-mappings-10" class="nav-link" data-scroll-target="#aesthetic-mappings-10">Aesthetic Mappings</a></li>
+  <li><a href="#aesthetic-mappings-11" id="toc-aesthetic-mappings-11" class="nav-link" data-scroll-target="#aesthetic-mappings-11">Aesthetic Mappings</a>
+  <ul class="collapse">
+  <li><a href="#specifying-a-color-to-the-plot-1" id="toc-specifying-a-color-to-the-plot-1" class="nav-link" data-scroll-target="#specifying-a-color-to-the-plot-1">Specifying a <code>color</code> to the plot?</a></li>
+  </ul></li>
+  <li><a href="#common-problems-in-ggplot" id="toc-common-problems-in-ggplot" class="nav-link" data-scroll-target="#common-problems-in-ggplot">Common problems in <code>ggplot()</code></a></li>
+  <li><a href="#r-basics-17" id="toc-r-basics-17" class="nav-link" data-scroll-target="#r-basics-17">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#r-variable-and-data-types-3" id="toc-r-variable-and-data-types-3" class="nav-link" data-scroll-target="#r-variable-and-data-types-3">R Variable and Data Types</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#facets" id="toc-facets" class="nav-link" data-scroll-target="#facets">Facets</a>
+  <ul class="collapse">
+  <li><a href="#facets-1" id="toc-facets-1" class="nav-link" data-scroll-target="#facets-1">Facets</a></li>
+  <li><a href="#facets-2" id="toc-facets-2" class="nav-link" data-scroll-target="#facets-2">Facets</a></li>
+  <li><a href="#facets-3" id="toc-facets-3" class="nav-link" data-scroll-target="#facets-3">Facets</a></li>
+  <li><a href="#facets-4" id="toc-facets-4" class="nav-link" data-scroll-target="#facets-4">Facets</a></li>
+  <li><a href="#facets-5" id="toc-facets-5" class="nav-link" data-scroll-target="#facets-5">Facets</a></li>
+  <li><a href="#facets-6" id="toc-facets-6" class="nav-link" data-scroll-target="#facets-6">Facets</a></li>
+  <li><a href="#facets-7" id="toc-facets-7" class="nav-link" data-scroll-target="#facets-7">Facets</a></li>
+  <li><a href="#r-basics-18" id="toc-r-basics-18" class="nav-link" data-scroll-target="#r-basics-18">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#r-variable-and-data-types-4" id="toc-r-variable-and-data-types-4" class="nav-link" data-scroll-target="#r-variable-and-data-types-4">R Variable and Data Types</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="danl-200-lec-07-2024-0213.html"><i class="bi bi-file-slides"></i>RevealJS (clean)</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 7</h1>
+<p class="subtitle lead">R Basics; Data Visualization</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Byeong-Hak Choe </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            SUNY Geneseo
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 13, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="announcement" class="level2">
+<h2 class="anchored" data-anchor-id="announcement">Announcement</h2>
+<div class="nonincremental">
+<ul>
+<li>DANL Tutoring Schedule, Spring 2024</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Liza Mitchell</strong>
+<ul>
+<li>Wednesday 9:00 AM – 10:00 AM</li>
+<li>Friday 8:00 AM – 9:00 AM</li>
+</ul></li>
+<li><strong>Nada Trabelsi</strong>
+<ul>
+<li>Tuesday 12:30 PM – 1:30 PM</li>
+<li>Thursday 12:30 PM – 1:30 PM</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><strong>Daniel Noone</strong>
+<ul>
+<li>Tuesday 5:00 PM - 6:00 PM</li>
+<li>Thursday 5:00 PM - 6:00 PM</li>
+</ul></li>
+<li><strong>Dominic Rodriguez-Donohue</strong>
+<ul>
+<li>Tuesday 11:00 AM – 12:15 PM</li>
+<li>Thursday 11:00 AM – 12:15 PM</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li>Liza Mitchell’s session on this Friday is cancelled.</li>
+</ul>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>R Basics</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Data Visualization with <code>ggplot()</code></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="r-basics" class="level1" data-background-color="#1c4982">
+<h1 data-background-color="#1c4982">R Basics</h1>
+<section id="rstudio-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-workflow">RStudio Workflow</h2>
+<section id="must-know-quarto-shortcuts" class="level3">
+<h3 class="anchored" data-anchor-id="must-know-quarto-shortcuts">Must-know Quarto Shortcuts</h3>
+</section>
+<div class="nonincremental">
+<div class="columns">
+<div class="column">
+<section id="mac" class="level3">
+<h3 class="anchored" data-anchor-id="mac">Mac</h3>
+<ul>
+<li><p><strong>option+command+I</strong>: to create a R chunk</p></li>
+<li><p><strong>command+shift+return</strong>: to run the code in the R chunk</p></li>
+<li><p><strong>command + shift + K</strong>: to render/knit the Quarto file</p></li>
+<li><p><strong>command + shift + C</strong>: to (de-)comment out a line in the Quarto file</p></li>
+</ul>
+</section>
+</div><div class="column">
+<section id="windows" class="level3">
+<h3 class="anchored" data-anchor-id="windows">Windows</h3>
+<ul>
+<li><p><strong>Alt+Ctrl+I</strong> : to create a R chunk</p></li>
+<li><p><strong>Ctrl+Shift+Enter</strong> : to run the code in the R chunk</p></li>
+<li><p><strong>Ctrl + Shift + K</strong>: to knit/render the Quarto file</p></li>
+<li><p><strong>Ctrl + Shift + C</strong>: to (de-)comment out a line in the Quarto file</p></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+</section>
+<section id="rstudio-workflow-1" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-workflow-1">RStudio Workflow</h2>
+<section id="shortcuts-for-rstudio-and-rscript" class="level3">
+<h3 class="anchored" data-anchor-id="shortcuts-for-rstudio-and-rscript">Shortcuts for RStudio and RScript</h3>
+<div class="nonincremental">
+<div class="columns">
+<div class="column">
+<p><strong>Mac</strong></p>
+<ul>
+<li><strong>command + shift + N</strong> opens a new RScript.</li>
+<li><strong>command + return</strong> runs a current line or selected lines.</li>
+<li><strong>command + shift + C</strong> is the shortcut for # (commenting).</li>
+<li><strong>option + - </strong> is the shortcut for <code>&lt;-</code>.</li>
+</ul>
+</div><div class="column">
+<p><strong>Windows</strong></p>
+<ul>
+<li><strong>Ctrl + Shift + N</strong> opens a new RS-cript.</li>
+<li><strong>Ctrl + return</strong> runs a current line or selected lines.</li>
+<li><strong>Ctrl + Shift + C</strong> is the shortcut for # (commenting).</li>
+<li><strong>Alt + - </strong> is the shortcut for <code>&lt;-</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="rstudio-workflow-2" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-workflow-2">RStudio Workflow</h2>
+<section id="shortcuts-in-rstudio-and-rscript" class="level3">
+<h3 class="anchored" data-anchor-id="shortcuts-in-rstudio-and-rscript">Shortcuts in RStudio and RScript</h3>
+<div class="nonincremental">
+<ul>
+<li><p><strong>Home/End</strong> moves the blinking cursor bar to the beginning/End of the line.</p>
+<ul>
+<li><strong>Ctrl</strong> (<strong>command</strong> for Mac Users) <strong>+</strong> <span class="emoji" data-emoji="arrow_left">⬅️</span> and <span class="emoji" data-emoji="arrow_right">➡️</span> works too.</li>
+</ul></li>
+<li><p><strong>Ctrl</strong> (<strong>command</strong> for Mac Users) <strong>+ Z</strong> undoes the previous action.</p></li>
+<li><p><strong>Ctrl</strong> (<strong>command</strong> for Mac Users) <strong>+ Shift + Z</strong> redoes when undo is executed.</p></li>
+<li><p><strong>Ctrl</strong> (<strong>command</strong> for Mac Users) <strong>+ F</strong> is useful when finding a phrase (and replace the phrase) in the RScript.</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="rstudio-workflow-3" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-workflow-3">RStudio Workflow</h2>
+<section id="adding-quotes-in-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="adding-quotes-in-rstudio">Adding Quotes in RStudio</h3>
+<ul>
+<li>When adding the quotation marks to a character,
+<ul>
+<li>Step 1. Double click the character where you want to add the quotation marks</li>
+<li>Step 2. Type the quotation mark only once.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="rstudio-workflow-4" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-workflow-4">RStudio Workflow</h2>
+<section id="computer-shortcuts" class="level3">
+<h3 class="anchored" data-anchor-id="computer-shortcuts">Computer Shortcuts</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Mac</strong></p>
+<ul>
+<li><p><strong>command + Z</strong> undoes the previous action.</p></li>
+<li><p><strong>command + shift + Z</strong> redoes when undo is executed.</p></li>
+<li><p><strong>command + Q</strong> closes the current app.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Windows</strong></p>
+<ul>
+<li><p><strong>Crtl + Z</strong> undoes the previous action.</p></li>
+<li><p><strong>Crtl + Shift + Z</strong> redoes when undo is executed.</p></li>
+<li><p><strong>Alt + F4</strong> closes the current app.</p></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="rstudio-workflow-5" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-workflow-5">RStudio Workflow</h2>
+<section id="cleaning-r-environment-and-console" class="level3">
+<h3 class="anchored" data-anchor-id="cleaning-r-environment-and-console">Cleaning R Environment and Console</h3>
+<div class="nonincremental">
+<ul>
+<li><p><code>rm(OBJECT)</code> removes <code>OBJECT</code>.</p></li>
+<li><p><code>rm(list = ls())</code> removes all the objects from the R environment.</p></li>
+<li><p>You can also click the broom button at the top right corner in the Environment Pane.</p></li>
+<li><p><strong>Ctrl + L</strong> cleans the R console.</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="r-basics-1" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-1">R Basics</h2>
+<section id="values-variables-and-types" class="level3">
+<h3 class="anchored" data-anchor-id="values-variables-and-types">Values, Variables, and Types</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Types</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Data containers</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/r_variable_types.png">
+</p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><strong>Logical</strong>: <code>TRUE</code> or <code>FALSE</code>.</li>
+<li><strong>Numeric</strong>: Numbers with decimals</li>
+<li><strong>Integer</strong>: Integers</li>
+<li><strong>Character</strong>: Text strings</li>
+<li><strong>Factor</strong>: Categorical values.
+<ul>
+<li>Each possible value of a factor is known as a <em>level</em>.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/r_data_types_vdf.png" width="350px">
+</p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><strong>vector</strong>: 1D collection of variables of the <em>same</em> type</li>
+<li><strong>data.frame</strong>: 2D collection of variables of <em>multiple</em> types
+<ul>
+<li>A data.frame is a collection of vectors.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="r-basics-2" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-2">R Basics</h2>
+<section id="functions" class="level3">
+<h3 class="anchored" data-anchor-id="functions">Functions</h3>
+<ul>
+<li><p>A function can take any number and type of input <em>parameters</em> and <strong>return</strong> any number and type of output <em>results</em>.</p></li>
+<li><p>R ships a vast number of built-in functions.</p></li>
+<li><p>R also allows a user to define a new function.</p></li>
+<li><p>We will mostly use built-in functions.</p></li>
+</ul>
+</section>
+</section>
+<section id="r-basics-3" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-3">R Basics</h2>
+<section id="functions-arguments-and-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="functions-arguments-and-parameters">Functions, Arguments, and Parameters</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The function `str_c()`, provided by `tidyverse`, concatenates characters.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">"Data"</span>, <span class="st">"Analytics"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">"Data"</span>, <span class="st">"Analytics"</span>, <span class="at">sep =</span> <span class="st">"!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>We invoke a function by entering its name and a pair of opening and closing parentheses.</p></li>
+<li><p>Much as a cooking recipe can accept ingredients, a function invocation can accept inputs called <strong>arguments</strong>.</p></li>
+<li><p>We pass arguments sequentially inside the parentheses (, separated by commas).</p></li>
+<li><p>A <strong>parameter</strong> is a name given to an expected function argument.</p></li>
+<li><p>A <em>default argument</em> is a fallback value that R passes to a parameter if the function invocation does not explicitly provide one.</p></li>
+</ul>
+</section>
+</section>
+<section id="r-basics-4" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-4">R Basics</h2>
+<section id="r-variable-and-data-types" class="level3">
+<h3 class="anchored" data-anchor-id="r-variable-and-data-types">R Variable and Data Types</h3>
+<ul>
+<li>Question 2 in <a href="https://bcdanl.github.io/200/danl-cw/danl-200-cw-05.html">Classwork 5</a></li>
+</ul>
+</section>
+</section>
+<section id="a-little-bit-of-math-for-log" class="level2">
+<h2 class="anchored" data-anchor-id="a-little-bit-of-math-for-log">A Little Bit of Math for <code>log()</code></h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">log functions</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">log examples</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<ul>
+<li>The logarithm function, <span class="math inline">\(y = \log_{b}\,(\,x\,)\)</span>, looks like ….</li>
+</ul>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/logarithm_plots.png">
+</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<ul>
+<li><p><span class="math inline">\(\log_{10}\,(\,100\,)\)</span>: the base <span class="math inline">\(10\)</span> logarithm of <span class="math inline">\(100\)</span> is <span class="math inline">\(2\)</span>, because <span class="math inline">\(10^{2} = 100\)</span></p></li>
+<li><p><span class="math inline">\(\log_{e}\,(\,x\,)\)</span>: the base <span class="math inline">\(e\)</span> logarithm is called the natural log, where <span class="math inline">\(e = 2.718\cdots\)</span> is the mathematical constant, the Euler’s number.</p></li>
+<li><p><span class="math inline">\(\log\,(\,x\,)\)</span> or <span class="math inline">\(\ln\,(\,x\,)\)</span>: the natural log of <span class="math inline">\(x\)</span> .</p></li>
+<li><p><span class="math inline">\(\log_{e}\,(\,7.389\cdots\,)\)</span>: the natural log of <span class="math inline">\(7.389\cdots\)</span> is <span class="math inline">\(2\)</span>, because <span class="math inline">\(e^{2} = 7.389\cdots\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="math-functions" class="level2">
+<h2 class="anchored" data-anchor-id="math-functions">Math functions</h2>
+<ul>
+<li>R has many built-in mathematical functions that facilitate calculations and data analysis.</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="fu">abs</span>(<span class="sc">-</span><span class="dv">3</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">17</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">3</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">3</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="fu">exp</span>(<span class="dv">3</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">log</span>(<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><code>abs(x)</code>: the absolute value <span class="math inline">\(|x|\)</span></li>
+<li><code>sqrt(x)</code>: the square root <span class="math inline">\(\sqrt{x}\)</span></li>
+<li><code>exp(x)</code>: the exponential value <span class="math inline">\(e^x\)</span>, where <span class="math inline">\(e = 2.718...\)</span></li>
+<li><code>log(x)</code>: the natural logarithm <span class="math inline">\(\log_{e}(x)\)</span>, or simply <span class="math inline">\(\log(x)\)</span></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="r-basics-5" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-5">R Basics</h2>
+<section id="vectorized-operations" class="level3">
+<h3 class="anchored" data-anchor-id="vectorized-operations">Vectorized Operations</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>a <span class="sc">-</span> b</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>a <span class="sc">*</span> b</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>a <span class="sc">/</span> b</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Vectorized operations mean applying a function to every element of a vector without explicitly writing a loop.
+<ul>
+<li>This is possible because most functions in R are vectorized, meaning they are designed to operate on vectors element-wise.</li>
+<li>Vectorized operations are a powerful feature of R, enabling efficient and concise code for data analysis and manipulation.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="r-basics-6" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-6">R Basics</h2>
+<section id="more-math-functions" class="level3">
+<h3 class="anchored" data-anchor-id="more-math-functions">More Math Functions</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="nonincremental">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Sum</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Mean</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Standard Deviation</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<ul>
+<li><code>sum()</code> calculates the sum of all numbers in a vector.</li>
+</ul>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<ul>
+<li><code>mean()</code> calculates the arithmetic mean of the values in a vector. <span class="math display">\[
+\overline{x} = \frac{x_{1} + x_{2} + \cdots + x_{N}}{N}
+\]</span></li>
+</ul>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<ul>
+<li><code>sd()</code> calculates the standard deviation (SD) of the values in a vector.
+<ul>
+<li>SD measures the amount of variation or dispersion of a set of values. <span class="math display">\[
+\overline{s} = \sqrt{ \left( \frac{(x_{1}-\overline{x})^{2} + (x_{2}-\overline{x})^{2} + \cdots + (x_{N}-\overline{x})^{2}}{N-1}\;\, \right) }
+\]</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="r-basics-7" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-7">R Basics</h2>
+<section id="null-and-na-values" class="level3">
+<h3 class="anchored" data-anchor-id="null-and-na-values"><code>NULL</code> and <code>NA</code> values</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">c</span>(), <span class="dv">1</span>, <span class="cn">NULL</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"a"</span>, <span class="cn">NA</span>, <span class="st">"c"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>NULL</code> is just an alias for <code>c()</code>, the empty vector.</li>
+<li><code>NA</code> indicates missing or unavailable data.</li>
+</ul>
+</section>
+</section>
+<section id="r-basics-8" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-8">R Basics</h2>
+<section id="null-and-na-values-1" class="level3">
+<h3 class="anchored" data-anchor-id="null-and-na-values-1"><code>NULL</code> and <code>NA</code> values</h3>
+<ul>
+<li><code>is.na()</code> is to check whether expression evaluates to <code>NA</code>.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="cn">NA</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="fu">c</span>())</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="st">"A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Q</strong>. Why does <code>"A" == NA</code> evaluate to <code>NA</code>?</li>
+</ul>
+</section>
+</section>
+<section id="r-basics-9" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-9">R Basics</h2>
+<section id="casting-variables" class="level3">
+<h3 class="anchored" data-anchor-id="casting-variables">Casting Variables</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>orig_number <span class="ot">&lt;-</span> <span class="fl">4.39898498</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(orig_number)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mod_number <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(orig_number)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mod_number)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE converts to 1; </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># FALSE does to 0.</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li><p>Sometimes we need to explicitly cast a value from one type to another.</p>
+<ul>
+<li>We can do this using built-in functions like <code>as.character()</code>, <code>as.integer()</code>, <code>as.numeric()</code>, and <code>as.factor()</code>.</li>
+<li>If we try these, R will do its best to interpret the input and convert it to the output type we’d like and, if they can’t, the code will throw <code>NA</code>.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="r-basics-10" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-10">R Basics</h2>
+<section id="absolute-vs.-relative-pathnames" class="level3">
+<h3 class="anchored" data-anchor-id="absolute-vs.-relative-pathnames">Absolute vs.&nbsp;Relative Pathnames</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Absolute Path</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Relative Path</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<ul>
+<li><p>Complete path from the root directory to the target file or directory.</p></li>
+<li><p>Independent of the current working directory.</p></li>
+<li><p>Example (Mac): <code>/Users/user/documents/car_data.csv</code></p></li>
+<li><p>Example (Windows): <code>C:\\Users\\user\\Documents\\car_data.csv</code></p></li>
+</ul>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<ul>
+<li>Path relative to the current working directory.</li>
+<li>Changes based on the current directory. <!-- - Uses '.' for current directory and '..' for parent directory. --></li>
+<li>Example: If the current directory is <code>/Users/user</code>, the relative path to <code>car_data.csv</code> would be <code>documents/car_data.csv</code></li>
+<li>For the website R project, we can use a relative path.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="r-basics-11" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-11">R Basics</h2>
+<section id="working-with-data-from-files" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-data-from-files">Working with Data from Files</h3>
+<div class="nonincremental">
+<ul>
+<li>We use the <code>read_csv()</code> function to read a comma-separated values (CSV) file.</li>
+</ul>
+<ol type="1">
+<li><p>Download the CSV file, <code>car_data.csv</code> from the Class Files module in our Brightspace.</p></li>
+<li><p>Find the path name for the file, <code>car_data.csv</code> from the File Explorer / Finder.</p></li>
+<li><p>Provide the path name for the file, <code>car_data.csv</code>, to the <code>read_csv()</code> function.</p></li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>uciCar <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'HERE WE PROVIDE A PATHNAME FOR car_data.csv'</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(uciCar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>View()</code>/<code>view()</code> displays the data in a simple spreadsheet-like grid viewer.
+<ul>
+<li>We can click the data.frame object, displayed in the Environment Pane.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="r-basics-12" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-12">R Basics</h2>
+<section id="examining-data.frames" class="level3">
+<h3 class="anchored" data-anchor-id="examining-data.frames">Examining data.frames</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(uciCar)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(uciCar)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(uciCar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(uciCar)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(uciCar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li><code>dim()</code> shows how many rows and columns are in the data for <code>data.frame</code>.</li>
+<li><code>nrow()</code> and <code>ncol()</code> shows the number of rows and columns for <code>data.frame</code> respectively.</li>
+<li><code>skimr::skim()</code> provides a more detailed summary.
+<ul>
+<li><code>skimr</code> is the R package that provides the function <code>skim()</code>.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="r-basics-13" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-13">R Basics</h2>
+<section id="reading-data.frames-from-an-url" class="level3">
+<h3 class="anchored" data-anchor-id="reading-data.frames-from-an-url">Reading data.frames from an URL</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tvshows <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">'https://bcdanl.github.io/data/tvshows.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>We can import the CSV file from the web.</li>
+</ul>
+</section>
+</section>
+<section id="r-basics-14" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-14">R Basics</h2>
+<section id="tidy-data.frame-variables-observations-and-values" class="level3">
+<h3 class="anchored" data-anchor-id="tidy-data.frame-variables-observations-and-values">Tidy <code>data.frame</code>: Variables, Observations, and Values</h3>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/tidy-1.png">
+</p>
+<ul>
+<li><p>There are three rules which make a <code>data.frame</code> tidy:</p>
+<ol type="1">
+<li>Each <strong>variable</strong> must have its own <em>column</em>.</li>
+<li>Each <strong>observation</strong> must have its own <em>row</em>.</li>
+<li>Each <strong>value</strong> must have its own <em>cell</em>.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="r-basics-15" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-15">R Basics</h2>
+<section id="r-variable-and-data-types-1" class="level3">
+<h3 class="anchored" data-anchor-id="r-variable-and-data-types-1">R Variable and Data Types</h3>
+<ul>
+<li>Questions 3-5 in <a href="https://bcdanl.github.io/200/danl-cw/danl-200-cw-05.html">Classwork 5</a></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="data-visualization-with-ggplot" class="level1" data-background-color="#1c4982">
+<h1 data-background-color="#1c4982">Data Visualization with <code>ggplot()</code></h1>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/data-science-explore.png">
+</p>
+<ul>
+<li><p>In data visualization, you’ll turn data into plots.</p></li>
+<li><p>In data transformation, you’ll learn the key verbs that allow you to select important variables, filter out key observations, create new variables, and compute summaries.</p></li>
+<li><p>In <strong>exploratory data analysis</strong>, you’ll combine summary statistics (<code>skim()</code>), visualization, and transformation with your curiosity and skepticism to ask and answer interesting questions about data.</p></li>
+</ul>
+</section>
+<section id="data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization">Data visualization</h2>
+<blockquote class="blockquote">
+<p><em>“The simple graph has brought more information to the data analyst’s mind than any other device.” John Tukey</em></p>
+</blockquote>
+<ul>
+<li><p>Data visualization is the creation and study of the visual representation of data</p></li>
+<li><p>Many tools for visualizing data – R is one of them</p></li>
+<li><p>Many approaches/systems within R for making data visualizations – <strong>ggplot2</strong> is one of them, and that’s what we’re going to use</p></li>
+</ul>
+</section>
+<section id="grammar-of-graphics" class="level2">
+<h2 class="anchored" data-anchor-id="grammar-of-graphics">Grammar of Graphics</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>A grammar of graphics is a tool that enables us to concisely describe the components of a graphic</p>
+</div><div class="column" style="width:60%;">
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/grammar-of-graphics.png">
+</p>
+</div>
+</div>
+</section>
+<section id="data-visualization---first-steps" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization---first-steps">Data Visualization - First Steps</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mpg</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>?mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>The <code>mpg</code> data frame, provided by <code>ggplot2</code>, contains observations collected by the US Environmental Protection Agency on 38 models of car.</p></li>
+<li><p>Q. Do cars with big engines use more fuel than cars with small engines?</p>
+<ul>
+<li><code>displ</code>: a car’s engine size, in liters.</li>
+<li><code>hwy</code>: a car’s fuel efficiency on the highway, in miles per gallon (mpg).</li>
+</ul></li>
+<li><p>What does the relationship between engine size and fuel efficiency look like?</p></li>
+</ul>
+</section>
+<section id="data-visualization---first-steps-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization---first-steps-1">Data Visualization - First Steps</h2>
+<section id="creating-a-ggplot" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-ggplot">Creating a <code>ggplot</code></h3>
+<div class="cell" data-output-location="column-fragment" data-fig.asp="0.85">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> hwy) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="danl-200-lec-07-2024-0213_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>To plot <code>mpg</code>, run the above code to put <code>displ</code> on the <code>x</code>-axis and <code>hwy</code> on the <code>y</code>-axis.</li>
+</ul>
+</section>
+</section>
+<section id="data-visualization---first-steps-2" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization---first-steps-2">Data Visualization - First Steps</h2>
+<section id="graphing-template" class="level3">
+<h3 class="anchored" data-anchor-id="graphing-template">Graphing Template</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>To make a ggplot plot, replace the bracketed sections in the code below with a <code>data.frame</code>, a <code>geom</code> function, or a collection of mappings such as <code>x = VAR_1</code> and <code>y = VAR_2</code>.</li>
+</ul>
+</section>
+</section>
+<section id="r-basics-16" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-16">R Basics</h2>
+<section id="r-variable-and-data-types-2" class="level3">
+<h3 class="anchored" data-anchor-id="r-variable-and-data-types-2">R Variable and Data Types</h3>
+<ul>
+<li>Question 1 in <a href="https://bcdanl.github.io/200/danl-cw/danl-200-cw-06.html">Classwork 6</a></li>
+</ul>
+</section>
+</section>
+<section id="aesthetic-mappings" class="level2" data-background-color="#1c4982">
+<h2 data-background-color="#1c4982" class="anchored" data-anchor-id="aesthetic-mappings">Aesthetic Mappings</h2>
+</section>
+<section id="aesthetic-mappings-1" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetic-mappings-1">Aesthetic Mappings</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/r4s_330_1.png" width="600px">
+</p>
+<ul>
+<li><p>In the plot above, one group of points (highlighted in red) seems to fall outside of the linear trend.</p>
+<ul>
+<li>How can you explain these cars? Are those hybrids?</li>
+</ul></li>
+</ul>
+</section>
+<section id="aesthetic-mappings-2" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetic-mappings-2">Aesthetic Mappings</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/r4s_330_2.png" width="600px">
+</p>
+<ul>
+<li><p>An aesthetic is a visual property (e.g., <code>size</code>, <code>shape</code>, <code>color</code>) of the objects (e.g., <code>class</code>) in your plot.</p></li>
+<li><p>You can display a point in different ways by changing the values of its aesthetic properties.</p></li>
+</ul>
+</section>
+<section id="aesthetic-mappings-3" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetic-mappings-3">Aesthetic Mappings</h2>
+<section id="adding-a-color-to-the-plot" class="level3">
+<h3 class="anchored" data-anchor-id="adding-a-color-to-the-plot">Adding a <code>color</code> to the plot</h3>
+<div class="cell" data-output-location="column-fragment" data-fig.asp="0.85">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> hwy, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> class) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="danl-200-lec-07-2024-0213_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="aesthetic-mappings-4" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetic-mappings-4">Aesthetic Mappings</h2>
+<section id="adding-a-shape-to-the-plot" class="level3">
+<h3 class="anchored" data-anchor-id="adding-a-shape-to-the-plot">Adding a <code>shape</code> to the plot</h3>
+<div class="cell" data-output-location="column-fragment" data-fig.asp="0.85">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> hwy, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">shape =</span> class) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The shape palette can deal with a maximum of 6 discrete values because more
+than 6 becomes difficult to discriminate
+ℹ you have requested 7 values. Consider specifying shapes manually if you need
+  that many have them.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 62 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="danl-200-lec-07-2024-0213_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="aesthetic-mappings-5" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetic-mappings-5">Aesthetic Mappings</h2>
+<section id="adding-a-size-to-the-plot" class="level3">
+<h3 class="anchored" data-anchor-id="adding-a-size-to-the-plot">Adding a <code>size</code> to the plot</h3>
+<div class="cell" data-output-location="column-fragment" data-fig.asp="0.85">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> hwy, </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">size =</span> class) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using size for a discrete variable is not advised.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="danl-200-lec-07-2024-0213_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="aesthetic-mappings-6" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetic-mappings-6">Aesthetic Mappings</h2>
+<section id="adding-an-alpha-transparency-to-the-plot" class="level3">
+<h3 class="anchored" data-anchor-id="adding-an-alpha-transparency-to-the-plot">Adding an <code>alpha</code> (transparency) to the plot</h3>
+<div class="cell" data-output-location="column-fragment" data-fig.asp="0.85">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> hwy, </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha =</span> class) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using alpha for a discrete variable is not advised.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="danl-200-lec-07-2024-0213_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="aesthetic-mappings-7" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetic-mappings-7">Aesthetic Mappings</h2>
+<section id="overplotting-problem" class="level3">
+<h3 class="anchored" data-anchor-id="overplotting-problem">Overplotting problem</h3>
+<ul>
+<li><p>Many points overlap each other.</p>
+<ul>
+<li>This problem is known as <strong>overplotting</strong>.</li>
+</ul></li>
+<li><p>When points overlap, it’s hard to know how many data points are at a particular location.</p></li>
+<li><p>Overplotting can obscure patterns and outliers, leading to potentially misleading conclusions.</p></li>
+<li><p>We can set a transparency level (<code>alpha</code>) between 0 (full transparency) and 1 (no transparency).</p></li>
+</ul>
+</section>
+</section>
+<section id="aesthetic-mappings-8" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetic-mappings-8">Aesthetic Mappings</h2>
+<section id="overplotting-and-alpha" class="level3">
+<h3 class="anchored" data-anchor-id="overplotting-and-alpha">Overplotting and <code>alpha</code></h3>
+<div class="cell" data-output-location="column-fragment" data-fig.asp="0.85">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> hwy),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> .<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="danl-200-lec-07-2024-0213_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="aesthetic-mappings-9" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetic-mappings-9">Aesthetic Mappings</h2>
+<section id="specifying-a-color-to-the-plot" class="level3">
+<h3 class="anchored" data-anchor-id="specifying-a-color-to-the-plot">Specifying a <code>color</code> to the plot</h3>
+<div class="cell" data-output-location="column-fragment" data-fig.asp="0.85">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> hwy), </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="danl-200-lec-07-2024-0213_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="aesthetic-mappings-10" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetic-mappings-10">Aesthetic Mappings</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/r4s_330_3.png" width="600px">
+</p>
+<ul>
+<li>To set an aesthetic manually, set the aesthetic by name as an argument of your <code>geom_</code> function; i.e.&nbsp;it goes outside of <code>aes()</code>.
+<ul>
+<li>You’ll need to pick a level that makes sense for that aesthetic:
+<ul>
+<li>The name of a <code>color</code> as a <em>character string</em>.</li>
+<li>The <code>size</code> of a point in <em>mm</em>.</li>
+<li>The <code>shape</code> of a point as a <em>number</em>, as shown below.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="aesthetic-mappings-11" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetic-mappings-11">Aesthetic Mappings</h2>
+<section id="specifying-a-color-to-the-plot-1" class="level3">
+<h3 class="anchored" data-anchor-id="specifying-a-color-to-the-plot-1">Specifying a <code>color</code> to the plot?</h3>
+<div class="cell" data-output-location="column-fragment" data-fig.asp="0.85">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>( <span class="at">mapping =</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">y =</span> hwy, </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">color =</span> <span class="st">"blue"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="danl-200-lec-07-2024-0213_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="common-problems-in-ggplot" class="level2">
+<h2 class="anchored" data-anchor-id="common-problems-in-ggplot">Common problems in <code>ggplot()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a> <span class="sc">+</span> <span class="fu">geom_point</span>( <span class="at">mapping =</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> hwy) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>One common problem when creating <code>ggplot2</code> graphics is to put the <code>+</code> in the wrong place.</li>
+</ul>
+</section>
+<section id="r-basics-17" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-17">R Basics</h2>
+<section id="r-variable-and-data-types-3" class="level3">
+<h3 class="anchored" data-anchor-id="r-variable-and-data-types-3">R Variable and Data Types</h3>
+<ul>
+<li>Question 2 in <a href="https://bcdanl.github.io/200/danl-cw/danl-200-cw-06.html">Classwork 6</a></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="facets" class="level1" data-background-color="#1c4982">
+<h1 data-background-color="#1c4982">Facets</h1>
+<section id="facets-1" class="level2">
+<h2 class="anchored" data-anchor-id="facets-1">Facets</h2>
+<ul>
+<li>One way to add a variable, particularly useful for categorical variables, is to use <strong>facets</strong> to split our plot into facets, subplots that each display one subset of the data.</li>
+</ul>
+</section>
+<section id="facets-2" class="level2">
+<h2 class="anchored" data-anchor-id="facets-2">Facets</h2>
+<div class="cell" data-output-location="column-fragment" data-fig.asp="0.85">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> hwy), </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( . <span class="sc">~</span> class, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="danl-200-lec-07-2024-0213_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>To facet our plot by a <em>single variable</em>, use <code>facet_wrap()</code>.</li>
+</ul>
+</section>
+<section id="facets-3" class="level2">
+<h2 class="anchored" data-anchor-id="facets-3">Facets</h2>
+<ul>
+<li>To facet our plot on the combination of <em>two variables</em>, add <code>facet_grid( VAR_ROW ~ VAR_COL )</code> to our plot call.</li>
+</ul>
+</section>
+<section id="facets-4" class="level2">
+<h2 class="anchored" data-anchor-id="facets-4">Facets</h2>
+<ul>
+<li>The first argument of <code>facet_grid()</code> is also a formula.
+<ul>
+<li>This time the formula should contain two variable names separated by a <code>~</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="facets-5" class="level2">
+<h2 class="anchored" data-anchor-id="facets-5">Facets</h2>
+<div class="cell" data-output-location="column-fragment" data-fig.asp="0.85">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> hwy),</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(drv <span class="sc">~</span> cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="danl-200-lec-07-2024-0213_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="facets-6" class="level2">
+<h2 class="anchored" data-anchor-id="facets-6">Facets</h2>
+<ul>
+<li>Option <code>scales</code> in <code>facet_*()</code> is whether scales is
+<ul>
+<li>fixed (<code>"fixed"</code>, the default),</li>
+<li>free in one dimension (<code>"free_x"</code>, <code>"free_y"</code>), or</li>
+<li>free in two dimensions (<code>"free"</code>).</li>
+</ul></li>
+</ul>
+</section>
+<section id="facets-7" class="level2">
+<h2 class="anchored" data-anchor-id="facets-7">Facets</h2>
+<div class="cell" data-output-location="column-fragment" data-fig.asp="0.85">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x =</span> displ, </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> hwy),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(drv <span class="sc">~</span> cyl, </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">scales =</span> <span class="st">"free_x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="danl-200-lec-07-2024-0213_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="r-basics-18" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-18">R Basics</h2>
+<section id="r-variable-and-data-types-4" class="level3">
+<h3 class="anchored" data-anchor-id="r-variable-and-data-types-4">R Variable and Data Types</h3>
+<ul>
+<li>Question 3 in <a href="https://bcdanl.github.io/200/danl-cw/danl-200-cw-06.html">Classwork 6</a></li>
+</ul>
+<script>
+document.addEventListener('wheel', function(event) {
+    if (event.deltaY > 0) {
+        Reveal.next(); // Scroll down to go to the next slide
+    } else {
+        Reveal.prev(); // Scroll up to go to the previous slide
+    }
+}, false);
+
+window.onload = function() {
+    document.querySelectorAll('a').forEach(function(link) {
+        link.setAttribute('target', '_blank');
+    });
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Query all anchor tags within code blocks (adjust the selector as needed)
+  document.querySelectorAll('pre code a').forEach(function(element) {
+    element.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent the default anchor action
+      e.stopPropagation(); // Stop the event from bubbling up
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Target all span elements within code blocks that have IDs starting with 'cb'
+    document.querySelectorAll('pre code span[id^="cb"]').forEach(function(element) {
+        element.addEventListener('mouseenter', function() {
+            // Apply yellow background color to the hovered span element
+            this.style.backgroundColor = '#FFFF99';
+        });
+        element.addEventListener('mouseleave', function() {
+            // Revert the background color when the mouse leaves the span element
+            this.style.backgroundColor = '';
+        });
+    });
+});
+
+
+</script>
+
+
+</section>
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><span data-line-height="0.2"><font size="2">powered with github, quarto, and rstudio</font></span><br><span style="display:block; margin:-5px;"></span> <span data-line-height="0.7"><font size="2">byeong-hak choe, 2024</font></span></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
