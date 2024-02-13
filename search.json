@@ -417,7 +417,7 @@
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#a-little-bit-of-math-for-log",
     "title": "Lecture 7",
     "section": "A Little Bit of Math for log()",
-    "text": "A Little Bit of Math for log()\n\nlog functionslog examples\n\n\n\nThe logarithm function, \\(y = \\log_{b}\\,(\\,x\\,)\\), looks like ….\n\n\n\n\n\n\n\n\\(\\log_{10}\\,(\\,100\\,)\\): the base \\(10\\) logarithm of \\(100\\) is \\(2\\), because \\(10^{2} = 100\\)\n\\(\\log_{e}\\,(\\,x\\,)\\): the base \\(e\\) logarithm is called the natural log, where \\(e = 2.718\\cdots\\) is the mathematical constant, the Euler’s number.\n\\(\\log\\,(\\,x\\,)\\) or \\(\\ln\\,(\\,x\\,)\\): the natural log of \\(x\\) .\n\\(\\log_{e}\\,(\\,7.389\\cdots\\,)\\): the natural log of \\(7.389\\cdots\\) is \\(2\\), because \\(e^{2} = 7.389\\cdots\\)."
+    "text": "A Little Bit of Math for log()\n\nlog functionslog examples\n\n\n\n\nThe logarithm function, \\(y = \\log_{b}\\,(\\,x\\,)\\), looks like ….\n\n\n\n\n\n\n\n\n\\(\\log_{10}\\,(\\,100\\,)\\): the base \\(10\\) logarithm of \\(100\\) is \\(2\\), because \\(10^{2} = 100\\)\n\\(\\log_{e}\\,(\\,x\\,)\\): the base \\(e\\) logarithm is called the natural log, where \\(e = 2.718\\cdots\\) is the mathematical constant, the Euler’s number.\n\\(\\log\\,(\\,x\\,)\\) or \\(\\ln\\,(\\,x\\,)\\): the natural log of \\(x\\) .\n\\(\\log_{e}\\,(\\,7.389\\cdots\\,)\\): the natural log of \\(7.389\\cdots\\) is \\(2\\), because \\(e^{2} = 7.389\\cdots\\)."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#math-functions",

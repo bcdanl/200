@@ -365,8 +365,10 @@ str_c("Data", "Analytics", sep = "!")
 ::: {.panel-tabset}
 
 ## log functions
-
+:::{.nonincremental}
 - The logarithm function, $y = \log_{b}\,(\,x\,)$, looks like ....
+
+:::
 
 <p align="center">
   <img src="https://bcdanl.github.io/lec_figs/logarithm_plots.png">
