@@ -210,6 +210,7 @@ theme_set(theme_fivethirtyeight()+
 
 ## RStudio Workflow
 ### Computer Shortcuts
+::: {.nonincremental}
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -234,7 +235,7 @@ theme_set(theme_fivethirtyeight()+
 
 :::
 ::::
-
+:::
 
 
 
@@ -260,6 +261,7 @@ theme_set(theme_fivethirtyeight()+
 ## R Basics
 ###  Values, Variables, and Types
 
+::: {.nonincremental}
 ::: {.panel-tabset}
 
 ## Types
@@ -293,7 +295,7 @@ theme_set(theme_fivethirtyeight()+
 
 
 <p align="center">
-  <img src="https://bcdanl.github.io/lec_figs/r_data_types_vdf.png" width="350px">
+  <img src="https://bcdanl.github.io/lec_figs/r_data_types_vdf.png" width="300px">
 </p>
 
 :::
@@ -310,6 +312,7 @@ theme_set(theme_fivethirtyeight()+
 
 :::
 
+:::
 
 ## R Basics
 ### Functions
@@ -338,7 +341,7 @@ str_c("Data", "Analytics", sep = "!")
 
 - We invoke a function by entering its name and a pair of opening and closing parentheses. 
 
-- Much as a cooking recipe can accept ingredients, a function invocation can accept inputs called **arguments**. 
+- A function invocation can accept inputs called **arguments**. 
 
 - We pass arguments sequentially inside the parentheses (, separated by commas).
 
@@ -384,9 +387,10 @@ str_c("Data", "Analytics", sep = "!")
 
 
 ## Math functions
-
+::: {.nonincremental}
 - R has many built-in mathematical functions that facilitate calculations and data analysis.
 
+:::
 
 :::: {.columns}
 
@@ -468,7 +472,7 @@ $$
 - `sd()` calculates the standard deviation (SD) of the values in a vector. 
   - SD measures the amount of variation or dispersion of a set of values.
 $$
-\overline{s} = \sqrt{ \left( \frac{(x_{1}-\overline{x})^{2} + (x_{2}-\overline{x})^{2} + \cdots + (x_{N}-\overline{x})^{2}}{N-1}\;\, \right) }
+\overline{s} = \sqrt{  \frac{(x_{1}-\overline{x})^{2} + (x_{2}-\overline{x})^{2} + \cdots + (x_{N}-\overline{x})^{2}}{N-1}\;\,  }
 $$
 
 :::
@@ -490,8 +494,10 @@ c("a", NA, "c")
 
 ## R Basics
 ### `NULL` and `NA` values
-
+::: {.nonincremental}
 - `is.na()` is to check whether expression evaluates to `NA`.
+
+:::
 
 ```{.r}
 is.na(NA)
@@ -546,8 +552,8 @@ as.numeric(FALSE)
 - Complete path from the root directory to the target file or directory.
 - Independent of the current working directory.
 
-- Example (Mac): `/Users/user/documents/car_data.csv`
-- Example (Windows): `C:\\Users\\user\\Documents\\car_data.csv`
+- *Example (Mac)*: `/Users/user/documents/car_data.csv`
+- *Example (Windows)*: `C:\\Users\\user\\Documents\\car_data.csv`
 
 
 ## Relative Path
@@ -555,8 +561,9 @@ as.numeric(FALSE)
 - Path relative to the current working directory.
 - Changes based on the current directory.
 <!-- - Uses '.' for current directory and '..' for parent directory. -->
-- Example: If the current directory is `/Users/user`, the relative path to `car_data.csv` would be `documents/car_data.csv`
-- For the website R project, we can use a relative path.
+- *Example (Mac)*: If the current directory is `/Users/user`, the relative path to `car_data.csv` would be `documents/car_data.csv`
+- *Example (Windows)*: If the current directory is `C:\\Users\\user`, the relative path to `car_data.csv` would be `Documents\\car_data.csv`
+- For the website R project, we can use a **relative path**.
 
 :::
 
@@ -580,7 +587,6 @@ View(uciCar)
 ```
 
 - `View()`/`view()` displays the data in a simple spreadsheet-like grid viewer.
-  - We can click the data.frame object, displayed in the Environment Pane.
 
 :::
 
@@ -689,7 +695,7 @@ tvshows <- read_csv(
 :::: {.columns}
 ::: {.column width="40%"}
 
-A grammar of graphics is a tool that enables us to concisely describe the components of a graphic
+A **grammar of graphics** is a tool that enables us to concisely describe the components of a graphic
 :::
 
 ::: {.column width="60%"}

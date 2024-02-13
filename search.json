@@ -353,8 +353,8 @@
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#announcement",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#announcement",
     "title": "Lecture 7",
-    "section": "",
-    "text": "DANL Tutoring Schedule, Spring 2024\n\n\n\n\nLiza Mitchell\n\nWednesday 9:00 AM – 10:00 AM\nFriday 8:00 AM – 9:00 AM\n\nNada Trabelsi\n\nTuesday 12:30 PM – 1:30 PM\nThursday 12:30 PM – 1:30 PM\n\n\n\n\nDaniel Noone\n\nTuesday 5:00 PM - 6:00 PM\nThursday 5:00 PM - 6:00 PM\n\nDominic Rodriguez-Donohue\n\nTuesday 11:00 AM – 12:15 PM\nThursday 11:00 AM – 12:15 PM\n\n\n\n\n\n\nLiza Mitchell’s session on this Friday is cancelled."
+    "section": "Announcement",
+    "text": "Announcement\n\n\nDANL Tutoring Schedule, Spring 2024\n\n\n\n\nLiza Mitchell\n\nWednesday 9:00 AM – 10:00 AM\nFriday 8:00 AM – 9:00 AM\n\nNada Trabelsi\n\nTuesday 12:30 PM – 1:30 PM\nThursday 12:30 PM – 1:30 PM\n\n\n\n\nDaniel Noone\n\nTuesday 5:00 PM - 6:00 PM\nThursday 5:00 PM - 6:00 PM\n\nDominic Rodriguez-Donohue\n\nTuesday 11:00 AM – 12:15 PM\nThursday 11:00 AM – 12:15 PM\n\n\n\n\n\n\nLiza Mitchell’s session on this Friday is cancelled."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#learning-objectives",
@@ -368,49 +368,49 @@
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#rstudio-workflow",
     "title": "Lecture 7",
     "section": "RStudio Workflow",
-    "text": "RStudio Workflow\n\nMust-know Quarto Shortcuts\n\n\n\n\n\nMac\n\noption+command+I: to create a R chunk\ncommand+shift+return: to run the code in the R chunk\ncommand + shift + K: to render/knit the Quarto file\ncommand + shift + C: to (de-)comment out a line in the Quarto file\n\n\n\n\nWindows\n\nAlt+Ctrl+I : to create a R chunk\nCtrl+Shift+Enter : to run the code in the R chunk\nCtrl + Shift + K: to knit/render the Quarto file\nCtrl + Shift + C: to (de-)comment out a line in the Quarto file"
+    "text": "RStudio Workflow\nMust-know Quarto Shortcuts\n\n\n\nMac\n\noption+command+I: to create a R chunk\ncommand+shift+return: to run the code in the R chunk\ncommand + shift + K: to render/knit the Quarto file\ncommand + shift + C: to (de-)comment out a line in the Quarto file\n\n\nWindows\n\nAlt+Ctrl+I : to create a R chunk\nCtrl+Shift+Enter : to run the code in the R chunk\nCtrl + Shift + K: to knit/render the Quarto file\nCtrl + Shift + C: to (de-)comment out a line in the Quarto file"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#rstudio-workflow-1",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#rstudio-workflow-1",
     "title": "Lecture 7",
     "section": "RStudio Workflow",
-    "text": "RStudio Workflow\n\nShortcuts for RStudio and RScript\n\n\n\nMac\n\ncommand + shift + N opens a new RScript.\ncommand + return runs a current line or selected lines.\ncommand + shift + C is the shortcut for # (commenting).\noption + -  is the shortcut for &lt;-.\n\n\nWindows\n\nCtrl + Shift + N opens a new RS-cript.\nCtrl + return runs a current line or selected lines.\nCtrl + Shift + C is the shortcut for # (commenting).\nAlt + -  is the shortcut for &lt;-."
+    "text": "RStudio Workflow\nShortcuts for RStudio and RScript\n\n\n\nMac\n\ncommand + shift + N opens a new RScript.\ncommand + return runs a current line or selected lines.\ncommand + shift + C is the shortcut for # (commenting).\noption + -  is the shortcut for &lt;-.\n\n\nWindows\n\nCtrl + Shift + N opens a new RS-cript.\nCtrl + return runs a current line or selected lines.\nCtrl + Shift + C is the shortcut for # (commenting).\nAlt + -  is the shortcut for &lt;-."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#rstudio-workflow-2",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#rstudio-workflow-2",
     "title": "Lecture 7",
     "section": "RStudio Workflow",
-    "text": "RStudio Workflow\n\nShortcuts in RStudio and RScript\n\n\nHome/End moves the blinking cursor bar to the beginning/End of the line.\n\nCtrl (command for Mac Users) + ⬅️ and ➡️ works too.\n\nCtrl (command for Mac Users) + Z undoes the previous action.\nCtrl (command for Mac Users) + Shift + Z redoes when undo is executed.\nCtrl (command for Mac Users) + F is useful when finding a phrase (and replace the phrase) in the RScript."
+    "text": "RStudio Workflow\nShortcuts in RStudio and RScript\n\n\nHome/End moves the blinking cursor bar to the beginning/End of the line.\n\nCtrl (command for Mac Users) + ⬅️ and ➡️ works too.\n\nCtrl (command for Mac Users) + Z undoes the previous action.\nCtrl (command for Mac Users) + Shift + Z redoes when undo is executed.\nCtrl (command for Mac Users) + F is useful when finding a phrase (and replace the phrase) in the RScript."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-1",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-1",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nValues, Variables, and Types\n\nTypesData containers\n\n\n\n\n\n\n\n\n\nLogical: TRUE or FALSE.\nNumeric: Numbers with decimals\nInteger: Integers\nCharacter: Text strings\nFactor: Categorical values.\n\nEach possible value of a factor is known as a level.\n\n\n\n\n\n\n\n\n\n\n\n\n\nvector: 1D collection of variables of the same type\ndata.frame: 2D collection of variables of multiple types\n\nA data.frame is a collection of vectors."
+    "text": "R Basics\nValues, Variables, and Types\n\n\nTypesData containers\n\n\n\n\n\n\n\n\n\nLogical: TRUE or FALSE.\nNumeric: Numbers with decimals\nInteger: Integers\nCharacter: Text strings\nFactor: Categorical values.\n\nEach possible value of a factor is known as a level.\n\n\n\n\n\n\n\n\n\n\n\n\n\nvector: 1D collection of variables of the same type\ndata.frame: 2D collection of variables of multiple types\n\nA data.frame is a collection of vectors."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-2",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-2",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nFunctions\n\nA function can take any number and type of input parameters and return any number and type of output results.\nR ships a vast number of built-in functions.\nR also allows a user to define a new function.\nWe will mostly use built-in functions."
+    "text": "R Basics\nFunctions\n\nA function can take any number and type of input parameters and return any number and type of output results.\nR ships a vast number of built-in functions.\nR also allows a user to define a new function.\nWe will mostly use built-in functions."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-3",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-3",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nFunctions, Arguments, and Parameters\nlibrary(tidyverse)\n\n# The function `str_c()`, provided by `tidyverse`, concatenates characters.\nstr_c(\"Data\", \"Analytics\")\nstr_c(\"Data\", \"Analytics\", sep = \"!\")\n\nWe invoke a function by entering its name and a pair of opening and closing parentheses.\nMuch as a cooking recipe can accept ingredients, a function invocation can accept inputs called arguments.\nWe pass arguments sequentially inside the parentheses (, separated by commas).\nA parameter is a name given to an expected function argument.\nA default argument is a fallback value that R passes to a parameter if the function invocation does not explicitly provide one."
+    "text": "R Basics\nFunctions, Arguments, and Parameters\nlibrary(tidyverse)\n\n# The function `str_c()`, provided by `tidyverse`, concatenates characters.\nstr_c(\"Data\", \"Analytics\")\nstr_c(\"Data\", \"Analytics\", sep = \"!\")\n\nWe invoke a function by entering its name and a pair of opening and closing parentheses.\nA function invocation can accept inputs called arguments.\nWe pass arguments sequentially inside the parentheses (, separated by commas).\nA parameter is a name given to an expected function argument.\nA default argument is a fallback value that R passes to a parameter if the function invocation does not explicitly provide one."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-4",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-4",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nR Variable and Data Types\n\nQuestion 2 in Classwork 5"
+    "text": "R Basics\nR Variable and Data Types\n\nQuestion 2 in Classwork 5"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#a-little-bit-of-math-for-log",
@@ -424,84 +424,84 @@
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#math-functions",
     "title": "Lecture 7",
     "section": "Math functions",
-    "text": "Math functions\n\nR has many built-in mathematical functions that facilitate calculations and data analysis.\n\n\n\n5 * abs(-3)\nsqrt(17) / 2\nexp(3)\nlog(3)\nlog(exp(3))\nexp(log(3))\n\n\nabs(x): the absolute value \\(|x|\\)\nsqrt(x): the square root \\(\\sqrt{x}\\)\nexp(x): the exponential value \\(e^x\\), where \\(e = 2.718...\\)\nlog(x): the natural logarithm \\(\\log_{e}(x)\\), or simply \\(\\log(x)\\)"
+    "text": "Math functions\n\n\nR has many built-in mathematical functions that facilitate calculations and data analysis.\n\n\n\n\n5 * abs(-3)\nsqrt(17) / 2\nexp(3)\nlog(3)\nlog(exp(3))\nexp(log(3))\n\n\nabs(x): the absolute value \\(|x|\\)\nsqrt(x): the square root \\(\\sqrt{x}\\)\nexp(x): the exponential value \\(e^x\\), where \\(e = 2.718...\\)\nlog(x): the natural logarithm \\(\\log_{e}(x)\\), or simply \\(\\log(x)\\)"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-5",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-5",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nVectorized Operations\na &lt;- c(1, 2, 3, 4, 5)\nb &lt;- c(5, 4, 3, 2, 1)\n\na + b\na - b\na * b\na / b\nsqrt(a)\n\nVectorized operations mean applying a function to every element of a vector without explicitly writing a loop.\n\nThis is possible because most functions in R are vectorized, meaning they are designed to operate on vectors element-wise.\nVectorized operations are a powerful feature of R, enabling efficient and concise code for data analysis and manipulation."
+    "text": "R Basics\nVectorized Operations\na &lt;- c(1, 2, 3, 4, 5)\nb &lt;- c(5, 4, 3, 2, 1)\n\na + b\na - b\na * b\na / b\nsqrt(a)\n\nVectorized operations mean applying a function to every element of a vector without explicitly writing a loop.\n\nThis is possible because most functions in R are vectorized, meaning they are designed to operate on vectors element-wise.\nVectorized operations are a powerful feature of R, enabling efficient and concise code for data analysis and manipulation."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-6",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-6",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nMore Math Functions\nx &lt;- c(1, 2, 3, 4, 5)\n\nsum(x)\nmean(x)\nsd(x)\n\n\nSumMeanStandard Deviation\n\n\n\nsum() calculates the sum of all numbers in a vector.\n\n\n\n\nmean() calculates the arithmetic mean of the values in a vector. \\[\n\\overline{x} = \\frac{x_{1} + x_{2} + \\cdots + x_{N}}{N}\n\\]\n\n\n\n\nsd() calculates the standard deviation (SD) of the values in a vector.\n\nSD measures the amount of variation or dispersion of a set of values. \\[\n\\overline{s} = \\sqrt{ \\left( \\frac{(x_{1}-\\overline{x})^{2} + (x_{2}-\\overline{x})^{2} + \\cdots + (x_{N}-\\overline{x})^{2}}{N-1}\\;\\, \\right) }\n\\]"
+    "text": "R Basics\nMore Math Functions\nx &lt;- c(1, 2, 3, 4, 5)\n\nsum(x)\nmean(x)\nsd(x)\n\n\nSumMeanStandard Deviation\n\n\n\nsum() calculates the sum of all numbers in a vector.\n\n\n\n\nmean() calculates the arithmetic mean of the values in a vector. \\[\n\\overline{x} = \\frac{x_{1} + x_{2} + \\cdots + x_{N}}{N}\n\\]\n\n\n\n\nsd() calculates the standard deviation (SD) of the values in a vector.\n\nSD measures the amount of variation or dispersion of a set of values. \\[\n\\overline{s} = \\sqrt{  \\frac{(x_{1}-\\overline{x})^{2} + (x_{2}-\\overline{x})^{2} + \\cdots + (x_{N}-\\overline{x})^{2}}{N-1}\\;\\,  }\n\\]"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-7",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-7",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nNULL and NA values\nc(c(), 1, NULL)\nc(\"a\", NA, \"c\")\n\nNULL is just an alias for c(), the empty vector.\nNA indicates missing or unavailable data."
+    "text": "R Basics\nNULL and NA values\nc(c(), 1, NULL)\nc(\"a\", NA, \"c\")\n\nNULL is just an alias for c(), the empty vector.\nNA indicates missing or unavailable data."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-8",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-8",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nNULL and NA values\n\nis.na() is to check whether expression evaluates to NA.\n\nis.na(NA)\nis.na(c())\nis.na(\"A\")\n\nQ. Why does \"A\" == NA evaluate to NA?"
+    "text": "R Basics\nNULL and NA values\n\n\nis.na() is to check whether expression evaluates to NA.\n\n\nis.na(NA)\nis.na(c())\nis.na(\"A\")\n\nQ. Why does \"A\" == NA evaluate to NA?"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-9",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-9",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nCasting Variables\n\n\norig_number &lt;- 4.39898498\nclass(orig_number)\nmod_number &lt;- as.integer(orig_number)\nclass(mod_number)\n\n# TRUE converts to 1; \n# FALSE does to 0.\nas.numeric(TRUE)\nas.numeric(FALSE)\n\n\n\nSometimes we need to explicitly cast a value from one type to another.\n\nWe can do this using built-in functions like as.character(), as.integer(), as.numeric(), and as.factor().\nIf we try these, R will do its best to interpret the input and convert it to the output type we’d like and, if they can’t, the code will throw NA."
+    "text": "R Basics\nCasting Variables\n\n\norig_number &lt;- 4.39898498\nclass(orig_number)\nmod_number &lt;- as.integer(orig_number)\nclass(mod_number)\n\n# TRUE converts to 1; \n# FALSE does to 0.\nas.numeric(TRUE)\nas.numeric(FALSE)\n\n\n\nSometimes we need to explicitly cast a value from one type to another.\n\nWe can do this using built-in functions like as.character(), as.integer(), as.numeric(), and as.factor().\nIf we try these, R will do its best to interpret the input and convert it to the output type we’d like and, if they can’t, the code will throw NA."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-10",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-10",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nAbsolute vs. Relative Pathnames\n\nAbsolute PathRelative Path\n\n\n\nComplete path from the root directory to the target file or directory.\nIndependent of the current working directory.\nExample (Mac): /Users/user/documents/car_data.csv\nExample (Windows): C:\\\\Users\\\\user\\\\Documents\\\\car_data.csv\n\n\n\n\nPath relative to the current working directory.\nChanges based on the current directory. \nExample: If the current directory is /Users/user, the relative path to car_data.csv would be documents/car_data.csv\nFor the website R project, we can use a relative path."
+    "text": "R Basics\nAbsolute vs. Relative Pathnames\n\nAbsolute PathRelative Path\n\n\n\nComplete path from the root directory to the target file or directory.\nIndependent of the current working directory.\nExample (Mac): /Users/user/documents/car_data.csv\nExample (Windows): C:\\\\Users\\\\user\\\\Documents\\\\car_data.csv\n\n\n\n\nPath relative to the current working directory.\nChanges based on the current directory. \nExample (Mac): If the current directory is /Users/user, the relative path to car_data.csv would be documents/car_data.csv\nExample (Windows): If the current directory is C:\\\\Users\\\\user, the relative path to car_data.csv would be Documents\\\\car_data.csv\nFor the website R project, we can use a relative path."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-11",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-11",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nWorking with Data from Files\n\n\nWe use the read_csv() function to read a comma-separated values (CSV) file.\n\n\nDownload the CSV file, car_data.csv from the Class Files module in our Brightspace.\nFind the path name for the file, car_data.csv from the File Explorer / Finder.\nProvide the path name for the file, car_data.csv, to the read_csv() function.\n\nuciCar &lt;- read_csv('HERE WE PROVIDE A PATHNAME FOR car_data.csv')\nView(uciCar)\n\nView()/view() displays the data in a simple spreadsheet-like grid viewer.\n\nWe can click the data.frame object, displayed in the Environment Pane."
+    "text": "R Basics\nWorking with Data from Files\n\n\nWe use the read_csv() function to read a comma-separated values (CSV) file.\n\n\nDownload the CSV file, car_data.csv from the Class Files module in our Brightspace.\nFind the path name for the file, car_data.csv from the File Explorer / Finder.\nProvide the path name for the file, car_data.csv, to the read_csv() function.\n\nuciCar &lt;- read_csv('HERE WE PROVIDE A PATHNAME FOR car_data.csv')\nView(uciCar)\n\nView()/view() displays the data in a simple spreadsheet-like grid viewer."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-12",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-12",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nExamining data.frames\n\n\ndim(uciCar)\nnrow(uciCar)\nncol(uciCar)\n\nclass(uciCar)\nlibrary(skimr)\nskim(uciCar)\n\n\n\ndim() shows how many rows and columns are in the data for data.frame.\nnrow() and ncol() shows the number of rows and columns for data.frame respectively.\nskimr::skim() provides a more detailed summary.\n\nskimr is the R package that provides the function skim()."
+    "text": "R Basics\nExamining data.frames\n\n\ndim(uciCar)\nnrow(uciCar)\nncol(uciCar)\n\nclass(uciCar)\nlibrary(skimr)\nskim(uciCar)\n\n\n\ndim() shows how many rows and columns are in the data for data.frame.\nnrow() and ncol() shows the number of rows and columns for data.frame respectively.\nskimr::skim() provides a more detailed summary.\n\nskimr is the R package that provides the function skim()."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-13",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-13",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nReading data.frames from an URL\ntvshows &lt;- read_csv(\n        'https://bcdanl.github.io/data/tvshows.csv')\n\nWe can import the CSV file from the web."
+    "text": "R Basics\nReading data.frames from an URL\ntvshows &lt;- read_csv(\n        'https://bcdanl.github.io/data/tvshows.csv')\n\nWe can import the CSV file from the web."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-14",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-14",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nTidy data.frame: Variables, Observations, and Values\n\n\n\n\nThere are three rules which make a data.frame tidy:\n\nEach variable must have its own column.\nEach observation must have its own row.\nEach value must have its own cell."
+    "text": "R Basics\nTidy data.frame: Variables, Observations, and Values\n\n\n\n\nThere are three rules which make a data.frame tidy:\n\nEach variable must have its own column.\nEach observation must have its own row.\nEach value must have its own cell."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-15",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-15",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nR Variable and Data Types\n\nQuestions 3-5 in Classwork 5"
+    "text": "R Basics\nR Variable and Data Types\n\nQuestions 3-5 in Classwork 5"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#exploratory-data-analysis",
@@ -550,49 +550,49 @@
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-3",
     "title": "Lecture 7",
     "section": "Aesthetic Mappings",
-    "text": "Aesthetic Mappings\n\nAdding a color to the plot\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   color = class) )"
+    "text": "Aesthetic Mappings\nAdding a color to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   color = class) )"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-4",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-4",
     "title": "Lecture 7",
     "section": "Aesthetic Mappings",
-    "text": "Aesthetic Mappings\n\nAdding a shape to the plot\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   shape = class) )\n\nWarning: The shape palette can deal with a maximum of 6 discrete values because more\nthan 6 becomes difficult to discriminate\nℹ you have requested 7 values. Consider specifying shapes manually if you need\n  that many have them.\n\n\nWarning: Removed 62 rows containing missing values (`geom_point()`)."
+    "text": "Aesthetic Mappings\nAdding a shape to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   shape = class) )"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-5",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-5",
     "title": "Lecture 7",
     "section": "Aesthetic Mappings",
-    "text": "Aesthetic Mappings\n\nAdding a size to the plot\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   size = class) )\n\nWarning: Using size for a discrete variable is not advised."
+    "text": "Aesthetic Mappings\nAdding a size to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   size = class) )"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-6",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-6",
     "title": "Lecture 7",
     "section": "Aesthetic Mappings",
-    "text": "Aesthetic Mappings\n\nAdding an alpha (transparency) to the plot\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   alpha = class) )\n\nWarning: Using alpha for a discrete variable is not advised."
+    "text": "Aesthetic Mappings\nAdding an alpha (transparency) to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   alpha = class) )"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-7",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-7",
     "title": "Lecture 7",
     "section": "Aesthetic Mappings",
-    "text": "Aesthetic Mappings\n\nOverplotting problem\n\nMany points overlap each other.\n\nThis problem is known as overplotting.\n\nWhen points overlap, it’s hard to know how many data points are at a particular location.\nOverplotting can obscure patterns and outliers, leading to potentially misleading conclusions.\nWe can set a transparency level (alpha) between 0 (full transparency) and 1 (no transparency)."
+    "text": "Aesthetic Mappings\nOverplotting problem\n\nMany points overlap each other.\n\nThis problem is known as overplotting.\n\nWhen points overlap, it’s hard to know how many data points are at a particular location.\nOverplotting can obscure patterns and outliers, leading to potentially misleading conclusions.\nWe can set a transparency level (alpha) between 0 (full transparency) and 1 (no transparency)."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-8",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-8",
     "title": "Lecture 7",
     "section": "Aesthetic Mappings",
-    "text": "Aesthetic Mappings\n\nOverplotting and alpha\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .2)"
+    "text": "Aesthetic Mappings\nOverplotting and alpha\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .2)"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-9",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-9",
     "title": "Lecture 7",
     "section": "Aesthetic Mappings",
-    "text": "Aesthetic Mappings\n\nSpecifying a color to the plot\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy), \n             color = \"blue\")"
+    "text": "Aesthetic Mappings\nSpecifying a color to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy), \n             color = \"blue\")"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-10",
@@ -606,7 +606,7 @@
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-11",
     "title": "Lecture 7",
     "section": "Aesthetic Mappings",
-    "text": "Aesthetic Mappings\n\nSpecifying a color to the plot?\n\nggplot(data = mpg) + \n  geom_point( mapping = \n                aes(x = displ, \n                    y = hwy, \n                    color = \"blue\") )"
+    "text": "Aesthetic Mappings\nSpecifying a color to the plot?\n\n\nggplot(data = mpg) + \n  geom_point( mapping = \n                aes(x = displ, \n                    y = hwy, \n                    color = \"blue\") )"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#aesthetic-mappings-12",
@@ -634,7 +634,7 @@
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#facets-2",
     "title": "Lecture 7",
     "section": "Facets",
-    "text": "Facets\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy), \n             alpha = .5) + \n  facet_wrap( . ~ class, nrow = 2)\n\n\n\n\n\nTo facet our plot by a single variable, use facet_wrap()."
+    "text": "Facets\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy), \n             alpha = .5) + \n  facet_wrap( . ~ class, nrow = 2)\n\n\n\n\n\n\n\nTo facet our plot by a single variable, use facet_wrap()."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#facets-3",
@@ -655,7 +655,7 @@
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#facets-5",
     "title": "Lecture 7",
     "section": "Facets",
-    "text": "Facets\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .5) + \n  facet_grid(drv ~ cyl)"
+    "text": "Facets\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .5) + \n  facet_grid(drv ~ cyl)"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#facets-6",
@@ -669,7 +669,7 @@
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#facets-7",
     "title": "Lecture 7",
     "section": "Facets",
-    "text": "Facets\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .5) + \n  facet_grid(drv ~ cyl, \n             scales = \"free_x\")"
+    "text": "Facets\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .5) + \n  facet_grid(drv ~ cyl, \n             scales = \"free_x\")"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#geometric-objects-1",
@@ -2104,21 +2104,21 @@
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#rstudio-workflow-3",
     "title": "Lecture 7",
     "section": "RStudio Workflow",
-    "text": "RStudio Workflow\n\nAdding Quotes in RStudio\n\nWhen adding the quotation marks to a character,\n\nStep 1. Double click the character where you want to add the quotation marks\nStep 2. Type the quotation mark only once."
+    "text": "RStudio Workflow\nAdding Quotes in RStudio\n\nWhen adding the quotation marks to a character,\n\nStep 1. Double click the character where you want to add the quotation marks\nStep 2. Type the quotation mark only once."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#rstudio-workflow-4",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#rstudio-workflow-4",
     "title": "Lecture 7",
     "section": "RStudio Workflow",
-    "text": "RStudio Workflow\n\nComputer Shortcuts\n\n\nMac\n\ncommand + Z undoes the previous action.\ncommand + shift + Z redoes when undo is executed.\ncommand + Q closes the current app.\n\n\nWindows\n\nCrtl + Z undoes the previous action.\nCrtl + Shift + Z redoes when undo is executed.\nAlt + F4 closes the current app."
+    "text": "RStudio Workflow\nComputer Shortcuts\n\n\n\nMac\n\ncommand + Z undoes the previous action.\ncommand + shift + Z redoes when undo is executed.\ncommand + Q closes the current app.\n\n\nWindows\n\nCrtl + Z undoes the previous action.\nCrtl + Shift + Z redoes when undo is executed.\nAlt + F4 closes the current app."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#rstudio-workflow-5",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#rstudio-workflow-5",
     "title": "Lecture 7",
     "section": "RStudio Workflow",
-    "text": "RStudio Workflow\n\nCleaning R Environment and Console\n\n\nrm(OBJECT) removes OBJECT.\nrm(list = ls()) removes all the objects from the R environment.\nYou can also click the broom button at the top right corner in the Environment Pane.\nCtrl + L cleans the R console."
+    "text": "RStudio Workflow\nCleaning R Environment and Console\n\n\nrm(OBJECT) removes OBJECT.\nrm(list = ls()) removes all the objects from the R environment.\nYou can also click the broom button at the top right corner in the Environment Pane.\nCtrl + L cleans the R console."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#data-visualization---first-steps",
@@ -2132,14 +2132,14 @@
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#data-visualization---first-steps-1",
     "title": "Lecture 7",
     "section": "Data Visualization - First Steps",
-    "text": "Data Visualization - First Steps\n\nCreating a ggplot\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy) )\n\n\n\n\n\nTo plot mpg, run the above code to put displ on the x-axis and hwy on the y-axis."
+    "text": "Data Visualization - First Steps\nCreating a ggplot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy) )\n\n\n\n\n\n\n\nTo plot mpg, run the above code to put displ on the x-axis and hwy on the y-axis."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#data-visualization---first-steps-2",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#data-visualization---first-steps-2",
     "title": "Lecture 7",
     "section": "Data Visualization - First Steps",
-    "text": "Data Visualization - First Steps\n\nGraphing Template\nggplot(data = &lt;DATA&gt;) + \n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\nTo make a ggplot plot, replace the bracketed sections in the code below with a data.frame, a geom function, or a collection of mappings such as x = VAR_1 and y = VAR_2."
+    "text": "Data Visualization - First Steps\nGraphing Template\nggplot(data = &lt;DATA&gt;) + \n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\nTo make a ggplot plot, replace the bracketed sections in the code below with a data.frame, a geom function, or a collection of mappings such as x = VAR_1 and y = VAR_2."
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html",
@@ -2153,20 +2153,20 @@
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-16",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nR Variable and Data Types\n\nQuestion 1 in Classwork 6"
+    "text": "R Basics\nR Variable and Data Types\n\nQuestion 1 in Classwork 6"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-17",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-17",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nR Variable and Data Types\n\nQuestion 2 in Classwork 6"
+    "text": "R Basics\nR Variable and Data Types\n\nQuestion 2 in Classwork 6"
   },
   {
     "objectID": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-18",
     "href": "danl-lec/danl-200-lec-07-2024-0213.html#r-basics-18",
     "title": "Lecture 7",
     "section": "R Basics",
-    "text": "R Basics\n\nR Variable and Data Types\n\nQuestion 3 in Classwork 6"
+    "text": "R Basics\nR Variable and Data Types\n\nQuestion 3 in Classwork 6"
   }
 ]
