@@ -47,7 +47,7 @@ $selection-bg: #26351c !default;
 /*-- scss:rules --*/
 
 .reveal a {
-  color: #49821c;
+  color: #0066cc;  // #0066cc;  #0000EE // #49821c
   line-height: 1.5em;
 }
 
@@ -302,8 +302,4 @@ $selection-bg: #26351c !default;
 
 /* Assuming each line of code is wrapped in an anchor tag */
 
-
-.reveal pre code a:hover {
-    font-weight: bold; /* Apply bold styling on hover */
-}
 
