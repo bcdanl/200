@@ -85,7 +85,6 @@ $$
 
 *Answer*:
 ```{r}
-temp_F <- c(35, 88, 42, 84, 81, 30)
 
 ```
 
@@ -93,13 +92,13 @@ temp_F <- c(35, 88, 42, 84, 81, 30)
 
 
 ## Question 3.
-- Write an R code to calculate the standard deviation (SD) of an integer vector `x` manually. That is to calculate the SD without using the `sd()` function.
+- Write an R code to calculate the standard deviation (SD) of the integer vector `x` below manually. That is to calculate the SD without using the `sd()` function.
 
 ```{r}
 x <- 1:25
 ```
 
-- Write an R code to test whether the standard deviation you calculate manually above is equal to `sd(x)`.
+- Also, write an R code to test whether the standard deviation you calculate manually above is equal to `sd(x)`.
 
 
 
