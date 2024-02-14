@@ -1,0 +1,188 @@
+---
+title: Lecture 7 - Note
+subtitle: R Basics; Data Visualization
+author: 
+  - name: Byeong-Hak
+date: 2024-02-13
+
+execute: 
+  echo: true    # true false
+  eval: true    # true false
+  warning: false    # true false
+  message: false    # true false
+  fig-width: 9
+  # fig-height: 5
+  
+format: 
+  html:
+    toc: true    # true false
+    number-sections: true    # true false
+    code-fold: false    # true false show       # https://quarto.org/docs/output-formats/html-code.html
+    code-tools: true    # true false
+    highlight-style: atom-one        # atom-one tango espresso   # https://quarto.org/docs/output-formats/html-code.html#highlighting
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(hrbrthemes)
+library(skimr)
+library(DT)
+
+```
+
+
+```{r}
+a <- "hello"
+b <- "hi"
+c <- "bye"
+```
+
+
+# Functions
+
+```{r}
+library(tidyverse)
+
+# The function `str_c()`, provided by `tidyverse`, concatenates characters.
+str_c("Data", "Analytics", sep = "")
+str_c("Data", "Analytics", sep = "!")
+```
+
+
+# Classwork 5
+
+## Question 2
+
+```{r}
+fare <- "10.00"
+tip <- "2.00"
+tax <- "0.80"
+
+# fare + tip + tax # error!
+class(fare)
+```
+
+```{r}
+str_c("The total trip cost is: $", "12.80")
+```
+
+```{r}
+fare <- as.numeric(fare)
+tax <- as.numeric(tax)
+tip <- as.numeric(tip)
+
+total <- fare + tax + tip
+total
+
+total <- as.character(total)
+```
+
+
+```{r}
+str_c("The total trip cost is: $", total, "0")
+```
+
+
+
+```{r}
+5 * abs(-3)
+sqrt(17) / 2
+exp(3)
+log(3)
+log(exp(3))
+exp(log(3))
+```
+
+```{r}
+a <- c(1, 2, 3, 4, 5)
+b <- c(5, 4, 3, 2, 1)
+
+a + b
+a - b
+a * b
+a / b
+sqrt(a)
+
+```
+
+
+
+
+```{r}
+x <- c(1, 2, 3, 4, 5)
+
+sum(x)
+mean(x)
+sd(x)
+```
+
+# NULL & NA
+
+```{r}
+c(c(), 1, NULL)
+c("a", NA, "c")
+```
+
+```{r}
+is.na(NA)
+is.na(c()) # logical(0)
+is.na(NULL) # logical(0)
+is.na("A")
+```
+
+
+```{r}
+"A" == "B"
+```
+
+
+```{r}
+"A" == NA
+```
+
+
+```{r}
+orig_number <- 4.39898498
+class(orig_number)
+mod_number <- as.integer(orig_number)
+class(mod_number)
+```
+
+
+```{r}
+as.integer("A") # giving NA
+```
+
+
+```{r}
+as.numeric(TRUE)
+as.numeric(FALSE)
+```
+
+```{r}
+as.logical(1)
+as.logical(0)
+
+as.logical(2) # TRUE
+
+```
+
+
+# Pathnames
+
+
+## Absolute Path
+```{r}
+path <- "/Users/bchoe/Documents/websites/200/danl-class/car_data.csv"
+
+car_data <- read_csv(path)
+
+```
+## Relative Path
+```{r}
+getwd()
+car_data_relative <- read_csv("car_data.csv")
+```
+
