@@ -1,6 +1,6 @@
 ---
 title: Lecture 6 - Q & A
-date: 2024-02-06
+date: 2024-02-08
 execute: 
   echo: true
   eval: true

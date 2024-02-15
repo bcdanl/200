@@ -95,14 +95,14 @@
     "href": "index.html#bullet-lecture-slides",
     "title": "DANL 200-02: Introduction to Data Analytics, Spring 2024",
     "section": "\\(\\bullet\\,\\) Lecture Slides 🚀",
-    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 7\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 6\n\n\nFebruary 8, 2024\n\n\n\n\nLecture 5\n\n\nFebruary 6, 2024\n\n\n\n\nLecture 4\n\n\nFebruary 1, 2024\n\n\n\n\nLecture 3\n\n\nJanuary 30, 2024\n\n\n\n\nLecture 2\n\n\nJanuary 25, 2024\n\n\n\n\nLecture 1\n\n\nJanuary 23, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 8\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 7\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 6\n\n\nFebruary 8, 2024\n\n\n\n\nLecture 5\n\n\nFebruary 6, 2024\n\n\n\n\nLecture 4\n\n\nFebruary 1, 2024\n\n\n\n\nLecture 3\n\n\nJanuary 30, 2024\n\n\n\n\nLecture 2\n\n\nJanuary 25, 2024\n\n\n\n\nLecture 1\n\n\nJanuary 23, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-lecture-q-a",
     "href": "index.html#bullet-lecture-q-a",
     "title": "DANL 200-02: Introduction to Data Analytics, Spring 2024",
     "section": "\\(\\bullet\\,\\) Lecture Q & A ❓",
-    "text": "\\(\\bullet\\,\\) Lecture Q & A ❓\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 7 - Q & A\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 6 - Q & A\n\n\nFebruary 6, 2024\n\n\n\n\nLecture 5 - Q & A\n\n\nFebruary 6, 2024\n\n\n\n\nLecture 4 - Q & A\n\n\nFebruary 1, 2024\n\n\n\n\nLecture 3 - Q & A\n\n\nJanuary 30, 2024\n\n\n\n\nLecture 2 - Q & A\n\n\nJanuary 25, 2024\n\n\n\n\nLecture 1 - Q & A\n\n\nJanuary 23, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Lecture Q & A ❓\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 8 - Q & A\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 7 - Q & A\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 6 - Q & A\n\n\nFebruary 8, 2024\n\n\n\n\nLecture 5 - Q & A\n\n\nFebruary 6, 2024\n\n\n\n\nLecture 4 - Q & A\n\n\nFebruary 1, 2024\n\n\n\n\nLecture 3 - Q & A\n\n\nJanuary 30, 2024\n\n\n\n\nLecture 2 - Q & A\n\n\nJanuary 25, 2024\n\n\n\n\nLecture 1 - Q & A\n\n\nJanuary 23, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-classwork",
@@ -1916,5 +1916,348 @@
     "title": "DANL 200 - Homework",
     "section": "",
     "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and R Basics\n\n\nFebruary 14, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#announcement",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#announcement",
+    "title": "Lecture 8",
+    "section": "Announcement",
+    "text": "Announcement\n\nLiza Mitchell’s tutoring session tomorrow (February 16, 2024) is cancelled."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#learning-objectives",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#learning-objectives",
+    "title": "Lecture 8",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\n\n\nR Basics\n\n\n\nData Visualization with ggplot()"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow",
+    "title": "Lecture 8",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nMust-know Quarto Shortcuts\n\n\n\nMac\n\noption+command+I: to create a R chunk\ncommand+shift+return: to run the code in the R chunk\ncommand + shift + K: to render/knit the Quarto file\ncommand + shift + C: to (de-)comment out a line in the Quarto file\n\n\nWindows\n\nAlt+Ctrl+I : to create a R chunk\nCtrl+Shift+Enter : to run the code in the R chunk\nCtrl + Shift + K: to knit/render the Quarto file\nCtrl + Shift + C: to (de-)comment out a line in the Quarto file"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-1",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-1",
+    "title": "Lecture 8",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nShortcuts for RStudio and RScript\n\n\n\nMac\n\ncommand + shift + N opens a new RScript.\ncommand + return runs a current line or selected lines.\ncommand + shift + C is the shortcut for # (commenting).\noption + -  is the shortcut for &lt;-.\n\n\nWindows\n\nCtrl + Shift + N opens a new RS-cript.\nCtrl + return runs a current line or selected lines.\nCtrl + Shift + C is the shortcut for # (commenting).\nAlt + -  is the shortcut for &lt;-."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#workflow-for-the-course",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#workflow-for-the-course",
+    "title": "Lecture 8",
+    "section": "Workflow for the Course",
+    "text": "Workflow for the Course\n\nSave your Quarto document for each class.\n\nGo to File and select Save as…/ ( e.g., danl-200-mynote-lec-08-2024-0215.qmd)\n\nStore all your class Quarto documents in a dedicated directory, separate from your website project directory."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#workflow-for-your-personal-website",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#workflow-for-your-personal-website",
+    "title": "Lecture 8",
+    "section": "Workflow for Your Personal Website",
+    "text": "Workflow for Your Personal Website\nFile management\n\nYour website project directory should include files specifically dedicated to your website.\nIn your website project directory, avoid having\n\nAny file that exceeds 30 MB in size;\nQuarto documents that you do not use for your website."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-2",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-2",
+    "title": "Lecture 8",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nRStudio Project\n\n\nKeeping all the files associated with a given project (e.g., input data, Quarto documents, and figures) together in one directory is such a wise and common practice.\nRStudio has built-in support for this via projects\nWe can create a new project by clicking\n\nFile &gt; New Project\n\n\n\n\nWe use a RStudio project with Version Control and GitHub for the website project and its management.\n\ne.g., bcdanl.github.io"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-3",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-3",
+    "title": "Lecture 8",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nRStudio Project\n\n\nKeeping all the files associated with a given project (e.g., input data, Quarto documents, and figures) together in one directory is such a wise and common practice.\nRStudio has built-in support for this via projects\nWe can create a new project by clicking\n\nFile &gt; New Project\n\n\n\n\nWe use a RStudio project with Version Control and GitHub for the website project and its management.\n\ne.g., bcdanl.github.io"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-4",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-4",
+    "title": "Lecture 8",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nRStudio Project\n# getting the pathname of the current working directory\ngetwd() \n\nCheck that the “home” of your project is the current working directory."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-5",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-5",
+    "title": "Lecture 8",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nAbsolute Pathnames\n\nAn absolute path is a complete path from the root directory to the target file or directory.\nExample (Mac): /Users/bchoe/Documents/bcdanl.github.io/data/car_data.csv\nExample (Windows): C:/Users/bchoe/Documents/bcdanl.github.io/data/car_data.csv"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-6",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-6",
+    "title": "Lecture 8",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nRelative Pathnames\n\nA relative path is a path relative to the current working directory.\nExample (Mac): If the current directory is /Users/bchoe/Documents/bcdanl.github.io/, the relative path to car_data.csv is data/car_data.csv\nExample (Windows): If the current directory is C:/Users/bchoe/Documents/bcdanl.github.io, the relative path to car_data.csv is data/car_data.csv\nFor any RStudio project, it is recommended to use a relative path."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-7",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-7",
+    "title": "Lecture 8",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nExample: Absolute vs. Relative Pathnames\npath_abs &lt;- \"/Users/bchoe/Documents/websites/bcdanl.github.io/data/car_data.csv\"\ndf_car_a &lt;- read_csv(path_abs)\n\ngetwd()    # \"/Users/bchoe/Documents/websites/bcdanl.github.io\"\npath_rel &lt;- \"data/car_data.csv\"\ndf_car_r &lt;- read_csv(path_rel)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-8",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-8",
+    "title": "Lecture 8",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nRelative Pathnames\n\nA relative path is a path relative to the current working directory.\nExample (Mac): If the current directory is /Users/bchoe/Documents/bcdanl.github.io/, the relative path to car_data.csv is data/car_data.csv\nExample (Windows): If the current directory is C:/Users/bchoe/Documents/bcdanl.github.io, the relative path to car_data.csv is data/car_data.csv\nFor any RStudio project, it is recommended to use a relative path."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-1",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-1",
+    "title": "Lecture 8",
+    "section": "R Basics",
+    "text": "R Basics\nWorking with Data from Files\n\n\nWe use the read_csv() function to read a comma-separated values (CSV) file.\n\n\nDownload the CSV file, car_data.csv from the Class Files module in our Brightspace.\nFind the path name for the file, car_data.csv from the File Explorer / Finder.\nProvide the path name for the file, car_data.csv, to the read_csv() function.\n\nuciCar &lt;- read_csv('HERE WE PROVIDE A PATHNAME FOR car_data.csv')\nView(uciCar)\n\nView()/view() displays the data in a simple spreadsheet-like grid viewer."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-2",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-2",
+    "title": "Lecture 8",
+    "section": "R Basics",
+    "text": "R Basics\nExamining data.frames\n\n\nclass(uciCar)\n\ndim(uciCar)\nnrow(uciCar)\nncol(uciCar)\n\nlibrary(skimr)\nskim(uciCar)\n\n\n\ndim() shows how many rows and columns are in the data for data.frame.\nnrow() and ncol() shows the number of rows and columns for data.frame respectively.\nskimr::skim() provides a more detailed summary.\n\nskimr is the R package that provides the function skim()."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-3",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-3",
+    "title": "Lecture 8",
+    "section": "R Basics",
+    "text": "R Basics\nReading data.frames from an URL\ntvshows &lt;- read_csv(\n        'https://bcdanl.github.io/data/tvshows.csv')\n\nWe can import the CSV file from the web."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-4",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-4",
+    "title": "Lecture 8",
+    "section": "R Basics",
+    "text": "R Basics\nTidy data.frame: Variables, Observations, and Values\n\n\n\n\nThere are three rules which make a data.frame tidy:\n\nEach variable must have its own column.\nEach observation must have its own row.\nEach value must have its own cell."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-5",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-5",
+    "title": "Lecture 8",
+    "section": "R Basics",
+    "text": "R Basics\nR Variable and Data Types\n\nQuestions 3-5 in Classwork 5"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#exploratory-data-analysis",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#exploratory-data-analysis",
+    "title": "Lecture 8",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\n\n\n\n\nIn data visualization, you’ll turn data into plots.\nIn data transformation, you’ll learn the key verbs that allow you to select important variables, filter out key observations, create new variables, and compute summaries.\nIn exploratory data analysis, you’ll combine summary statistics (skim()), visualization, and transformation with your curiosity and skepticism to ask and answer interesting questions about data."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#data-visualization",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#data-visualization",
+    "title": "Lecture 8",
+    "section": "Data visualization",
+    "text": "Data visualization\n\n“The simple graph has brought more information to the data analyst’s mind than any other device.” John Tukey\n\n\nData visualization is the creation and study of the visual representation of data\nMany tools for visualizing data – R is one of them\nMany approaches/systems within R for making data visualizations – ggplot2 is one of them, and that’s what we’re going to use"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#grammar-of-graphics",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#grammar-of-graphics",
+    "title": "Lecture 8",
+    "section": "Grammar of Graphics",
+    "text": "Grammar of Graphics\n\n\nA grammar of graphics is a tool that enables us to concisely describe the components of a graphic"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#data-visualization---first-steps",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#data-visualization---first-steps",
+    "title": "Lecture 8",
+    "section": "Data Visualization - First Steps",
+    "text": "Data Visualization - First Steps\nlibrary(tidyverse)\nmpg\n?mpg\n\nThe mpg data frame, provided by ggplot2, contains observations collected by the US Environmental Protection Agency on 38 models of car.\nQ. Do cars with big engines use more fuel than cars with small engines?\n\ndispl: a car’s engine size, in liters.\nhwy: a car’s fuel efficiency on the highway, in miles per gallon (mpg).\n\nWhat does the relationship between engine size and fuel efficiency look like?"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#data-visualization---first-steps-1",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#data-visualization---first-steps-1",
+    "title": "Lecture 8",
+    "section": "Data Visualization - First Steps",
+    "text": "Data Visualization - First Steps\nCreating a ggplot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy) )\n\n\n\n\n\n\n\nTo plot mpg, run the above code to put displ on the x-axis and hwy on the y-axis."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#data-visualization---first-steps-2",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#data-visualization---first-steps-2",
+    "title": "Lecture 8",
+    "section": "Data Visualization - First Steps",
+    "text": "Data Visualization - First Steps\nGraphing Template\nggplot(data = &lt;DATA&gt;) + \n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\nTo make a ggplot plot, replace the bracketed sections in the code below with a data.frame, a geom function, or a collection of mappings such as x = VAR_1 and y = VAR_2."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-6",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-6",
+    "title": "Lecture 8",
+    "section": "R Basics",
+    "text": "R Basics\nR Variable and Data Types\n\nQuestion 1 in Classwork 6"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-1",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-1",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\n\n\n\n\nIn the plot above, one group of points (highlighted in red) seems to fall outside of the linear trend.\n\nHow can you explain these cars? Are those hybrids?"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-2",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-2",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\n\n\n\n\nAn aesthetic is a visual property (e.g., size, shape, color) of the objects (e.g., class) in your plot.\nYou can display a point in different ways by changing the values of its aesthetic properties."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-3",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-3",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nAdding a color to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   color = class) )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-4",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-4",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nAdding a shape to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   shape = class) )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-5",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-5",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nAdding a size to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   size = class) )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-6",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-6",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nAdding an alpha (transparency) to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   alpha = class) )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-7",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-7",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nOverplotting problem\n\nMany points overlap each other.\n\nThis problem is known as overplotting.\n\nWhen points overlap, it’s hard to know how many data points are at a particular location.\nOverplotting can obscure patterns and outliers, leading to potentially misleading conclusions.\nWe can set a transparency level (alpha) between 0 (full transparency) and 1 (no transparency)."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-8",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-8",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nOverplotting and alpha\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .2)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-9",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-9",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nSpecifying a color to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy), \n             color = \"blue\")"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-10",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-10",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\n\n\n\n\nTo set an aesthetic manually, set the aesthetic by name as an argument of your geom_ function; i.e. it goes outside of aes().\n\nYou’ll need to pick a level that makes sense for that aesthetic:\n\nThe name of a color as a character string.\nThe size of a point in mm.\nThe shape of a point as a number, as shown below."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-11",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#aesthetic-mappings-11",
+    "title": "Lecture 8",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nSpecifying a color to the plot?\n\n\nggplot(data = mpg) + \n  geom_point( mapping = \n                aes(x = displ, \n                    y = hwy, \n                    color = \"blue\") )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#common-problems-in-ggplot",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#common-problems-in-ggplot",
+    "title": "Lecture 8",
+    "section": "Common problems in ggplot()",
+    "text": "Common problems in ggplot()\n\nggplot(data = mpg) \n + geom_point( mapping = \n                 aes(x = displ, \n                     y = hwy) )\n\n\nOne common problem when creating ggplot2 graphics is to put the + in the wrong place."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-7",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-7",
+    "title": "Lecture 8",
+    "section": "R Basics",
+    "text": "R Basics\nR Variable and Data Types\n\nQuestion 2 in Classwork 6"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#facets-1",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#facets-1",
+    "title": "Lecture 8",
+    "section": "Facets",
+    "text": "Facets\n\nOne way to add a variable, particularly useful for categorical variables, is to use facets to split our plot into facets, subplots that each display one subset of the data."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#facets-2",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#facets-2",
+    "title": "Lecture 8",
+    "section": "Facets",
+    "text": "Facets\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy), \n             alpha = .5) + \n  facet_wrap( . ~ class, nrow = 2)\n\n\n\n\n\n\n\nTo facet our plot by a single variable, use facet_wrap()."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#facets-3",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#facets-3",
+    "title": "Lecture 8",
+    "section": "Facets",
+    "text": "Facets\n\nTo facet our plot on the combination of two variables, add facet_grid( VAR_ROW ~ VAR_COL ) to our plot call."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#facets-4",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#facets-4",
+    "title": "Lecture 8",
+    "section": "Facets",
+    "text": "Facets\n\nThe first argument of facet_grid() is also a formula.\n\nThis time the formula should contain two variable names separated by a ~."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#facets-5",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#facets-5",
+    "title": "Lecture 8",
+    "section": "Facets",
+    "text": "Facets\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .5) + \n  facet_grid(drv ~ cyl)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#facets-6",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#facets-6",
+    "title": "Lecture 8",
+    "section": "Facets",
+    "text": "Facets\n\nOption scales in facet_*() is whether scales is\n\nfixed (\"fixed\", the default),\nfree in one dimension (\"free_x\", \"free_y\"), or\nfree in two dimensions (\"free\")."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#facets-7",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#facets-7",
+    "title": "Lecture 8",
+    "section": "Facets",
+    "text": "Facets\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .5) + \n  facet_grid(drv ~ cyl, \n             scales = \"free_x\")"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-8",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#r-basics-8",
+    "title": "Lecture 8",
+    "section": "R Basics",
+    "text": "R Basics\nR Variable and Data Types\n\nQuestion 3 in Classwork 6"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-9",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#rstudio-workflow-9",
+    "title": "Lecture 8",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nExample: Absolute vs. Relative Pathnames\npath_abs &lt;- \"/Users/bchoe/Documents/websites/bcdanl.github.io/data/car_data.csv\"\ndf_car_a &lt;- read_csv(path_abs)\n\ngetwd()    # \"/Users/bchoe/Documents/websites/bcdanl.github.io\"\npath_rel &lt;- \"data/car_data.csv\"\ndf_car_r &lt;- read_csv(path_rel)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-08-2024-0215.html#workflow-for-your-personal-website-1",
+    "href": "danl-lec/danl-200-lec-08-2024-0215.html#workflow-for-your-personal-website-1",
+    "title": "Lecture 8",
+    "section": "Workflow for Your Personal Website",
+    "text": "Workflow for Your Personal Website\nQuarto Documents and _quarto.yml\n\nEnsure all Quarto documents are rendered well without any errors.\nAfter making edits to _quarto.yml, save the changes by clicking the floppy disk icon (💾).\nRun quarto render in Terminal, whenever you have some changes in _quarto.yml.\nOnce quarto render completes, view the index.html in your website working directory to see the updates from a web browser.\nAfter confirming your local website files are well updated, use the 3-step git commands (add-commit-push) to update your online website."
   }
 ]

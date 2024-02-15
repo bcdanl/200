@@ -1,0 +1,830 @@
+---
+title: Lecture 8
+subtitle: Working with `data.frame`; Data Visualization
+format:
+  clean-revealjs:
+    self-contained: true
+    incremental: true
+    code-annotations: hover
+
+    # logo: logo-title-slide.png
+author:
+  - name: Byeong-Hak Choe
+    email: bchoe@geneseo.edu
+    affiliations: SUNY Geneseo
+date: 2024-02-15
+execute: 
+  eval: true
+  echo: true
+callout-icon: false
+
+from: markdown+emoji
+
+# bibliography: refs.bib
+# include-after-body: backwards.html
+
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+
+
+theme_set(theme_fivethirtyeight()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(0,10,0,0)),
+                axis.text.x = element_text(size = rel(1.5)),
+                axis.text.y = element_text(size = rel(1.5)),
+                strip.text = element_text(size = rel(1.5)),
+                legend.position = "top",
+                legend.text = element_text(size = rel(1.5)),
+                legend.title = element_text(size = rel(1.5))
+                )
+          )
+```
+
+
+## Announcement
+
+- Liza Mitchell's tutoring session tomorrow (February 16, 2024) is cancelled.
+
+
+## Learning Objectives
+
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- R Basics
+
+:::
+
+::: {.column width="50%"}
+
+- Data Visualization with `ggplot()`
+
+:::
+::::
+
+
+
+
+# R Basics  {background-color="#1c4982"}
+
+
+## RStudio Workflow
+### Must-know Quarto Shortcuts
+
+::: {.nonincremental}
+
+:::: {.columns}
+
+::: {.column}
+### Mac
+
+  - **option+command+I**: to create a R chunk
+  
+  - **command+shift+return**: to run the code in the R chunk
+  
+  - **command + shift + K**: to render/knit the Quarto file
+  
+  - **command + shift + C**: to (de-)comment out a line in the Quarto file
+
+:::
+
+::: {.column}
+### Windows
+
+  - **Alt+Ctrl+I** : to create a R chunk
+  
+  - **Ctrl+Shift+Enter** : to run the code in the R chunk
+  
+  - **Ctrl + Shift + K**: to knit/render the Quarto file
+  
+  - **Ctrl + Shift + C**: to (de-)comment out a line in the Quarto file
+
+:::
+
+::::
+
+:::
+
+## RStudio Workflow
+### Shortcuts for RStudio and RScript
+
+::: {.nonincremental}
+
+:::: {.columns}
+::: {.column}
+**Mac**
+
+- **command + shift + N** opens a new RScript.
+- **command + return** runs a current line or selected lines.
+- **command + shift + C** is the shortcut for # (commenting).
+- **option + - ** is the shortcut for `<-`.
+
+:::
+
+::: {.column}
+**Windows**
+
+- **Ctrl + Shift + N** opens a new RS-cript.
+- **Ctrl + return** runs a current line or selected lines.
+- **Ctrl + Shift + C** is the shortcut for # (commenting).
+- **Alt + - ** is the shortcut for `<-`.
+
+:::
+::::
+
+:::
+
+
+
+## Workflow for the Course
+
+- Save your Quarto document for each class.
+  - Go to **File** and select **Save as...**/
+  ( e.g., `danl-200-mynote-lec-08-2024-0215.qmd`)
+
+- Store all your class Quarto documents in a dedicated directory, separate from your website project directory.
+
+
+
+## Workflow for Your Personal Website
+### File management
+
+- Your website project directory should include files specifically dedicated to your website.
+
+- In your website project directory, avoid having 
+  - Any file that exceeds 30 MB in size;
+  - Quarto documents that you do not use for your website.
+
+
+## Workflow for Your Personal Website
+### Quarto Documents and `_quarto.yml`
+
+- Ensure all Quarto documents are rendered well without any errors.
+
+- After making edits to `_quarto.yml`, save the changes by clicking the floppy disk icon (💾).
+
+- Run `quarto render` in Terminal, whenever you have some changes in `_quarto.yml`.
+
+- Once `quarto render` completes, view the `index.html` in your website working directory to see the updates from a web browser.
+
+- After confirming your local website files are well updated, use the 3-step git commands (`add`-`commit`-`push`) to update your online website.
+
+
+
+## RStudio Workflow
+### RStudio Project
+
+:::{.nonincremental}
+- Keeping all the files associated with a given project (e.g., input data, Quarto documents, and figures) together in one directory is such a wise and common practice.
+
+- RStudio has built-in support for this via **projects**
+
+- We can create a new project by clicking 
+  - File > New Project
+
+:::
+
+
+- We use a RStudio project with Version Control and GitHub for the website project and its management.
+  - e.g., `bcdanl.github.io`
+  
+
+
+
+
+## RStudio Workflow
+### RStudio Project
+
+:::{.nonincremental}
+- Keeping all the files associated with a given project (e.g., input data, Quarto documents, and figures) together in one directory is such a wise and common practice.
+
+- RStudio has built-in support for this via **projects**
+
+- We can create a new project by clicking 
+  - File > New Project
+
+:::
+
+
+- We use a RStudio project with Version Control and GitHub for the website project and its management.
+  - e.g., `bcdanl.github.io`
+  
+
+
+
+
+## RStudio Workflow
+### RStudio Project
+
+```{.r}
+# getting the pathname of the current working directory
+getwd() 
+```
+
+- Check that the “home” of your project is the current working directory.
+
+
+
+## RStudio Workflow
+### Absolute Pathnames
+
+
+- An absolute path is a complete path from the root directory to the target file or directory.
+
+- *Example (Mac)*: `/Users/bchoe/Documents/bcdanl.github.io/data/car_data.csv`
+- *Example (Windows)*: `C:/Users/bchoe/Documents/bcdanl.github.io/data/car_data.csv`
+
+
+
+## RStudio Workflow
+### Relative Pathnames
+
+- A relative path is a path relative to **the current working directory**.
+
+
+- *Example (Mac)*: If the current directory is `/Users/bchoe/Documents/bcdanl.github.io/`, the relative path to `car_data.csv` is `data/car_data.csv`
+
+- *Example (Windows)*: If the current directory is `C:/Users/bchoe/Documents/bcdanl.github.io`, the relative path to `car_data.csv` is `data/car_data.csv`
+
+- For any **RStudio project**, it is recommended to use a **relative path**.
+
+
+
+
+## RStudio Workflow
+### Example: Absolute vs. Relative Pathnames
+
+```{.r}
+path_abs <- "/Users/bchoe/Documents/websites/bcdanl.github.io/data/car_data.csv"
+df_car_a <- read_csv(path_abs)
+
+getwd()    # "/Users/bchoe/Documents/websites/bcdanl.github.io"
+path_rel <- "data/car_data.csv"
+df_car_r <- read_csv(path_rel)
+```
+
+
+
+## R Basics
+### Working with Data from Files
+
+
+:::{.nonincremental}
+- We use the `read_csv()` function to read a comma-separated values (CSV) file.
+
+1. Download the CSV file, `car_data.csv` from the Class Files module in our Brightspace.
+
+2. Find the path name for the file, `car_data.csv` from the File Explorer / Finder.
+
+3. Provide the path name for the file, `car_data.csv`, to the `read_csv()` function.
+
+```{.r}
+uciCar <- read_csv('HERE WE PROVIDE A PATHNAME FOR car_data.csv')
+View(uciCar)
+```
+
+- `View()`/`view()` displays the data in a simple spreadsheet-like grid viewer.
+
+:::
+
+
+
+## R Basics
+### Examining `data.frames`
+
+
+:::: {.columns}
+::: {.column width="33%"}
+```{.r}
+class(uciCar)
+```
+:::
+
+::: {.column width="33%"}
+```{.r}
+dim(uciCar)
+nrow(uciCar)
+ncol(uciCar)
+```
+:::
+
+
+::: {.column width="33%"}
+```{.r}
+library(skimr)
+skim(uciCar)
+```
+:::
+
+::::
+
+- `dim()` shows how many rows and columns are in the data for `data.frame`.
+- `nrow()` and `ncol()` shows the number of rows and columns for `data.frame` respectively.
+- `skimr::skim()` provides a more detailed summary.
+  - `skimr` is the R package that provides the function `skim()`.
+
+
+
+## R Basics
+### Reading data.frames from an URL
+
+
+```{.r}
+tvshows <- read_csv(
+		'https://bcdanl.github.io/data/tvshows.csv')
+```
+
+- We can import the CSV file from the web.
+
+
+## R Basics
+### Tidy `data.frame`: Variables, Observations, and Values
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/tidy-1.png">
+</p>
+
+
+- There are three rules which make a `data.frame` tidy:
+
+  1. Each **variable** must have its own *column*.
+  2. Each **observation** must have its own *row*.
+  3. Each **value** must have its own *cell*.
+
+
+
+
+
+## R Basics
+### R Variable and Data Types
+
+- Questions 3-5 in [Classwork 5](https://bcdanl.github.io/200/danl-cw/danl-200-cw-05.html)
+
+
+
+# Data Visualization with `ggplot()` {background-color="#1c4982"}
+
+## Exploratory Data Analysis
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/data-science-explore.png">
+</p>
+
+
+
+- In data visualization, you'll turn data into plots.
+
+- In data transformation, you'll learn the key verbs that allow you to select important variables, filter out key observations, create new variables, and compute summaries.
+
+- In **exploratory data analysis**, you'll combine summary statistics (`skim()`), visualization, and transformation with your curiosity and skepticism to ask and answer interesting questions about data.
+
+
+
+## Data visualization
+
+> *"The simple graph has brought more information to the data analyst's mind than any other device."  John Tukey*
+
+- Data visualization is the creation and study of the visual representation of data
+
+- Many tools for visualizing data -- R is one of them
+
+- Many approaches/systems within R for making data visualizations -- **ggplot2** is one of them, and that's what we're going to use
+
+
+
+## Grammar of Graphics
+
+:::: {.columns}
+::: {.column width="40%"}
+
+A **grammar of graphics** is a tool that enables us to concisely describe the components of a graphic
+:::
+
+::: {.column width="60%"}
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/grammar-of-graphics.png">
+</p>
+:::
+
+::::
+
+## Data Visualization - First Steps
+
+```{.r}
+library(tidyverse)
+mpg
+?mpg
+```
+
+- The `mpg` data frame, provided by `ggplot2`, contains observations collected by the US Environmental Protection Agency on 38 models of car.
+
+- Q. Do cars with big engines use more fuel than cars with small engines?
+  - `displ`: a car's engine size, in liters.
+  - `hwy`: a car's fuel efficiency on the highway, in miles per gallon (mpg). 
+
+
+-  What does the relationship between engine size and fuel efficiency look like?
+
+
+## Data Visualization - First Steps
+### Creating a `ggplot`
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy) )
+```
+
+
+- To plot `mpg`, run the above code to put `displ` on the `x`-axis and `hwy` on the `y`-axis.
+
+
+## Data Visualization - First Steps
+### Graphing Template
+
+```{.r}
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+```
+
+
+- To make a ggplot plot, replace the bracketed sections in the code below with a `data.frame`, a `geom` function, or a collection of mappings such as `x = VAR_1` and `y = VAR_2`.
+
+
+
+
+## R Basics
+### R Variable and Data Types
+
+- Question 1 in [Classwork 6](https://bcdanl.github.io/200/danl-cw/danl-200-cw-06.html)
+
+
+
+## Aesthetic Mappings {background-color="#1c4982"}
+
+
+## Aesthetic Mappings
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/r4s_330_1.png" width="600px">
+</p>
+
+
+
+- In the plot above, one group of points (highlighted in red) seems to fall outside of the linear trend. 
+
+  - How can you explain these cars? Are those hybrids?
+
+
+
+## Aesthetic Mappings
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/r4s_330_2.png" width="600px">
+</p>
+
+- An aesthetic is a visual property (e.g., `size`, `shape`, `color`) of the objects (e.g., `class`) in your plot.
+
+- You can display a point in different ways by changing the values of its aesthetic properties. 
+
+## Aesthetic Mappings
+### Adding a `color` to the plot
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy, 
+                   color = class) )
+```
+
+
+## Aesthetic Mappings
+### Adding a `shape` to the plot
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy, 
+                   shape = class) )
+```
+
+
+
+
+## Aesthetic Mappings
+### Adding a `size` to the plot
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy, 
+                   size = class) )
+```
+
+
+
+
+## Aesthetic Mappings
+### Adding an `alpha` (transparency) to the plot
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy, 
+                   alpha = class) )
+```
+
+
+
+## Aesthetic Mappings
+### Overplotting problem
+
+- Many points overlap each other. 
+  - This problem is known as **overplotting**. 
+
+
+- When points overlap, it's hard to know how many data points are at a particular location. 
+
+
+- Overplotting can obscure patterns and outliers, leading to potentially misleading conclusions. 
+
+- We can set a transparency level (`alpha`) between 0 (full transparency) and 1 (no transparency).
+
+
+## Aesthetic Mappings
+### Overplotting and `alpha`
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             alpha = .2)
+```
+
+
+
+
+## Aesthetic Mappings
+### Specifying a `color` to the plot
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy), 
+             color = "blue")
+```
+
+
+
+
+## Aesthetic Mappings
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/r4s_330_3.png" width="600px">
+</p>
+
+
+- To set an aesthetic manually, set the aesthetic by name as an argument of your `geom_` function; i.e. it goes outside of `aes()`. 
+  - You'll need to pick a level that makes sense for that aesthetic:
+    - The name of a `color` as a *character string*.
+    - The `size` of a point in *mm*.
+    - The `shape` of a point as a *number*, as shown below.
+  
+
+
+
+## Aesthetic Mappings
+### Specifying a `color` to the plot?
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point( mapping = 
+                aes(x = displ, 
+                    y = hwy, 
+                    color = "blue") )
+```
+
+
+
+
+
+## Common problems in `ggplot()`
+
+
+```{r}
+#| eval: false
+
+ggplot(data = mpg) 
+ + geom_point( mapping = 
+                 aes(x = displ, 
+                     y = hwy) )
+```
+
+- One common problem when creating `ggplot2` graphics is to put the `+` in the wrong place.
+
+
+
+
+## R Basics
+### R Variable and Data Types
+
+- Question 2 in [Classwork 6](https://bcdanl.github.io/200/danl-cw/danl-200-cw-06.html)
+
+
+# Facets {background-color="#1c4982"}
+
+## Facets 
+
+- One way to add a variable, particularly useful for categorical variables, is to use **facets** to split our plot into facets, subplots that each display one subset of the data.
+
+
+## Facets 
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy), 
+             alpha = .5) + 
+  facet_wrap( . ~ class, nrow = 2)
+```
+
+
+- To facet our plot by a *single variable*, use `facet_wrap()`.
+
+
+## Facets 
+
+- To facet our plot on the combination of *two variables*, add `facet_grid( VAR_ROW ~ VAR_COL )` to our plot call.
+
+
+## Facets 
+
+- The first argument of `facet_grid()` is also a formula. 
+  - This time the formula should contain two variable names separated by a `~`.
+
+
+## Facets 
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             alpha = .5) + 
+  facet_grid(drv ~ cyl)
+```
+
+
+
+
+## Facets 
+
+- Option `scales` in `facet_*()` is whether scales is 
+  - fixed (`"fixed"`, the default),
+  - free in one dimension (`"free_x"`, `"free_y"`), or
+  - free in two dimensions (`"free"`).
+
+
+
+## Facets 
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             alpha = .5) + 
+  facet_grid(drv ~ cyl, 
+             scales = "free_x")
+```
+
+
+
+
+
+## R Basics
+### R Variable and Data Types
+
+- Question 3 in [Classwork 6](https://bcdanl.github.io/200/danl-cw/danl-200-cw-06.html)
+
+
+
+
+
+<script>
+document.addEventListener('wheel', function(event) {
+    if (event.deltaY > 0) {
+        Reveal.next(); // Scroll down to go to the next slide
+    } else {
+        Reveal.prev(); // Scroll up to go to the previous slide
+    }
+}, false);
+
+window.onload = function() {
+    document.querySelectorAll('a').forEach(function(link) {
+        link.setAttribute('target', '_blank');
+    });
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Query all anchor tags within code blocks (adjust the selector as needed)
+  document.querySelectorAll('pre code a').forEach(function(element) {
+    element.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent the default anchor action
+      e.stopPropagation(); // Stop the event from bubbling up
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Target all span elements within code blocks that have IDs starting with 'cb'
+    document.querySelectorAll('pre code span[id^="cb"]').forEach(function(element) {
+        element.addEventListener('mouseenter', function() {
+            // Apply yellow background color to the hovered span element
+            this.style.backgroundColor = '#FFFF99';
+        });
+        element.addEventListener('mouseleave', function() {
+            // Revert the background color when the mouse leaves the span element
+            this.style.backgroundColor = '';
+        });
+    });
+});
+
+
+</script>
