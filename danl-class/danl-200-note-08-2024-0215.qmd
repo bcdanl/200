@@ -1,0 +1,123 @@
+---
+title: Lecture 8 - Note
+subtitle: R Basics; Data Visualization
+author: 
+  - name: Byeong-Hak
+date: 2024-02-15
+
+execute: 
+  echo: true    # true false
+  eval: true    # true false
+  warning: false    # true false
+  message: false    # true false
+  fig-width: 9
+  # fig-height: 5
+  
+format: 
+  html:
+    toc: true    # true false
+    number-sections: true    # true false
+    code-fold: false    # true false show       # https://quarto.org/docs/output-formats/html-code.html
+    code-tools: true    # true false
+    highlight-style: atom-one        # atom-one tango espresso   # https://quarto.org/docs/output-formats/html-code.html#highlighting
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(hrbrthemes)
+library(skimr)
+library(DT)
+
+```
+
+
+
+
+```{r}
+#| eval: false
+path_a <- "/Users/bchoe/Documents/websites/bcdanl.github.io/data/car_data.csv"
+getwd()
+path_r <- "data/car_data.csv"
+
+library(tidyverse)
+car_df_abs <- read_csv(path_a)
+car_df_rel <- read_csv(path_r)
+```
+# Work with data
+```{r}
+uciCar <- read_csv("https://bcdanl.github.io/data/car_data.csv")
+```
+
+
+```{r}
+class(uciCar)
+
+dim(uciCar)
+nrow(uciCar)
+ncol(uciCar)
+```
+
+```{r}
+library(skimr)
+skim(uciCar)
+```
+
+
+```{r}
+mpg <- ggplot2::mpg
+skim(mpg)
+
+```
+
+# Classwork 5
+
+## Question 3
+```{r}
+path <- "https://bcdanl.github.io/data/tips_seaborn.csv"
+tips <- read_csv(path)
+```
+
+```{r}
+DT::datatable(tips)
+```
+
+
+```{r}
+skim(tips)
+```
+
+# Data Visualization
+
+```{r}
+mpg <- mpg
+?mpg
+skim(mpg)
+```
+
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ,
+                           y = hwy))
+```
+
+## Classwork 6
+
+### Question 1
+
+```{r}
+# 1a
+ggplot(data = mpg)
+
+```
+
+
+```{r}
+# 1b
+
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = hwy, y = cyl))
+```
+

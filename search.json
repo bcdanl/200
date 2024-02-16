@@ -893,7 +893,7 @@
     "href": "listing-danl-200-class.html",
     "title": "DANL 200 - Class Notes",
     "section": "",
-    "text": "All class Quarto documents will be stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 13, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "All class Quarto documents will be stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-lec/danl-200-lec-01-2024-0123.html#instructor-1",
@@ -1866,7 +1866,7 @@
     "href": "danl-class/danl-200-note-07-2024-0213.html#relative-path",
     "title": "Lecture 7 - Note",
     "section": "4.2 Relative Path",
-    "text": "4.2 Relative Path\n\ngetwd()\n\n[1] \"/Users/bchoe/Documents/websites/200/danl-class\"\n\ncar_data_relative &lt;- read_csv(\"car_data.csv\")"
+    "text": "4.2 Relative Path\n\ngetwd()\ncar_data_relative &lt;- read_csv(\"car_data.csv\")"
   },
   {
     "objectID": "listing-danl-200-lec.html",
@@ -2259,5 +2259,33 @@
     "title": "Lecture 8",
     "section": "Workflow for Your Personal Website",
     "text": "Workflow for Your Personal Website\nQuarto Documents and _quarto.yml\n\nEnsure all Quarto documents are rendered well without any errors.\nAfter making edits to _quarto.yml, save the changes by clicking the floppy disk icon (💾).\nRun quarto render in Terminal, whenever you have some changes in _quarto.yml.\nOnce quarto render completes, view the index.html in your website working directory to see the updates from a web browser.\nAfter confirming your local website files are well updated, use the 3-step git commands (add-commit-push) to update your online website."
+  },
+  {
+    "objectID": "danl-class/danl-200-note-08-2024-0215.html",
+    "href": "danl-class/danl-200-note-08-2024-0215.html",
+    "title": "Lecture 8 - Note",
+    "section": "",
+    "text": "path_a &lt;- \"/Users/bchoe/Documents/websites/bcdanl.github.io/data/car_data.csv\"\ngetwd()\npath_r &lt;- \"data/car_data.csv\"\n\nlibrary(tidyverse)\ncar_df_abs &lt;- read_csv(path_a)\ncar_df_rel &lt;- read_csv(path_r)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-08-2024-0215.html#question-3",
+    "href": "danl-class/danl-200-note-08-2024-0215.html#question-3",
+    "title": "Lecture 8 - Note",
+    "section": "2.1 Question 3",
+    "text": "2.1 Question 3\n\npath &lt;- \"https://bcdanl.github.io/data/tips_seaborn.csv\"\ntips &lt;- read_csv(path)\n\n\nDT::datatable(tips)\n\n\n\n\n\n\n\nskim(tips)\n\n\nData summary\n\n\nName\ntips\n\n\nNumber of rows\n244\n\n\nNumber of columns\n7\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n4\n\n\nnumeric\n3\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nsex\n0\n1\n4\n6\n0\n2\n0\n\n\nsmoker\n0\n1\n2\n3\n0\n2\n0\n\n\nday\n0\n1\n3\n4\n0\n4\n0\n\n\ntime\n0\n1\n5\n6\n0\n2\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\ntotal_bill\n0\n1\n19.79\n8.90\n3.07\n13.35\n17.8\n24.13\n50.81\n▃▇▃▁▁\n\n\ntip\n0\n1\n3.00\n1.38\n1.00\n2.00\n2.9\n3.56\n10.00\n▇▆▂▁▁\n\n\nsize\n0\n1\n2.57\n0.95\n1.00\n2.00\n2.0\n3.00\n6.00\n▇▂▂▁▁"
+  },
+  {
+    "objectID": "danl-qa/danl-200-qa-08.html",
+    "href": "danl-qa/danl-200-qa-08.html",
+    "title": "Lecture 8 - Q & A",
+    "section": "",
+    "text": "Welcome to our Lecture 8 Discussion Board! 👋 \nThis space is designed for you to engage with your classmates about the material covered in Lecture 8 slides.\nWhether you are looking to delve deeper into the slides, share insights, or have questions about the content, this is the perfect place for you.\nIf you have any specific questions for Byeong-Hak (@bcdanl) regarding the Lecture 8 materials or need clarification on any points, don’t hesitate to ask here.\nLet’s collaborate and learn from each other!\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-08-2024-0215.html#classwork-6",
+    "href": "danl-class/danl-200-note-08-2024-0215.html#classwork-6",
+    "title": "Lecture 8 - Note",
+    "section": "3.1 Classwork 6",
+    "text": "3.1 Classwork 6\n\n3.1.1 Question 1\n\n# 1a\nggplot(data = mpg)\n\n\n\n\n\n# 1b\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = hwy, y = cyl))"
   }
 ]

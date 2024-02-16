@@ -1,6 +1,6 @@
 ---
 title: Lecture 7 - Note
-subtitle: R Basics; Data Visualization
+subtitle: R Basics
 author: 
   - name: Byeong-Hak
 date: 2024-02-13
@@ -175,6 +175,7 @@ as.logical(2) # TRUE
 
 ## Absolute Path
 ```{r}
+#| eval: false
 path <- "/Users/bchoe/Documents/websites/200/danl-class/car_data.csv"
 
 car_data <- read_csv(path)
@@ -182,6 +183,8 @@ car_data <- read_csv(path)
 ```
 ## Relative Path
 ```{r}
+#| eval: false
+
 getwd()
 car_data_relative <- read_csv("car_data.csv")
 ```
