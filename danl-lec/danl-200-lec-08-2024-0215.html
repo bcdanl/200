@@ -1868,47 +1868,6 @@ Byeong-Hak Choe
 <ul>
 <li class="fragment">Question 3 in <a href="https://bcdanl.github.io/200/danl-cw/danl-200-cw-06.html">Classwork 6</a></li>
 </ul>
-<script>
-document.addEventListener('wheel', function(event) {
-    if (event.deltaY > 0) {
-        Reveal.next(); // Scroll down to go to the next slide
-    } else {
-        Reveal.prev(); // Scroll up to go to the previous slide
-    }
-}, false);
-
-window.onload = function() {
-    document.querySelectorAll('a').forEach(function(link) {
-        link.setAttribute('target', '_blank');
-    });
-};
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Query all anchor tags within code blocks (adjust the selector as needed)
-  document.querySelectorAll('pre code a').forEach(function(element) {
-    element.addEventListener('click', function(e) {
-      e.preventDefault(); // Prevent the default anchor action
-      e.stopPropagation(); // Stop the event from bubbling up
-    });
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Target all span elements within code blocks that have IDs starting with 'cb'
-    document.querySelectorAll('pre code span[id^="cb"]').forEach(function(element) {
-        element.addEventListener('mouseenter', function() {
-            // Apply yellow background color to the hovered span element
-            this.style.backgroundColor = '#FFFF99';
-        });
-        element.addEventListener('mouseleave', function() {
-            // Revert the background color when the mouse leaves the span element
-            this.style.backgroundColor = '';
-        });
-    });
-});
-
-
-</script>
 
 <div class="footer footer-default">
 
@@ -2942,6 +2901,50 @@ window.QuartoSupport = function () {
           RevealZoom
         ]
       });
+    </script>
+    <script>
+    document.addEventListener('wheel', function(event) {
+        if (event.deltaY > 0) {
+            Reveal.next(); // Scroll down to go to the next slide
+        } else {
+            Reveal.prev(); // Scroll up to go to the previous slide
+        }
+    }, false);
+
+    window.onload = function() {
+        document.querySelectorAll('a').forEach(function(link) {
+            link.setAttribute('target', '_blank');
+        });
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Query all anchor tags within code blocks (adjust the selector as needed)
+      document.querySelectorAll('pre code a').forEach(function(element) {
+        element.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent the default anchor action
+          e.stopPropagation(); // Stop the event from bubbling up
+        });
+      });
+    });
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Target all span elements within code blocks that have IDs starting with 'cb'
+        document.querySelectorAll('pre code span[id^="cb"]').forEach(function(element) {
+            element.addEventListener('mouseenter', function() {
+                // Apply yellow background color to the hovered span element
+                this.style.backgroundColor = '#FFFF99';
+            });
+            element.addEventListener('mouseleave', function() {
+                // Revert the background color when the mouse leaves the span element
+                this.style.backgroundColor = '';
+            });
+        });
+    });
+
+
+
     </script>
     
     <script>
