@@ -1,0 +1,824 @@
+---
+title: Lecture 9
+subtitle: Data Visualization - Aesthetic Mappings and Facets
+format:
+  clean-revealjs:
+    self-contained: true
+    incremental: true
+    code-annotations: hover
+
+    # logo: logo-title-slide.png
+author:
+  - name: Byeong-Hak Choe
+    email: bchoe@geneseo.edu
+    affiliations: SUNY Geneseo
+date: 2024-02-22
+execute: 
+  eval: true
+  echo: true
+callout-icon: false
+
+from: markdown+emoji
+include-after-body: target-hover.html # effect.html
+
+# bibliography: refs.bib
+
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+
+
+theme_set(theme_fivethirtyeight()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(0,10,0,0)),
+                axis.text.x = element_text(size = rel(1.5)),
+                axis.text.y = element_text(size = rel(1.5)),
+                strip.text = element_text(size = rel(1.5)),
+                legend.position = "top",
+                legend.text = element_text(size = rel(1.5)),
+                legend.title = element_text(size = rel(1.5))
+                )
+          )
+```
+
+
+## Learning Objectives
+
+- Aesthetic Mappings
+- Facets
+
+
+
+
+# R Basics  {background-color="#1c4982"}
+
+
+## RStudio Workflow
+### Must-know Quarto Shortcuts
+
+::: {.nonincremental}
+
+:::: {.columns}
+
+::: {.column}
+### Mac
+
+  - **option+command+I**: to create a R chunk
+  
+  - **command+shift+return**: to run the code in the R chunk
+  
+  - **command + shift + K**: to render/knit the Quarto file
+  
+  - **command + shift + C**: to (de-)comment out a line in the Quarto file
+
+:::
+
+::: {.column}
+### Windows
+
+  - **Alt+Ctrl+I** : to create a R chunk
+  
+  - **Ctrl+Shift+Enter** : to run the code in the R chunk
+  
+  - **Ctrl + Shift + K**: to knit/render the Quarto file
+  
+  - **Ctrl + Shift + C**: to (de-)comment out a line in the Quarto file
+
+:::
+
+::::
+
+:::
+
+## RStudio Workflow
+### Shortcuts for RStudio and RScript
+
+::: {.nonincremental}
+
+:::: {.columns}
+::: {.column}
+**Mac**
+
+- **command + return** runs a current line or selected lines.
+- **command + shift + C** is the shortcut for # (commenting).
+- **option + - ** is the shortcut for `<-`.
+
+:::
+
+::: {.column}
+**Windows**
+
+- **Ctrl + return** runs a current line or selected lines.
+- **Ctrl + Shift + C** is the shortcut for # (commenting).
+- **Alt + - ** is the shortcut for `<-`.
+
+:::
+::::
+
+:::
+
+
+
+# Data Visualization with `ggplot()` {background-color="#1c4982"}
+
+## Data Visualization - First Steps
+
+```{.r}
+library(tidyverse)
+mpg
+?mpg
+```
+
+- The `mpg` data frame, provided by `ggplot2`, contains observations collected by the US Environmental Protection Agency on 38 models of car.
+
+- Q. Do cars with big engines use more fuel than cars with small engines?
+  - `displ`: a car's engine size, in liters.
+  - `hwy`: a car's fuel efficiency on the highway, in miles per gallon (mpg). 
+
+
+
+
+## Data Visualization - First Steps
+### Creating a `ggplot`
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy) )
+```
+
+
+- To plot `mpg`, run the above code to put `displ` on the `x`-axis and `hwy` on the `y`-axis.
+
+
+## Data Visualization - First Steps
+### Graphing Template
+
+```{.python}
+ggplot(data = <DATA.FRAME>) + 
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+```
+
+
+- To make a ggplot plot, replace the bracketed sections in the code above with a `data.frame`, a `geom` function, or a collection of mappings such as `x = VAR_1` and `y = VAR_2`.
+
+
+
+## `ggplot` workflow
+### Common problems in `ggplot()`
+
+
+```{r}
+#| eval: false
+
+ggplot(data = mpg) 
+ + geom_point( mapping = 
+                 aes(x = displ, 
+                     y = hwy) )
+```
+
+- One common problem when creating `ggplot2` graphics is to put the `+` in the wrong place.
+
+
+
+# Aesthetic Mappings {background-color="#1c4982"}
+
+
+## Aesthetic Mappings
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/r4s_330_1.png" width="600px">
+</p>
+
+
+
+- In the plot above, one group of points (highlighted in red) seems to fall outside of the linear trend. 
+
+  - How can we explain these cars? Are those hybrids?
+
+
+
+## Aesthetic Mappings
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/r4s_330_2.png" width="600px">
+</p>
+
+- An aesthetic is a visual property (e.g., `size`, `shape`, `color`) of the objects (e.g., `class`) in our plot.
+
+- We can display a point in different ways by changing the values of its aesthetic properties. 
+
+## Aesthetic Mappings
+### Adding a `color` to the plot
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy, 
+                   color = class) )
+```
+
+
+## Aesthetic Mappings
+### Adding a `shape` to the plot
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy, 
+                   shape = class) )
+```
+
+
+
+
+## Aesthetic Mappings
+### Adding a `size` to the plot
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy, 
+                   size = class) )
+```
+
+
+
+
+## Aesthetic Mappings
+### Adding an `alpha` (transparency) to the plot
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy, 
+                   alpha = class) )
+```
+
+
+
+
+## Aesthetic Mappings
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy) )
+```
+
+- How many observations are in the `mpg` data.frame?
+- How many dots are in the scatterplot above?
+  
+## Aesthetic Mappings
+### Overplotting problem
+
+- Many points overlap each other. 
+  - This problem is known as **overplotting**. 
+
+
+- When points overlap, it's hard to know how many data points are at a particular location. 
+
+
+- Overplotting can obscure patterns and outliers, leading to potentially misleading conclusions. 
+
+- We can set a transparency level (`alpha`) between 0 (full transparency) and 1 (no transparency).
+
+
+## Aesthetic Mappings
+### Overplotting and `alpha`
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             alpha = .2)
+```
+
+
+
+
+## Aesthetic Mappings
+### Specifying a `color` to the plot
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy), 
+             color = "blue")
+```
+
+
+
+
+## Aesthetic Mappings
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/r4s_330_3.png" width="500px">
+</p>
+
+
+- To set an aesthetic manually, set the aesthetic by name as an argument of our `geom_` function; i.e. it goes outside of `aes()`. 
+  - We will need to pick a level that makes sense for that aesthetic:
+    - The name of a `color` as a *character string*.
+    - The `size` of a point in *mm*.
+    - The `shape` of a point as a *number*, as shown above.
+  
+
+
+
+## Aesthetic Mappings
+### Specifying a `color` to the plot?
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point( mapping = 
+                aes(x = displ, 
+                    y = hwy, 
+                    color = "blue") )
+```
+
+
+## Aesthetic Mappings
+### Categorical vs. Continuous Variables
+
+- A **categorical variable** is a variable whose value is obtained by *counting*.
+  - Number of red marbles in a jar
+  - Number of heads when flipping three coins 
+  - Students’ letter grade
+  - US state/county
+  
+- Categorical variables should be `factor` or `character`.
+  - We can use `as.factor(variable)` to make a variable `factor`.
+
+
+## Aesthetic Mappings
+### Categorical vs. Continuous Variables
+- A **continuous variable** is a variable whose value is obtained by *measuring*  and can have a decimal or fractional value.
+  - Height/weight of students
+  - Time it takes to get to school
+  - Fuel efficiency of a vehicle (e.g., miles per gallon)
+
+- Continuous variables should be `numeric`.
+  - We can use `as.numeric(variable)` to make a variable `numeric`.
+
+
+## Aesthetic Mappings
+### Integer Variables
+- For data visualization, `integer`-type variables could be treated as either categorical or continuous, depending on the context of analysis.
+
+
+- If the values of an integer-type variable means an intensity or an order, the integer variable could be continuous.
+  - E.g., A variable of age integers (18, 19, 20, 21, ...) could be considered continuous.
+  - E.g., A variable of integer-valued MPG (27, 28, 29, 30, ...) could be considered continuous.
+  
+  
+- If not, the integer variable is categorical.
+  - E.g., A variable of month integers (1, ,2, ..., 12) is categorical.
+  
+
+
+
+## Data Visualization
+### Aesthetic Mappings
+
+- Question 2 in [Classwork 6](https://bcdanl.github.io/200/danl-cw/danl-200-cw-06.html)
+
+
+# Facets {background-color="#1c4982"}
+
+## Facets 
+
+- One way to add a variable, particularly useful for categorical variables, is to use **facets** to split our plot into facets, subplots that each display one subset of the data.
+
+
+## Facets 
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy), 
+             alpha = .5) + 
+  facet_wrap( . ~ class, nrow = 2)
+```
+
+
+- To facet our plot by a *single variable*, use `facet_wrap()`.
+
+
+## Facets 
+
+- To facet our plot on the combination of *two variables*, add `facet_grid( VAR_ROW ~ VAR_COL )` to our plot call.
+
+
+## Facets 
+
+- The first argument of `facet_grid()` is also a formula. 
+  - This time the formula should contain two variable names separated by a `~`.
+
+
+## Facets 
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             alpha = .5) + 
+  facet_grid(drv ~ cyl)
+```
+
+
+
+
+## Facets 
+
+- Option `scales` in `facet_*()` is whether scales is 
+  - fixed (`"fixed"`, the default),
+  - free in one dimension (`"free_x"`, `"free_y"`), or
+  - free in two dimensions (`"free"`).
+
+
+
+## Facets 
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             alpha = .5) + 
+  facet_grid(drv ~ cyl, 
+             scales = "free_x")
+```
+
+
+
+## Data Visualization
+### Facets
+
+- Question 3 in [Classwork 6](https://bcdanl.github.io/200/danl-cw/danl-200-cw-06.html)
+
+
+
+
+
+# Geometric Objects {background-color="#1c4982"}
+
+
+
+
+
+## Geometric Objects
+
+How are these two plots similar?
+
+:::: {.columns}
+::: {.column width="50%"}
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/r4s_360_1.png">
+</p>
+
+:::
+
+::: {.column width="50%"}
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/r4s_360_2.png">
+</p>
+:::
+
+:::
+
+
+
+
+## Geometric Objects
+
+- A `geom_*()` is the geometrical object that a plot uses to represent data.
+  - Bar charts use `geom_bar()`;
+  - Line charts use `geom_line()`; 
+  - Boxplots use the `geom_boxplot()`; 
+  - Scatterplots use the `geom_point()`; 
+  - Fitted lines use the `geom_smooth()`;
+  - and many more!
+
+- We can use different `geom_*()` to plot the same data.
+
+
+
+## Geometric Objects
+### Scatterplot
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             alpha = .3)
+```
+
+
+## Geometric Objects
+### Fitted lines
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column
+
+ggplot(data = mpg) + 
+  geom_smooth(mapping = 
+                aes(x = displ, 
+                    y = hwy))
+```
+
+
+
+## Geometric Objects
+
+
+- Every geom function in `ggplot2` takes a mapping argument.
+
+- However, not every aesthetic works with every `geom`. 
+  - We could set the `shape` of a point, but we could not set the `shape` of a line;
+  - We could set the `linetype` of a line.
+
+## Geometric Objects
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot( data = mpg ) + 
+  geom_smooth( mapping = 
+                 aes( x = displ, 
+                      y = hwy, 
+                      linetype = drv) )
+```
+
+
+
+## Geometric Objects
+
+:::{.nonincremental}
+- Setting `method = lm` manually in `geom_smooth()` gives a straight line that fits into data points.
+
+:::
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot( data = mpg ) + 
+  geom_smooth( mapping = 
+                 aes( x = displ, 
+                      y = hwy),
+               method = lm)
+```
+
+
+
+## Geometric Objects
+- We can set the `group` aesthetic to a *categorical variable* to draw multiple objects. 
+  - `ggplot2` will draw a separate object for each unique value of the grouping variable. 
+
+## Geometric Objects
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) +
+  geom_smooth(mapping = 
+                aes(x = displ, 
+                    y = hwy))
+              
+```
+
+
+
+## Geometric Objects
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) +
+  geom_smooth(mapping = 
+                aes(x = displ, 
+                    y = hwy, 
+                    group = drv))
+```
+
+
+## Geometric Objects
+:::{.nonincremental}
+
+- In practice, `ggplot2` will automatically group the data for these `geoms` whenever we map an aesthetic to a discrete variable (as in the `linetype` example). 
+
+:::
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) +
+  geom_smooth(
+    mapping = aes(x = displ, 
+                  y = hwy, 
+                  color = drv),
+    show.legend = FALSE
+  )
+```
+
+
+
+
+
+
+## Geometric Objects
+:::{.nonincremental}
+
+- To display multiple geometric objects in the same plot, add multiple `geom_*()` functions to `ggplot()`:
+
+:::
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             alpha = .3) +
+  geom_smooth(mapping = 
+                aes(x = displ, 
+                    y = hwy)) +
+  geom_smooth(mapping = 
+                aes(x = displ, 
+                    y = hwy), 
+              method = lm, 
+              color = 'red')
+```
+
+
+
+## Geometric Objects
+
+- Using `geom_point()`, `geom_smooth()`, and `geom_smooth(method = lm)` together is an excellent option to visualize the relationship between the two variables.
+
+
+## Geometric Objects
+:::{.nonincremental}
+
+- If we place mappings in a geom function, `ggplot2` will treat them as local mappings for the layer. 
+
+:::
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = mpg, 
+       mapping = 
+         aes(x = displ, 
+             y = hwy)) + 
+  geom_point(mapping = 
+               aes(color = class),
+             alpha = .3) + 
+  geom_smooth()
+```
+
+
+
+## Geometric Objects
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+df_subcompact <- 
+  filter(mpg, 
+         class == "subcompact")
+
+ggplot(data = mpg, 
+       mapping = 
+         aes(x = displ, 
+             y = hwy)) + 
+  geom_point(mapping = 
+               aes(color = class), 
+             alpha = .3) + 
+  geom_smooth(data = df_subcompact, 
+              se = FALSE)
+```
+
+
+
+## Geometric Objects
+
+
+- We can use the same idea to specify different data for each layer. 
+
+
+- Here, our smooth line displays just a subset of the `mpg` data.frame, the `subcompact` cars.
+  - `filter()` is the tidyverse-way to filter observations in a data.frame.
+
+
+- The local data argument in `geom_smooth()` overrides the global data argument in `ggplot()` for that layer only.
+
+
+- The standard error (`se`) tells us how much the predicted values from a model might differ from the actual values we're trying to predict. 
+  - It's a way to measure how good a quality of prediction is.
+
+
+
+

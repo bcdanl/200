@@ -60,7 +60,7 @@
     "href": "listing-danl-200-cw.html",
     "title": "DANL 200 - Classwork",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 1\n\n\nComputer Basics\n\n\nJanuary 25, 2023\n\n\n\n\nClasswork 2\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio with Quarto\n\n\nJanuary 30, 2023\n\n\n\n\nClasswork 3\n\n\nMarkdown Basics\n\n\nFebruary 1, 2023\n\n\n\n\nClasswork 4\n\n\nQuarto Website Basics\n\n\nFebruary 6, 2023\n\n\n\n\nClasswork 5\n\n\nR Basics\n\n\nFebruary 8, 2023\n\n\n\n\nClasswork 6\n\n\nggplot - First Steps; Aethetic Mapping; Facets\n\n\nFebruary 13, 2023\n\n\n\n\nClasswork 7\n\n\nggplot - Geometric Objects; Statistical Transformation; and Position Adjustment\n\n\nFebruary 20, 2023\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 1\n\n\nComputer Basics\n\n\nJanuary 25, 2023\n\n\n\n\nClasswork 2\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio with Quarto\n\n\nJanuary 30, 2023\n\n\n\n\nClasswork 3\n\n\nMarkdown Basics\n\n\nFebruary 1, 2023\n\n\n\n\nClasswork 4\n\n\nQuarto Website Basics\n\n\nFebruary 6, 2023\n\n\n\n\nClasswork 5\n\n\nR Basics\n\n\nFebruary 8, 2023\n\n\n\n\nClasswork 6\n\n\nggplot - First Steps; Aethetic Mappings; Facets\n\n\nFebruary 13, 2023\n\n\n\n\nClasswork 7\n\n\nggplot - Geometric Objects; Statistical Transformation; and Position Adjustment\n\n\nFebruary 20, 2023\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-qa/danl-200-qa-02.html",
@@ -95,7 +95,7 @@
     "href": "listing-danl-200-lec.html",
     "title": "DANL 200 - Lecture",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and Installing the Tools\n\n\nJanuary 23, 2024\n\n\n\n\nLecture 2\n\n\nInstalling the DANL Tools\n\n\nJanuary 25, 2024\n\n\n\n\nLecture 3\n\n\nInstalling the DANL Tools\n\n\nJanuary 30, 2024\n\n\n\n\nLecture 4\n\n\nInstalling the DANL Tools\n\n\nFebruary 1, 2024\n\n\n\n\nLecture 5\n\n\nWebsite Basics\n\n\nFebruary 6, 2024\n\n\n\n\nLecture 6\n\n\nR Basics\n\n\nFebruary 8, 2024\n\n\n\n\nLecture 7\n\n\nR Basics; Data Visualization\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8\n\n\nWorking with data.frame; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9\n\n\nData Visualization - Aesthetic Mappings and Facets\n\n\nFebruary 20, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and Installing the Tools\n\n\nJanuary 23, 2024\n\n\n\n\nLecture 2\n\n\nInstalling the DANL Tools\n\n\nJanuary 25, 2024\n\n\n\n\nLecture 3\n\n\nInstalling the DANL Tools\n\n\nJanuary 30, 2024\n\n\n\n\nLecture 4\n\n\nInstalling the DANL Tools\n\n\nFebruary 1, 2024\n\n\n\n\nLecture 5\n\n\nWebsite Basics\n\n\nFebruary 6, 2024\n\n\n\n\nLecture 6\n\n\nR Basics\n\n\nFebruary 8, 2024\n\n\n\n\nLecture 7\n\n\nR Basics; Data Visualization\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8\n\n\nWorking with data.frame; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9\n\n\nData Visualization - Aesthetic Mappings and Facets\n\n\nFebruary 22, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-class/danl-200-note-08-2024-0215.html",
@@ -179,14 +179,14 @@
     "href": "danl-cw/danl-200-cw-06.html#q2a.",
     "title": "Classwork 6",
     "section": "Q2a.",
-    "text": "Q2a.\n\nWhich variables in mpg are categorical?\nWhich variables are continuous?"
+    "text": "Q2a.\n\nWhich variables in the data.frame mpg are categorical?\nWhich variables are continuous?"
   },
   {
     "objectID": "danl-cw/danl-200-cw-06.html#q2b.",
     "href": "danl-cw/danl-200-cw-06.html#q2b.",
     "title": "Classwork 6",
     "section": "Q2b.",
-    "text": "Q2b.\n\nMap a continuous variable to color, size, and shape.\nHow do these aesthetics behave differently for categorical vs. continuous variables?"
+    "text": "Q2b.\n\nConsider the ggplot below:\n\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy)) \n\n\nMap a continuous variable to color, size, and shape.\nHow do these aesthetics behave differently for categorical vs. continuous variables?\n\nTo consider categorical variables, use as.factor(VARIABLE)."
   },
   {
     "objectID": "danl-cw/danl-200-cw-06.html#q2d.",
@@ -1425,7 +1425,7 @@
     "href": "listing-danl-200-class.html",
     "title": "DANL 200 - Class Notes",
     "section": "",
-    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nData Visualization - Aesthetic Mappings and Facets\n\n\nFebruary 20, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nData Visualization - Aesthetic Mappings and Facets\n\n\nFebruary 22, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#announcement",
@@ -2517,7 +2517,7 @@
     "href": "index.html#bullet-lecture-slides",
     "title": "DANL 200-02: Introduction to Data Analytics, Spring 2024",
     "section": "\\(\\bullet\\,\\) Lecture Slides 🚀",
-    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 9\n\n\nFebruary 20, 2024\n\n\n\n\nLecture 8\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 7\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 6\n\n\nFebruary 8, 2024\n\n\n\n\nLecture 5\n\n\nFebruary 6, 2024\n\n\n\n\nLecture 4\n\n\nFebruary 1, 2024\n\n\n\n\nLecture 3\n\n\nJanuary 30, 2024\n\n\n\n\nLecture 2\n\n\nJanuary 25, 2024\n\n\n\n\nLecture 1\n\n\nJanuary 23, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 9\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 8\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 7\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 6\n\n\nFebruary 8, 2024\n\n\n\n\nLecture 5\n\n\nFebruary 6, 2024\n\n\n\n\nLecture 4\n\n\nFebruary 1, 2024\n\n\n\n\nLecture 3\n\n\nJanuary 30, 2024\n\n\n\n\nLecture 2\n\n\nJanuary 25, 2024\n\n\n\n\nLecture 1\n\n\nJanuary 23, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-lecture-q-a",
@@ -2644,5 +2644,355 @@
     "title": "Lecture 9 - Q & A",
     "section": "",
     "text": "Welcome to our Lecture 9 Discussion Board! 👋 \nThis space is designed for you to engage with your classmates about the material covered in Lecture 9 slides.\nWhether you are looking to delve deeper into the slides, share insights, or have questions about the content, this is the perfect place for you.\nIf you have any specific questions for Byeong-Hak (@bcdanl) regarding the Lecture 9 materials or need clarification on any points, don’t hesitate to ask here.\nLet’s collaborate and learn from each other!\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#announcement",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#announcement",
+    "title": "Lecture 9",
+    "section": "Announcement",
+    "text": "Announcement\nGraduate School Information Session\n\n\nInformationWhen and where?Who will be there?Who will be there?Who is invited?Zoom Meeting Invite\n\n\n\nAre you interested in pursuing grad school/MBA in the future? Attend the virtual Graduate School/MBA Information Session and learn more about finding a program suitable for you!\n\nThe MBA and M.S. in Accounting/Finance/HR/Marketing/Data Analytics programs,\nThe grad school application process,\nDeciding whether to go now or later\nPreparing for and taking the GMAT\nEtc.\n\n\n\n\n\nWhen and where?\n\nFriday, February 23, 2024, 11:30 A.M. to 12:20 P.M. via Zoom meeting\n\n\n\n\n\nWho will be there?\n\nProf. Jassawalla will discuss the application process, studying for the GMAT, different MBA formats (e.g. 4+1 MBA vs traditional 2-year MBA, part-time vs full-time MBA, online MBA), top 50 MBA programs, etc.\n\n\n\n\n\nFour guest speakers who are Geneseo alumni currently in grad school - they will share their decision process and advice on applying to grad school.\n\nThree guest speakers are each pursuing their MBA at: RIT (Rochester Institute of Technology), SUNY Binghamton, Clarkson University.\nOne guest speaker is currently pursuing the M.S. in Accounting degree at SUNY Geneseo.\n\n\n\n\n\nWho is invited?\n\nAll interested students including freshmen, sophomores, juniors and seniors.\n\n\n\n\n\nZoom Meeting Invite\n\nTime: Feb 23, 2024 11:30 AM Eastern Time (US and Canada)\nLink to the Zoom Meeting\n\nMeeting ID: 651 090 8113\nPasscode: 888805"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#learning-objectives",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#learning-objectives",
+    "title": "Lecture 9",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nAesthetic Mappings\nFacets"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#rstudio-workflow",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#rstudio-workflow",
+    "title": "Lecture 9",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nMust-know Quarto Shortcuts\n\n\n\nMac\n\noption+command+I: to create a R chunk\ncommand+shift+return: to run the code in the R chunk\ncommand + shift + K: to render/knit the Quarto file\ncommand + shift + C: to (de-)comment out a line in the Quarto file\n\n\nWindows\n\nAlt+Ctrl+I : to create a R chunk\nCtrl+Shift+Enter : to run the code in the R chunk\nCtrl + Shift + K: to knit/render the Quarto file\nCtrl + Shift + C: to (de-)comment out a line in the Quarto file"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#rstudio-workflow-1",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#rstudio-workflow-1",
+    "title": "Lecture 9",
+    "section": "RStudio Workflow",
+    "text": "RStudio Workflow\nShortcuts for RStudio and RScript\n\n\n\nMac\n\ncommand + return runs a current line or selected lines.\ncommand + shift + C is the shortcut for # (commenting).\noption + -  is the shortcut for &lt;-.\n\n\nWindows\n\nCtrl + return runs a current line or selected lines.\nCtrl + Shift + C is the shortcut for # (commenting).\nAlt + -  is the shortcut for &lt;-."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#data-visualization---first-steps",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#data-visualization---first-steps",
+    "title": "Lecture 9",
+    "section": "Data Visualization - First Steps",
+    "text": "Data Visualization - First Steps\nlibrary(tidyverse)\nmpg\n?mpg\n\nThe mpg data frame, provided by ggplot2, contains observations collected by the US Environmental Protection Agency on 38 models of car.\nQ. Do cars with big engines use more fuel than cars with small engines?\n\ndispl: a car’s engine size, in liters.\nhwy: a car’s fuel efficiency on the highway, in miles per gallon (mpg)."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#data-visualization---first-steps-1",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#data-visualization---first-steps-1",
+    "title": "Lecture 9",
+    "section": "Data Visualization - First Steps",
+    "text": "Data Visualization - First Steps\nCreating a ggplot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy) )\n\n\n\n\n\n\n\nTo plot mpg, run the above code to put displ on the x-axis and hwy on the y-axis."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#data-visualization---first-steps-2",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#data-visualization---first-steps-2",
+    "title": "Lecture 9",
+    "section": "Data Visualization - First Steps",
+    "text": "Data Visualization - First Steps\nGraphing Template\nggplot(data = &lt;DATA.FRAME&gt;) + \n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\nTo make a ggplot plot, replace the bracketed sections in the code above with a data.frame, a geom function, or a collection of mappings such as x = VAR_1 and y = VAR_2."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-1",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-1",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\n\n\n\n\nIn the plot above, one group of points (highlighted in red) seems to fall outside of the linear trend.\n\nHow can we explain these cars? Are those hybrids?"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-2",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-2",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\n\n\n\n\nAn aesthetic is a visual property (e.g., size, shape, color) of the objects (e.g., class) in our plot.\nWe can display a point in different ways by changing the values of its aesthetic properties."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-3",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-3",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nAdding a color to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   color = class) )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-4",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-4",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nAdding a shape to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   shape = class) )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-5",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-5",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nAdding a size to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   size = class) )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-6",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-6",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nAdding an alpha (transparency) to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   alpha = class) )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-7",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-7",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy) )\n\n\n\n\n\n\n\nHow many observations are in the mpg data.frame?\nHow many dots are in the scatterplot above?"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-8",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-8",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nOverplotting problem\n\nMany points overlap each other.\n\nThis problem is known as overplotting.\n\nWhen points overlap, it’s hard to know how many data points are at a particular location.\nOverplotting can obscure patterns and outliers, leading to potentially misleading conclusions.\nWe can set a transparency level (alpha) between 0 (full transparency) and 1 (no transparency)."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-9",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-9",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nOverplotting and alpha\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .2)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-10",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-10",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nSpecifying a color to the plot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy), \n             color = \"blue\")"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-11",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-11",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\n\n\n\n\nTo set an aesthetic manually, set the aesthetic by name as an argument of our geom_ function; i.e. it goes outside of aes().\n\nWe will need to pick a level that makes sense for that aesthetic:\n\nThe name of a color as a character string.\nThe size of a point in mm.\nThe shape of a point as a number, as shown above."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#common-problems-in-ggplot",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#common-problems-in-ggplot",
+    "title": "Lecture 9",
+    "section": "Common problems in ggplot()",
+    "text": "Common problems in ggplot()\n\nggplot(data = mpg) \n + geom_point( mapping = \n                 aes(x = displ, \n                     y = hwy) )\n\n\nOne common problem when creating ggplot2 graphics is to put the + in the wrong place."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#data-visualization",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#data-visualization",
+    "title": "Lecture 9",
+    "section": "Data Visualization",
+    "text": "Data Visualization\nAesthetic Mappings\n\nQuestion 2 in Classwork 6"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#facets-1",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#facets-1",
+    "title": "Lecture 9",
+    "section": "Facets",
+    "text": "Facets\n\nOne way to add a variable, particularly useful for categorical variables, is to use facets to split our plot into facets, subplots that each display one subset of the data."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#facets-2",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#facets-2",
+    "title": "Lecture 9",
+    "section": "Facets",
+    "text": "Facets\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy), \n             alpha = .5) + \n  facet_wrap( . ~ class, nrow = 2)\n\n\n\n\n\n\n\nTo facet our plot by a single variable, use facet_wrap()."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#facets-3",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#facets-3",
+    "title": "Lecture 9",
+    "section": "Facets",
+    "text": "Facets\n\nTo facet our plot on the combination of two variables, add facet_grid( VAR_ROW ~ VAR_COL ) to our plot call."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#facets-4",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#facets-4",
+    "title": "Lecture 9",
+    "section": "Facets",
+    "text": "Facets\n\nThe first argument of facet_grid() is also a formula.\n\nThis time the formula should contain two variable names separated by a ~."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#facets-5",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#facets-5",
+    "title": "Lecture 9",
+    "section": "Facets",
+    "text": "Facets\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .5) + \n  facet_grid(drv ~ cyl)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#facets-6",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#facets-6",
+    "title": "Lecture 9",
+    "section": "Facets",
+    "text": "Facets\n\nOption scales in facet_*() is whether scales is\n\nfixed (\"fixed\", the default),\nfree in one dimension (\"free_x\", \"free_y\"), or\nfree in two dimensions (\"free\")."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#facets-7",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#facets-7",
+    "title": "Lecture 9",
+    "section": "Facets",
+    "text": "Facets\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .5) + \n  facet_grid(drv ~ cyl, \n             scales = \"free_x\")"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#data-visualization-1",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#data-visualization-1",
+    "title": "Lecture 9",
+    "section": "Data Visualization",
+    "text": "Data Visualization\nFacets\n\nQuestion 3 in Classwork 6"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-1",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-1",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\nHow are these two plots similar?"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-2",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-2",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\nA geom_*() is the geometrical object that a plot uses to represent data.\n\nBar charts use geom_bar();\nLine charts use geom_line();\nBoxplots use the geom_boxplot();\nScatterplots use the geom_point();\nFitted lines use the geom_smooth();\nand many more!\n\nWe can use different geom_*() to plot the same data."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-3",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-3",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\nScatterplot\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-4",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-4",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\nFitted lines\n\n\nggplot(data = mpg) + \n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-5",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-5",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\nEvery geom function in ggplot2 takes a mapping argument.\nHowever, not every aesthetic works with every geom.\n\nWe could set the shape of a point, but we could not set the shape of a line;\nWe could set the linetype of a line."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-6",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-6",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\nggplot( data = mpg ) + \n  geom_smooth( mapping = \n                 aes( x = displ, \n                      y = hwy, \n                      linetype = drv) )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-7",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-7",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\nSetting method = lm manually in geom_smooth() gives a straight line that fits into data points.\n\n\n\n\nggplot( data = mpg ) + \n  geom_smooth( mapping = \n                 aes( x = displ, \n                      y = hwy),\n               method = lm)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-8",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-8",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\nWe can set the group aesthetic to a categorical variable to draw multiple objects.\n\nggplot2 will draw a separate object for each unique value of the grouping variable."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-9",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-9",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\nggplot(data = mpg) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-10",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-10",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\nggplot(data = mpg) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy, \n                    group = drv))"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-11",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-11",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\nIn practice, ggplot2 will automatically group the data for these geoms whenever we map an aesthetic to a discrete variable (as in the linetype example).\n\n\n\n\nggplot(data = mpg) +\n  geom_smooth(\n    mapping = aes(x = displ, \n                  y = hwy, \n                  color = drv),\n    show.legend = FALSE\n  )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-12",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-12",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\nTo display multiple geometric objects in the same plot, add multiple geom_*() functions to ggplot():\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy)) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy), \n              method = lm, \n              color = 'red')"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-13",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-13",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\nUsing geom_point(), geom_smooth(), and geom_smooth(method = lm) together is an excellent option to visualize the relationship between the two variables."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-14",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-14",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\nIf we place mappings in a geom function, ggplot2 will treat them as local mappings for the layer.\n\n\n\n\nggplot(data = mpg, \n       mapping = \n         aes(x = displ, \n             y = hwy)) + \n  geom_point(mapping = \n               aes(color = class),\n             alpha = .3) + \n  geom_smooth()"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-15",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-15",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\ndf_subcompact &lt;- \n  filter(mpg, \n         class == \"subcompact\")\n\nggplot(data = mpg, \n       mapping = \n         aes(x = displ, \n             y = hwy)) + \n  geom_point(mapping = \n               aes(color = class), \n             alpha = .3) + \n  geom_smooth(data = df_subcompact, \n              se = FALSE)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-16",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#geometric-objects-16",
+    "title": "Lecture 9",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\nWe can use the same idea to specify different data for each layer.\nHere, our smooth line displays just a subset of the mpg data.frame, the subcompact cars.\n\nfilter() is the tidyverse-way to filter observations in a data.frame.\n\nThe local data argument in geom_smooth() overrides the global data argument in ggplot() for that layer only.\nThe standard error (se) tells us how much the predicted values from a model might differ from the actual values we’re trying to predict.\n\nIt’s a way to measure how good a quality of prediction is."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-12",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-12",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nSpecifying a color to the plot?\n\n\nggplot(data = mpg) + \n  geom_point( mapping = \n                aes(x = displ, \n                    y = hwy, \n                    color = \"blue\") )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-13",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-13",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nCategorical vs. Continuous Variables\n\nA categorical variable is a variable whose value is obtained by counting.\n\nNumber of red marbles in a jar\nNumber of heads when flipping three coins\nStudents’ letter grade\nUS state/county\n\nCategorical variables should be factor or character.\n\nWe can use as.factor(variable) to make a variable factor."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-14",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-14",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nCategorical vs. Continuous Variables\n\nA continuous variable is a variable whose value is obtained by measuring and can have a decimal or fractional value.\n\nHeight/weight of students\nTime it takes to get to school\nFuel efficiency of a vehicle (e.g., miles per gallon)\n\nContinuous variables should be numeric.\n\nWe can use as.numeric(variable) to make a variable numeric."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-15",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#aesthetic-mappings-15",
+    "title": "Lecture 9",
+    "section": "Aesthetic Mappings",
+    "text": "Aesthetic Mappings\nInteger Variables\n\nFor data visualization, integer-type variables could be treated as either categorical or continuous, depending on the context of analysis.\nIf the values of an integer-type variable means an intensity or an order, the integer variable could be continuous.\n\nE.g., A variable of age integers (18, 19, 20, 21, …) could be considered continuous.\nE.g., A variable of integer-valued MPG (27, 28, 29, 30, …) could be considered continuous.\n\nIf not, the integer variable is categorical.\n\nE.g., A variable of month integers (1, ,2, …, 12) is categorical."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-09-2024-0222.html#ggplot-workflow",
+    "href": "danl-lec/danl-200-lec-09-2024-0222.html#ggplot-workflow",
+    "title": "Lecture 9",
+    "section": "ggplot workflow",
+    "text": "ggplot workflow\nCommon problems in ggplot()\n\nggplot(data = mpg) \n + geom_point( mapping = \n                 aes(x = displ, \n                     y = hwy) )\n\n\nOne common problem when creating ggplot2 graphics is to put the + in the wrong place."
   }
 ]
