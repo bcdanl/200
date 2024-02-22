@@ -33,3 +33,123 @@ library(DT)
 ```
 
 
+# Part 3. R Basics
+
+## Question 0.
+Provide your GitHub username.
+
+*Answer*:
+
+bclog1
+
+
+<br><br>
+
+
+## Question 1.
+base-R provides the R object `state.name`. Write an R code to assign `state.name` to a variable, `US_states`.
+
+*Answer*:
+```{r}
+US_states <- state.name
+US_states
+```
+
+<br><br>
+
+## Question 2.
+The `temp_F` vector contains the average high temperatures in January for the following cities: Seoul, Lagos, Paris, Rio de Janeiro, San Juan, and Rochester.
+
+```{r}
+temp_F <- c(35, 88, 42, 84, 81, 30)
+```
+
+Create a new vector named `temp_C` that stores the converted Celsius temperatures. Below is the conversion formula:
+
+$$
+C = \frac{5}{9}\times(F - 32)
+$$
+
+*Answer*:
+```{r}
+temp_C <- (5/9) * (temp_F - 32)
+temp_C
+```
+
+<br><br>
+
+
+## Question 3.
+- Write an R code to calculate the standard deviation (SD) of the integer vector `x` below manually. That is to calculate the SD without using the `sd()` function.
+
+```{r}
+x <- 1:25
+```
+
+- Also, write an R code to test whether the standard deviation you calculate manually above is equal to `sd(x)`.
+
+
+
+*Answer*:
+```{r}
+
+numerator <- x - mean(x)
+numerator <- numerator^2
+numerator <- sum(numerator)
+numerator
+denominator <- length(x) - 1
+denominator
+
+variance_x <- numerator/denominator
+variance_x
+sd_x_manually <- sqrt(variance_x)
+sd_x_manually
+
+
+sd_x <- sqrt( sum( (x - mean(x))^2 ) / (length(x) - 1) )
+sd_x
+
+sd(x)
+
+sd_x == sd(x)
+sd_x_manually == sd(x)
+```
+
+<br><br>
+
+
+## Question 4.
+- Write an R code to read the CSV file, `https://bcdanl.github.io/data/mlb_teams.csv` using the `tidyverse`'s `read_csv()` function, and assign it to `MLB_teams`.
+
+*Answer*:
+```{r}
+pathname <- "https://bcdanl.github.io/data/mlb_teams.csv"
+MLB_teams <- read_csv(pathname)
+
+DT::datatable(MLB_teams)
+```
+
+<br><br>
+
+
+## Question 5.
+Write an R code to provide summary statistics---mean, standard deviation, minimum, first quartile, median, third quartile, and maximum---for variables in the `MLB_teams` data.frame.
+
+*Answer*:
+```{r}
+skim(MLB_teams)
+```
+
+<br><br><br>
+
+
+
+
+# ggplot discussion
+
+```{r}
+df_mpg <- mpg
+?mpg
+
+```
+
