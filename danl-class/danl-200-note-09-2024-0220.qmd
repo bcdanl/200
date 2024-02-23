@@ -1,6 +1,6 @@
 ---
 title: Lecture 9 - Note
-subtitle: Data Visualization - Aesthetic Mappings and Facets
+subtitle: Homework 1 Review
 author: 
   - name: Byeong-Hak
 date: 2024-02-22
