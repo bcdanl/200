@@ -73,7 +73,7 @@ format:
       light: [flatly]  # flatly litera sandstone 'assets/scss/light.scss'
       dark: [darkly, theme-dark.scss] # darkly cyborg slate solra superhero
     css: [styles.css, assets/css/font.css] # , font.css
-    highlight-style: atom-one # espresso   tango
+    highlight-style: a11y # a11y espresso   tango
     mainfont:  sans-serif; serif; ui-sans-serif  # Gill Sans, sans-serif;
     toc: true
     # include-after-body: [target-blank.html]

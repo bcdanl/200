@@ -1,0 +1,48 @@
+---
+title: Lecture 10 - Note
+subtitle: Aesthetic Mappings; Geometric Objects
+author: 
+  - name: Byeong-Hak
+date: 2024-02-29
+
+execute: 
+  echo: true    # true false
+  eval: true    # true false
+  warning: false    # true false
+  message: false    # true false
+  fig-width: 9
+  # fig-height: 5
+  
+format: 
+  html:
+    toc: true    # true false
+    number-sections: true    # true false
+    code-fold: false    # true false show       # https://quarto.org/docs/output-formats/html-code.html
+    code-tools: true    # true false
+    highlight-style: a11y        # a11y arrow ayu atom-one breeze github gruvbox tango espresso
+                                     # pygments tango espresso espresso zenburn kate nord
+                                    # https://quarto.org/docs/output-formats/html-code.html#highlighting
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(hrbrthemes)
+library(skimr)
+library(DT)
+library(rmarkdown)
+
+```
+
+
+```{r}
+#| eval: false
+example <- read_csv("csv.csv")
+
+ggplot( data = mpg, aes(x = hwy, y = cyl) ) +
+  geom_point() +
+  geom_smooth()
+```
+
+

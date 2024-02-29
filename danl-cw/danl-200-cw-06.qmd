@@ -188,7 +188,6 @@ ggplot(data = mpg) +
 ```
   - What are the advantages to using faceting instead of the color aesthetic? 
   - What are the disadvantages? 
-  - How might the balance change if you had a larger dataset?
   
 <br>
 
@@ -196,7 +195,6 @@ ggplot(data = mpg) +
 - Read `?facet_wrap`. 
   - What does `nrow` do? 
   - What does `ncol` do? 
-  - What other options control the layout of the individual panels? 
   - Why doesn’t `facet_grid()` have `nrow` and `ncol` arguments?
 
 <br>
@@ -221,9 +219,7 @@ datatable(tvshows_web)
 
 <br>
 
-- Describe the relationship between audience size (`GRP`) and audience engagement (`PE`) using `ggplot`. 
-
-- Explain the relationship in words. 
+- Provide both (1) `ggplot` code and (2) comment to describe the relationship between audience size (`GRP`) and audience engagement (`PE`). 
 
 
 <br>
