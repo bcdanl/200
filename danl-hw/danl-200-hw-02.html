@@ -299,8 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </p>
 <p>Below is the data.frame <code>holiday_movies</code> containing information about holiday &amp; Christmas movies (Source: <a href="https://www.imdb.com/">the Internet Movie Database (IMDb)</a>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pathname <span class="ot">&lt;-</span> <span class="st">"https://bcdanl.github.io/data/holiday_movies_w_genres.csv"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>holiday_movies <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(pathname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>holiday_movies <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bcdanl.github.io/data/holiday_movies_w_genres.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(holiday_movies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -355,7 +354,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="question-5.">Question 5.</h2>
 <p>Below is the data.frame, <code>holiday_movies_genre_yearly</code>, containing yearly mean value of <code>average_rating</code> for each <code>genre</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>holiday_movies_genre_yearly <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bcdanl.github.io/data/holiday_movies_w_genres_yearly.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pathname <span class="ot">&lt;-</span> <span class="st">"https://bcdanl.github.io/data/holiday_movies_w_genres_yearly.csv"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>holiday_movies_genre_yearly <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(pathname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Provide both (1) <code>ggplot</code> code and (2) a comment to describe how the yearly trend of <code>average_rating</code> varies by <code>genre</code>.</p>
 <p><em>Answer</em>:</p>

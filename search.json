@@ -53,7 +53,7 @@
     "href": "danl-hw/danl-200-hw-02.html#question-5.",
     "title": "Homework 2",
     "section": "Question 5.",
-    "text": "Question 5.\nBelow is the data.frame, holiday_movies_genre_yearly, containing yearly mean value of average_rating for each genre.\n\nholiday_movies_genre_yearly &lt;- read_csv(\"https://bcdanl.github.io/data/holiday_movies_w_genres_yearly.csv\")\n\nProvide both (1) ggplot code and (2) a comment to describe how the yearly trend of average_rating varies by genre.\nAnswer:"
+    "text": "Question 5.\nBelow is the data.frame, holiday_movies_genre_yearly, containing yearly mean value of average_rating for each genre.\n\npathname &lt;- \"https://bcdanl.github.io/data/holiday_movies_w_genres_yearly.csv\"\nholiday_movies_genre_yearly &lt;- read_csv(pathname)\n\nProvide both (1) ggplot code and (2) a comment to describe how the yearly trend of average_rating varies by genre.\nAnswer:"
   },
   {
     "objectID": "danl-hw/danl-200-hw-02.html#question-6.",

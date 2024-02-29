@@ -64,8 +64,7 @@ theme_set(theme_ipsum()+
 Below is the data.frame `holiday_movies` containing information about holiday & Christmas movies (Source: [the Internet Movie Database (IMDb)](https://www.imdb.com/)). 
 
 ```{r}
-pathname <- "https://bcdanl.github.io/data/holiday_movies_w_genres.csv"
-holiday_movies <- read_csv(pathname)
+holiday_movies <- read_csv("https://bcdanl.github.io/data/holiday_movies_w_genres.csv")
 ```
 
 ```{r}
@@ -146,7 +145,8 @@ Provide both (1) `ggplot` code and (2) a comment to describe how the distributio
 Below is the data.frame, `holiday_movies_genre_yearly`, containing yearly mean value of `average_rating` for each `genre`.
 
 ```{r}
-holiday_movies_genre_yearly <- read_csv("https://bcdanl.github.io/data/holiday_movies_w_genres_yearly.csv")
+pathname <- "https://bcdanl.github.io/data/holiday_movies_w_genres_yearly.csv"
+holiday_movies_genre_yearly <- read_csv(pathname)
 ```
 
 Provide both (1) `ggplot` code and (2) a comment to describe how the yearly trend of `average_rating` varies by `genre`.
