@@ -35,14 +35,184 @@ library(rmarkdown)
 
 ```
 
+# Homework 2 information
+
+```{r}
+holiday_movies <- read_csv("https://bcdanl.github.io/data/holiday_movies_w_genres.csv")
+
+ggplot( data = holiday_movies, 
+        aes(x = num_votes, y = average_rating) ) +
+  geom_point() 
+```
+
+
+# ggplot and Quarto workflow
+
+Chunk option `eval: false` does not execute R code.
 
 ```{r}
 #| eval: false
-example <- read_csv("csv.csv")
-
-ggplot( data = mpg, aes(x = hwy, y = cyl) ) +
-  geom_point() +
-  geom_smooth()
+ggplot(data = mpg) 
+ + geom_point( mapping = 
+                 aes(x = displ, 
+                     y = hwy) )
 ```
+
+# Aesthetic Mapping
+```{r}
+
+ggplot(data = mpg) +
+  geom_point( mapping = 
+                 aes(x = displ, 
+                     y = hwy) )
+```
+
+
+```{r}
+mpg <- mpg
+```
+
+
+```{r}
+ggplot(data = mpg) +
+  geom_point( mapping = 
+                 aes(x = displ, 
+                     y = hwy,
+                     color = class) )
+
+```
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy, 
+                   shape = class) )
+```
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy, 
+                   alpha = class) )
+```
+## Overplotting
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy) )
+```
+
+
+```{r}
+skimr::skim(mpg)
+nrow(mpg)
+```
+
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy),
+             alpha = .25)
+```
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy),
+             alpha = 0)
+```
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy),
+             alpha = 1)
+```
+
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           color = class),
+             alpha = .25)
+```
+
+
+
+```{r}
+#| eval: false
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy),
+             color = class)
+```
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           color = class),
+             shape = 0)
+```
+
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           color = class),
+             shape = 23)
+```
+
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           color = class),
+             size = 3)
+```
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           color = "blue"))
+```
+
+Let me add a new variable, `blue_var`
+
+```{r}
+# Let me add a new variable, blue_var
+mpg <- mpg |>  # "|>" is pipe operator, which will be frequently used in the second half of the sester
+  mutate(blue_var = "blue")
+
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           color = blue_var)) +
+  labs(color = "colour")
+```
+
+
+```{r}
+mpg |>  # pipe shortcut: command/Crtl + Shift + M
+  count(class)
+
+```
+
+```{r}
+# $: extraction operator to extract a variable in a data.frame 
+# e.g.,  data.frame$variable
+
+# unique() returns a vector of unique values in a variable
+unique(mpg$class) 
+           
+# length() returns the length of a vector
+length( unique(mpg$class) )
+```
+
+
+```{r}
+length( unique(mpg$displ) )
+
+```
+
+
 
 
