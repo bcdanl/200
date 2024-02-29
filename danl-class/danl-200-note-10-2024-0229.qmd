@@ -1,6 +1,6 @@
 ---
 title: Lecture 10 - Note
-subtitle: Aesthetic Mappings; Geometric Objects
+subtitle: Aesthetic Mappings
 author: 
   - name: Byeong-Hak
 date: 2024-02-29
