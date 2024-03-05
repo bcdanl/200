@@ -166,11 +166,6 @@ ggplot(data = mpg) +
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy),
              alpha = .5) +
-  facet_grid(drv ~ .)
-
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy),
-             alpha = .5) +
   facet_grid(. ~ cyl)
 ```
 
@@ -191,30 +186,18 @@ ggplot(data = mpg) +
   
 <br>
 
+
 ## Q3e.
-- Read `?facet_wrap`. 
-  - What does `nrow` do? 
-  - What does `ncol` do? 
-  - Why doesn’t `facet_grid()` have `nrow` and `ncol` arguments?
-
-<br>
-
-## Q3f.
-When using `facet_grid()`, you should usually put the variable with more unique levels in the columns. Why?
-
-<br>
-
-## Q3g.
 Use the following data.frame.
 
 ```{r}
 #| echo: true
-tvshows_web <- read_csv(
+tvshows <- read_csv(
 		'https://bcdanl.github.io/data/tvshows.csv')
 ```
 
 ```{r}
-datatable(tvshows_web)
+datatable(tvshows)
 ```
 
 <br>
