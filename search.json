@@ -1313,7 +1313,7 @@
     "href": "listing-danl-200-class.html",
     "title": "DANL 200 - Class Notes",
     "section": "",
-    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#announcement",
@@ -3561,5 +3561,40 @@
     "title": "Lecture 11 - Q & A",
     "section": "",
     "text": "Welcome to our Lecture 11 Discussion Board! 👋 \nThis space is designed for you to engage with your classmates about the material covered in Lecture 11 slides.\nWhether you are looking to delve deeper into the slides, share insights, or have questions about the content, this is the perfect place for you.\nIf you have any specific questions for Byeong-Hak (@bcdanl) regarding the Lecture 11 materials or need clarification on any points, don’t hesitate to ask here.\nLet’s collaborate and learn from each other!\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-11-2024-0305.html",
+    "href": "danl-class/danl-200-note-11-2024-0305.html",
+    "title": "Lecture 11 - Note",
+    "section": "",
+    "text": "mpg &lt;- mpg"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-11-2024-0305.html#question-2a",
+    "href": "danl-class/danl-200-note-11-2024-0305.html#question-2a",
+    "title": "Lecture 11 - Note",
+    "section": "2.1 Question 2a",
+    "text": "2.1 Question 2a\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy,\n                           color = displ)) \n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy,\n                           size = cty)) \n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy,\n                           color = cty)) \n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy,\n                           color = as.factor(cty) )) \n\n\n\n\nBelow has the error: ! A continuous variable cannot be mapped to the shape aesthetic\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy,\n                           shape = cty )) \n\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy,\n                           shape = as.factor(cty) ))"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-11-2024-0305.html#question-2d",
+    "href": "danl-class/danl-200-note-11-2024-0305.html#question-2d",
+    "title": "Lecture 11 - Note",
+    "section": "2.2 Question 2d",
+    "text": "2.2 Question 2d\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = displ, y = hwy,\n                           color = displ &lt; 5))\n\n\n\n\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = displ, y = hwy,\n                           color = (displ &gt; 5 & hwy &gt; 20) ))"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-11-2024-0305.html#classwork-6---question-3",
+    "href": "danl-class/danl-200-note-11-2024-0305.html#classwork-6---question-3",
+    "title": "Lecture 11 - Note",
+    "section": "3.1 Classwork 6 - Question 3",
+    "text": "3.1 Classwork 6 - Question 3\n\n3.1.1 Q3a\nWhat happens if you facet on a continuous variable?\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = cty, y = hwy),\n             alpha = .5) +\n  facet_grid( displ ~ .)\n\n\n\n\n\n\n3.1.2 Q3b\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = drv, y = cyl),\n             alpha = .2)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-11-2024-0305.html#boxplots",
+    "href": "danl-class/danl-200-note-11-2024-0305.html#boxplots",
+    "title": "Lecture 11 - Note",
+    "section": "4.1 Boxplots",
+    "text": "4.1 Boxplots\n\nggplot( data = mpg ) +\n  geom_boxplot(mapping = aes(x = class,\n                             y = hwy,\n                             fill = class))\n\n\n\n\n\nggplot( data = mpg ) +\n  geom_boxplot(mapping = aes(x = class,\n                             y = hwy,\n                             color = class))\n\n\n\n\n\n# median disappears!\nggplot( data = mpg ) +\n  geom_boxplot(mapping = aes(x = class,\n                             y = hwy,\n                             color = class,\n                             fill = class))\n\n\n\n\n\ndiamonds &lt;- ggplot2::diamonds\n\n\nggplot(data = diamonds) +\n  geom_bar(mapping = aes(x = cut))"
   }
 ]

@@ -1,0 +1,275 @@
+---
+title: Lecture 11 - Note
+subtitle: Facets; Data Visualization Process; Geometric Objects
+author: 
+  - name: Byeong-Hak Choe
+date: 2024-03-05
+
+execute: 
+  echo: true    # true false
+  eval: true    # true false
+  warning: false    # true false
+  message: false    # true false
+  fig-width: 9
+  # fig-height: 5
+  
+format: 
+  html:
+    toc: true    # true false
+    number-sections: true    # true false
+    code-fold: false    # true false show       # https://quarto.org/docs/output-formats/html-code.html
+    code-tools: true    # true false
+    highlight-style: a11y        # a11y arrow ayu atom-one breeze github gruvbox tango espresso
+                                     # pygments tango espresso espresso zenburn kate nord
+                                    # https://quarto.org/docs/output-formats/html-code.html#highlighting
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(hrbrthemes)
+library(skimr)
+library(DT)
+library(rmarkdown)
+
+```
+
+
+# Categorical vs. Continuous
+
+```{r}
+mpg <- mpg
+```
+
+
+# Classwork 6
+
+## Question 2a
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           color = displ)) 
+```
+```{r}
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           size = cty)) 
+```
+
+```{r}
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           color = cty)) 
+```
+
+
+
+```{r}
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           color = as.factor(cty) )) 
+```
+
+Below has the error: ! A continuous variable cannot be mapped to the shape aesthetic
+
+```{r}
+#| eval: false
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           shape = cty )) 
+```
+
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           shape = as.factor(cty) )) 
+```
+## Question 2d
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           color = displ < 5))
+```
+
+
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy,
+                           color = (displ > 5 & hwy > 20) ))
+```
+
+
+# Facets
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy), 
+             alpha = .5) +
+  facet_wrap( class ~ . ) # in R, ~ is used for a formula
+```
+
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy), 
+             alpha = .5) +
+  facet_wrap( class ~ ., nrow = 3 ) # in R, ~ is used for a formula
+```
+
+
+
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy), 
+             alpha = .5) +
+  facet_wrap( class ~ ., nrow = 1 ) # in R, ~ is used for a formula
+```
+
+
+
+
+```{r}
+#| fig-height: 7
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy), 
+             alpha = .5) +
+  facet_wrap( class ~ ., ncol = 2 ) # in R, ~ is used for a formula
+
+```
+
+
+```{r}
+#| fig-height: 7
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy), 
+             alpha = .5) +
+  facet_wrap( class ~ ., ncol = 2,
+              scales = "free_x") # in R, ~ is used for a formula
+
+```
+
+
+## Classwork 6 - Question 3
+
+### Q3a
+What happens if you facet on a continuous variable?
+
+
+```{r}
+#| fig-height: 12
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = cty, y = hwy),
+             alpha = .5) +
+  facet_grid( displ ~ .)
+```
+
+
+
+
+### Q3b
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = drv, y = cyl),
+             alpha = .2)
+```
+
+# Data Viz
+
+```{r}
+ggplot( data = mpg ) +
+  geom_smooth(mapping = aes(x = displ, y = hwy))
+```
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy),
+             alpha = .33) +
+  geom_smooth(mapping = aes(x = displ, y = hwy))
+```
+
+### Histogram
+
+```{r}
+ggplot(data = mpg ) +
+  geom_histogram(mapping = aes(x = displ))
+```
+
+
+```{r}
+ggplot(data = mpg ) +
+  geom_histogram(mapping = aes(x = displ),
+                 bins = 5)
+```
+
+
+
+
+```{r}
+ggplot(data = mpg ) +
+  geom_histogram(mapping = aes(x = displ),
+                 bins = 20)
+```
+
+
+## Boxplots
+
+```{r}
+ggplot( data = mpg ) +
+  geom_boxplot(mapping = aes(x = class,
+                             y = hwy,
+                             fill = class))
+```
+
+
+
+
+```{r}
+ggplot( data = mpg ) +
+  geom_boxplot(mapping = aes(x = class,
+                             y = hwy,
+                             color = class))
+```
+
+
+
+
+```{r}
+# median disappears!
+ggplot( data = mpg ) +
+  geom_boxplot(mapping = aes(x = class,
+                             y = hwy,
+                             color = class,
+                             fill = class))
+```
+
+
+```{r}
+diamonds <- ggplot2::diamonds
+```
+
+```{r}
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut))
+```
+
+
