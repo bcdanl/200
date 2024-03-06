@@ -45,7 +45,7 @@ mpg <- mpg
 
 # Classwork 6
 
-## Question 2a
+## Question 2b
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy,
