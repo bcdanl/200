@@ -159,6 +159,25 @@ theme_set(theme_fivethirtyeight()+
 
 
 ## Making Discoveries from Data Visualization
+### Key Points in Data Visualization
+
+
+- A graphic should display as much information as it can, with the lowest possible cognitive strain to the viewer.
+
+
+- Strive for clarity. 
+  - Make the data stand out. Specific tips for increasing clarity include these:
+    - Avoid too many superimposed elements, such as too many curves in the same graphing space.
+    - Avoid having the data all skewed to one side or the other of your graph.
+
+
+- Visualization is an iterative process. 
+  - We should try making data visualization informative as much as we can.
+
+
+
+
+## Making Discoveries from Data Visualization
 ### Geometric Objects
 
 - A `geom_*()` is the geometrical object that a plot uses to represent data.

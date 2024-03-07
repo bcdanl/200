@@ -3665,126 +3665,126 @@
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-1",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nGeometric Objects\n\nA geom_*() is the geometrical object that a plot uses to represent data.\n\nBar charts use geom_bar() or geom_col();\nHistograms use geom_histogram() or geom_freqpoly();\nLine charts use geom_line();\nBoxplots use the geom_boxplot();\nScatterplots use the geom_point();\nFitted lines use the geom_smooth();\nand many more!\n\nWe can use different geom_*() to plot the same data."
+    "text": "Making Discoveries from Data Visualization\nKey Points in Data Visualization\n\nA graphic should display as much information as it can, with the lowest possible cognitive strain to the viewer.\nStrive for clarity.\n\nMake the data stand out. Specific tips for increasing clarity include these:\n\nAvoid too many superimposed elements, such as too many curves in the same graphing space.\nAvoid having the data all skewed to one side or the other of your graph.\n\n\nVisualization is an iterative process.\n\nWe should try making data visualization informative as much as we can."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-2",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-2",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nRelationship\n\nFrom the plots with two or more variables, we want to see co-variation, the tendency for the values of two or more variables to vary together in a related way.\nWhat type of co-variation occurs between variables?\n\nAre they positively associated?\nAre they negatively associated?\nAre there no association between them?"
+    "text": "Making Discoveries from Data Visualization\nGeometric Objects\n\nA geom_*() is the geometrical object that a plot uses to represent data.\n\nBar charts use geom_bar() or geom_col();\nHistograms use geom_histogram() or geom_freqpoly();\nLine charts use geom_line();\nBoxplots use the geom_boxplot();\nScatterplots use the geom_point();\nFitted lines use the geom_smooth();\nand many more!\n\nWe can use different geom_*() to plot the same data."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-3",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-3",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Relationship with Scatterplots\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3)"
+    "text": "Making Discoveries from Data Visualization\nRelationship\n\nFrom the plots with two or more variables, we want to see co-variation, the tendency for the values of two or more variables to vary together in a related way.\nWhat type of co-variation occurs between variables?\n\nAre they positively associated?\nAre they negatively associated?\nAre there no association between them?"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-4",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-4",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Relationship with Fitted lines\n\n\nggplot(data = mpg) + \n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))"
+    "text": "Making Discoveries from Data Visualization\nDescribing a Relationship with Scatterplots\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3)"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-5",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-5",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Relationship with Scatterplots plus Fitted lines\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))"
+    "text": "Making Discoveries from Data Visualization\nDescribing a Relationship with Fitted lines\n\n\nggplot(data = mpg) + \n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-6",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-6",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDistribution\n\nA distribution of a variable refers to the way its values are spread or arranged across a data.frame.\n\nWhat type of variation occurs within a variable?\n\nVariation refers to how much the values are spread out.\n\nWhich values are the most common? Why?\n\nThe mode of a variable is the value that appears most frequently within the set of that variable’s values.\n\nWhich range of values are relatively rare? Why? Does that match your expectations?"
+    "text": "Making Discoveries from Data Visualization\nDescribing a Relationship with Scatterplots plus Fitted lines\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-7",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-7",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDistribution\n\n\nFor a distribution of a continuous variable or an ordered categorical variable, we can consider a measure of the asymmetry of the distribution—skewness."
+    "text": "Making Discoveries from Data Visualization\nDistribution\n\nA distribution of a variable refers to the way its values are spread or arranged across a data.frame.\n\nWhat type of variation occurs within a variable?\n\nVariation refers to how much the values are spread out.\n\nWhich values are the most common? Why?\n\nThe mode of a variable is the value that appears most frequently within the set of that variable’s values.\n\nWhich range of values are relatively rare? Why? Does that match your expectations?"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-8",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-8",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ))"
+    "text": "Making Discoveries from Data Visualization\nDistribution\n\n\nFor a distribution of a continuous variable or an ordered categorical variable, we can consider a measure of the asymmetry of the distribution—skewness."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-9",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-9",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_freqpoly(mapping = \n                aes(x = displ))"
+    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ))"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-10",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-10",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ, bins = 5))"
+    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_freqpoly(mapping = \n                aes(x = displ))"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-11",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-11",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ, binwidth = 1))"
+    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ, bins = 5))"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-12",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-12",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Boxplots\n\n\nggplot(data = mpg) + \n  geom_boxplot(mapping = \n                aes(x = class, \n                    y = hwy))\n\n\n\n\n\n\n\ngeom_boxplot() is used to create box plots (also known as box-and-whisker plots).\n\nBox plots provide a visual summary of the distribution of a variable, showing the median, quartiles, and potential outliers."
+    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ, binwidth = 1))"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-13",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-13",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Bar charts\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut))\n\n\n\n\n\n\n\nThe diamonds data.frame comes in ggplot2 and contains information about ~54,000 diamonds, including cut variable."
+    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Boxplots\n\n\nggplot(data = mpg) + \n  geom_boxplot(mapping = \n                aes(x = class, \n                    y = hwy))\n\n\n\n\n\n\n\ngeom_boxplot() is used to create box plots (also known as box-and-whisker plots).\n\nBox plots provide a visual summary of the distribution of a variable, showing the median, quartiles, and potential outliers."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-14",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-14",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Bar charts\n\n\nThe figure below describes how geom_bar() transforms the data.frame."
+    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Bar charts\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut))\n\n\n\n\n\n\n\nThe diamonds data.frame comes in ggplot2 and contains information about ~54,000 diamonds, including cut variable."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-15",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-15",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nTime Trend\n\nA time trend plot, (also known as a time series plot), is used to visualize trends, patterns, and fluctuations in a variable over a specific time period.\n\nThe x-axis typically represents time, while the y-axis represents the variable being measured.\n\nWe can check the overall direction in which the time-series variable are moving—upwards, downwards, or staying relatively constant over time."
+    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Bar charts\n\n\nThe figure below describes how geom_bar() transforms the data.frame."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-16",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-16",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing Time Trend with Line charts\n\n\npath &lt;- \n  \"https://bcdanl.github.io/data/NVDA.csv\"\nnvda &lt;- read_csv(path)\n\nggplot(data = nvda) + \n  geom_line(mapping = \n                aes(x = Date, \n                    y = Close))\n\n\n\n\n\n\n\nThe nvda data.frame includes NVIDIA’s stock information from 2019-01-02 to 2024-03-04."
+    "text": "Making Discoveries from Data Visualization\nTime Trend\n\nA time trend plot, (also known as a time series plot), is used to visualize trends, patterns, and fluctuations in a variable over a specific time period.\n\nThe x-axis typically represents time, while the y-axis represents the variable being measured.\n\nWe can check the overall direction in which the time-series variable are moving—upwards, downwards, or staying relatively constant over time."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-17",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-17",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nData Visualization with ggplot()\n\nStep 1. Figure out whether variables of interests are categorical or continuous.\nStep 2. Think which geometric objects, aesthetic mappings, and faceting are appropriate to visualize distributions and relationships.\nStep 3. If needed, transform a given data.frame (e.g., filtered observations, new variables, summarized data) and try new visualizations."
+    "text": "Making Discoveries from Data Visualization\nDescribing Time Trend with Line charts\n\n\npath &lt;- \n  \"https://bcdanl.github.io/data/NVDA.csv\"\nnvda &lt;- read_csv(path)\n\nggplot(data = nvda) + \n  geom_line(mapping = \n                aes(x = Date, \n                    y = Close))\n\n\n\n\n\n\n\nThe nvda data.frame includes NVIDIA’s stock information from 2019-01-02 to 2024-03-04."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-18",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-18",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nGeometric objects\n\nA distribution of a categorical variable (e.g., geom_bar() and more)\nA distribution of a continuous variable (e.g., geom_histogram() and more)\nA relationship between two categorical variables (e.g., geom_bar() and more)\nA relationship between two continuous variables (e.g., geom_point() with geom_smooth() and more)\nA relationship between a categorical variable and a continuous variable (e.g., geom_boxplot() and more)\nA time trend of a categorical variable (e.g., geom_bar() and more)\nA time trend of a continuous variable (e.g., geom_line() and more)"
+    "text": "Making Discoveries from Data Visualization\nData Visualization with ggplot()\n\nStep 1. Figure out whether variables of interests are categorical or continuous.\nStep 2. Think which geometric objects, aesthetic mappings, and faceting are appropriate to visualize distributions and relationships.\nStep 3. If needed, transform a given data.frame (e.g., filtered observations, new variables, summarized data) and try new visualizations."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-3",
@@ -3890,5 +3890,12 @@
     "title": "Lecture 11 - Note",
     "section": "4.1 Histogram",
     "text": "4.1 Histogram\n\nggplot(data = mpg ) +\n  geom_histogram(mapping = aes(x = displ))\n\n\n\n\n\nggplot(data = mpg ) +\n  geom_histogram(mapping = aes(x = displ),\n                 bins = 5)\n\n\n\n\n\nggplot(data = mpg ) +\n  geom_histogram(mapping = aes(x = displ),\n                 bins = 20)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-19",
+    "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-19",
+    "title": "Lecture 12",
+    "section": "Making Discoveries from Data Visualization",
+    "text": "Making Discoveries from Data Visualization\nGeometric objects\n\nA distribution of a categorical variable (e.g., geom_bar() and more)\nA distribution of a continuous variable (e.g., geom_histogram() and more)\nA relationship between two categorical variables (e.g., geom_bar() and more)\nA relationship between two continuous variables (e.g., geom_point() with geom_smooth() and more)\nA relationship between a categorical variable and a continuous variable (e.g., geom_boxplot() and more)\nA time trend of a categorical variable (e.g., geom_bar() and more)\nA time trend of a continuous variable (e.g., geom_line() and more)"
   }
 ]
