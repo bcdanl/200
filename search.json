@@ -1313,7 +1313,7 @@
     "href": "listing-danl-200-class.html",
     "title": "DANL 200 - Class Notes",
     "section": "",
-    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#announcement",
@@ -3897,5 +3897,54 @@
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
     "text": "Making Discoveries from Data Visualization\nGeometric objects\n\nA distribution of a categorical variable (e.g., geom_bar() and more)\nA distribution of a continuous variable (e.g., geom_histogram() and more)\nA relationship between two categorical variables (e.g., geom_bar() and more)\nA relationship between two continuous variables (e.g., geom_point() with geom_smooth() and more)\nA relationship between a categorical variable and a continuous variable (e.g., geom_boxplot() and more)\nA time trend of a categorical variable (e.g., geom_bar() and more)\nA time trend of a continuous variable (e.g., geom_line() and more)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-12-2024-0307.html",
+    "href": "danl-class/danl-200-note-12-2024-0307.html",
+    "title": "Lecture 12 - Note",
+    "section": "",
+    "text": "What do the empty cells in the scatterplot of displ vs. hwy with facet_grid(drv ~ cyl) mean?\n\nggplot( data = mpg ) +\n  geom_point( mapping = aes(x = displ, y = hwy),\n              alpha = .33 ) +\n  facet_grid(drv ~ cyl)\n\n\n\n\n\n\n\n\nfacet_grid(ROW-WISE SPLIT ~ COLUMN-WISE SPLIT)\n. makes facet ignore corresponding split.\n\n\nggplot( data = mpg ) +\n  geom_point( mapping = aes(x = displ, y = hwy),\n              alpha = .33 ) \n\n\n\n\n\nggplot( data = mpg ) +\n  geom_point( mapping = aes(x = displ, y = hwy),\n              alpha = .33 ) +\n  facet_grid(drv ~ .)\n\n\n\n\n\nggplot( data = mpg ) +\n  geom_point( mapping = aes(x = displ, y = hwy),\n              alpha = .33 ) +\n  facet_grid(. ~ drv)\n\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy),\n             alpha = .5) + \n  facet_wrap(. ~ class, nrow = 2)\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy,\n                           color = class),\n             alpha = .5)\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy,\n                           color = class),\n             alpha = .5) + \n  facet_wrap(. ~ class, nrow = 2)\n\n\n\n\n\n\n\n\ntvshows &lt;- read_csv(\n        'https://bcdanl.github.io/data/tvshows.csv')\n\nProvide both (1) ggplot code and (2) comment to describe the relationship between audience size (GRP) and audience engagement (PE).\n\nggplot( data = tvshows ) +\n  geom_point( mapping = aes(x = GRP, y = PE ), alpha = .5) +\n  geom_smooth( mapping = aes(x = GRP, y = PE ) )\n\n\n\n\nProvide both (1) ggplot code and (2) comment to describe how the relationship between audience size (GRP) and audience engagement (PE) varies by Genre.\n\nggplot( data = tvshows ) +\n  geom_point( mapping = aes(x = GRP, y = PE ), alpha = .5) +\n  geom_smooth( mapping = aes(x = GRP, y = PE ) ) +\n  facet_wrap( Genre ~ .)\n\n\n\n\n\nggplot( data = tvshows ) +\n  geom_point( mapping = aes(x = GRP, y = PE, color = Genre ), alpha = .5) +\n  geom_smooth( mapping = aes(x = GRP, y = PE, color = Genre ), method = lm )"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-12-2024-0307.html#q3b",
+    "href": "danl-class/danl-200-note-12-2024-0307.html#q3b",
+    "title": "Lecture 12 - Note",
+    "section": "",
+    "text": "What do the empty cells in the scatterplot of displ vs. hwy with facet_grid(drv ~ cyl) mean?\n\nggplot( data = mpg ) +\n  geom_point( mapping = aes(x = displ, y = hwy),\n              alpha = .33 ) +\n  facet_grid(drv ~ cyl)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-12-2024-0307.html#q3c",
+    "href": "danl-class/danl-200-note-12-2024-0307.html#q3c",
+    "title": "Lecture 12 - Note",
+    "section": "",
+    "text": "facet_grid(ROW-WISE SPLIT ~ COLUMN-WISE SPLIT)\n. makes facet ignore corresponding split.\n\n\nggplot( data = mpg ) +\n  geom_point( mapping = aes(x = displ, y = hwy),\n              alpha = .33 ) \n\n\n\n\n\nggplot( data = mpg ) +\n  geom_point( mapping = aes(x = displ, y = hwy),\n              alpha = .33 ) +\n  facet_grid(drv ~ .)\n\n\n\n\n\nggplot( data = mpg ) +\n  geom_point( mapping = aes(x = displ, y = hwy),\n              alpha = .33 ) +\n  facet_grid(. ~ drv)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-12-2024-0307.html#q3d",
+    "href": "danl-class/danl-200-note-12-2024-0307.html#q3d",
+    "title": "Lecture 12 - Note",
+    "section": "",
+    "text": "ggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy),\n             alpha = .5) + \n  facet_wrap(. ~ class, nrow = 2)\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy,\n                           color = class),\n             alpha = .5)\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy,\n                           color = class),\n             alpha = .5) + \n  facet_wrap(. ~ class, nrow = 2)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-12-2024-0307.html#q3d-1",
+    "href": "danl-class/danl-200-note-12-2024-0307.html#q3d-1",
+    "title": "Lecture 12 - Note",
+    "section": "",
+    "text": "tvshows &lt;- read_csv(\n        'https://bcdanl.github.io/data/tvshows.csv')\n\nProvide both (1) ggplot code and (2) comment to describe the relationship between audience size (GRP) and audience engagement (PE).\n\nggplot( data = tvshows ) +\n  geom_point( mapping = aes(x = GRP, y = PE ), alpha = .5) +\n  geom_smooth( mapping = aes(x = GRP, y = PE ) )\n\n\n\n\nProvide both (1) ggplot code and (2) comment to describe how the relationship between audience size (GRP) and audience engagement (PE) varies by Genre.\n\nggplot( data = tvshows ) +\n  geom_point( mapping = aes(x = GRP, y = PE ), alpha = .5) +\n  geom_smooth( mapping = aes(x = GRP, y = PE ) ) +\n  facet_wrap( Genre ~ .)\n\n\n\n\n\nggplot( data = tvshows ) +\n  geom_point( mapping = aes(x = GRP, y = PE, color = Genre ), alpha = .5) +\n  geom_smooth( mapping = aes(x = GRP, y = PE, color = Genre ), method = lm )"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-12-2024-0307.html#histogram",
+    "href": "danl-class/danl-200-note-12-2024-0307.html#histogram",
+    "title": "Lecture 12 - Note",
+    "section": "2.1 Histogram",
+    "text": "2.1 Histogram\n\nggplot(data = mpg ) +\n  geom_histogram(mapping =aes(x = displ),\n                 bins = 30)\n\n\n\n\n\nggplot(data = mpg ) +\n  geom_histogram(mapping =aes(x = displ),\n                 bins = 5)\n\n\n\n\n\nggplot(data = mpg ) +\n  geom_histogram(mapping =aes(x = displ),\n                 binwidth = 1)\n\n\n\n\n\nggplot(data = mpg ) +\n  geom_histogram(mapping =aes(x = displ),\n                 binwidth = 1, bins = 3) # bins = 3 is ignored\n\n\n\n\n\nggplot(data = mpg ) +\n  geom_histogram(mapping =aes(x = displ),\n                 bins = 3, binwidth = 1) # bins = 3 is ignored\n\n\n\n\n\nggplot(data = mpg) + \n  geom_boxplot(mapping = \n                aes(y = hwy))\n\n\n\n\n\ndiamonds &lt;- diamonds\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(y = cut))"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-12-2024-0307.html#time-trend",
+    "href": "danl-class/danl-200-note-12-2024-0307.html#time-trend",
+    "title": "Lecture 12 - Note",
+    "section": "2.2 Time Trend",
+    "text": "2.2 Time Trend\n\npath &lt;- \n  \"https://bcdanl.github.io/data/NVDA.csv\"\nnvda &lt;- read_csv(path)\n\nggplot(data = nvda) + \n  geom_line(mapping = \n                aes(x = Date, \n                    y = Close))\n\n\n\n\n\npath &lt;- \n  \"https://bcdanl.github.io/data/NVDA.csv\"\nnvda &lt;- read_csv(path)\n\nggplot(data = nvda) + \n  geom_line(mapping = \n                aes(x = Date, \n                    y = Close))+ \n  geom_point(mapping = \n                aes(x = Date, \n                    y = Close), size = .5)+ \n  geom_smooth(mapping = \n                aes(x = Date, \n                    y = Close))"
   }
 ]
