@@ -1313,7 +1313,7 @@
     "href": "listing-danl-200-class.html",
     "title": "DANL 200 - Class Notes",
     "section": "",
-    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\nLecture 13 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 19, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#announcement",
@@ -4331,5 +4331,19 @@
     "title": "Lecture 13 - Q & A",
     "section": "",
     "text": "Welcome to our Lecture 13 Discussion Board! 👋 \nThis space is designed for you to engage with your classmates about the material covered in Lecture 13 slides.\nWhether you are looking to delve deeper into the slides, share insights, or have questions about the content, this is the perfect place for you.\nIf you have any specific questions for Byeong-Hak (@bcdanl) regarding the Lecture 12 materials or need clarification on any points, don’t hesitate to ask here.\nLet’s collaborate and learn from each other!\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-13-2024-0319.html",
+    "href": "danl-class/danl-200-note-13-2024-0319.html",
+    "title": "Lecture 13 - Note",
+    "section": "",
+    "text": "ggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ),\n                bins = 5)\n\n\n\n\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ),\n                binwidth = 1)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-13-2024-0319.html#q1c",
+    "href": "danl-class/danl-200-note-13-2024-0319.html#q1c",
+    "title": "Lecture 13 - Note",
+    "section": "4.1 Q1c",
+    "text": "4.1 Q1c\n\n4.1.1 (a)\n\nggplot(data = mpg,\n       mapping = aes(x = displ, y = hwy)) +\n  geom_point(alpha = .3) +\n  geom_smooth(se = F)\n\n\n\n\n\n\n4.1.2 (b)\n\nggplot(data = mpg,\n       mapping = aes(x = displ, y = hwy)) +\n  geom_point(alpha = .3) +\n  geom_smooth(se = F,\n              mapping = aes(group = drv))\n\n\n\n\n\n# multiple data.frames"
   }
 ]
