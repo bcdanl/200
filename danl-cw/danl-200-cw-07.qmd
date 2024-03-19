@@ -1,7 +1,7 @@
 ---
 title: Classwork 7
 subtitle: ggplot - Geometric Objects; Statistical Transformation; and Position Adjustment
-date: 2023-02-20
+date: 2023-03-19
 execute: 
   echo: true
   warning: false
