@@ -1,0 +1,237 @@
+---
+title: Homework 3
+subtitle: Data Visualization Basics
+date: last-modified
+from: markdown+emoji
+comments: false
+
+execute: 
+  warning: false
+  message: false
+  fig-width: 9
+  fig-height: 7
+  fig-align: center
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+library(DT)
+
+theme_set(theme_ipsum()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.33),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 90,
+                               size = rel(1.33),
+                               margin = margin(0,10,0,0))
+                )
+          )
+```
+
+# Direction
+
+- Download the Homework 3 Quarto document, `danl-200-hw-03-q.qmd`, by clicking [this link](https://drive.google.com/file/d/17LjxtbKhnjz_YsxGtcb-nLsqNTC_q_rd/view?usp=share_link).
+
+- Provide both your answer to each question in **Homework 3** in the `danl-200-hw-03-q.qmd`.
+
+- Please submit your **Quarto document for Homework 3** to the Brightspace with the name below:
+
+  - `danl-200-hw3-LASTNAME-FIRSTNAME.qmd`\
+  ( e.g., `danl-200-hw3-choe-byeonghak.qmd` )
+
+- The due is March 27, 2024, 11:59 P.M.
+
+- Please send an email to Byeong-Hak (`bchoe@geneseo.edu`) if you have any questions or clarifications.
+
+<br><br><br>
+
+
+
+# Customer Data with Health Insurance
+
+Read the data file, `custdata_rev.csv`, as the data.frame object with the name, `health_cust`:
+
+```{r}
+#| echo: true
+library(tidyverse)
+library(skimr)
+
+health_cust <- read_csv(
+  'https://bcdanl.github.io/data/custdata_rev.csv'
+)
+```
+
+
+```{r}
+#| echo: false
+#| eval: true
+
+rmarkdown::paged_table(health_cust)
+```
+
+<br>
+
+## Variable Description for `health_cust`
+
+The following describes the variables  in the `health_cust` data.frame.
+
+- `custid`: ID of customer
+- `sex`: Sex
+- `is_employed`: Employment status
+  - `NA`: Unknown or not applicable
+  - `TRUE`: Employed
+  - `FALSE`: Unemployed
+- `income`: Income (in $)
+- `marital_status`: Marital status
+- `housing_type`: Housing type
+- `recent_move`: 
+  - `TRUE`: Recently moved
+  - `FALSE`: Not recently moved
+- `age`: Age
+- `state_of_res`: State of residence
+- `gas_usage`: Gas usage
+  - `NA`: Unknown or not applicable
+  - `001`: Included in rent or condo fee
+  - `002`: Included in electricity payment
+  - `003`: No charge or gas not used
+  - `004`-`999`: $4 to $999 (rounded and top-coded)
+- `health_ins`: Health insuarance status
+  - `TRUE`: customer with health insuarance 
+  - `FALSE`: customer without health insuarance 
+
+<br><br>
+
+## Question 1 
+Report summary statistics including a mean value for each logical variable in `health_cust`.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+
+
+
+## Question 2 
+Use `health_cust` data.frame to create a new data.frame, `health_cust2`, in which 
+(1) `age` is greater than 0 and less than 100; and
+(2) `income` is positive.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+
+
+
+## Question 3
+Provide both ggplot code and comments to describe the distribution of `income`.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+
+
+
+## Question 4
+Provide both ggplot code and comments to describe the distribution of `marital_status`.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+
+
+
+## Question 5
+- Suppose you randomly pick one customer's observation from each state in data.frame `health_cust`.
+
+- Use ggplot code to determine (1) the state where a customer is most probable to possess health insurance; and (2) the state where it is least probable for a customer to have health insurance.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+
+
+
+## Question 6
+Provide both ggplot code and comments to describe the relationship between `age` and `income`.
+
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+
+
+## Question 7
+Provide both ggplot code and comments to describe the relationship between `age` and `health_ins`.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+
+
+## Question 8
+Provide both ggplot code and comments to describe the relationship between `marital_status` and `health_ins`.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+
+
+
+## Question 9
+Provide both ggplot code and comments to describe the relationship between `marital_status` and `housing_type`.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+

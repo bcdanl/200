@@ -137,7 +137,7 @@
     "href": "index.html#bullet-homework",
     "title": "DANL 200-02: Introduction to Data Analytics, Spring 2024",
     "section": "\\(\\bullet\\,\\) Homework 💻",
-    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 2\n\n\nFebruary 29, 2024\n\n\n\n\nHomework 1\n\n\nFebruary 14, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 3\n\n\nMarch 19, 2024\n\n\n\n\nHomework 2\n\n\nFebruary 29, 2024\n\n\n\n\nHomework 1\n\n\nFebruary 14, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "danl-class/danl-200-note-09-2024-0220.html",
@@ -3077,7 +3077,7 @@
     "href": "listing-danl-200-hw.html",
     "title": "DANL 200 - Homework",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and R Basics\n\n\nFebruary 14, 2024\n\n\n\n\nHomework 2\n\n\nData Visualization Basics\n\n\nFebruary 29, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and R Basics\n\n\nFebruary 14, 2024\n\n\n\n\nHomework 2\n\n\nData Visualization Basics\n\n\nFebruary 29, 2024\n\n\n\n\nHomework 3\n\n\nData Visualization Basics\n\n\nMarch 19, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-class/danl-200-note-10-2024-0229.html#overplotting",
@@ -3608,22 +3608,22 @@
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#rstudio-workflow",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#rstudio-workflow",
     "title": "Lecture 12",
-    "section": "RStudio Workflow",
-    "text": "RStudio Workflow\nMust-know Quarto Shortcuts\n\n\n\nMac\n\noption + command + I: to create a R chunk\noption + - : the shortcut for &lt;-\ncommand + return runs a current line or selected lines\ncommand + shift + return: to run the code in the R chunk\ncommand + shift + C: to comment out a line\ncommand + shift + K: to render a current Quarto file\n\n\nWindows\n\nAlt+Ctrl+I : to create a R chunk\nAlt + - : the shortcut for &lt;-\nCtrl + Enter runs a current line or selected lines\nCtrl + Shift + Enter : to run the code in the R chunk\nCtrl + Shift + C: to comment out a line\nCtrl + Shift + K: to render a current Quarto file"
+    "section": "",
+    "text": "option + command + I: to create a R chunk\noption + - : the shortcut for &lt;-\ncommand + return runs a current line or selected lines\ncommand + shift + return: to run the code in the R chunk\ncommand + shift + C: to comment out a line\ncommand + shift + K: to render a current Quarto file\n\n\n\n\n\n\nAlt+Ctrl+I : to create a R chunk\nAlt + - : the shortcut for &lt;-\nCtrl + Enter runs a current line or selected lines\nCtrl + Shift + Enter : to run the code in the R chunk\nCtrl + Shift + C: to comment out a line\nCtrl + Shift + K: to render a current Quarto file"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#documenting-workflow",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#documenting-workflow",
     "title": "Lecture 12",
     "section": "Documenting Workflow",
-    "text": "Documenting Workflow\nMust-know Shortcuts\n\n\nUse the shortcuts below whenever you edit a document, including Quarto:\n\n\n\nMac\n\ncommand + ⬆️/⬇️/⬅️/➡️\nshift + ⬆️/⬇️/⬅️/➡️\ncommand + shift + ⬆️/⬇️/⬅️/➡️\ncommand + PgUp/PgDn\nshift + PgUp/PgDn\ncommand + shift + PgUp/PgDn:\n\n\nWindows\n\nCtrl + ⬆️/⬇️/⬅️/➡️\nShift + ⬆️/⬇️/⬅️/➡️\nCtrl + shift + ⬆️/⬇️/⬅️/➡️\nCtrl + PgUp/PgDn\nShift + PgUp/PgDn\nCtrl + Shift + PgUp/PgDn:"
+    "text": "Documenting Workflow\n\nMust-know Shortcuts\n\n\nUse the shortcuts below whenever you edit a document, including Quarto:\n\n\n\n\nMac\n\ncommand + ⬆️/⬇️/⬅️/➡️\nshift + ⬆️/⬇️/⬅️/➡️\ncommand + shift + ⬆️/⬇️/⬅️/➡️\ncommand + PgUp/PgDn\nshift + PgUp/PgDn\ncommand + shift + PgUp/PgDn:\n\n\n\n\nWindows\n\nCtrl + ⬆️/⬇️/⬅️/➡️\nShift + ⬆️/⬇️/⬅️/➡️\nCtrl + shift + ⬆️/⬇️/⬅️/➡️\nCtrl + PgUp/PgDn\nShift + PgUp/PgDn\nCtrl + Shift + PgUp/PgDn:"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#ggplot-basics",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#ggplot-basics",
     "title": "Lecture 12",
     "section": "ggplot Basics",
-    "text": "ggplot Basics\nLearning Objectives\n\nRelationship Plots\nDistribution Plots\nTime Trend Plots\nGeometric Objects"
+    "text": "ggplot Basics\n\nLearning Objectives\n\nRelationship Plots\nDistribution Plots\nTime Trend Plots\nGeometric Objects"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#review-on-facets",
@@ -3658,133 +3658,133 @@
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#data-visualization",
     "title": "Lecture 12",
     "section": "Data Visualization",
-    "text": "Data Visualization\nFacets\n\nQuestions 3b-3e in Classwork 6"
+    "text": "Data Visualization\n\nFacets\n\nQuestions 3b-3e in Classwork 6"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-1",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-1",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nKey Points in Data Visualization\n\nA graphic should display as much information as it can, with the lowest possible cognitive strain to the viewer.\nStrive for clarity.\n\nMake the data stand out. Specific tips for increasing clarity include these:\n\nAvoid too many superimposed elements, such as too many curves in the same graphing space.\nAvoid having the data all skewed to one side or the other of your graph.\n\n\nVisualization is an iterative process.\n\nWe should try making data visualization informative as much as we can."
+    "text": "Making Discoveries from Data Visualization\n\nKey Points in Data Visualization\n\nA graphic should display as much information as it can, with the lowest possible cognitive strain to the viewer.\nStrive for clarity.\n\nMake the data stand out. Specific tips for increasing clarity include these:\n\nAvoid too many superimposed elements, such as too many curves in the same graphing space.\nAvoid having the data all skewed to one side or the other of your graph.\n\n\nVisualization is an iterative process.\n\nWe should try making data visualization informative as much as we can."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-2",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-2",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nGeometric Objects\n\nA geom_*() is the geometrical object that a plot uses to represent data.\n\nBar charts use geom_bar() or geom_col();\nHistograms use geom_histogram() or geom_freqpoly();\nLine charts use geom_line();\nBoxplots use the geom_boxplot();\nScatterplots use the geom_point();\nFitted lines use the geom_smooth();\nand many more!\n\nWe can use different geom_*() to plot the same data."
+    "text": "Making Discoveries from Data Visualization\n\nGeometric Objects\n\nA geom_*() is the geometrical object that a plot uses to represent data.\n\nBar charts use geom_bar() or geom_col();\nHistograms use geom_histogram() or geom_freqpoly();\nLine charts use geom_line();\nBoxplots use the geom_boxplot();\nScatterplots use the geom_point();\nFitted lines use the geom_smooth();\nand many more!\n\nWe can use different geom_*() to plot the same data."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-3",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-3",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nRelationship\n\nFrom the plots with two or more variables, we want to see co-variation, the tendency for the values of two or more variables to vary together in a related way.\nWhat type of co-variation occurs between variables?\n\nAre they positively associated?\nAre they negatively associated?\nAre there no association between them?"
+    "text": "Making Discoveries from Data Visualization\n\nRelationship\n\nFrom the plots with two or more variables, we want to see co-variation, the tendency for the values of two or more variables to vary together in a related way.\nWhat type of co-variation occurs between variables?\n\nAre they positively associated?\nAre they negatively associated?\nAre there no association between them?"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-4",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-4",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Relationship with Scatterplots\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3)"
+    "text": "Making Discoveries from Data Visualization\n\nDescribing a Relationship with Scatterplots\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3)"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-5",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-5",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Relationship with Fitted lines\n\n\nggplot(data = mpg) + \n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))"
+    "text": "Making Discoveries from Data Visualization\n\nDescribing a Relationship with Fitted lines\n\nggplot(data = mpg) + \n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-6",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-6",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Relationship with Scatterplots plus Fitted lines\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))"
+    "text": "Making Discoveries from Data Visualization\n\nDescribing a Relationship with Scatterplots plus Fitted lines\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-7",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-7",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDistribution\n\nA distribution of a variable refers to the way its values are spread or arranged across a data.frame.\n\nWhat type of variation occurs within a variable?\n\nVariation refers to how much the values are spread out.\n\nWhich values are the most common? Why?\n\nThe mode of a variable is the value that appears most frequently within the set of that variable’s values.\n\nWhich range of values are relatively rare? Why? Does that match your expectations?"
+    "text": "Making Discoveries from Data Visualization\n\nDistribution\n\nA distribution of a variable refers to the way its values are spread or arranged across a data.frame.\n\nWhat type of variation occurs within a variable?\n\nVariation refers to how much the values are spread out.\n\nWhich values are the most common? Why?\n\nThe mode of a variable is the value that appears most frequently within the set of that variable’s values.\n\nWhich range of values are relatively rare? Why? Does that match your expectations?"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-8",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-8",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDistribution\n\n\nFor a distribution of a continuous variable or an ordered categorical variable, we can consider a measure of the asymmetry of the distribution—skewness."
+    "text": "Making Discoveries from Data Visualization\n\nDistribution\n\n\nFor a distribution of a continuous variable or an ordered categorical variable, we can consider a measure of the asymmetry of the distribution—skewness."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-9",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-9",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ))"
+    "text": "Making Discoveries from Data Visualization\n\nDescribing a Dristirubion with Histograms\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ))\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-10",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-10",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_freqpoly(mapping = \n                aes(x = displ))"
+    "text": "Making Discoveries from Data Visualization\n\nDescribing a Dristirubion with Histograms\n\nggplot(data = mpg) + \n  geom_freqpoly(mapping = \n                aes(x = displ))\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-11",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-11",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ, bins = 5))"
+    "text": "Making Discoveries from Data Visualization\n\nDescribing a Dristirubion with Histograms\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ, bins = 5))\n\nWarning in geom_histogram(mapping = aes(x = displ, bins = 5)): Ignoring unknown\naesthetics: bins\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-12",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-12",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Histograms\n\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ, binwidth = 1))"
+    "text": "Making Discoveries from Data Visualization\n\nDescribing a Dristirubion with Histograms\n\nggplot(data = mpg) + \n  geom_histogram(mapping = \n                aes(x = displ, binwidth = 1))\n\nWarning in geom_histogram(mapping = aes(x = displ, binwidth = 1)): Ignoring\nunknown aesthetics: binwidth\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-13",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-13",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Boxplots\n\n\nggplot(data = mpg) + \n  geom_boxplot(mapping = \n                aes(x = class, \n                    y = hwy))\n\n\n\n\n\n\n\ngeom_boxplot() is used to create box plots (also known as box-and-whisker plots).\n\nBox plots provide a visual summary of the distribution of a variable, showing the median, quartiles, and potential outliers."
+    "text": "Making Discoveries from Data Visualization\n\nDescribing a Dristirubion with Boxplots\n\nggplot(data = mpg) + \n  geom_boxplot(mapping = \n                aes(x = class, \n                    y = hwy))\n\n\n\n\n\ngeom_boxplot() is used to create box plots (also known as box-and-whisker plots).\n\nBox plots provide a visual summary of the distribution of a variable, showing the median, quartiles, and potential outliers."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-14",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-14",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Bar charts\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut))\n\n\n\n\n\n\n\nThe diamonds data.frame comes in ggplot2 and contains information about ~54,000 diamonds, including cut variable."
+    "text": "Making Discoveries from Data Visualization\n\nDescribing a Dristirubion with Bar charts\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut))\n\n\n\n\n\nThe diamonds data.frame comes in ggplot2 and contains information about ~54,000 diamonds, including cut variable."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-15",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-15",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing a Dristirubion with Bar charts\n\n\nThe figure below describes how geom_bar() transforms the data.frame."
+    "text": "Making Discoveries from Data Visualization\n\nDescribing a Dristirubion with Bar charts\n\n\nThe figure below describes how geom_bar() transforms the data.frame."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-16",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-16",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nTime Trend\n\nA time trend plot, (also known as a time series plot), is used to visualize trends, patterns, and fluctuations in a variable over a specific time period.\n\nThe x-axis typically represents time, while the y-axis represents the variable being measured.\n\nWe can check the overall direction in which the time-series variable are moving—upwards, downwards, or staying relatively constant over time."
+    "text": "Making Discoveries from Data Visualization\n\nTime Trend\n\nA time trend plot, (also known as a time series plot), is used to visualize trends, patterns, and fluctuations in a variable over a specific time period.\n\nThe x-axis typically represents time, while the y-axis represents the variable being measured.\n\nWe can check the overall direction in which the time-series variable are moving—upwards, downwards, or staying relatively constant over time."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-17",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-17",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nDescribing Time Trend with Line charts\n\n\npath &lt;- \n  \"https://bcdanl.github.io/data/NVDA.csv\"\nnvda &lt;- read_csv(path)\n\nggplot(data = nvda) + \n  geom_line(mapping = \n                aes(x = Date, \n                    y = Close))\n\n\n\n\n\n\n\nThe nvda data.frame includes NVIDIA’s stock information from 2019-01-02 to 2024-03-04."
+    "text": "Making Discoveries from Data Visualization\n\nDescribing Time Trend with Line charts\n\npath &lt;- \n  \"https://bcdanl.github.io/data/NVDA.csv\"\nnvda &lt;- read_csv(path)\n\nRows: 1301 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl  (6): Open, High, Low, Close, Adj Close, Volume\ndate (1): Date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nggplot(data = nvda) + \n  geom_line(mapping = \n                aes(x = Date, \n                    y = Close))\n\n\n\n\n\nThe nvda data.frame includes NVIDIA’s stock information from 2019-01-02 to 2024-03-04."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-18",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-18",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nData Visualization with ggplot()\n\nStep 1. Figure out whether variables of interests are categorical or continuous.\nStep 2. Think which geometric objects, aesthetic mappings, and faceting are appropriate to visualize distributions and relationships.\nStep 3. If needed, transform a given data.frame (e.g., filtered observations, new variables, summarized data) and try new visualizations."
+    "text": "Making Discoveries from Data Visualization\n\nData Visualization with ggplot()\n\nStep 1. Figure out whether variables of interests are categorical or continuous.\nStep 2. Think which geometric objects, aesthetic mappings, and faceting are appropriate to visualize distributions and relationships.\nStep 3. If needed, transform a given data.frame (e.g., filtered observations, new variables, summarized data) and try new visualizations."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-3",
@@ -3798,84 +3798,84 @@
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-4",
     "title": "Lecture 12",
     "section": "Geometric Objects",
-    "text": "Geometric Objects\ngeom_smooth()\n\n\nggplot( data = mpg ) + \n  geom_smooth( mapping = \n                 aes( x = displ, \n                      y = hwy, \n                      linetype = drv) )"
+    "text": "Geometric Objects\n\ngeom_smooth()\n\nggplot( data = mpg ) + \n  geom_smooth( mapping = \n                 aes( x = displ, \n                      y = hwy, \n                      linetype = drv) )\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-5",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-5",
     "title": "Lecture 12",
     "section": "Geometric Objects",
-    "text": "Geometric Objects\ngeom_smooth(method = lm)\n\n\nSetting method = lm manually in geom_smooth() gives a straight line that fits into data points.\n\n\n\n\nggplot( data = mpg ) + \n  geom_smooth( mapping = \n                 aes( x = displ, \n                      y = hwy),\n               method = lm)"
+    "text": "Geometric Objects\n\ngeom_smooth(method = lm)\n\n\nSetting method = lm manually in geom_smooth() gives a straight line that fits into data points.\n\n\n\nggplot( data = mpg ) + \n  geom_smooth( mapping = \n                 aes( x = displ, \n                      y = hwy),\n               method = lm)\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-6",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-6",
     "title": "Lecture 12",
     "section": "Geometric Objects",
-    "text": "Geometric Objects\ngeom_smooth(group = CATEGORICAL_VAR)\n\nWe can set the group aesthetic to a categorical variable to draw multiple objects.\n\nggplot2 will draw a separate object for each unique value of the grouping variable."
+    "text": "Geometric Objects\n\ngeom_smooth(group = CATEGORICAL_VAR)\n\nWe can set the group aesthetic to a categorical variable to draw multiple objects.\n\nggplot2 will draw a separate object for each unique value of the grouping variable."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-7",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-7",
     "title": "Lecture 12",
     "section": "Geometric Objects",
-    "text": "Geometric Objects\ngeom_smooth(group = CATEGORICAL_VAR)\n\n\nggplot(data = mpg) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))"
+    "text": "Geometric Objects\n\ngeom_smooth(group = CATEGORICAL_VAR)\n\nggplot(data = mpg) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy))\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-8",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-8",
     "title": "Lecture 12",
     "section": "Geometric Objects",
-    "text": "Geometric Objects\ngeom_smooth(group = CATEGORICAL_VAR)\n\n\nggplot(data = mpg) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy, \n                    group = drv))"
+    "text": "Geometric Objects\n\ngeom_smooth(group = CATEGORICAL_VAR)\n\nggplot(data = mpg) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy, \n                    group = drv))\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-9",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-9",
     "title": "Lecture 12",
     "section": "Geometric Objects",
-    "text": "Geometric Objects\n\n\nIn practice, ggplot2 will automatically group the data for these geoms whenever we map an aesthetic to a categorical variable (as in the linetype example).\n\n\n\n\nggplot(data = mpg) +\n  geom_smooth(\n    mapping = aes(x = displ, \n                  y = hwy, \n                  color = drv),\n    show.legend = FALSE\n  )"
+    "text": "Geometric Objects\n\n\nIn practice, ggplot2 will automatically group the data for these geoms whenever we map an aesthetic to a categorical variable (as in the linetype example).\n\n\n\nggplot(data = mpg) +\n  geom_smooth(\n    mapping = aes(x = displ, \n                  y = hwy, \n                  color = drv),\n    show.legend = FALSE\n  )\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-10",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-10",
     "title": "Lecture 12",
     "section": "Geometric Objects",
-    "text": "Geometric Objects\n\n\nTo display multiple geometric objects in the same plot, add multiple geom_*() functions to ggplot():\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy)) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy), \n              method = lm, \n              color = 'red')"
+    "text": "Geometric Objects\n\n\nTo display multiple geometric objects in the same plot, add multiple geom_*() functions to ggplot():\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy)) +\n  geom_smooth(mapping = \n                aes(x = displ, \n                    y = hwy), \n              method = lm, \n              color = 'red')\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-11",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-11",
     "title": "Lecture 12",
     "section": "Geometric Objects",
-    "text": "Geometric Objects\nLayers\n\nUsing geom_point(), geom_smooth(), and geom_smooth(method = lm) together is an excellent option to visualize the relationship between the two variables."
+    "text": "Geometric Objects\n\nLayers\n\nUsing geom_point(), geom_smooth(), and geom_smooth(method = lm) together is an excellent option to visualize the relationship between the two variables."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-12",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-12",
     "title": "Lecture 12",
     "section": "Geometric Objects",
-    "text": "Geometric Objects\nLayers\n\n\nIf we place mappings in a geom function, ggplot2 will treat them as local mappings for the layer.\n\n\n\n\nggplot(data = mpg, \n       mapping = \n         aes(x = displ, \n             y = hwy)) + \n  geom_point(mapping = \n               aes(color = class),\n             alpha = .3) + \n  geom_smooth()"
+    "text": "Geometric Objects\n\nLayers\n\n\nIf we place mappings in a geom function, ggplot2 will treat them as local mappings for the layer.\n\n\n\nggplot(data = mpg, \n       mapping = \n         aes(x = displ, \n             y = hwy)) + \n  geom_point(mapping = \n               aes(color = class),\n             alpha = .3) + \n  geom_smooth()\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'"
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-13",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-13",
     "title": "Lecture 12",
     "section": "Geometric Objects",
-    "text": "Geometric Objects\nMultiple data.frames\n\ndf_subcompact &lt;- filter(mpg, class == \"subcompact\")\n\n\nWe can use the same idea to specify different data for each layer.\nHere, our smooth line displays just a subset of the mpg data.frame, the subcompact cars.\n\nfilter() is the tidyverse-way to filter observations in a data.frame.\n\nThe local data argument in geom_smooth() overrides the global data argument in ggplot() for that layer only."
+    "text": "Geometric Objects\n\nMultiple data.frames\n\ndf_subcompact &lt;- filter(mpg, class == \"subcompact\")\n\n\nWe can use the same idea to specify different data for each layer.\nHere, our smooth line displays just a subset of the mpg data.frame, the subcompact cars.\n\nfilter() is the tidyverse-way to filter observations in a data.frame.\n\nThe local data argument in geom_smooth() overrides the global data argument in ggplot() for that layer only."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-14",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#geometric-objects-14",
     "title": "Lecture 12",
     "section": "Geometric Objects",
-    "text": "Geometric Objects\nMultiple data.frames\n\n\nggplot(data = mpg, \n       mapping = \n         aes(x = displ, \n             y = hwy)) + \n  geom_point(mapping = \n               aes(color = class), \n             alpha = .3) + \n  geom_smooth(data = df_subcompact, \n              se = FALSE)\n\n\n\n\n\n\n\nThe standard error (se) tells us how much the predicted values from a model might differ from the actual values we’re trying to predict."
+    "text": "Geometric Objects\n\nMultiple data.frames\n\nggplot(data = mpg, \n       mapping = \n         aes(x = displ, \n             y = hwy)) + \n  geom_point(mapping = \n               aes(color = class), \n             alpha = .3) + \n  geom_smooth(data = df_subcompact, \n              se = FALSE)\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\nThe standard error (se) tells us how much the predicted values from a model might differ from the actual values we’re trying to predict."
   },
   {
     "objectID": "danl-lec/danl-200-lec-12-2024-0307.html#data-visualization-1",
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#data-visualization-1",
     "title": "Lecture 12",
     "section": "Data Visualization",
-    "text": "Data Visualization\nGeometric Objects\n\nLet’s do Classwork 7"
+    "text": "Data Visualization\n\nGeometric Objects\n\nLet’s do Classwork 7"
   },
   {
     "objectID": "danl-qa/danl-200-qa-12.html",
@@ -3896,7 +3896,7 @@
     "href": "danl-lec/danl-200-lec-12-2024-0307.html#making-discoveries-from-data-visualization-19",
     "title": "Lecture 12",
     "section": "Making Discoveries from Data Visualization",
-    "text": "Making Discoveries from Data Visualization\nGeometric objects\n\nA distribution of a categorical variable (e.g., geom_bar() and more)\nA distribution of a continuous variable (e.g., geom_histogram() and more)\nA relationship between two categorical variables (e.g., geom_bar() and more)\nA relationship between two continuous variables (e.g., geom_point() with geom_smooth() and more)\nA relationship between a categorical variable and a continuous variable (e.g., geom_boxplot() and more)\nA time trend of a categorical variable (e.g., geom_bar() and more)\nA time trend of a continuous variable (e.g., geom_line() and more)"
+    "text": "Making Discoveries from Data Visualization\n\nGeometric objects\n\nA distribution of a categorical variable (e.g., geom_bar() and more)\nA distribution of a continuous variable (e.g., geom_histogram() and more)\nA relationship between two categorical variables (e.g., geom_bar() and more)\nA relationship between two continuous variables (e.g., geom_point() with geom_smooth() and more)\nA relationship between a categorical variable and a continuous variable (e.g., geom_boxplot() and more)\nA time trend of a categorical variable (e.g., geom_bar() and more)\nA time trend of a continuous variable (e.g., geom_line() and more)"
   },
   {
     "objectID": "danl-class/danl-200-note-12-2024-0307.html",
@@ -4177,5 +4177,152 @@
     "title": "Lecture 13",
     "section": "Data Visualization",
     "text": "Data Visualization\nGeometric Objects\n\nLet’s do Question 1 in Classwork 7"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html",
+    "href": "danl-hw/danl-200-hw-03.html",
+    "title": "Homework 3",
+    "section": "",
+    "text": "Download the Homework 3 Quarto document, danl-200-hw-03-q.qmd, by clicking this link.\nProvide both your answer to each question in Homework 3 in the danl-200-hw-03-q.qmd.\nPlease submit your Quarto document for Homework 3 to the Brightspace with the name below:\n\ndanl-200-hw3-LASTNAME-FIRSTNAME.qmd\n( e.g., danl-200-hw3-choe-byeonghak.qmd )\n\nThe due is March 27, 2024, 11:59 P.M.\nPlease send an email to Byeong-Hak (bchoe@geneseo.edu) if you have any questions or clarifications."
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#variable-description-for-health_cust",
+    "href": "danl-hw/danl-200-hw-03.html#variable-description-for-health_cust",
+    "title": "Homework 3",
+    "section": "Variable Description for health_cust",
+    "text": "Variable Description for health_cust\nThe following describes the variables in the health_cust data.frame.\n\ncustid: ID of customer\nsex: Sex\nis_employed: Employment status\n\nNA: Unknown or not applicable\nTRUE: Employed\nFALSE: Unemployed\n\nincome: Income (in $)\nmarital_status: Marital status\nhousing_type: Housing type\nrecent_move:\n\nTRUE: Recently moved\nFALSE: Not recently moved\n\nage: Age\nstate_of_res: State of residence\ngas_usage: Gas usage\n\nNA: Unknown or not applicable\n001: Included in rent or condo fee\n002: Included in electricity payment\n003: No charge or gas not used\n004-999: $4 to $999 (rounded and top-coded)\n\nhealth_ins: Health insuarance status\n\nTRUE: customer with health insuarance\nFALSE: customer without health insuarance"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#q1a",
+    "href": "danl-hw/danl-200-hw-03.html#q1a",
+    "title": "Homework 3",
+    "section": "Q1a",
+    "text": "Q1a\nReport summary statistics including a mean value for each logical variable in health_cust.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#q1b",
+    "href": "danl-hw/danl-200-hw-03.html#q1b",
+    "title": "Homework 3",
+    "section": "Q1b",
+    "text": "Q1b\nUse health_cust data.frame to create a new data.frame, health_cust2, in which (1) age is greater than 0 and less than 100; and (2) income is positive.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#q1c",
+    "href": "danl-hw/danl-200-hw-03.html#q1c",
+    "title": "Homework 3",
+    "section": "Q1c",
+    "text": "Q1c\nProvide ggplot code and comments to describe the distribution of income.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#q1d",
+    "href": "danl-hw/danl-200-hw-03.html#q1d",
+    "title": "Homework 3",
+    "section": "Q1d",
+    "text": "Q1d\nProvide ggplot code and comments to describe the distribution of marital_status.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#q1e",
+    "href": "danl-hw/danl-200-hw-03.html#q1e",
+    "title": "Homework 3",
+    "section": "Q1e",
+    "text": "Q1e\n\nSuppose you randomly pick one customer’s observation from each state in data.frame health_cust.\nUse ggplot code to determine (1) the state where a customer is most probable to possess health insurance; and (2) the state where it’s least probable for a customer to have health insurance.\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#q1f",
+    "href": "danl-hw/danl-200-hw-03.html#q1f",
+    "title": "Homework 3",
+    "section": "Q1f",
+    "text": "Q1f\nProvide ggplot code and comments to describe the relationship between age and income.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#q1g",
+    "href": "danl-hw/danl-200-hw-03.html#q1g",
+    "title": "Homework 3",
+    "section": "Q1g",
+    "text": "Q1g\nProvide ggplot code and comments to describe the relationship between age and health_ins.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#q1h",
+    "href": "danl-hw/danl-200-hw-03.html#q1h",
+    "title": "Homework 3",
+    "section": "Q1h",
+    "text": "Q1h\nProvide ggplot code and comments to describe the relationship between marital_status and health_ins.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#q1i",
+    "href": "danl-hw/danl-200-hw-03.html#q1i",
+    "title": "Homework 3",
+    "section": "Q1i",
+    "text": "Q1i\nProvide ggplot code and comments to describe the relationship between marital_status and housing_type.\nAnswer:"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-12-2024-0307.html",
+    "href": "danl-lec/danl-200-lec-12-2024-0307.html",
+    "title": "Lecture 12",
+    "section": "",
+    "text": "option + command + I: to create a R chunk\noption + - : the shortcut for &lt;-\ncommand + return runs a current line or selected lines\ncommand + shift + return: to run the code in the R chunk\ncommand + shift + C: to comment out a line\ncommand + shift + K: to render a current Quarto file\n\n\n\n\n\n\nAlt+Ctrl+I : to create a R chunk\nAlt + - : the shortcut for &lt;-\nCtrl + Enter runs a current line or selected lines\nCtrl + Shift + Enter : to run the code in the R chunk\nCtrl + Shift + C: to comment out a line\nCtrl + Shift + K: to render a current Quarto file"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#question-1",
+    "href": "danl-hw/danl-200-hw-03.html#question-1",
+    "title": "Homework 3",
+    "section": "Question 1",
+    "text": "Question 1\nReport summary statistics including a mean value for each logical variable in health_cust.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#question-2",
+    "href": "danl-hw/danl-200-hw-03.html#question-2",
+    "title": "Homework 3",
+    "section": "Question 2",
+    "text": "Question 2\nUse health_cust data.frame to create a new data.frame, health_cust2, in which (1) age is greater than 0 and less than 100; and (2) income is positive.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#question-3",
+    "href": "danl-hw/danl-200-hw-03.html#question-3",
+    "title": "Homework 3",
+    "section": "Question 3",
+    "text": "Question 3\nProvide both ggplot code and comments to describe the distribution of income.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#question-4",
+    "href": "danl-hw/danl-200-hw-03.html#question-4",
+    "title": "Homework 3",
+    "section": "Question 4",
+    "text": "Question 4\nProvide both ggplot code and comments to describe the distribution of marital_status.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#question-5",
+    "href": "danl-hw/danl-200-hw-03.html#question-5",
+    "title": "Homework 3",
+    "section": "Question 5",
+    "text": "Question 5\n\nSuppose you randomly pick one customer’s observation from each state in data.frame health_cust.\nUse ggplot code to determine (1) the state where a customer is most probable to possess health insurance; and (2) the state where it is least probable for a customer to have health insurance.\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#question-6",
+    "href": "danl-hw/danl-200-hw-03.html#question-6",
+    "title": "Homework 3",
+    "section": "Question 6",
+    "text": "Question 6\nProvide both ggplot code and comments to describe the relationship between age and income.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#question-7",
+    "href": "danl-hw/danl-200-hw-03.html#question-7",
+    "title": "Homework 3",
+    "section": "Question 7",
+    "text": "Question 7\nProvide both ggplot code and comments to describe the relationship between age and health_ins.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#question-8",
+    "href": "danl-hw/danl-200-hw-03.html#question-8",
+    "title": "Homework 3",
+    "section": "Question 8",
+    "text": "Question 8\nProvide both ggplot code and comments to describe the relationship between marital_status and health_ins.\nAnswer:"
+  },
+  {
+    "objectID": "danl-hw/danl-200-hw-03.html#question-9",
+    "href": "danl-hw/danl-200-hw-03.html#question-9",
+    "title": "Homework 3",
+    "section": "Question 9",
+    "text": "Question 9\nProvide both ggplot code and comments to describe the relationship between marital_status and housing_type.\nAnswer:"
   }
 ]
