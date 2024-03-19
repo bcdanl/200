@@ -1,6 +1,6 @@
 ---
 title: Lecture 12
-subtitle: Data Visualization - Aesthetic Mappings and Facets
+subtitle: Data Visualization - Geometric Objects
 format:
   clean-revealjs:
     self-contained: true
