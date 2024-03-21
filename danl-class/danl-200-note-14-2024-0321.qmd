@@ -1,0 +1,217 @@
+---
+title: Lecture 14 - Note
+subtitle: Facets; Data Visualization Process; Geometric Objects
+author: 
+  - name: Byeong-Hak Choe
+date: 2024-03-21
+
+execute: 
+  echo: true    # true false
+  eval: true    # true false
+  warning: false    # true false
+  message: false    # true false
+  fig-width: 9
+  # fig-height: 5
+  
+format: 
+  html:
+    toc: true    # true false
+    number-sections: true    # true false
+    code-fold: false    # true false show       # https://quarto.org/docs/output-formats/html-code.html
+    code-tools: true    # true false
+    highlight-style: a11y        # a11y arrow ayu atom-one breeze github gruvbox tango espresso
+                                     # pygments tango espresso espresso zenburn kate nord
+                                    # https://quarto.org/docs/output-formats/html-code.html#highlighting
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(hrbrthemes)
+library(skimr)
+library(DT)
+library(rmarkdown)
+
+```
+
+
+
+# Classwork 7
+
+
+## Question 1c
+
+### (a)
+
+```{r}
+ggplot(data = mpg,
+       mapping = aes(x = displ, y = hwy)) +
+  geom_point(alpha = .3) +
+  geom_smooth(se = F)
+```
+
+
+
+
+### (b)
+We need to use `drv` variable, which has three values:
+
+```{r}
+mpg <- ggplot2::mpg
+unique(mpg$drv) # giving the unique values in drv variable in mpg data.frame
+```
+
+
+```{r}
+ggplot(data = mpg,
+       mapping = aes(x = displ, y = hwy)) +
+  geom_point(alpha = .3) +
+  geom_smooth(se = F,
+              mapping = aes(group = drv))
+```
+
+
+
+### (c)
+
+```{r}
+ggplot(data = mpg,
+       mapping = aes(x = displ, y = hwy,
+                     color = drv)) +
+  geom_point(alpha = .5) +
+  geom_smooth(se = F)
+```
+
+
+
+### (d)
+
+```{r}
+ggplot(data = mpg,
+       mapping = aes(x = displ, y = hwy)) +
+  geom_point(mapping = aes(color = drv),
+             alpha = .5) +
+  geom_smooth(se = F)
+```
+
+
+### (e)
+
+```{r}
+ggplot(data = mpg,
+       mapping = aes(x = displ, y = hwy)) +
+  geom_point(mapping = aes(color = drv),
+             alpha = .5) +
+  geom_smooth(mapping = aes(linetype = drv),
+              se = F)
+```
+
+An order of geoms matters!
+
+```{r}
+ggplot(data = mpg,
+       mapping = aes(x = displ, y = hwy)) +
+  geom_smooth(mapping = aes(linetype = drv),
+              se = F) +
+  geom_point(mapping = aes(color = drv),
+             alpha = .5,
+             size = 10) 
+```
+
+
+
+```{r}
+ggplot( mpg,
+        aes(x = displ, y = hwy)) +
+  geom_point(color = "white",
+             size = 5) +
+  geom_point(aes(color = drv),
+             alpha = .5)
+```
+
+
+## Question 1d
+
+```{r}
+organdata_simple <- read_csv('https://bcdanl.github.io/data/organdata_simple.csv')
+```
+
+```{r}
+ggplot(data = organdata_simple,
+       aes(x = year,
+           y = donors)) +
+  geom_line(aes(color = country)) +
+  geom_point()
+```
+
+- time trend of the distribution of a continuous varialbe
+
+```{r}
+ggplot(data = organdata_simple,
+       aes(x = factor(year),
+           y = donors)) +
+  geom_boxplot() 
+```
+
+```{r}
+#| fig-height: 12
+ggplot(data = organdata_simple,
+       aes(x = year,
+           y = donors)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(country ~ .)
+```
+
+
+# Statistical Transformation
+
+```{r}
+ggplot(diamonds,
+       aes(x = cut)) +
+  geom_bar()
+```
+
+
+```{r}
+# to make a simple data.frame
+demo <- tribble(         
+  ~cut,         ~freq,
+  "Fair",       1610,
+  "Good",       4906,
+  "Very Good",  12082,
+  "Premium",    13791,
+  "Ideal",      21551 )
+
+
+ggplot(data = demo,
+       aes(x = cut)) +
+  geom_bar()
+```
+
+
+```{r}
+
+ggplot(data = demo) +
+  geom_bar(mapping = 
+             aes(x = cut, 
+                 y = freq), 
+           stat = "identity")
+```
+
+
+
+```{r}
+diamonds <- diamonds
+ggplot(diamonds,
+       aes(x = cut, fill = cut)) +
+  geom_bar()
+```
+
+```{r}
+ggplot(diamonds,
+       aes(x = cut, fill = clarity)) +
+  geom_bar()
+```
+
