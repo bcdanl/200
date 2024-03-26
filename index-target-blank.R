@@ -13,7 +13,7 @@ lec_dates <- c('0123', '0125', '0130', '0201',
                '0206', '0208', '0213', '0215', 
                '0222', '0229', '0305', '0307',
                '0319', '0321', '0326')
-lec_n <- length(lec_dates)
+lec_n <- length(lec_dates) 
 
 lec_nos <- 1:lec_n
 lec_nos <- sprintf("%02d", lec_nos)
