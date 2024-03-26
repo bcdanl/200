@@ -4722,7 +4722,7 @@
     "href": "danl-cw/danl-200-cw-08.html#q2a.",
     "title": "Classwork 8",
     "section": "Q2a.",
-    "text": "Q2a.\n\nProvide ggplot code to replicate the following visualization that describes how the time trend of earnings_med varies by inst_name.\n\n\n\nCode\nggplot(data = scorecard_SUNY,\n       mapping = aes(x = year, \n                       y = earnings_med)) +\n  geom_line(mapping = aes(color = geneseo),\n            show.legend = F,\n            linewidth = 3) +\n  geom_point(size = 1.5) +\n  geom_vline(aes(xintercept = 2012), \n             linetype = 3,\n             color = 'red') +\n  facet_wrap(. ~ inst_name, nrow = 5) +\n  theme(strip.text = element_text(size = rel(1)),\n        axis.text.x = element_text(angle = 45,\n                                   size = rel(1)))"
+    "text": "Q2a.\n\nProvide ggplot code to replicate the following visualization that describes how the time trend of earnings_med varies by inst_name.\n\n\n\nCode\nggplot(data = scorecard_SUNY,\n       mapping = aes(x = year, \n                       y = earnings_med)) +\n  geom_line(mapping = aes(color = geneseo),\n            show.legend = F,\n            linewidth = 3) +\n  geom_point(size = 1.5) +\n  geom_vline(aes(xintercept = 2012),  # we did not cover this\n             linetype = 3, # we did not cover this\n             color = 'red') + \n  facet_wrap(. ~ inst_name, nrow = 5) +\n  theme(strip.text = element_text(size = rel(1)), # we did not cover this\n        axis.text.x = element_text(angle = 45, # we did not cover this\n                                   size = rel(1))) # we did not cover this"
   },
   {
     "objectID": "danl-cw/danl-200-cw-08.html#q2b.",

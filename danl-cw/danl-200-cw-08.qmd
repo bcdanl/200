@@ -359,13 +359,13 @@ ggplot(data = scorecard_SUNY,
             show.legend = F,
             linewidth = 3) +
   geom_point(size = 1.5) +
-  geom_vline(aes(xintercept = 2012), 
-             linetype = 3,
-             color = 'red') +
+  geom_vline(aes(xintercept = 2012),  # we did not cover this
+             linetype = 3, # we did not cover this
+             color = 'red') + 
   facet_wrap(. ~ inst_name, nrow = 5) +
-  theme(strip.text = element_text(size = rel(1)),
-        axis.text.x = element_text(angle = 45,
-                                   size = rel(1)))
+  theme(strip.text = element_text(size = rel(1)), # we did not cover this
+        axis.text.x = element_text(angle = 45, # we did not cover this
+                                   size = rel(1))) # we did not cover this
 ```
 
 <br>
