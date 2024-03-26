@@ -1,7 +1,7 @@
 project:
   type: website
   output-dir: "."
-  
+
 website:
   title: "B.H. CHOE&nbsp;&nbsp;&nbsp;"
   favicon: img/favicon.ico
