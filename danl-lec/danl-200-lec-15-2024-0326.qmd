@@ -61,8 +61,8 @@ theme_set(theme_fivethirtyeight()+
 - Log Functions
 
 - Bar Charts
-- Statistical Transformation
 - Position Adjustments
+- Statistical Transformation
 
 :::
 
@@ -145,6 +145,130 @@ ggplot(sale_df,
        bins = 500) +
   geom_histogram()
 ```
+
+
+
+# Position Adjustment {background-color="#1c4982"}
+
+## Position Adjustment
+### `color` and `fill` aesthetic
+
+:::{.nonincremental}
+- We can color a bar chart using either the `color` aesthetic, or, more usefully, `fill`.
+
+:::
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column
+
+ggplot(data = diamonds) + 
+  geom_bar(mapping = 
+             aes(x = cut, 
+                 color = cut))
+```
+
+## Position Adjustment
+### `fill`
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column
+
+ggplot(data = diamonds) + 
+  geom_bar(mapping = 
+             aes(x = cut, 
+                 fill = cut))
+```
+
+
+
+## Position Adjustment
+### Stacked bar charts with `fill` aesthetic
+
+:::{.nonincremental}
+
+- Note that the bars are automatically stacked if we map the `fill` aesthetic to another variable.
+
+:::
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column
+
+ggplot(data = diamonds) + 
+  geom_bar(mapping = 
+             aes(x = cut, 
+                 fill = clarity) )
+```
+
+
+
+## Position Adjustment
+### Stacked bar charts with `fill` aesthetic
+:::{.nonincremental}
+
+- The `stack`ing is performed automatically by the **position adjustment** specified by the `position` argument. 
+
+:::
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column
+
+ggplot(data = diamonds) + 
+  geom_bar(mapping = 
+             aes(x = cut, 
+                 fill = clarity),
+           position = "stack")
+```
+
+
+
+## Position Adjustment
+
+- If we don't want a stacked bar chart with counts, we can use one of two other `position` options: `fill` or `dodge`.
+
+- `position = "fill"` works like stacking, but makes each set of stacked bars the same height. 
+    - This makes it easier to compare proportions across groups.
+
+- `position = "dodge"` places overlapping objects directly beside one another. 
+
+
+## Position Adjustment
+### `position = "fill"`
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = diamonds) + 
+  geom_bar(mapping = 
+             aes(x = cut, 
+                 fill = clarity), 
+           position = "fill")
+```
+
+
+
+
+## Position Adjustment
+### `position = "dodge"`
+
+
+```{r}
+#| echo: true
+#| fig-asp: .85
+#| output-location: column-fragment
+
+ggplot(data = diamonds) + 
+  geom_bar(mapping = 
+             aes(x = cut, 
+                 fill = clarity), 
+           position = "dodge")
+```
+
 
 
 # Statistical Transformation {background-color="#1c4982"}
@@ -295,128 +419,6 @@ ggplot(data = diamonds) +
 
 
 
-
-
-# Position Adjustment {background-color="#1c4982"}
-
-## Position Adjustment
-### `color` and `fill` aesthetic
-
-:::{.nonincremental}
-- We can color a bar chart using either the `color` aesthetic, or, more usefully, `fill`.
-
-:::
-```{r}
-#| echo: true
-#| fig-asp: .85
-#| output-location: column
-
-ggplot(data = diamonds) + 
-  geom_bar(mapping = 
-             aes(x = cut, 
-                 color = cut))
-```
-
-## Position Adjustment
-### `fill`
-```{r}
-#| echo: true
-#| fig-asp: .85
-#| output-location: column
-
-ggplot(data = diamonds) + 
-  geom_bar(mapping = 
-             aes(x = cut, 
-                 fill = cut))
-```
-
-
-
-## Position Adjustment
-### Stacked bar charts with `fill` aesthetic
-
-:::{.nonincremental}
-
-- Note that the bars are automatically stacked if we map the `fill` aesthetic to another variable.
-
-:::
-```{r}
-#| echo: true
-#| fig-asp: .85
-#| output-location: column
-
-ggplot(data = diamonds) + 
-  geom_bar(mapping = 
-             aes(x = cut, 
-                 fill = clarity) )
-```
-
-
-
-## Position Adjustment
-### Stacked bar charts with `fill` aesthetic
-:::{.nonincremental}
-
-- The `stack`ing is performed automatically by the **position adjustment** specified by the `position` argument. 
-
-:::
-```{r}
-#| echo: true
-#| fig-asp: .85
-#| output-location: column
-
-ggplot(data = diamonds) + 
-  geom_bar(mapping = 
-             aes(x = cut, 
-                 fill = clarity),
-           position = "stack")
-```
-
-
-
-## Position Adjustment
-
-- If we don't want a stacked bar chart with counts, we can use one of two other `position` options: `fill` or `dodge`.
-
-- `position = "fill"` works like stacking, but makes each set of stacked bars the same height. 
-    - This makes it easier to compare proportions across groups.
-
-- `position = "dodge"` places overlapping objects directly beside one another. 
-
-
-## Position Adjustment
-### `position = "fill"`
-
-```{r}
-#| echo: true
-#| fig-asp: .85
-#| output-location: column-fragment
-
-ggplot(data = diamonds) + 
-  geom_bar(mapping = 
-             aes(x = cut, 
-                 fill = clarity), 
-           position = "fill")
-```
-
-
-
-
-## Position Adjustment
-### `position = "dodge"`
-
-
-```{r}
-#| echo: true
-#| fig-asp: .85
-#| output-location: column-fragment
-
-ggplot(data = diamonds) + 
-  geom_bar(mapping = 
-             aes(x = cut, 
-                 fill = clarity), 
-           position = "dodge")
-```
 
 
 # The Layered `G`rammar of `G`raphics (`ggplot`) {background-color="#1c4982"}
