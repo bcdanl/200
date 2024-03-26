@@ -4638,35 +4638,35 @@
     "href": "danl-lec/danl-200-lec-15-2024-0326.html#position-adjustment-1",
     "title": "Lecture 15",
     "section": "Position Adjustment",
-    "text": "Position Adjustment\ncolor and fill aesthetic\n\n\nWe can color a bar chart using either the color aesthetic, or, more usefully, fill.\n\n\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut, \n                 color = cut))"
+    "text": "Position Adjustment\nStacked bar charts with fill aesthetic\n\n\nNote that the bars are automatically stacked if we map the fill aesthetic to another variable.\n\n\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut, \n                 fill = clarity) )"
   },
   {
     "objectID": "danl-lec/danl-200-lec-15-2024-0326.html#position-adjustment-2",
     "href": "danl-lec/danl-200-lec-15-2024-0326.html#position-adjustment-2",
     "title": "Lecture 15",
     "section": "Position Adjustment",
-    "text": "Position Adjustment\nfill\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut, \n                 fill = cut))"
+    "text": "Position Adjustment\nStacked bar charts with fill aesthetic\n\n\nThe stacking is performed automatically by the position adjustment specified by the position argument.\n\n\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut, \n                 fill = clarity),\n           position = \"stack\")"
   },
   {
     "objectID": "danl-lec/danl-200-lec-15-2024-0326.html#position-adjustment-3",
     "href": "danl-lec/danl-200-lec-15-2024-0326.html#position-adjustment-3",
     "title": "Lecture 15",
     "section": "Position Adjustment",
-    "text": "Position Adjustment\nStacked bar charts with fill aesthetic\n\n\nNote that the bars are automatically stacked if we map the fill aesthetic to another variable.\n\n\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut, \n                 fill = clarity) )"
+    "text": "Position Adjustment\n\nIf we don’t want a stacked bar chart with counts, we can use one of two other position options: fill or dodge.\nposition = \"fill\" works like stacking, but makes each set of stacked bars the same height.\n\nThis makes it easier to compare proportions across groups.\n\nposition = \"dodge\" places overlapping objects directly beside one another."
   },
   {
     "objectID": "danl-lec/danl-200-lec-15-2024-0326.html#position-adjustment-4",
     "href": "danl-lec/danl-200-lec-15-2024-0326.html#position-adjustment-4",
     "title": "Lecture 15",
     "section": "Position Adjustment",
-    "text": "Position Adjustment\nStacked bar charts with fill aesthetic\n\n\nThe stacking is performed automatically by the position adjustment specified by the position argument.\n\n\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut, \n                 fill = clarity),\n           position = \"stack\")"
+    "text": "Position Adjustment\nposition = \"fill\"\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut, \n                 fill = clarity), \n           position = \"fill\")"
   },
   {
     "objectID": "danl-lec/danl-200-lec-15-2024-0326.html#position-adjustment-5",
     "href": "danl-lec/danl-200-lec-15-2024-0326.html#position-adjustment-5",
     "title": "Lecture 15",
     "section": "Position Adjustment",
-    "text": "Position Adjustment\n\nIf we don’t want a stacked bar chart with counts, we can use one of two other position options: fill or dodge.\nposition = \"fill\" works like stacking, but makes each set of stacked bars the same height.\n\nThis makes it easier to compare proportions across groups.\n\nposition = \"dodge\" places overlapping objects directly beside one another."
+    "text": "Position Adjustment\nposition = \"dodge\"\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut, \n                 fill = clarity), \n           position = \"dodge\")"
   },
   {
     "objectID": "danl-lec/danl-200-lec-15-2024-0326.html#position-adjustment-6",
@@ -4835,5 +4835,19 @@
     "title": "Lecture 15 - Q & A",
     "section": "",
     "text": "Welcome to our Lecture 15 Discussion Board! 👋 \nThis space is designed for you to engage with your classmates about the material covered in Lecture 15 slides.\nWhether you are looking to delve deeper into the slides, share insights, or have questions about the content, this is the perfect place for you.\nIf you have any specific questions for Byeong-Hak (@bcdanl) regarding the Lecture 12 materials or need clarification on any points, don’t hesitate to ask here.\nLet’s collaborate and learn from each other!\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-15-2024-0326.html#bar-charts-aethetics",
+    "href": "danl-lec/danl-200-lec-15-2024-0326.html#bar-charts-aethetics",
+    "title": "Lecture 15",
+    "section": "Bar Charts Aethetics",
+    "text": "Bar Charts Aethetics\ncolor and fill aesthetic\n\n\nWe can color a bar chart using either the color aesthetic, or, more usefully, fill.\n\n\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut, \n                 color = cut))"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-15-2024-0326.html#bar-charts-aethetics-1",
+    "href": "danl-lec/danl-200-lec-15-2024-0326.html#bar-charts-aethetics-1",
+    "title": "Lecture 15",
+    "section": "Bar Charts Aethetics",
+    "text": "Bar Charts Aethetics\ncolor and fill aesthetic\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut, \n                 fill = cut))"
   }
 ]
