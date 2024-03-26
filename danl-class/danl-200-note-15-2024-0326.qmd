@@ -1,0 +1,257 @@
+---
+title: Lecture 15 - Note
+subtitle: Bar Charts
+author: 
+  - name: Byeong-Hak Choe
+date: 2024-03-26
+
+execute: 
+  echo: true    # true false
+  eval: true    # true false
+  warning: false    # true false
+  message: false    # true false
+  fig-width: 9
+  # fig-height: 5
+  
+format: 
+  html:
+    toc: true    # true false
+    number-sections: true    # true false
+    code-fold: false    # true false show       # https://quarto.org/docs/output-formats/html-code.html
+    code-tools: true    # true false
+    highlight-style: a11y        # a11y arrow ayu atom-one breeze github gruvbox tango espresso
+                                     # pygments tango espresso espresso zenburn kate nord
+                                    # https://quarto.org/docs/output-formats/html-code.html#highlighting
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(hrbrthemes)
+library(skimr)
+library(DT)
+library(rmarkdown)
+
+```
+
+
+# The use of `log()`
+
+```{r}
+sale_df <- read_csv(
+  "https://bcdanl.github.io/data/home_sales_nyc.csv")
+```
+
+
+```{r}
+ggplot(sale_df,
+       aes(x = sale.price)) +
+  geom_histogram(bins = 500)
+```
+
+
+
+
+```{r}
+ggplot(sale_df,
+       aes(x = log10(sale.price) )) +
+  geom_histogram(bins = 500)
+```
+
+
+# Statistical Transfromations
+
+```{r}
+# to make a simple data.frame
+demo <- tribble(         
+  ~cut,         ~freq,
+  "Fair",       1610,
+  "Good",       4906,
+  "Very Good",  12082,
+  "Premium",    13791,
+  "Ideal",      21551 )
+
+diamonds <- ggplot2::diamonds
+
+ggplot(data = demo) +
+  geom_bar(mapping = 
+             aes(x = cut, 
+                 y = freq), 
+           stat = "identity")
+
+
+ggplot(demo) +
+  geom_col(aes(x = cut, y = freq))
+
+
+```
+
+
+## Proportion Bar Chart
+
+```{r}
+ggplot(diamonds,
+       aes(x = cut, y = stat(prop), group = 1)) +
+  geom_bar()
+```
+
+```{r}
+ggplot(diamonds,
+       aes(x = cut, y = stat(prop))) +
+  geom_bar()
+```
+
+
+```{r}
+ggplot(diamonds) +
+  stat_summary(
+    aes(x = cut, y = depth),
+    fun = median
+  )
+```
+
+
+```{r}
+ggplot(diamonds) +
+  stat_summary(
+    aes(x = cut, y = depth),
+    fun = median,
+    fun.min = min,
+    fun.max = max
+  ) +
+  stat_summary(
+    aes(x = cut, y = depth),
+    fun = mean,
+    color = 'red'
+  )
+```
+
+
+```{r}
+
+ggplot(diamonds,
+       aes(x = cut, y = depth)) +
+  geom_boxplot() +
+  stat_summary(
+    fun = mean,
+    color = 'red'
+  )
+```
+
+
+# Position Adjustments
+
+## Stacked bar chart
+
+```{r}
+ggplot(diamonds,
+       aes(x = cut,
+           fill = clarity)) +
+  geom_bar()
+```
+
+
+```{r}
+ggplot(diamonds,
+       aes(x = cut,
+           fill = clarity)) +
+  geom_bar(position = "stack")
+```
+
+
+
+## Stacked proportion bar chart
+
+```{r}
+ggplot(diamonds,
+       aes(x = cut,
+           fill = clarity)) +
+  geom_bar(position = "fill") +
+  labs(y = 'prop')  # this is about labeling 
+```
+
+
+## Side-by-side bar chart
+
+```{r}
+ggplot(diamonds,
+       aes(x = cut,
+           fill = clarity)) +
+  geom_bar(position = "dodge") 
+```
+
+```{r}
+library(nycflights13)
+
+flights <- nycflights13::flights
+??flights
+```
+
+
+
+# Classwork 7 - Q2b
+
+Visualize the distribution of `carrier`.
+
+1. Bar chart
+```{r}
+ggplot(flights, aes(x = carrier,
+                    fill = carrier)) +
+  geom_bar()
+```
+
+
+2. Proportion Bar Chart
+
+```{r}
+ggplot(flights, aes(x = carrier,
+                    y = stat(prop),
+                    group = 1)) +
+  geom_bar()
+```
+
+
+```{r}
+unique(flights$origin)
+```
+
+
+
+Visualize how the distribution of carrier varies by origin.
+
+1. stacked bar chart
+```{r}
+ggplot(flights,
+       aes(x = origin,
+           fill = carrier)) +
+  geom_bar()
+```
+
+
+
+
+2. stacked proportion bar chart
+
+```{r}
+ggplot(flights,
+       aes(x = origin,
+           fill = carrier)) +
+  geom_bar(position = 'fill')
+```
+
+
+
+3. side-by-side bar chart
+
+```{r}
+ggplot(flights,
+       aes(x = origin,
+           fill = carrier)) +
+  geom_bar(position = 'dodge')
+```
+
+
+
+4. Facetted Bar Chart
+

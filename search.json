@@ -1313,7 +1313,7 @@
     "href": "listing-danl-200-class.html",
     "title": "DANL 200 - Class Notes",
     "section": "",
-    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\nLecture 13 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 19, 2024\n\n\n\n\nLecture 14 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 21, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\nLecture 13 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 19, 2024\n\n\n\n\nLecture 14 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 21, 2024\n\n\n\n\nLecture 15 - Note\n\n\nBar Charts\n\n\nMarch 26, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-lec/danl-200-lec-02-2024-0125.html#announcement",
@@ -4849,5 +4849,40 @@
     "title": "Lecture 15",
     "section": "Bar Charts Aethetics",
     "text": "Bar Charts Aethetics\ncolor and fill aesthetic\n\n\nggplot(data = diamonds) + \n  geom_bar(mapping = \n             aes(x = cut, \n                 fill = cut))"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-15-2024-0326.html",
+    "href": "danl-class/danl-200-note-15-2024-0326.html",
+    "title": "Lecture 15 - Note",
+    "section": "",
+    "text": "sale_df &lt;- read_csv(\n  \"https://bcdanl.github.io/data/home_sales_nyc.csv\")\n\n\nggplot(sale_df,\n       aes(x = sale.price)) +\n  geom_histogram(bins = 500)\n\n\n\n\n\nggplot(sale_df,\n       aes(x = log10(sale.price) )) +\n  geom_histogram(bins = 500)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-15-2024-0326.html#proportion-bar-chart",
+    "href": "danl-class/danl-200-note-15-2024-0326.html#proportion-bar-chart",
+    "title": "Lecture 15 - Note",
+    "section": "2.1 Proportion Bar Chart",
+    "text": "2.1 Proportion Bar Chart\n\nggplot(diamonds,\n       aes(x = cut, y = stat(prop), group = 1)) +\n  geom_bar()\n\n\n\n\n\nggplot(diamonds,\n       aes(x = cut, y = stat(prop))) +\n  geom_bar()\n\n\n\n\n\nggplot(diamonds) +\n  stat_summary(\n    aes(x = cut, y = depth),\n    fun = median\n  )\n\n\n\n\n\nggplot(diamonds) +\n  stat_summary(\n    aes(x = cut, y = depth),\n    fun = median,\n    fun.min = min,\n    fun.max = max\n  ) +\n  stat_summary(\n    aes(x = cut, y = depth),\n    fun = mean,\n    color = 'red'\n  )\n\n\n\n\n\nggplot(diamonds,\n       aes(x = cut, y = depth)) +\n  geom_boxplot() +\n  stat_summary(\n    fun = mean,\n    color = 'red'\n  )"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-15-2024-0326.html#stacked-bar-chart",
+    "href": "danl-class/danl-200-note-15-2024-0326.html#stacked-bar-chart",
+    "title": "Lecture 15 - Note",
+    "section": "3.1 Stacked bar chart",
+    "text": "3.1 Stacked bar chart\n\nggplot(diamonds,\n       aes(x = cut,\n           fill = clarity)) +\n  geom_bar()\n\n\n\n\n\nggplot(diamonds,\n       aes(x = cut,\n           fill = clarity)) +\n  geom_bar(position = \"stack\")"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-15-2024-0326.html#stacked-proportion-bar-chart",
+    "href": "danl-class/danl-200-note-15-2024-0326.html#stacked-proportion-bar-chart",
+    "title": "Lecture 15 - Note",
+    "section": "3.2 Stacked proportion bar chart",
+    "text": "3.2 Stacked proportion bar chart\n\nggplot(diamonds,\n       aes(x = cut,\n           fill = clarity)) +\n  geom_bar(position = \"fill\") +\n  labs(y = 'prop')  # this is about labeling"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-15-2024-0326.html#side-by-side-bar-chart",
+    "href": "danl-class/danl-200-note-15-2024-0326.html#side-by-side-bar-chart",
+    "title": "Lecture 15 - Note",
+    "section": "3.3 Side-by-side bar chart",
+    "text": "3.3 Side-by-side bar chart\n\nggplot(diamonds,\n       aes(x = cut,\n           fill = clarity)) +\n  geom_bar(position = \"dodge\") \n\n\n\n\n\nlibrary(nycflights13)\n\nflights &lt;- nycflights13::flights\n??flights"
   }
 ]
