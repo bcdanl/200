@@ -4,6 +4,7 @@ subtitle: Data Visualization Basics
 date: last-modified
 from: markdown+emoji
 comments: false
+code-fold: true
 
 execute: 
   warning: false
@@ -64,6 +65,7 @@ theme_set(theme_ipsum()+
 Below is the data.frame `holiday_movies` containing information about holiday & Christmas movies (Source: [the Internet Movie Database (IMDb)](https://www.imdb.com/)). 
 
 ```{r}
+#| code-fold: false
 holiday_movies <- read_csv("https://bcdanl.github.io/data/holiday_movies_w_genres.csv")
 ```
 
@@ -98,7 +100,13 @@ Provide both (1) `ggplot` code and (2) a comment to describe how the relationshi
 
 *Answer*:
 ```{r}
-
+ ggplot(holiday_movies,
+        aes(x = log10(num_votes),
+            y = average_rating)) +
+  geom_point(alpha = .2) +
+  geom_smooth() +
+  geom_smooth(method = "lm", color = "red") +
+  facet_wrap(genre ~ .)
 ```
 
 <br><br>
@@ -109,9 +117,12 @@ Provide both (1) `ggplot` code and (2) a comment to describe how the distributio
 
 *Answer*:
 ```{r}
-
+ggplot(holiday_movies) +
+  geom_bar(aes(y = genre, 
+               fill = genre),
+           show.legend = F) +
+  facet_wrap(title_type ~ .)
 ```
-
 
 <br><br>
 
@@ -122,9 +133,14 @@ Provide both (1) `ggplot` code and (2) a comment to describe how the distributio
 
 *Answer*:
 ```{r}
+ggplot(holiday_movies, 
+      aes(x = average_rating,
+          y = genre,
+          fill = genre)) +
+  geom_boxplot(show.legend = F) +
+  facet_wrap(title_type ~ ., ncol = 1)
 
 ```
-
 
 <br><br>
 
@@ -134,6 +150,35 @@ Provide both (1) `ggplot` code and (2) a comment to describe how the distributio
 
 *Answer*:
 ```{r}
+ggplot(holiday_movies, 
+       aes(x = average_rating, fill = genre)) +
+  geom_histogram(bins = 20, show.legend = F) +
+  facet_wrap(genre ~.)
+```
+
+<br><br>
+
+
+## Question 5.
+Below is the data.frame, `holiday_movies_genre_yearly`, containing yearly mean value of `average_rating` for each `genre`.
+
+```{r}
+holiday_movies_genre_yearly <- read_csv("https://bcdanl.github.io/data/holiday_movies_w_genres_yearly.csv")
+```
+
+Provide both (1) `ggplot` code and (2) a comment to describe how the yearly trend of `average_rating` varies by `genre`.
+
+
+
+*Answer*:
+```{r}
+ggplot(holiday_movies_genre_yearly,
+       aes(x = year, y = average_rating)) +
+  geom_line() +
+  geom_point() +
+  geom_smooth() +
+  geom_smooth(method = "lm", color = "red") +
+  facet_wrap(genre ~ .)
 
 ```
 
@@ -155,6 +200,13 @@ Provide both (1) `ggplot` code and (2) a comment to describe how the yearly tren
 
 *Answer*:
 ```{r}
+holiday_movies_genre_yearly |> 
+  ggplot(aes(x = year, y = average_rating)) +
+  geom_line() +
+  geom_point() +
+  geom_smooth() +
+  geom_smooth(method = "lm", color = "red") +
+  facet_wrap(genre ~ .)
 
 ```
 
