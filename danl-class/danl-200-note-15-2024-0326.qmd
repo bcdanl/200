@@ -102,6 +102,7 @@ ggplot(diamonds,
   geom_bar()
 ```
 
+## `stat_summary()`
 
 ```{r}
 ggplot(diamonds) +

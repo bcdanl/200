@@ -4862,7 +4862,7 @@
     "href": "danl-class/danl-200-note-15-2024-0326.html#proportion-bar-chart",
     "title": "Lecture 15 - Note",
     "section": "2.1 Proportion Bar Chart",
-    "text": "2.1 Proportion Bar Chart\n\nggplot(diamonds,\n       aes(x = cut, y = stat(prop), group = 1)) +\n  geom_bar()\n\n\n\n\n\nggplot(diamonds,\n       aes(x = cut, y = stat(prop))) +\n  geom_bar()\n\n\n\n\n\nggplot(diamonds) +\n  stat_summary(\n    aes(x = cut, y = depth),\n    fun = median\n  )\n\n\n\n\n\nggplot(diamonds) +\n  stat_summary(\n    aes(x = cut, y = depth),\n    fun = median,\n    fun.min = min,\n    fun.max = max\n  ) +\n  stat_summary(\n    aes(x = cut, y = depth),\n    fun = mean,\n    color = 'red'\n  )\n\n\n\n\n\nggplot(diamonds,\n       aes(x = cut, y = depth)) +\n  geom_boxplot() +\n  stat_summary(\n    fun = mean,\n    color = 'red'\n  )"
+    "text": "2.1 Proportion Bar Chart\n\nggplot(diamonds,\n       aes(x = cut, y = stat(prop), group = 1)) +\n  geom_bar()\n\n\n\n\n\nggplot(diamonds,\n       aes(x = cut, y = stat(prop))) +\n  geom_bar()"
   },
   {
     "objectID": "danl-class/danl-200-note-15-2024-0326.html#stacked-bar-chart",
@@ -4884,5 +4884,12 @@
     "title": "Lecture 15 - Note",
     "section": "3.3 Side-by-side bar chart",
     "text": "3.3 Side-by-side bar chart\n\nggplot(diamonds,\n       aes(x = cut,\n           fill = clarity)) +\n  geom_bar(position = \"dodge\") \n\n\n\n\n\nlibrary(nycflights13)\n\nflights &lt;- nycflights13::flights\n??flights"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-15-2024-0326.html#stat_summary",
+    "href": "danl-class/danl-200-note-15-2024-0326.html#stat_summary",
+    "title": "Lecture 15 - Note",
+    "section": "2.2 stat_summary()",
+    "text": "2.2 stat_summary()\n\nggplot(diamonds) +\n  stat_summary(\n    aes(x = cut, y = depth),\n    fun = median\n  )\n\n\n\n\n\nggplot(diamonds) +\n  stat_summary(\n    aes(x = cut, y = depth),\n    fun = median,\n    fun.min = min,\n    fun.max = max\n  ) +\n  stat_summary(\n    aes(x = cut, y = depth),\n    fun = mean,\n    color = 'red'\n  )\n\n\n\n\n\nggplot(diamonds,\n       aes(x = cut, y = depth)) +\n  geom_boxplot() +\n  stat_summary(\n    fun = mean,\n    color = 'red'\n  )"
   }
 ]
