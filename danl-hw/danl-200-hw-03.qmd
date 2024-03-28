@@ -4,6 +4,7 @@ subtitle: Data Visualization Basics
 date: last-modified
 from: markdown+emoji
 comments: false
+code-fold: true
 
 execute: 
   warning: false
@@ -60,6 +61,7 @@ Read the data file, `custdata_rev.csv`, as the data.frame object with the name, 
 
 ```{r}
 #| echo: true
+#| code-fold: false
 library(tidyverse)
 library(skimr)
 
@@ -108,139 +110,167 @@ The following describes the variables  in the `health_cust` data.frame.
 
 <br><br>
 
-## Question 1 
-Report summary statistics including a mean value for each logical variable in `health_cust`.
+## Question 1
+Report summary statistics including a mean value 
+for each logical variable in `health_cust`.
 
-*Answer*:
+**Answer:**
+
 ```{r}
 
 ```
 
-<br><br>
+
+```{r}
+#| echo: false
+#| eval: true
+
+
+```
+
+
+<br>
 
 
 
 
 
-## Question 2 
+## Question 2
 Use `health_cust` data.frame to create a new data.frame, `health_cust2`, in which 
 (1) `age` is greater than 0 and less than 100; and
 (2) `income` is positive.
 
-*Answer*:
+**Answer:**
+
 ```{r}
 
 ```
 
-<br><br>
+
+<br>
 
 
 
 
 
-## Question 3
-Provide both ggplot code and comments to describe the distribution of `income`.
+## Question 3 
+Provide ggplot code and comments to describe 
+the distribution of `income`.
 
-*Answer*:
+**Answer:**
+
 ```{r}
 
 ```
 
-<br><br>
+
+<br>
 
 
 
 
 
-## Question 4
-Provide both ggplot code and comments to describe the distribution of `marital_status`.
+## Question 4 
+Provide ggplot code and comments to describe 
+the distribution of `marital_status`.
 
-*Answer*:
+**Answer:**
+
 ```{r}
 
 ```
 
-<br><br>
+- Provide some comments
+
+<br>
 
 
 
 
 
-## Question 5
-- Suppose you randomly pick one customer's observation from each state in data.frame `health_cust`.
+## Question 5 
+Suppose you randomly pick one customer's observation 
+from each state in data.frame `health_cust`.
 
-- Use ggplot code to determine (1) the state where a customer is most probable to possess health insurance; and (2) the state where it is least probable for a customer to have health insurance.
+Use ggplot code to find:
+(1) in which state a customer is most likely to have a health insurance; and
+(2) in which state a customer is least likely to have a health insurance.
 
-*Answer*:
+**Answer:**
+
 ```{r}
+#| fig-width: 12
+#| fig-height: 18
 
 ```
 
-<br><br>
+<br>
 
 
 
 
 
-## Question 6
-Provide both ggplot code and comments to describe the relationship between `age` and `income`.
+## Question 6 
+Provide ggplot code and comments to describe 
+the relationship between `age` and `income`.
 
+**Answer:**
 
-*Answer*:
 ```{r}
+```
+
+
+<br>
+
+
+
+
+
+## Question 7 
+Provide ggplot code and comments to describe 
+how the distribution of `age` varies by `health_ins`.
+
+**Answer:**
+
+```{r}
+
 
 ```
 
-<br><br>
+<br>
 
 
 
 
-## Question 7
-<!-- Provide both ggplot code and comments to describe the relationship between `age` and `health_ins`. -->
 
-Provide both ggplot code and comments to describe how the distribution of `age` varies by `health_ins`.
+## Question 8 
+Provide ggplot code and comments to describe 
+how the distribution of `marital_status` varies by `health_ins`.
 
+**Answer:**
 
-*Answer*:
 ```{r}
+
 
 ```
 
-<br><br>
+<br>
 
 
 
 
-## Question 8
-<!-- Provide both ggplot code and comments to describe the relationship between `marital_status` and `health_ins`. -->
 
-Provide both ggplot code and comments to describe how the distribution of `marital_status` varies `health_ins`.
+## Question 9 
+Provide ggplot code and comments to describe how the distribution of `marital_status` varies by `housing_type`.
 
+**Answer:**
 
-*Answer*:
 ```{r}
+
 
 ```
 
-<br><br>
-
-
-
-
-
-## Question 9
-<!-- Provide both ggplot code and comments to describe the relationship between `marital_status` and `housing_type`. -->
-
-Provide both ggplot code and comments to describe how the distribution of `marital_status` varies by `housing_type`.
-
-
-*Answer*:
-```{r}
-
-```
-
-<br><br>
+<br>
 
 
 
