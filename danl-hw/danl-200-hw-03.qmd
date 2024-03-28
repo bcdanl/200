@@ -117,7 +117,7 @@ for each logical variable in `health_cust`.
 **Answer:**
 
 ```{r}
-
+health_cust_sum <- skim(health_cust)
 ```
 
 
@@ -125,7 +125,7 @@ for each logical variable in `health_cust`.
 #| echo: false
 #| eval: true
 
-
+rmarkdown::paged_table(health_cust_sum)
 ```
 
 
@@ -143,9 +143,27 @@ Use `health_cust` data.frame to create a new data.frame, `health_cust2`, in whic
 **Answer:**
 
 ```{r}
-
+health_cust2 <- filter(health_cust,
+                       age >0)
+health_cust2 <- filter(health_cust2,
+                       age < 100)
+health_cust2 <- filter(health_cust2,
+                       income > 0)
 ```
 
+
+Or we can do the following instead:
+```{r}
+health_cust2 <- filter(health_cust,
+                       age >0, age < 100, income > 0)
+```
+
+```{r}
+health_cust2 <- filter(health_cust,
+                       age >0 & age < 100 & income > 0)
+```
+
+We will discuss more details in the use of filter() function after the midterm exam.
 
 <br>
 
@@ -160,9 +178,21 @@ the distribution of `income`.
 **Answer:**
 
 ```{r}
+ggplot(health_cust2, aes(x = income)) +
+  geom_histogram()
+
+ggplot(health_cust2, aes(x = income)) +
+  geom_histogram(bins = 100)
+
+ggplot(health_cust2, aes(x = log(income))) +
+  geom_histogram(bins = 100)
+
+ggplot(health_cust2, aes(x = log(income))) +
+  geom_freqpoly(bins = 100)
 
 ```
 
+- Provide some comments
 
 <br>
 
@@ -178,6 +208,10 @@ the distribution of `marital_status`.
 
 ```{r}
 
+ggplot(health_cust2,
+       aes(y = marital_status,
+           fill = marital_status)) +
+  geom_bar(show.legend = F)
 ```
 
 - Provide some comments
@@ -201,6 +235,42 @@ Use ggplot code to find:
 ```{r}
 #| fig-width: 12
 #| fig-height: 18
+ggplot(health_cust2) +
+  geom_bar(aes(y = state_of_res,
+               fill = health_ins),
+           position = 'fill')
+
+ggplot(health_cust2) +
+  geom_bar(aes(y = health_ins,
+               group = 1)) +
+  facet_wrap(state_of_res ~ . , ncol = 5)
+
+ggplot(health_cust2) +
+  geom_bar(aes(y = health_ins, x = stat(prop),
+               group = 1)) +
+  facet_wrap(state_of_res ~ . , ncol = 5)
+
+ggplot(health_cust2) +
+  geom_bar(aes(y = state_of_res, fill = health_ins,
+               group = 1))
+```
+
+- The proportional bar chart faceted by `state_of_res` is the one we need.
+  - `Alaska` customer is most likely to have health insurance.
+  - `Vermont` customer is least likely to have health insurance.
+  - Why? 
+
+
+The following might mislead ...
+
+```{r}
+#| fig-width: 12
+#| fig-height: 18
+
+ggplot(health_cust2) +
+  geom_bar(aes(y = state_of_res, x = stat(prop),
+               group = 1)) +
+  facet_wrap(health_ins ~ . , ncol = 5)
 
 ```
 
@@ -217,8 +287,27 @@ the relationship between `age` and `income`.
 **Answer:**
 
 ```{r}
+ggplot(health_cust2,
+       aes(x = age, y = income)) +
+  geom_point(alpha = .03, size = .75) +
+  geom_smooth() 
+
+ggplot(health_cust2,
+       aes(x = age, y = income)) +
+  geom_point(alpha = .03, size = .75) +
+  geom_smooth()
+
+# Considering income level below $200,000
+health_cust3 <- filter(health_cust2,
+                       income < 2 * 10^5)
+ggplot(health_cust3,
+       aes(x = age, y = income)) +
+  geom_point(alpha = .03, size = .75) +
+  geom_smooth() 
+
 ```
 
+- Considering the income group whose level is below $250,000, `income` is positively associated with `age` up to `age` around 55. `income` is then negatively associated from age around 55 to 100.
 
 <br>
 
@@ -233,7 +322,13 @@ how the distribution of `age` varies by `health_ins`.
 **Answer:**
 
 ```{r}
+ggplot(health_cust2) + 
+  geom_histogram(aes(x = age), bins = 75) +
+  facet_wrap(health_ins ~.)
 
+ggplot(health_cust2) + 
+  geom_freqpoly(aes(x = age), bins = 75) +
+  facet_wrap(health_ins ~.)
 
 ```
 
@@ -250,7 +345,38 @@ how the distribution of `marital_status` varies by `health_ins`.
 **Answer:**
 
 ```{r}
+# Stacked bar chart
+ggplot(health_cust2) +
+  geom_bar(aes(y = marital_status, 
+               fill = health_ins))
 
+# Stacked proportion bar chart
+ggplot(health_cust2) +
+  geom_bar(aes(y = marital_status, 
+               fill = health_ins),
+           position = "fill")
+
+# Side-by-side bar chart
+ggplot(health_cust2) +
+  geom_bar(aes(y = marital_status, 
+               fill = health_ins),
+           position = "dodge")
+
+# Faceted bar chart
+ggplot(health_cust2) +
+  geom_bar(aes(y = marital_status)) +
+  facet_wrap(health_ins ~.)
+
+# Faceted proportion bar chart
+ggplot(health_cust2) +
+  geom_bar(aes(y = marital_status, 
+               x = stat(prop), group = 1)) +
+  facet_wrap(health_ins ~.)
+
+ggplot(health_cust2) +
+  geom_bar(aes(y = health_ins, 
+               x = stat(prop), group = 1)) +
+  facet_grid(marital_status ~.)
 
 ```
 
@@ -266,7 +392,33 @@ Provide ggplot code and comments to describe how the distribution of `marital_st
 **Answer:**
 
 ```{r}
+ggplot(health_cust2) +
+  geom_bar(aes(y = marital_status, 
+               fill = housing_type))
 
+ggplot(health_cust2) +
+  geom_bar(aes(y = marital_status, 
+               fill = housing_type),
+           position = "fill")
+
+ggplot(health_cust2) +
+  geom_bar(aes(y = marital_status, 
+               fill = housing_type),
+           position = "dodge")
+
+ggplot(health_cust2) +
+  geom_bar(aes(y = marital_status)) +
+  facet_wrap(housing_type ~.)
+
+ggplot(health_cust2) +
+  geom_bar(aes(y = marital_status, 
+               x = stat(prop), group = 1)) +
+  facet_wrap(housing_type ~.)
+
+ggplot(health_cust2) +
+  geom_bar(aes(y = housing_type, 
+               x = stat(prop), group = 1)) +
+  facet_grid(marital_status ~.)
 
 ```
 
