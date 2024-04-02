@@ -1,0 +1,606 @@
+---
+title: "Spring 2024, DANL 200-02: Introduction to Data Analytics"
+subtitle: Midterm Exam
+author: Byeong-Hak Choe
+institute: SUNY Geneseo
+date: 2024-03-28
+format: 
+  html
+    # toc: true
+    # toc-depth: 2
+    # toc-expand: true
+    # toc-title: Contents
+code-fold: true
+code-tools: true
+
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  fig-width: 9
+  fig-height: 6
+---
+```{r}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(broom)
+library(hrbrthemes)
+
+theme_set(theme_ipsum() +
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = element_text(size = rel(1.5) ),
+                axis.title.y = element_text(size = rel(1.5) ))
+          )
+
+```
+
+# Honor Pledges
+
+I solemnly swear that I will not cheat or engage in any form of academic dishonesty during this exam. 
+
+I will not communicate with other students or use unauthorized materials. 
+
+I will uphold the integrity of this exam and demonstrate my own knowledge and abilities.
+
+By taking this pledge, I acknowledge that academic dishonesty undermines the academic process and is a violation of the trust placed in me as a student. 
+
+I accept the consequences of any violation of this promise.
+
+- Student's Name: 
+- Student's ID: 
+- Student's Signature: 
+
+
+
+# Load R packages
+- Here we are loading all the R packages we need for the Midterm Exam, so that you do not need to load the R packages in your code.
+```{r}
+#| echo: true
+library(tidyverse)
+library(skimr)
+```
+
+
+<br><br>
+
+# Question 1
+
+The following describes the context of the data.frame, **trashwheel**.
+
+## Using The Power of Nature to Clean the Oceans
+
+![Mr. Trash Wheel](https://bcdanl.github.io/lec_figs/MTW-model-2-1024x662.png){fig-align="center"}
+
+Mr. Trash Wheel is a semi-autonomous trash interceptor that is placed at the end of a river, stream or other outfall.
+
+Far too lazy to chase trash around the ocean, Mr. Trash Wheel stays put and waits for the waste to flow to him.
+
+Sustainably powered and built to withstand the biggest storms, Mr. Trash Wheel uses a unique blend of solar and hydro power to pull hundreds of tons of trash out of the water each year.
+
+
+## Meet the Mr. Trash Wheel Family
+
+<br>
+
+::::{.columns}
+:::{.column width="50%"}
+![Mister Trash Wheel](https://bcdanl.github.io/lec_figs/mister.png){width=50%}
+:::
+
+:::{.column width="50%"}
+- Installed: May 9, 2014
+- Location: Jones Falls stream, Inner Harbor, Baltimore, MD
+
+:::
+
+::::
+
+
+::::{.columns}
+:::{.column width="50%"}
+![Professor Trash Wheel](https://bcdanl.github.io/lec_figs/professor.png){width=50%}
+:::
+
+:::{.column width="50%"}
+- Installed: December 4, 2016
+- Location: Harris Creek, Canton neighborhood, Baltimore, MD
+
+:::
+::::
+
+
+
+
+
+::::{.columns}
+:::{.column width="50%"}
+![Captain Trash Wheel](https://bcdanl.github.io/lec_figs/captain.png){width=50%}
+:::
+
+:::{.column width="50%"}
+<br>
+
+- Installed: June 5, 2018
+- Location: Masonville Cove, Baltimore, MD
+
+:::
+::::
+
+
+
+
+
+::::{.columns}
+:::{.column width="50%"}
+![Gwynnda Trash Wheel](https://bcdanl.github.io/lec_figs/gwynnda.png){width=50%}
+:::
+
+:::{.column width="50%"}
+<br>
+
+  - Installed: June 3, 2021
+  - Location: Gwynns Falls, West Baltimore, MD
+
+:::
+::::
+
+
+
+
+<br>
+
+## Part 1
+
+
+- The following is the data frames for Part 1 in Question 1.
+
+```{r}
+#| echo: true
+trashwheel <- read_csv('https://bcdanl.github.io/data/trashwheel.csv')
+```
+
+### Variable Description
+
+|variable       |type     |description    |
+|:--------------|:---------|:--------------|
+|`Name`           |character |Name of the Trash Wheel           |
+|`Month`          |character |Month          |
+|`Year`           |numeric   |Year           |
+|`Date`           |character |Date (Monthly)           |
+|`Weight`         |numeric    |Weight in tons         |
+|`Volume`         |numeric    |Volume in cubic yards          |
+|`PlasticBottles` |numeric    |Number of plastic bottles |
+|`Polystyrene`    |numeric    |Number of polystyrene items    |
+|`CigaretteButts` |numeric    |Number of cigarette butts |
+|`GlassBottles`   |numeric    |Number of glass bottles   |
+|`PlasticBags`    |numeric    |Number of plastic bags    |
+|`Wrappers`       |numeric    |Number of wrappers       |
+|`SportsBalls`    |numeric    |Number of sports balls    |
+|`HomesPowered`   |numeric    |Homes Powered - Each ton of trash equates to on average 500 kilowatts of electricity.  An average household will use 30 kilowatts per day.   |
+
+
+
+<br>
+
+
+- The following is the data.frame, **trashwheel**.
+```{r}
+#| results: asis
+#| echo: false
+rmarkdown::paged_table(trashwheel,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+```{r}
+#| echo: true
+unique(trashwheel$Name)
+```
+
+
+### Q1a
+- Provide an R code to calculate mean and standard deviation of `Volume` for "Mister Trash Wheel".
+
+
+
+```{r}
+q1a <- filter(trashwheel, Name == "Mister Trash Wheel")
+skim(q1a$Volume)
+```
+
+<br><br>
+
+
+
+
+
+### Q1b
+- Provide a ggplot code to replicate the following ggplot figure that describes how the distribution of `Weight` varies by `Name`.
+  - The number of bins in each subplot below is 15.
+
+```{r}
+ggplot(trashwheel, aes(x = Weight, fill = Name)) +
+  geom_histogram(bins = 15,
+                 show.legend = F) +
+  facet_wrap(Name ~ .)
+```
+
+
+
+<br><br>
+
+
+
+
+
+
+
+### Q1c
+- Provide a comment to describe how the distribution of `Weight` varies by `Name`, as visualized in **Q1b**.
+
+
+
+
+
+<br><br>
+
+
+
+
+
+
+
+### Q1d
+- Provide a ggplot code to replicate the following ggplot figure that describes how the daily trend of `HomesPowered` varies by `Name`.
+  - The number of bins in each subplot below is 75.
+
+```{r}
+ggplot(trashwheel, aes(x = Date, y = HomesPowered)) +
+  geom_line(aes(color = Name),
+            show.legend = F) +
+  geom_point(size = .5) +
+  geom_smooth(se = F) +
+  facet_wrap(Name ~ ., scales = "free") 
+```
+
+
+
+<br><br>
+
+
+
+### Q1e
+- Provide a comment to describe how the daily trend of `HomesPowered` varies by `Name`, as visualized in **Q1d**.
+
+
+
+
+
+<br><br>
+
+
+
+
+
+## Part II
+
+For Part II, use the following data.frame, `trashwheel_long`. 
+```{r}
+#| results: asis
+#| echo: false
+trashwheel_long <- trashwheel |> 
+  ungroup() |> 
+  select(Name, Date, PlasticBottles:SportsBalls) |> 
+  pivot_longer(cols = PlasticBottles:SportsBalls,
+               values_to = "Number",
+               names_to = "Trash_Type") |> 
+  arrange(Trash_Type, Date)
+
+rmarkdown::paged_table(trashwheel_long,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+### Variable Description
+
+|variable       |type     |description    |
+|:--------------|:---------|:--------------|
+|`Name`           |character |Name of the Trash Wheel           |
+|`Date`           |character |Date (Monthly)          |
+|`Trash_Type`         |numeric    |Type of Trashes      |
+|`Number`         |numeric    | Number of trash items          |
+
+<br>
+
+```{r}
+#| echo: true
+unique(trashwheel_long$Trash_Type)
+```
+
+
+### Q1f
+- Provide a ggplot code to replicate the following ggplot figure that describes how the daily trend of `log10(Number)` varies by `Trash_Type` and `Name`.
+
+```{r}
+#| warning: false
+#| message: false
+#| fig-height: 11
+ggplot(data = trashwheel_long, aes(x = Date, y = log10(Number))) +
+  geom_line(aes(color = Trash_Type), 
+            linewidth = .25) +
+  geom_point(size = .1) +
+  geom_smooth(aes(color = Trash_Type), 
+              se = F) +
+  facet_wrap(Name ~ ., scales = "free") +
+  scale_color_brewer(palette = 'Dark2') +  # we did not cover this
+  theme(legend.position = "top")  # we did not cover this
+```
+
+
+
+<br><br>
+
+
+
+### Q1g
+- Provide a comment to describes how the daily trend of `log10(Number)` varies by `Trash_Type` and `Name`, as visualized in **Q1f**.
+
+
+
+
+
+<br><br>
+
+
+
+
+
+
+
+
+
+
+
+### Q1h
+- Provide a ggplot code to replicate the following ggplot figure that describes how the distribution of `log10(Number)` varies by `Trash_Type` and `Name`.
+
+```{r}
+ggplot(trashwheel_long, aes(x = log10(Number), y = Trash_Type)) +
+  geom_boxplot(aes(fill = Trash_Type), show.legend = F) +
+  facet_wrap(Name ~ ., scales = "free") 
+```
+
+
+
+<br><br>
+
+
+
+### Q1i
+- Provide a comment to describe how the distribution of `Number` varies by `Trash_Type` and `Name`, as visualized in **Q1f**.
+  - In your comment, please include how the *median* `Number` of **"CigaretteButts"** varies by `Name`.
+  
+
+
+
+
+<br><br>
+
+
+
+# Question 2
+
+The following describes the context of the data.frame, **safi**.
+
+## SAFI Survey
+
+SAFI (Studying African Farmer-Led Irrigation) is a currently running project which is looking at farming and irrigation methods. This is survey data relating to households and agriculture in Tanzania and Mozambique. The survey covered such things as; household features (e.g. construction materials used, number of household members), agricultural practices (e.g. water usage), assets (e.g. number and types of livestock) and details about the household members.
+
+
+<br>
+
+## Part I
+
+### Q2a
+
+- The dataset for the SAFI survey is stored in `safi_survey.csv` (with its pathname `https://bcdanl.github.io/data/safi_survey.csv`).
+
+- Write an R code to read the CSV file, `safi_survey.csv`, using the tidyverse’s `read_csv()` function, and assign it to `safi`.
+
+
+```{r}
+safi <- read_csv('https://bcdanl.github.io/data/safi_cleaned.csv')
+```
+
+<br><br>
+
+
+- The following is the data.frame, **safi**.
+
+```{r}
+#| results: asis
+#| echo: false
+safi <- read_csv('https://bcdanl.github.io/data/safi_cleaned.csv') |> select(-items_owned)
+rmarkdown::paged_table(safi |> select(key_ID:respondent_wall_type),
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+<br>
+
+### Variable Description
+
+|variable             |class     |description          |
+|:--------------------|:---------|:--------------------|
+|key_ID               |integer   | Added to provide a unique Id for each observation.  |
+|village              |character | Village name             |
+|no_membrs            |integer   | Number of members in the household |
+|years_liv            |integer   | Number of years living in this village or a neighboring village    |
+|respondent_wall_type |character | Type of walls the house has |
+|rooms                |integer   | Number of rooms in the main house used for sleeping          |
+|memb_assoc           |character | Are you a member of an irrigation association? |
+|affect_conflicts     |character | Have you been affected by conflicts with other irrigators in the area? |
+|liv_count            |integer   | Livestock count          |
+|no_meals             |integer   | How many meals do people in your household normally eat in a day?            |
+|months_lack_food     |character | 	Indicate which months, In the last 12 months have you faced a situation when you did not have enough food to feed the household?   |
+
+
+<br>
+
+
+```{r}
+#| echo: true
+unique(safi$village)
+```
+
+
+```{r}
+#| echo: true
+unique(safi$respondent_wall_type)
+```
+
+
+```{r}
+#| echo: true
+unique(safi$memb_assoc)
+```
+
+
+
+```{r}
+#| echo: true
+unique(safi$affect_conflicts)
+```
+
+
+
+<br><br>
+
+
+
+### Q2b
+- Provide a ggplot code to replicate the following ggplot figure that describes how the distribution of `memb_assoc` varies by `affect_conflicts`.
+
+```{r}
+df <- safi |> 
+  mutate(affect_conflicts = factor(affect_conflicts,
+                                   levels = c("never", 'once',
+                                              'more_once', 'frequently')))   # using this is optional
+ggplot(data = df,
+       aes(x = affect_conflicts,
+           fill = memb_assoc)) +
+  geom_bar(position = 'fill') +
+  labs(y = 'prop')
+```
+
+
+
+<br><br>
+
+
+
+
+
+
+
+### Q2c
+- Provide a comment to describes how the distribution of `memb_assoc` varies by `affect_conflicts`, as visualized in **Q2b**.
+
+
+
+
+
+<br><br>
+
+
+
+## Part II
+
+### Q2d
+
+For **Q2d**, use the following data.frame, `safi_long`, which results from splitting a character of `months_lack_food` in `safi` into multiple rows:
+```{r}
+#| results: asis
+#| echo: false
+safi_long <- df |> 
+  mutate(key_ID = 1:92) |> 
+  separate_longer_delim(months_lack_food, delim = ";") |> 
+  mutate(months_lack_food =
+           case_when(months_lack_food == "Jan" ~ '01',
+                     months_lack_food == "Sept" ~ '09',
+                     months_lack_food == "Oct" ~ '10',
+                     months_lack_food == "Nov" ~ '11',
+                     months_lack_food == "Dec" ~ '12',
+                     months_lack_food == "Feb" ~ '02',
+                     months_lack_food == "Mar" ~ '03',
+                     months_lack_food == "Aug" ~ '08',
+                     months_lack_food == "June" ~ '06',
+                     months_lack_food == "July" ~ '07',
+                     months_lack_food == "Apr" ~ '04',
+                     months_lack_food == "May" ~ '05',
+                     months_lack_food == "none" ~ "none")) |> 
+  select(key_ID, months_lack_food, memb_assoc)
+
+rmarkdown::paged_table(safi_long,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+```{r}
+#| echo: true
+unique(safi_long$months_lack_food)
+```
+
+
+
+
+<br><br>
+
+- Provide a ggplot code to replicate the following ggplot figure that describes how the distribution of `months_lack_food` varies by `memb_assoc`.
+
+
+```{r}
+ggplot(safi_long,
+       aes(x = months_lack_food,
+           fill = memb_assoc)) +
+  geom_bar(position = position_dodge2(preserve = 'single'))
+    # geom_bar(position = 'dodge') suffices for the answer
+
+```
+
+
+
+<br><br>
+
+
+
+
+
+
+
+### Q2e
+- Provide a comment to describes how the distribution of `months_lack_food` varies by `memb_assoc`, as visualized in **Q2d**
+
+
+
+
+
+<br><br>
+
+
+
