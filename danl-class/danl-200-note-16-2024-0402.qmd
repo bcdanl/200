@@ -294,6 +294,7 @@ For Part II, use the following data.frame, `trashwheel_long`.
 ```{r}
 #| results: asis
 #| echo: false
+#| eval: true
 trashwheel_long <- trashwheel |> 
   ungroup() |> 
   select(Name, Date, PlasticBottles:SportsBalls) |> 
@@ -430,6 +431,7 @@ safi <- read_csv('https://bcdanl.github.io/data/safi_cleaned.csv')
 ```{r}
 #| results: asis
 #| echo: false
+#| eval: true
 safi <- read_csv('https://bcdanl.github.io/data/safi_cleaned.csv') |> select(-items_owned)
 rmarkdown::paged_table(safi |> select(key_ID:respondent_wall_type),
                        options = list(rows.print = 20,

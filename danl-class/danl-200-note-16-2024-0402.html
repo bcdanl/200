@@ -1741,73 +1741,73 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-312"><a href="#cb26-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb26-313"><a href="#cb26-313" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
 <span id="cb26-314"><a href="#cb26-314" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb26-315"><a href="#cb26-315" aria-hidden="true" tabindex="-1"></a>trashwheel_long <span class="ot">&lt;-</span> trashwheel <span class="sc">|&gt;</span> </span>
-<span id="cb26-316"><a href="#cb26-316" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb26-317"><a href="#cb26-317" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name, Date, PlasticBottles<span class="sc">:</span>SportsBalls) <span class="sc">|&gt;</span> </span>
-<span id="cb26-318"><a href="#cb26-318" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> PlasticBottles<span class="sc">:</span>SportsBalls,</span>
-<span id="cb26-319"><a href="#cb26-319" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Number"</span>,</span>
-<span id="cb26-320"><a href="#cb26-320" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Trash_Type"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb26-321"><a href="#cb26-321" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Trash_Type, Date)</span>
-<span id="cb26-322"><a href="#cb26-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-323"><a href="#cb26-323" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(trashwheel_long,</span>
-<span id="cb26-324"><a href="#cb26-324" aria-hidden="true" tabindex="-1"></a>                       <span class="at">options =</span> <span class="fu">list</span>(<span class="at">rows.print =</span> <span class="dv">20</span>,</span>
-<span id="cb26-325"><a href="#cb26-325" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">cols.print =</span> <span class="dv">5</span>,</span>
-<span id="cb26-326"><a href="#cb26-326" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">pages.print =</span> <span class="dv">0</span>,</span>
-<span id="cb26-327"><a href="#cb26-327" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">paged.print =</span> F</span>
-<span id="cb26-328"><a href="#cb26-328" aria-hidden="true" tabindex="-1"></a>                                      )) </span>
-<span id="cb26-329"><a href="#cb26-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-330"><a href="#cb26-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-331"><a href="#cb26-331" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variable Description</span></span>
-<span id="cb26-332"><a href="#cb26-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-333"><a href="#cb26-333" aria-hidden="true" tabindex="-1"></a>|variable       |type     |description    |</span>
-<span id="cb26-334"><a href="#cb26-334" aria-hidden="true" tabindex="-1"></a>|:--------------|:---------|:--------------|</span>
-<span id="cb26-335"><a href="#cb26-335" aria-hidden="true" tabindex="-1"></a>|<span class="in">`Name`</span>           |character |Name of the Trash Wheel           |</span>
-<span id="cb26-336"><a href="#cb26-336" aria-hidden="true" tabindex="-1"></a>|<span class="in">`Date`</span>           |character |Date (Monthly)          |</span>
-<span id="cb26-337"><a href="#cb26-337" aria-hidden="true" tabindex="-1"></a>|<span class="in">`Trash_Type`</span>         |numeric    |Type of Trashes      |</span>
-<span id="cb26-338"><a href="#cb26-338" aria-hidden="true" tabindex="-1"></a>|<span class="in">`Number`</span>         |numeric    | Number of trash items          |</span>
-<span id="cb26-339"><a href="#cb26-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-340"><a href="#cb26-340" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
-<span id="cb26-341"><a href="#cb26-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-344"><a href="#cb26-344" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-345"><a href="#cb26-345" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-346"><a href="#cb26-346" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-347"><a href="#cb26-347" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(trashwheel_long<span class="sc">$</span>Trash_Type)</span>
-<span id="cb26-348"><a href="#cb26-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-349"><a href="#cb26-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-315"><a href="#cb26-315" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb26-316"><a href="#cb26-316" aria-hidden="true" tabindex="-1"></a>trashwheel_long <span class="ot">&lt;-</span> trashwheel <span class="sc">|&gt;</span> </span>
+<span id="cb26-317"><a href="#cb26-317" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb26-318"><a href="#cb26-318" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name, Date, PlasticBottles<span class="sc">:</span>SportsBalls) <span class="sc">|&gt;</span> </span>
+<span id="cb26-319"><a href="#cb26-319" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> PlasticBottles<span class="sc">:</span>SportsBalls,</span>
+<span id="cb26-320"><a href="#cb26-320" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Number"</span>,</span>
+<span id="cb26-321"><a href="#cb26-321" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Trash_Type"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb26-322"><a href="#cb26-322" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Trash_Type, Date)</span>
+<span id="cb26-323"><a href="#cb26-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-324"><a href="#cb26-324" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(trashwheel_long,</span>
+<span id="cb26-325"><a href="#cb26-325" aria-hidden="true" tabindex="-1"></a>                       <span class="at">options =</span> <span class="fu">list</span>(<span class="at">rows.print =</span> <span class="dv">20</span>,</span>
+<span id="cb26-326"><a href="#cb26-326" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">cols.print =</span> <span class="dv">5</span>,</span>
+<span id="cb26-327"><a href="#cb26-327" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">pages.print =</span> <span class="dv">0</span>,</span>
+<span id="cb26-328"><a href="#cb26-328" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">paged.print =</span> F</span>
+<span id="cb26-329"><a href="#cb26-329" aria-hidden="true" tabindex="-1"></a>                                      )) </span>
+<span id="cb26-330"><a href="#cb26-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-331"><a href="#cb26-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-332"><a href="#cb26-332" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variable Description</span></span>
+<span id="cb26-333"><a href="#cb26-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-334"><a href="#cb26-334" aria-hidden="true" tabindex="-1"></a>|variable       |type     |description    |</span>
+<span id="cb26-335"><a href="#cb26-335" aria-hidden="true" tabindex="-1"></a>|:--------------|:---------|:--------------|</span>
+<span id="cb26-336"><a href="#cb26-336" aria-hidden="true" tabindex="-1"></a>|<span class="in">`Name`</span>           |character |Name of the Trash Wheel           |</span>
+<span id="cb26-337"><a href="#cb26-337" aria-hidden="true" tabindex="-1"></a>|<span class="in">`Date`</span>           |character |Date (Monthly)          |</span>
+<span id="cb26-338"><a href="#cb26-338" aria-hidden="true" tabindex="-1"></a>|<span class="in">`Trash_Type`</span>         |numeric    |Type of Trashes      |</span>
+<span id="cb26-339"><a href="#cb26-339" aria-hidden="true" tabindex="-1"></a>|<span class="in">`Number`</span>         |numeric    | Number of trash items          |</span>
+<span id="cb26-340"><a href="#cb26-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-341"><a href="#cb26-341" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb26-342"><a href="#cb26-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-345"><a href="#cb26-345" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-346"><a href="#cb26-346" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-347"><a href="#cb26-347" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-348"><a href="#cb26-348" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(trashwheel_long<span class="sc">$</span>Trash_Type)</span>
+<span id="cb26-349"><a href="#cb26-349" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb26-350"><a href="#cb26-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-351"><a href="#cb26-351" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q1f</span></span>
-<span id="cb26-352"><a href="#cb26-352" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a ggplot code to replicate the following ggplot figure that describes how the daily trend of <span class="in">`log10(Number)`</span> varies by <span class="in">`Trash_Type`</span> and <span class="in">`Name`</span>.</span>
-<span id="cb26-353"><a href="#cb26-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-356"><a href="#cb26-356" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-357"><a href="#cb26-357" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb26-358"><a href="#cb26-358" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb26-359"><a href="#cb26-359" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 11</span></span>
-<span id="cb26-360"><a href="#cb26-360" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> trashwheel_long, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> <span class="fu">log10</span>(Number))) <span class="sc">+</span></span>
-<span id="cb26-361"><a href="#cb26-361" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> Trash_Type), </span>
-<span id="cb26-362"><a href="#cb26-362" aria-hidden="true" tabindex="-1"></a>            <span class="at">linewidth =</span> .<span class="dv">25</span>) <span class="sc">+</span></span>
-<span id="cb26-363"><a href="#cb26-363" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb26-364"><a href="#cb26-364" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> Trash_Type), </span>
-<span id="cb26-365"><a href="#cb26-365" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> F) <span class="sc">+</span></span>
-<span id="cb26-366"><a href="#cb26-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(Name <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
-<span id="cb26-367"><a href="#cb26-367" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">'Dark2'</span>) <span class="sc">+</span>  <span class="co"># we did not cover this</span></span>
-<span id="cb26-368"><a href="#cb26-368" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)  <span class="co"># we did not cover this</span></span>
-<span id="cb26-369"><a href="#cb26-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-370"><a href="#cb26-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-351"><a href="#cb26-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-352"><a href="#cb26-352" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q1f</span></span>
+<span id="cb26-353"><a href="#cb26-353" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a ggplot code to replicate the following ggplot figure that describes how the daily trend of <span class="in">`log10(Number)`</span> varies by <span class="in">`Trash_Type`</span> and <span class="in">`Name`</span>.</span>
+<span id="cb26-354"><a href="#cb26-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-357"><a href="#cb26-357" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-358"><a href="#cb26-358" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-359"><a href="#cb26-359" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb26-360"><a href="#cb26-360" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 11</span></span>
+<span id="cb26-361"><a href="#cb26-361" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> trashwheel_long, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> <span class="fu">log10</span>(Number))) <span class="sc">+</span></span>
+<span id="cb26-362"><a href="#cb26-362" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> Trash_Type), </span>
+<span id="cb26-363"><a href="#cb26-363" aria-hidden="true" tabindex="-1"></a>            <span class="at">linewidth =</span> .<span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb26-364"><a href="#cb26-364" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb26-365"><a href="#cb26-365" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> Trash_Type), </span>
+<span id="cb26-366"><a href="#cb26-366" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> F) <span class="sc">+</span></span>
+<span id="cb26-367"><a href="#cb26-367" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(Name <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb26-368"><a href="#cb26-368" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">'Dark2'</span>) <span class="sc">+</span>  <span class="co"># we did not cover this</span></span>
+<span id="cb26-369"><a href="#cb26-369" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)  <span class="co"># we did not cover this</span></span>
+<span id="cb26-370"><a href="#cb26-370" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb26-371"><a href="#cb26-371" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-372"><a href="#cb26-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-373"><a href="#cb26-373" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
-<span id="cb26-374"><a href="#cb26-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-373"><a href="#cb26-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-374"><a href="#cb26-374" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
 <span id="cb26-375"><a href="#cb26-375" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-376"><a href="#cb26-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-377"><a href="#cb26-377" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q1g</span></span>
-<span id="cb26-378"><a href="#cb26-378" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a comment to describes how the daily trend of <span class="in">`log10(Number)`</span> varies by <span class="in">`Trash_Type`</span> and <span class="in">`Name`</span>, as visualized in **Q1f**.</span>
-<span id="cb26-379"><a href="#cb26-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-377"><a href="#cb26-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-378"><a href="#cb26-378" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q1g</span></span>
+<span id="cb26-379"><a href="#cb26-379" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a comment to describes how the daily trend of <span class="in">`log10(Number)`</span> varies by <span class="in">`Trash_Type`</span> and <span class="in">`Name`</span>, as visualized in **Q1f**.</span>
 <span id="cb26-380"><a href="#cb26-380" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-381"><a href="#cb26-381" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-382"><a href="#cb26-382" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-383"><a href="#cb26-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-384"><a href="#cb26-384" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
-<span id="cb26-385"><a href="#cb26-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-384"><a href="#cb26-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-385"><a href="#cb26-385" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
 <span id="cb26-386"><a href="#cb26-386" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-387"><a href="#cb26-387" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-388"><a href="#cb26-388" aria-hidden="true" tabindex="-1"></a></span>
@@ -1818,245 +1818,247 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-393"><a href="#cb26-393" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-394"><a href="#cb26-394" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-395"><a href="#cb26-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-396"><a href="#cb26-396" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q1h</span></span>
-<span id="cb26-397"><a href="#cb26-397" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a ggplot code to replicate the following ggplot figure that describes how the distribution of <span class="in">`log10(Number)`</span> varies by <span class="in">`Trash_Type`</span> and <span class="in">`Name`</span>.</span>
-<span id="cb26-398"><a href="#cb26-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-401"><a href="#cb26-401" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-402"><a href="#cb26-402" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel_long, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log10</span>(Number), <span class="at">y =</span> Trash_Type)) <span class="sc">+</span></span>
-<span id="cb26-403"><a href="#cb26-403" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> Trash_Type), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb26-404"><a href="#cb26-404" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(Name <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free"</span>) </span>
-<span id="cb26-405"><a href="#cb26-405" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-406"><a href="#cb26-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-396"><a href="#cb26-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-397"><a href="#cb26-397" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q1h</span></span>
+<span id="cb26-398"><a href="#cb26-398" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a ggplot code to replicate the following ggplot figure that describes how the distribution of <span class="in">`log10(Number)`</span> varies by <span class="in">`Trash_Type`</span> and <span class="in">`Name`</span>.</span>
+<span id="cb26-399"><a href="#cb26-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-402"><a href="#cb26-402" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-403"><a href="#cb26-403" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel_long, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log10</span>(Number), <span class="at">y =</span> Trash_Type)) <span class="sc">+</span></span>
+<span id="cb26-404"><a href="#cb26-404" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> Trash_Type), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb26-405"><a href="#cb26-405" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(Name <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free"</span>) </span>
+<span id="cb26-406"><a href="#cb26-406" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb26-407"><a href="#cb26-407" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-408"><a href="#cb26-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-409"><a href="#cb26-409" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
-<span id="cb26-410"><a href="#cb26-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-409"><a href="#cb26-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-410"><a href="#cb26-410" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
 <span id="cb26-411"><a href="#cb26-411" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-412"><a href="#cb26-412" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-413"><a href="#cb26-413" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q1i</span></span>
-<span id="cb26-414"><a href="#cb26-414" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a comment to describe how the distribution of <span class="in">`Number`</span> varies by <span class="in">`Trash_Type`</span> and <span class="in">`Name`</span>, as visualized in **Q1f**.</span>
-<span id="cb26-415"><a href="#cb26-415" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>In your comment, please include how the *median* `Number` of **"CigaretteButts"** varies by <span class="in">`Name`</span>.</span>
-<span id="cb26-416"><a href="#cb26-416" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb26-417"><a href="#cb26-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-413"><a href="#cb26-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-414"><a href="#cb26-414" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q1i</span></span>
+<span id="cb26-415"><a href="#cb26-415" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a comment to describe how the distribution of <span class="in">`Number`</span> varies by <span class="in">`Trash_Type`</span> and <span class="in">`Name`</span>, as visualized in **Q1f**.</span>
+<span id="cb26-416"><a href="#cb26-416" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>In your comment, please include how the *median* `Number` of **"CigaretteButts"** varies by <span class="in">`Name`</span>.</span>
+<span id="cb26-417"><a href="#cb26-417" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb26-418"><a href="#cb26-418" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-419"><a href="#cb26-419" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-420"><a href="#cb26-420" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-421"><a href="#cb26-421" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
-<span id="cb26-422"><a href="#cb26-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-421"><a href="#cb26-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-422"><a href="#cb26-422" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
 <span id="cb26-423"><a href="#cb26-423" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-424"><a href="#cb26-424" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-425"><a href="#cb26-425" aria-hidden="true" tabindex="-1"></a><span class="fu"># Question 2</span></span>
-<span id="cb26-426"><a href="#cb26-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-427"><a href="#cb26-427" aria-hidden="true" tabindex="-1"></a>The following describes the context of the data.frame, **safi**.</span>
-<span id="cb26-428"><a href="#cb26-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-429"><a href="#cb26-429" aria-hidden="true" tabindex="-1"></a><span class="fu">## SAFI Survey</span></span>
-<span id="cb26-430"><a href="#cb26-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-431"><a href="#cb26-431" aria-hidden="true" tabindex="-1"></a>SAFI (Studying African Farmer-Led Irrigation) is a currently running project which is looking at farming and irrigation methods. This is survey data relating to households and agriculture in Tanzania and Mozambique. The survey covered such things as; household features (e.g. construction materials used, number of household members), agricultural practices (e.g. water usage), assets (e.g. number and types of livestock) and details about the household members.</span>
-<span id="cb26-432"><a href="#cb26-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-425"><a href="#cb26-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-426"><a href="#cb26-426" aria-hidden="true" tabindex="-1"></a><span class="fu"># Question 2</span></span>
+<span id="cb26-427"><a href="#cb26-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-428"><a href="#cb26-428" aria-hidden="true" tabindex="-1"></a>The following describes the context of the data.frame, **safi**.</span>
+<span id="cb26-429"><a href="#cb26-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-430"><a href="#cb26-430" aria-hidden="true" tabindex="-1"></a><span class="fu">## SAFI Survey</span></span>
+<span id="cb26-431"><a href="#cb26-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-432"><a href="#cb26-432" aria-hidden="true" tabindex="-1"></a>SAFI (Studying African Farmer-Led Irrigation) is a currently running project which is looking at farming and irrigation methods. This is survey data relating to households and agriculture in Tanzania and Mozambique. The survey covered such things as; household features (e.g. construction materials used, number of household members), agricultural practices (e.g. water usage), assets (e.g. number and types of livestock) and details about the household members.</span>
 <span id="cb26-433"><a href="#cb26-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-434"><a href="#cb26-434" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
-<span id="cb26-435"><a href="#cb26-435" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-436"><a href="#cb26-436" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part I</span></span>
-<span id="cb26-437"><a href="#cb26-437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-438"><a href="#cb26-438" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q2a</span></span>
-<span id="cb26-439"><a href="#cb26-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-440"><a href="#cb26-440" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The dataset for the SAFI survey is stored in <span class="in">`safi_survey.csv`</span> (with its pathname <span class="in">`https://bcdanl.github.io/data/safi_survey.csv`</span>).</span>
-<span id="cb26-441"><a href="#cb26-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-442"><a href="#cb26-442" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Write an R code to read the CSV file, <span class="in">`safi_survey.csv`</span>, using the tidyverse’s <span class="in">`read_csv()`</span> function, and assign it to <span class="in">`safi`</span>.</span>
-<span id="cb26-443"><a href="#cb26-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-434"><a href="#cb26-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-435"><a href="#cb26-435" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb26-436"><a href="#cb26-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-437"><a href="#cb26-437" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part I</span></span>
+<span id="cb26-438"><a href="#cb26-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-439"><a href="#cb26-439" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q2a</span></span>
+<span id="cb26-440"><a href="#cb26-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-441"><a href="#cb26-441" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The dataset for the SAFI survey is stored in <span class="in">`safi_survey.csv`</span> (with its pathname <span class="in">`https://bcdanl.github.io/data/safi_survey.csv`</span>).</span>
+<span id="cb26-442"><a href="#cb26-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-443"><a href="#cb26-443" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Write an R code to read the CSV file, <span class="in">`safi_survey.csv`</span>, using the tidyverse’s <span class="in">`read_csv()`</span> function, and assign it to <span class="in">`safi`</span>.</span>
 <span id="cb26-444"><a href="#cb26-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-447"><a href="#cb26-447" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-448"><a href="#cb26-448" aria-hidden="true" tabindex="-1"></a>safi <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://bcdanl.github.io/data/safi_cleaned.csv'</span>)</span>
-<span id="cb26-449"><a href="#cb26-449" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-450"><a href="#cb26-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-451"><a href="#cb26-451" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
-<span id="cb26-452"><a href="#cb26-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-445"><a href="#cb26-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-448"><a href="#cb26-448" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-449"><a href="#cb26-449" aria-hidden="true" tabindex="-1"></a>safi <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://bcdanl.github.io/data/safi_cleaned.csv'</span>)</span>
+<span id="cb26-450"><a href="#cb26-450" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-451"><a href="#cb26-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-452"><a href="#cb26-452" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
 <span id="cb26-453"><a href="#cb26-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-454"><a href="#cb26-454" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The following is the data.frame, **safi**.</span>
-<span id="cb26-455"><a href="#cb26-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-458"><a href="#cb26-458" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-459"><a href="#cb26-459" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
-<span id="cb26-460"><a href="#cb26-460" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb26-461"><a href="#cb26-461" aria-hidden="true" tabindex="-1"></a>safi <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://bcdanl.github.io/data/safi_cleaned.csv'</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>items_owned)</span>
-<span id="cb26-462"><a href="#cb26-462" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(safi <span class="sc">|&gt;</span> <span class="fu">select</span>(key_ID<span class="sc">:</span>respondent_wall_type),</span>
-<span id="cb26-463"><a href="#cb26-463" aria-hidden="true" tabindex="-1"></a>                       <span class="at">options =</span> <span class="fu">list</span>(<span class="at">rows.print =</span> <span class="dv">20</span>,</span>
-<span id="cb26-464"><a href="#cb26-464" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">cols.print =</span> <span class="dv">5</span>,</span>
-<span id="cb26-465"><a href="#cb26-465" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">pages.print =</span> <span class="dv">0</span>,</span>
-<span id="cb26-466"><a href="#cb26-466" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">paged.print =</span> F</span>
-<span id="cb26-467"><a href="#cb26-467" aria-hidden="true" tabindex="-1"></a>                                      )) </span>
-<span id="cb26-468"><a href="#cb26-468" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-469"><a href="#cb26-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-470"><a href="#cb26-470" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb26-454"><a href="#cb26-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-455"><a href="#cb26-455" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The following is the data.frame, **safi**.</span>
+<span id="cb26-456"><a href="#cb26-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-459"><a href="#cb26-459" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-460"><a href="#cb26-460" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb26-461"><a href="#cb26-461" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb26-462"><a href="#cb26-462" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb26-463"><a href="#cb26-463" aria-hidden="true" tabindex="-1"></a>safi <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://bcdanl.github.io/data/safi_cleaned.csv'</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>items_owned)</span>
+<span id="cb26-464"><a href="#cb26-464" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(safi <span class="sc">|&gt;</span> <span class="fu">select</span>(key_ID<span class="sc">:</span>respondent_wall_type),</span>
+<span id="cb26-465"><a href="#cb26-465" aria-hidden="true" tabindex="-1"></a>                       <span class="at">options =</span> <span class="fu">list</span>(<span class="at">rows.print =</span> <span class="dv">20</span>,</span>
+<span id="cb26-466"><a href="#cb26-466" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">cols.print =</span> <span class="dv">5</span>,</span>
+<span id="cb26-467"><a href="#cb26-467" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">pages.print =</span> <span class="dv">0</span>,</span>
+<span id="cb26-468"><a href="#cb26-468" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">paged.print =</span> F</span>
+<span id="cb26-469"><a href="#cb26-469" aria-hidden="true" tabindex="-1"></a>                                      )) </span>
+<span id="cb26-470"><a href="#cb26-470" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb26-471"><a href="#cb26-471" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-472"><a href="#cb26-472" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variable Description</span></span>
+<span id="cb26-472"><a href="#cb26-472" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
 <span id="cb26-473"><a href="#cb26-473" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-474"><a href="#cb26-474" aria-hidden="true" tabindex="-1"></a>|variable             |class     |description          |</span>
-<span id="cb26-475"><a href="#cb26-475" aria-hidden="true" tabindex="-1"></a>|:--------------------|:---------|:--------------------|</span>
-<span id="cb26-476"><a href="#cb26-476" aria-hidden="true" tabindex="-1"></a>|key_ID               |integer   | Added to provide a unique Id for each observation.  |</span>
-<span id="cb26-477"><a href="#cb26-477" aria-hidden="true" tabindex="-1"></a>|village              |character | Village name             |</span>
-<span id="cb26-478"><a href="#cb26-478" aria-hidden="true" tabindex="-1"></a>|no_membrs            |integer   | Number of members in the household |</span>
-<span id="cb26-479"><a href="#cb26-479" aria-hidden="true" tabindex="-1"></a>|years_liv            |integer   | Number of years living in this village or a neighboring village    |</span>
-<span id="cb26-480"><a href="#cb26-480" aria-hidden="true" tabindex="-1"></a>|respondent_wall_type |character | Type of walls the house has |</span>
-<span id="cb26-481"><a href="#cb26-481" aria-hidden="true" tabindex="-1"></a>|rooms                |integer   | Number of rooms in the main house used for sleeping          |</span>
-<span id="cb26-482"><a href="#cb26-482" aria-hidden="true" tabindex="-1"></a>|memb_assoc           |character | Are you a member of an irrigation association? |</span>
-<span id="cb26-483"><a href="#cb26-483" aria-hidden="true" tabindex="-1"></a>|affect_conflicts     |character | Have you been affected by conflicts with other irrigators in the area? |</span>
-<span id="cb26-484"><a href="#cb26-484" aria-hidden="true" tabindex="-1"></a>|liv_count            |integer   | Livestock count          |</span>
-<span id="cb26-485"><a href="#cb26-485" aria-hidden="true" tabindex="-1"></a>|no_meals             |integer   | How many meals do people in your household normally eat in a day?            |</span>
-<span id="cb26-486"><a href="#cb26-486" aria-hidden="true" tabindex="-1"></a>|months_lack_food     |character |  Indicate which months, In the last 12 months have you faced a situation when you did not have enough food to feed the household?   |</span>
-<span id="cb26-487"><a href="#cb26-487" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-488"><a href="#cb26-488" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-489"><a href="#cb26-489" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb26-474"><a href="#cb26-474" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variable Description</span></span>
+<span id="cb26-475"><a href="#cb26-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-476"><a href="#cb26-476" aria-hidden="true" tabindex="-1"></a>|variable             |class     |description          |</span>
+<span id="cb26-477"><a href="#cb26-477" aria-hidden="true" tabindex="-1"></a>|:--------------------|:---------|:--------------------|</span>
+<span id="cb26-478"><a href="#cb26-478" aria-hidden="true" tabindex="-1"></a>|key_ID               |integer   | Added to provide a unique Id for each observation.  |</span>
+<span id="cb26-479"><a href="#cb26-479" aria-hidden="true" tabindex="-1"></a>|village              |character | Village name             |</span>
+<span id="cb26-480"><a href="#cb26-480" aria-hidden="true" tabindex="-1"></a>|no_membrs            |integer   | Number of members in the household |</span>
+<span id="cb26-481"><a href="#cb26-481" aria-hidden="true" tabindex="-1"></a>|years_liv            |integer   | Number of years living in this village or a neighboring village    |</span>
+<span id="cb26-482"><a href="#cb26-482" aria-hidden="true" tabindex="-1"></a>|respondent_wall_type |character | Type of walls the house has |</span>
+<span id="cb26-483"><a href="#cb26-483" aria-hidden="true" tabindex="-1"></a>|rooms                |integer   | Number of rooms in the main house used for sleeping          |</span>
+<span id="cb26-484"><a href="#cb26-484" aria-hidden="true" tabindex="-1"></a>|memb_assoc           |character | Are you a member of an irrigation association? |</span>
+<span id="cb26-485"><a href="#cb26-485" aria-hidden="true" tabindex="-1"></a>|affect_conflicts     |character | Have you been affected by conflicts with other irrigators in the area? |</span>
+<span id="cb26-486"><a href="#cb26-486" aria-hidden="true" tabindex="-1"></a>|liv_count            |integer   | Livestock count          |</span>
+<span id="cb26-487"><a href="#cb26-487" aria-hidden="true" tabindex="-1"></a>|no_meals             |integer   | How many meals do people in your household normally eat in a day?            |</span>
+<span id="cb26-488"><a href="#cb26-488" aria-hidden="true" tabindex="-1"></a>|months_lack_food     |character |  Indicate which months, In the last 12 months have you faced a situation when you did not have enough food to feed the household?   |</span>
+<span id="cb26-489"><a href="#cb26-489" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-490"><a href="#cb26-490" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-491"><a href="#cb26-491" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-494"><a href="#cb26-494" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-495"><a href="#cb26-495" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-496"><a href="#cb26-496" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-497"><a href="#cb26-497" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(safi<span class="sc">$</span>village)</span>
-<span id="cb26-498"><a href="#cb26-498" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-499"><a href="#cb26-499" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-500"><a href="#cb26-500" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-503"><a href="#cb26-503" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-504"><a href="#cb26-504" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-505"><a href="#cb26-505" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-506"><a href="#cb26-506" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(safi<span class="sc">$</span>respondent_wall_type)</span>
-<span id="cb26-507"><a href="#cb26-507" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-508"><a href="#cb26-508" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-509"><a href="#cb26-509" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-512"><a href="#cb26-512" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-513"><a href="#cb26-513" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-514"><a href="#cb26-514" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-515"><a href="#cb26-515" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(safi<span class="sc">$</span>memb_assoc)</span>
-<span id="cb26-516"><a href="#cb26-516" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-517"><a href="#cb26-517" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-518"><a href="#cb26-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-491"><a href="#cb26-491" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb26-492"><a href="#cb26-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-493"><a href="#cb26-493" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-496"><a href="#cb26-496" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-497"><a href="#cb26-497" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-498"><a href="#cb26-498" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-499"><a href="#cb26-499" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(safi<span class="sc">$</span>village)</span>
+<span id="cb26-500"><a href="#cb26-500" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-501"><a href="#cb26-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-502"><a href="#cb26-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-505"><a href="#cb26-505" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-506"><a href="#cb26-506" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-507"><a href="#cb26-507" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-508"><a href="#cb26-508" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(safi<span class="sc">$</span>respondent_wall_type)</span>
+<span id="cb26-509"><a href="#cb26-509" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-510"><a href="#cb26-510" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-511"><a href="#cb26-511" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-514"><a href="#cb26-514" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-515"><a href="#cb26-515" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-516"><a href="#cb26-516" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-517"><a href="#cb26-517" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(safi<span class="sc">$</span>memb_assoc)</span>
+<span id="cb26-518"><a href="#cb26-518" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb26-519"><a href="#cb26-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-522"><a href="#cb26-522" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-523"><a href="#cb26-523" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-524"><a href="#cb26-524" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-525"><a href="#cb26-525" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(safi<span class="sc">$</span>affect_conflicts)</span>
-<span id="cb26-526"><a href="#cb26-526" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-527"><a href="#cb26-527" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-528"><a href="#cb26-528" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-520"><a href="#cb26-520" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-521"><a href="#cb26-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-524"><a href="#cb26-524" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-525"><a href="#cb26-525" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-526"><a href="#cb26-526" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-527"><a href="#cb26-527" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(safi<span class="sc">$</span>affect_conflicts)</span>
+<span id="cb26-528"><a href="#cb26-528" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb26-529"><a href="#cb26-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-530"><a href="#cb26-530" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb26-530"><a href="#cb26-530" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-531"><a href="#cb26-531" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-532"><a href="#cb26-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-532"><a href="#cb26-532" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
 <span id="cb26-533"><a href="#cb26-533" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-534"><a href="#cb26-534" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q2b</span></span>
-<span id="cb26-535"><a href="#cb26-535" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a ggplot code to replicate the following ggplot figure that describes how the distribution of <span class="in">`memb_assoc`</span> varies by <span class="in">`affect_conflicts`</span>.</span>
-<span id="cb26-536"><a href="#cb26-536" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-539"><a href="#cb26-539" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-540"><a href="#cb26-540" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> safi <span class="sc">|&gt;</span> </span>
-<span id="cb26-541"><a href="#cb26-541" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">affect_conflicts =</span> <span class="fu">factor</span>(affect_conflicts,</span>
-<span id="cb26-542"><a href="#cb26-542" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"never"</span>, <span class="st">'once'</span>,</span>
-<span id="cb26-543"><a href="#cb26-543" aria-hidden="true" tabindex="-1"></a>                                              <span class="st">'more_once'</span>, <span class="st">'frequently'</span>)))   <span class="co"># using this is optional</span></span>
-<span id="cb26-544"><a href="#cb26-544" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df,</span>
-<span id="cb26-545"><a href="#cb26-545" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> affect_conflicts,</span>
-<span id="cb26-546"><a href="#cb26-546" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> memb_assoc)) <span class="sc">+</span></span>
-<span id="cb26-547"><a href="#cb26-547" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">'fill'</span>) <span class="sc">+</span></span>
-<span id="cb26-548"><a href="#cb26-548" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">'prop'</span>)</span>
-<span id="cb26-549"><a href="#cb26-549" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-550"><a href="#cb26-550" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-551"><a href="#cb26-551" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-534"><a href="#cb26-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-535"><a href="#cb26-535" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-536"><a href="#cb26-536" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q2b</span></span>
+<span id="cb26-537"><a href="#cb26-537" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a ggplot code to replicate the following ggplot figure that describes how the distribution of <span class="in">`memb_assoc`</span> varies by <span class="in">`affect_conflicts`</span>.</span>
+<span id="cb26-538"><a href="#cb26-538" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-541"><a href="#cb26-541" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-542"><a href="#cb26-542" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> safi <span class="sc">|&gt;</span> </span>
+<span id="cb26-543"><a href="#cb26-543" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">affect_conflicts =</span> <span class="fu">factor</span>(affect_conflicts,</span>
+<span id="cb26-544"><a href="#cb26-544" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"never"</span>, <span class="st">'once'</span>,</span>
+<span id="cb26-545"><a href="#cb26-545" aria-hidden="true" tabindex="-1"></a>                                              <span class="st">'more_once'</span>, <span class="st">'frequently'</span>)))   <span class="co"># using this is optional</span></span>
+<span id="cb26-546"><a href="#cb26-546" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df,</span>
+<span id="cb26-547"><a href="#cb26-547" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> affect_conflicts,</span>
+<span id="cb26-548"><a href="#cb26-548" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> memb_assoc)) <span class="sc">+</span></span>
+<span id="cb26-549"><a href="#cb26-549" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">'fill'</span>) <span class="sc">+</span></span>
+<span id="cb26-550"><a href="#cb26-550" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">'prop'</span>)</span>
+<span id="cb26-551"><a href="#cb26-551" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb26-552"><a href="#cb26-552" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-553"><a href="#cb26-553" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb26-553"><a href="#cb26-553" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-554"><a href="#cb26-554" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-555"><a href="#cb26-555" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-555"><a href="#cb26-555" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
 <span id="cb26-556"><a href="#cb26-556" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-557"><a href="#cb26-557" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-558"><a href="#cb26-558" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-559"><a href="#cb26-559" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-560"><a href="#cb26-560" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-561"><a href="#cb26-561" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q2c</span></span>
-<span id="cb26-562"><a href="#cb26-562" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a comment to describes how the distribution of <span class="in">`memb_assoc`</span> varies by <span class="in">`affect_conflicts`</span>, as visualized in **Q2b**.</span>
-<span id="cb26-563"><a href="#cb26-563" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-564"><a href="#cb26-564" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-561"><a href="#cb26-561" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-562"><a href="#cb26-562" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-563"><a href="#cb26-563" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q2c</span></span>
+<span id="cb26-564"><a href="#cb26-564" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a comment to describes how the distribution of <span class="in">`memb_assoc`</span> varies by <span class="in">`affect_conflicts`</span>, as visualized in **Q2b**.</span>
 <span id="cb26-565"><a href="#cb26-565" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-566"><a href="#cb26-566" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-567"><a href="#cb26-567" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-568"><a href="#cb26-568" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb26-568"><a href="#cb26-568" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-569"><a href="#cb26-569" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-570"><a href="#cb26-570" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-570"><a href="#cb26-570" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
 <span id="cb26-571"><a href="#cb26-571" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-572"><a href="#cb26-572" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part II</span></span>
+<span id="cb26-572"><a href="#cb26-572" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-573"><a href="#cb26-573" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-574"><a href="#cb26-574" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q2d</span></span>
+<span id="cb26-574"><a href="#cb26-574" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part II</span></span>
 <span id="cb26-575"><a href="#cb26-575" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-576"><a href="#cb26-576" aria-hidden="true" tabindex="-1"></a>For **Q2d**, use the following data.frame, <span class="in">`safi_long`</span>, which results from splitting a character of <span class="in">`months_lack_food`</span> in <span class="in">`safi`</span> into multiple rows:</span>
-<span id="cb26-579"><a href="#cb26-579" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-580"><a href="#cb26-580" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
-<span id="cb26-581"><a href="#cb26-581" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb26-582"><a href="#cb26-582" aria-hidden="true" tabindex="-1"></a>safi_long <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb26-583"><a href="#cb26-583" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">key_ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">92</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb26-584"><a href="#cb26-584" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_longer_delim</span>(months_lack_food, <span class="at">delim =</span> <span class="st">";"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb26-585"><a href="#cb26-585" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">months_lack_food =</span></span>
-<span id="cb26-586"><a href="#cb26-586" aria-hidden="true" tabindex="-1"></a>           <span class="fu">case_when</span>(months_lack_food <span class="sc">==</span> <span class="st">"Jan"</span> <span class="sc">~</span> <span class="st">'01'</span>,</span>
-<span id="cb26-587"><a href="#cb26-587" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Sept"</span> <span class="sc">~</span> <span class="st">'09'</span>,</span>
-<span id="cb26-588"><a href="#cb26-588" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Oct"</span> <span class="sc">~</span> <span class="st">'10'</span>,</span>
-<span id="cb26-589"><a href="#cb26-589" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Nov"</span> <span class="sc">~</span> <span class="st">'11'</span>,</span>
-<span id="cb26-590"><a href="#cb26-590" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Dec"</span> <span class="sc">~</span> <span class="st">'12'</span>,</span>
-<span id="cb26-591"><a href="#cb26-591" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Feb"</span> <span class="sc">~</span> <span class="st">'02'</span>,</span>
-<span id="cb26-592"><a href="#cb26-592" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Mar"</span> <span class="sc">~</span> <span class="st">'03'</span>,</span>
-<span id="cb26-593"><a href="#cb26-593" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Aug"</span> <span class="sc">~</span> <span class="st">'08'</span>,</span>
-<span id="cb26-594"><a href="#cb26-594" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"June"</span> <span class="sc">~</span> <span class="st">'06'</span>,</span>
-<span id="cb26-595"><a href="#cb26-595" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"July"</span> <span class="sc">~</span> <span class="st">'07'</span>,</span>
-<span id="cb26-596"><a href="#cb26-596" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Apr"</span> <span class="sc">~</span> <span class="st">'04'</span>,</span>
-<span id="cb26-597"><a href="#cb26-597" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"May"</span> <span class="sc">~</span> <span class="st">'05'</span>,</span>
-<span id="cb26-598"><a href="#cb26-598" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"none"</span> <span class="sc">~</span> <span class="st">"none"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb26-599"><a href="#cb26-599" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(key_ID, months_lack_food, memb_assoc)</span>
-<span id="cb26-600"><a href="#cb26-600" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-601"><a href="#cb26-601" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(safi_long,</span>
-<span id="cb26-602"><a href="#cb26-602" aria-hidden="true" tabindex="-1"></a>                       <span class="at">options =</span> <span class="fu">list</span>(<span class="at">rows.print =</span> <span class="dv">20</span>,</span>
-<span id="cb26-603"><a href="#cb26-603" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">cols.print =</span> <span class="dv">5</span>,</span>
-<span id="cb26-604"><a href="#cb26-604" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">pages.print =</span> <span class="dv">0</span>,</span>
-<span id="cb26-605"><a href="#cb26-605" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">paged.print =</span> F</span>
-<span id="cb26-606"><a href="#cb26-606" aria-hidden="true" tabindex="-1"></a>                                      )) </span>
-<span id="cb26-607"><a href="#cb26-607" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-608"><a href="#cb26-608" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-609"><a href="#cb26-609" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-612"><a href="#cb26-612" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-613"><a href="#cb26-613" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb26-614"><a href="#cb26-614" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb26-615"><a href="#cb26-615" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(safi_long<span class="sc">$</span>months_lack_food)</span>
-<span id="cb26-616"><a href="#cb26-616" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb26-617"><a href="#cb26-617" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-618"><a href="#cb26-618" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-576"><a href="#cb26-576" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q2d</span></span>
+<span id="cb26-577"><a href="#cb26-577" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-578"><a href="#cb26-578" aria-hidden="true" tabindex="-1"></a>For **Q2d**, use the following data.frame, <span class="in">`safi_long`</span>, which results from splitting a character of <span class="in">`months_lack_food`</span> in <span class="in">`safi`</span> into multiple rows:</span>
+<span id="cb26-581"><a href="#cb26-581" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-582"><a href="#cb26-582" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb26-583"><a href="#cb26-583" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb26-584"><a href="#cb26-584" aria-hidden="true" tabindex="-1"></a>safi_long <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb26-585"><a href="#cb26-585" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">key_ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">92</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb26-586"><a href="#cb26-586" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_longer_delim</span>(months_lack_food, <span class="at">delim =</span> <span class="st">";"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb26-587"><a href="#cb26-587" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">months_lack_food =</span></span>
+<span id="cb26-588"><a href="#cb26-588" aria-hidden="true" tabindex="-1"></a>           <span class="fu">case_when</span>(months_lack_food <span class="sc">==</span> <span class="st">"Jan"</span> <span class="sc">~</span> <span class="st">'01'</span>,</span>
+<span id="cb26-589"><a href="#cb26-589" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Sept"</span> <span class="sc">~</span> <span class="st">'09'</span>,</span>
+<span id="cb26-590"><a href="#cb26-590" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Oct"</span> <span class="sc">~</span> <span class="st">'10'</span>,</span>
+<span id="cb26-591"><a href="#cb26-591" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Nov"</span> <span class="sc">~</span> <span class="st">'11'</span>,</span>
+<span id="cb26-592"><a href="#cb26-592" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Dec"</span> <span class="sc">~</span> <span class="st">'12'</span>,</span>
+<span id="cb26-593"><a href="#cb26-593" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Feb"</span> <span class="sc">~</span> <span class="st">'02'</span>,</span>
+<span id="cb26-594"><a href="#cb26-594" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Mar"</span> <span class="sc">~</span> <span class="st">'03'</span>,</span>
+<span id="cb26-595"><a href="#cb26-595" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Aug"</span> <span class="sc">~</span> <span class="st">'08'</span>,</span>
+<span id="cb26-596"><a href="#cb26-596" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"June"</span> <span class="sc">~</span> <span class="st">'06'</span>,</span>
+<span id="cb26-597"><a href="#cb26-597" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"July"</span> <span class="sc">~</span> <span class="st">'07'</span>,</span>
+<span id="cb26-598"><a href="#cb26-598" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"Apr"</span> <span class="sc">~</span> <span class="st">'04'</span>,</span>
+<span id="cb26-599"><a href="#cb26-599" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"May"</span> <span class="sc">~</span> <span class="st">'05'</span>,</span>
+<span id="cb26-600"><a href="#cb26-600" aria-hidden="true" tabindex="-1"></a>                     months_lack_food <span class="sc">==</span> <span class="st">"none"</span> <span class="sc">~</span> <span class="st">"none"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb26-601"><a href="#cb26-601" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(key_ID, months_lack_food, memb_assoc)</span>
+<span id="cb26-602"><a href="#cb26-602" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-603"><a href="#cb26-603" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(safi_long,</span>
+<span id="cb26-604"><a href="#cb26-604" aria-hidden="true" tabindex="-1"></a>                       <span class="at">options =</span> <span class="fu">list</span>(<span class="at">rows.print =</span> <span class="dv">20</span>,</span>
+<span id="cb26-605"><a href="#cb26-605" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">cols.print =</span> <span class="dv">5</span>,</span>
+<span id="cb26-606"><a href="#cb26-606" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">pages.print =</span> <span class="dv">0</span>,</span>
+<span id="cb26-607"><a href="#cb26-607" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">paged.print =</span> F</span>
+<span id="cb26-608"><a href="#cb26-608" aria-hidden="true" tabindex="-1"></a>                                      )) </span>
+<span id="cb26-609"><a href="#cb26-609" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-610"><a href="#cb26-610" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-611"><a href="#cb26-611" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-614"><a href="#cb26-614" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-615"><a href="#cb26-615" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-616"><a href="#cb26-616" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb26-617"><a href="#cb26-617" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(safi_long<span class="sc">$</span>months_lack_food)</span>
+<span id="cb26-618"><a href="#cb26-618" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb26-619"><a href="#cb26-619" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-620"><a href="#cb26-620" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-621"><a href="#cb26-621" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb26-621"><a href="#cb26-621" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-622"><a href="#cb26-622" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-623"><a href="#cb26-623" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a ggplot code to replicate the following ggplot figure that describes how the distribution of <span class="in">`months_lack_food`</span> varies by <span class="in">`memb_assoc`</span>.</span>
+<span id="cb26-623"><a href="#cb26-623" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
 <span id="cb26-624"><a href="#cb26-624" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-625"><a href="#cb26-625" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-628"><a href="#cb26-628" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-629"><a href="#cb26-629" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(safi_long,</span>
-<span id="cb26-630"><a href="#cb26-630" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> months_lack_food,</span>
-<span id="cb26-631"><a href="#cb26-631" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> memb_assoc)) <span class="sc">+</span></span>
-<span id="cb26-632"><a href="#cb26-632" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="fu">position_dodge2</span>(<span class="at">preserve =</span> <span class="st">'single'</span>))</span>
-<span id="cb26-633"><a href="#cb26-633" aria-hidden="true" tabindex="-1"></a>    <span class="co"># geom_bar(position = 'dodge') suffices for the answer</span></span>
-<span id="cb26-634"><a href="#cb26-634" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-635"><a href="#cb26-635" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-625"><a href="#cb26-625" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a ggplot code to replicate the following ggplot figure that describes how the distribution of <span class="in">`months_lack_food`</span> varies by <span class="in">`memb_assoc`</span>.</span>
+<span id="cb26-626"><a href="#cb26-626" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-627"><a href="#cb26-627" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-630"><a href="#cb26-630" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-631"><a href="#cb26-631" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(safi_long,</span>
+<span id="cb26-632"><a href="#cb26-632" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> months_lack_food,</span>
+<span id="cb26-633"><a href="#cb26-633" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> memb_assoc)) <span class="sc">+</span></span>
+<span id="cb26-634"><a href="#cb26-634" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="fu">position_dodge2</span>(<span class="at">preserve =</span> <span class="st">'single'</span>))</span>
+<span id="cb26-635"><a href="#cb26-635" aria-hidden="true" tabindex="-1"></a>    <span class="co"># geom_bar(position = 'dodge') suffices for the answer</span></span>
 <span id="cb26-636"><a href="#cb26-636" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-637"><a href="#cb26-637" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-637"><a href="#cb26-637" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb26-638"><a href="#cb26-638" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-639"><a href="#cb26-639" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb26-639"><a href="#cb26-639" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-640"><a href="#cb26-640" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-641"><a href="#cb26-641" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-641"><a href="#cb26-641" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
 <span id="cb26-642"><a href="#cb26-642" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-643"><a href="#cb26-643" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-644"><a href="#cb26-644" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-645"><a href="#cb26-645" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-646"><a href="#cb26-646" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-647"><a href="#cb26-647" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q2e</span></span>
-<span id="cb26-648"><a href="#cb26-648" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a comment to describes how the distribution of <span class="in">`months_lack_food`</span> varies by <span class="in">`memb_assoc`</span>, as visualized in **Q2d**</span>
-<span id="cb26-649"><a href="#cb26-649" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-650"><a href="#cb26-650" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-647"><a href="#cb26-647" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-648"><a href="#cb26-648" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-649"><a href="#cb26-649" aria-hidden="true" tabindex="-1"></a><span class="fu">### Q2e</span></span>
+<span id="cb26-650"><a href="#cb26-650" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide a comment to describes how the distribution of <span class="in">`months_lack_food`</span> varies by <span class="in">`memb_assoc`</span>, as visualized in **Q2d**</span>
 <span id="cb26-651"><a href="#cb26-651" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-652"><a href="#cb26-652" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-653"><a href="#cb26-653" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-654"><a href="#cb26-654" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb26-654"><a href="#cb26-654" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-655"><a href="#cb26-655" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-656"><a href="#cb26-656" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-656"><a href="#cb26-656" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb26-657"><a href="#cb26-657" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-658"><a href="#cb26-658" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
