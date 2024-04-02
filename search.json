@@ -5044,14 +5044,14 @@
     "href": "danl-lec/danl-200-lec-16-2024-0402.html#data-transformation-1",
     "title": "Lecture 16",
     "section": "Data Transformation",
-    "text": "Data Transformation\nTools &gt; Global Options &gt; Code from the side menu &gt; Choose “Use native pipe operator, |&gt;”."
+    "text": "Data Transformation\n\n\nBecause the first argument is a data.frame and the output is a data.frame, dplyr verbs work well with the pipe, |&gt;\n\nCtrl + Shift + M for Windows; command + Shift + M for Mac.\n\nThe pipe (|&gt;) takes the thing on its left and passes it along to the function on its right so that\n\nf(x, y) is equivalent to x |&gt; f(y).\ne.g., filter(DATA_FRAME, LOGICAL_STATEMENT) is equivalent to DATA_FRAME |&gt;  filter(LOGICAL_STATEMENT).\n\nThe easiest way to pronounce the pipe (|&gt;) is “then”.\n\nThe pipe (|&gt;) is super useful when we have a chain of data transforming operations to do."
   },
   {
     "objectID": "danl-lec/danl-200-lec-16-2024-0402.html#data-transformation-2",
     "href": "danl-lec/danl-200-lec-16-2024-0402.html#data-transformation-2",
     "title": "Lecture 16",
     "section": "Data Transformation",
-    "text": "Data Transformation\n\n\nBecause the first argument is a data.frame and the output is a data.frame, dplyr verbs work well with the pipe, |&gt;\n\nCtrl + Shift + M for Windows; command + Shift + M for Mac.\n\nThe pipe (|&gt;) takes the thing on its left and passes it along to the function on its right so that\n\nf(x, y) is equivalent to x |&gt; f(y).\ne.g., filter(DATA_FRAME, LOGICAL_STATEMENT) is equivalent to DATA_FRAME |&gt;  filter(LOGICAL_STATEMENT).\n\nThe easiest way to pronounce the pipe (|&gt;) is “then”.\n\nThe pipe (|&gt;) is super useful when we have a chain of data transforming operations to do."
+    "text": "Data Transformation\n\nTo use the (native) pipe operator (|&gt;), we should set the option as follows:\n\nTools &gt; Global Options &gt; Code from the side menu &gt; Choose “Use native pipe operator, |&gt;”."
   },
   {
     "objectID": "danl-lec/danl-200-lec-16-2024-0402.html#data-transformation-3",

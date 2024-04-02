@@ -73,10 +73,6 @@ theme_set(theme_fivethirtyeight()+
 
 
 
-## Data Transformation
-
-**Tools** > **Global Options** > **Code** from the side menu > Choose "Use native pipe operator, |>".
-
 
 ## Data Transformation
 <!-- ### `dplyr` basics -->
@@ -92,6 +88,15 @@ theme_set(theme_fivethirtyeight()+
 
 - The easiest way to pronounce the **pipe** (`|>`) is “**then**”. 
   - The **pipe** (`|>`) is super useful when we have <u>*a chain of data transforming operations*</u> to do.
+
+
+
+
+## Data Transformation
+
+- To use the (native) pipe operator (`|>`), we should set the option as follows:
+
+  - **Tools** > **Global Options** > **Code** from the side menu > Choose "Use native pipe operator, |>".
 
 
 
