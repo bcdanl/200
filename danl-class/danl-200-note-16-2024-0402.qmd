@@ -58,6 +58,8 @@ I accept the consequences of any violation of this promise.
 - Here we are loading all the R packages we need for the Midterm Exam, so that you do not need to load the R packages in your code.
 ```{r}
 #| echo: true
+#| eval: true
+#| code-fold: false
 library(tidyverse)
 library(skimr)
 ```
@@ -433,7 +435,7 @@ safi <- read_csv('https://bcdanl.github.io/data/safi_cleaned.csv')
 #| echo: false
 #| eval: true
 safi <- read_csv('https://bcdanl.github.io/data/safi_cleaned.csv') |> select(-items_owned)
-rmarkdown::paged_table(safi |> select(key_ID:respondent_wall_type),
+rmarkdown::paged_table(safi,
                        options = list(rows.print = 20,
                                       cols.print = 5,
                                       pages.print = 0,
