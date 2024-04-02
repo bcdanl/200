@@ -590,6 +590,7 @@ ggplot(safi_long,
        aes(x = months_lack_food,
            fill = memb_assoc)) +
   geom_bar(position = position_dodge2(preserve = 'single'))
+
     # geom_bar(position = 'dodge') suffices for the answer
 
 ```
@@ -613,5 +614,26 @@ ggplot(safi_long,
 
 <br><br>
 
+
+
+
+# Filter observations with `filter()`
+
+## Pipe operator
+```{r}
+mpg <- mpg
+
+mpg_subcompact <- mpg |> 
+  filter(class == "subcompact") |> 
+  arrange(hwy)
+
+```
+
+```{r}
+library(nycflights13)
+flights <- nycflights13::flights
+jan1 <- flights |> 
+  filter(month == 1, day == 1)
+```
 
 
