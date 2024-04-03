@@ -55,6 +55,9 @@ website:
       - text: &nbsp;
       - text: <font size ="5" ><b>- Class Notes </b></font><font size ="5" color="#194493">{{< fa solid pencil >}}</font>
         href: listing-danl-200-class.qmd
+      - text: &nbsp;
+      - text: <font size ="5" ><b>- Midterm Exam </b></font><font size ="5" color="#194493">{{< fa solid bookmark >}}</font>
+        href: danl-200-midterm.qmd
 
   page-footer: 
     border: false
