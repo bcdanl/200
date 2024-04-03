@@ -198,6 +198,7 @@ rmarkdown::paged_table(trashwheel,
 
 ```{r}
 #| echo: true
+#| code-fold: false
 unique(trashwheel$Name)
 ```
 
@@ -320,6 +321,7 @@ rmarkdown::paged_table(trashwheel_long,
 
 ```{r}
 #| echo: true
+#| code-fold: false
 unique(trashwheel_long$Trash_Type)
 ```
 
@@ -459,18 +461,21 @@ rmarkdown::paged_table(safi |> select(key_ID:respondent_wall_type),
 
 ```{r}
 #| echo: true
+#| code-fold: false
 unique(safi$village)
 ```
 
 
 ```{r}
 #| echo: true
+#| code-fold: false
 unique(safi$respondent_wall_type)
 ```
 
 
 ```{r}
 #| echo: true
+#| code-fold: false
 unique(safi$memb_assoc)
 ```
 
@@ -478,6 +483,7 @@ unique(safi$memb_assoc)
 
 ```{r}
 #| echo: true
+#| code-fold: false
 unique(safi$affect_conflicts)
 ```
 
@@ -561,6 +567,7 @@ rmarkdown::paged_table(safi_long,
 
 ```{r}
 #| echo: true
+#| code-fold: false
 unique(safi_long$months_lack_food)
 ```
 
