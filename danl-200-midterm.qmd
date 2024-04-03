@@ -577,8 +577,8 @@ unique(safi_long$months_lack_food)
 ggplot(safi_long,
        aes(x = months_lack_food,
            fill = memb_assoc)) +
-  geom_bar(position = position_dodge2(preserve = 'single'))
-    # geom_bar(position = 'dodge') suffices for the answer
+  geom_bar(position = position_dodge2(preserve = 'single')) # geom_bar(position = 'dodge') suffices for the answer
+    
 
 ```
 
