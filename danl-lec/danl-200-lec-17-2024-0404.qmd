@@ -1,6 +1,6 @@
 ---
-title: Lecture 16
-subtitle: Filtering observations with `filter()`
+title: Lecture 17
+subtitle: Filtering observations with `filter()`; Arrange observations with `arrange()`
 format:
   clean-revealjs:
     self-contained: true
@@ -12,7 +12,7 @@ author:
   - name: Byeong-Hak Choe
     email: bchoe@geneseo.edu
     affiliations: SUNY Geneseo
-date: 2024-04-02
+date: 2024-04-04
 execute: 
   eval: true
   echo: true
@@ -52,24 +52,6 @@ theme_set(theme_fivethirtyeight()+
                 )
           )
 ```
-
-
-# Data Transformation {background-color="#1c4982"}
-  
-
-
-## `dplyr` basics
-
-- We will continue to discuss the five key `dplyr` functions to solve various data manipulation challenges:
-  - Filter observations by logical conditions about values of variables (`filter()`).
-  - Arrange/sort rows (`arrange()`).
-  - Select variables by their names (`select()`).
-  - Rename variables by their names (`rename()`).
-  - Create new variables with functions of existing variables (`mutate()`).
-  - Relocate existing variables by their names (`relocate()`).
-  - Collapse a data.frame down to a summarized version of it (`summarize()`).
-  - Group a data.frame by a categorical variable (`group_by()`).
-
 
 
 
@@ -350,6 +332,9 @@ DT::datatable(df, rownames = FALSE,
 ```{.r}
 df |> filter(num > 8 & 
                 num < 11)
+                
+df |> filter(num > 8,
+             num < 11)
 ```
 
 <br>
@@ -482,10 +467,10 @@ DT::datatable(df, rownames = FALSE,
 
 ```{.r}
 df |> filter(num < 10 & 
-                chr == "A")
+             chr == "A")
 
 df |> filter(num < 10, 
-              chr == "A")
+             chr == "A")
 ```
 
 <br>
@@ -706,8 +691,10 @@ flights |>
 ## Filter observations with `filter()`
 ### `%in%` operator
 
+:::{.nonincremental}
 - When the **or** operator `|` is repeatedly used, we can consider using the `%in%` operator instead.
 
+:::
 :::: {.columns}
 ::: {.column width="50%"}
 ```{.r}
@@ -805,7 +792,7 @@ df |>
 ::: {.column width="50%"}
 ```{.r}
 # Remove duplicate observations, 
-#   if any
+#  if any
 flights |> 
   distinct()
 ```
@@ -814,7 +801,7 @@ flights |>
 ::: {.column width="50%"}
 ```{.r}
 # Find all unique 
-#   origin and destination pairs
+#  origin and destination pairs
 flights |> 
   distinct(origin, dest)
 
@@ -830,4 +817,34 @@ flights |>
 - `distinct()` finds all the unique observations in a data.frame. 
   - We can also optionally provide variable names to `distinct()`.
   
+
+
+# Arrange observations with `arrange()` {background-color="#1c4982"}
+
+
+## Arrange observations with `arrange()`
+```{.r}
+flights %>% 
+  arrange(year, month, day)
+
+# re-order observations by `dep_delay` in descending order.
+flights %>% 
+  arrange([?])
+```
+
+
+- `arrange()` sorts out observations.
+  - If we provide more than one variable name, each additional variable will be used to break ties in the values of preceding variables.
+
+- Use `desc()` to re-order by a column in descending order.
+  - Adding `-` before a numeric variable (`-NUMERIC_VARIABLE`) also works.
+
+
+
+
+
+## Rows: `filter()`, `distinct()`, and `arrange()`
+
+
+Let's do [Classwork 9](https://bcdanl.github.io/200/danl-cw/danl-200-cw-09.html)!
 
