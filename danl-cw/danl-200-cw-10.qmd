@@ -165,15 +165,14 @@ q4d <- flights %>%
 <br>
 
 ## Q2e.
-- Read the following CSV file, `TSLA.csv`, as a data.frame with the name `tsla`:
+- Read the following CSV file, `NVDA.csv`, as a data.frame with the name `nvda`:
 ```{r}
 #| echo: true
 #| eval: false
-tsla <- read_csv("https://bcdanl.github.io/data/TSLA_2022_2023.csv")
+nvda <- read_csv("https://bcdanl.github.io/data/NVDA.csv")
 ```
 
-- Describe the distribution of the percentage change in `Close` price of Tesla stock.
+- Describe the distribution of the percentage change in `Close` price of Nvidia stock.
 
-- Compare the daily trend of cumulative `Volume` of Tesla stock in 2022 with that in 2023.
 
 

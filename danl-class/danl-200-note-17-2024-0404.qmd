@@ -10,7 +10,7 @@ format:
     # toc-depth: 2
     # toc-expand: true
     # toc-title: Contents
-code-fold: true
+# code-fold: true
 code-tools: true
 
 execute:
@@ -76,13 +76,26 @@ dec25 <- flights |>
 nrow(dec25)
 ```
 
+
 ```{r}
+#| eval: false
 flights$month
+```
+
+
+```{r}
 class(flights$month)
 class(flights$month == 1) # logical
+```
 
+
+```{r}
+#| eval: false
 flights$month == 1
+```
 
+
+```{r}
 dec25$month
 
 12 == 1
@@ -97,6 +110,7 @@ class(dec25$month == 1) # logical
 ## Logical Operators
 
 ```{r}
+#| eval: false
 (flights$month == 1) & (flights$day == 1)
 (flights$month == 2) & (flights$day == 1)
 
