@@ -1,6 +1,6 @@
 ---
 title: Lecture 18
-subtitle: Filtering observations with `filter()`; Arrange observations with `arrange()`
+subtitle: Select variables with `select()`; Rename variables with `rename()`; Relocate variables with `relocate()`; Add a new variable with `mutate()`
 format:
   clean-revealjs:
     self-contained: true
