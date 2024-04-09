@@ -1,0 +1,229 @@
+---
+title: Lecture 18 - Note
+subtitle: Filtering Observations; and more
+author: Byeong-Hak Choe
+institute: SUNY Geneseo
+date: 2024-04-09
+format: 
+  html
+    # toc: true
+    # toc-depth: 2
+    # toc-expand: true
+    # toc-title: Contents
+# code-fold: true
+code-tools: true
+
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  fig-width: 9
+  fig-height: 6
+---
+```{r}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(broom)
+library(hrbrthemes)
+
+theme_set(theme_ipsum() +
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = element_text(size = rel(1.5) ),
+                axis.title.y = element_text(size = rel(1.5) ))
+          )
+
+```
+
+
+# `flights` data.frame
+We need to install the `nycflights13` package.
+
+  - Run `install.packages("nycflights13")` in the R Console.
+
+
+```{r}
+library(tidyverse)
+library(nycflights13)
+flights <- nycflights13::flights
+
+??flights
+
+```
+<br>
+
+# Classwork 9
+
+## Question 1
+
+### Q1a
+- Find all flights that
+  - Had an arrival delay of two or more hours
+  - Flew to Houston (IAH or HOU)
+  - Were operated by United, American, or Delta
+  - Departed in summer (July, August, and September)
+  - Arrived more than two hours late, but didn’t leave late
+  - Were delayed by at least an hour, but made up over 30 minutes in flight
+  - Departed between midnight and 6am (inclusive)
+
+
+*Answer*:
+
+  - Had an arrival delay of two or more hours
+
+```{r}
+arr_delay_120_more <- 
+  flights |> 
+  filter(arr_delay >= 120)
+```
+
+  - Flew to Houston (IAH or HOU)
+
+```{r}
+houston <- flights |> 
+  filter(dest == "IAH" | dest == "HOU")
+```
+
+  - Were operated by United, American, or Delta
+```{r}
+airlines
+
+# AA
+# DL
+# UA
+```
+
+```{r}
+airlines_AA_DL_UA <- flights |> 
+  filter(carrier %in% c("AA", "DL", "UA"))
+```
+
+
+
+```{r}
+nrow(airlines_AA_DL_UA) / nrow(flights)
+```
+
+
+  - Departed in summer (July, August, and September)
+```{r}
+summer_flights <- flights |> 
+  filter(month %in% c(7,8,9))
+```
+
+  - Arrived more than two hours late, but didn’t leave late
+
+```{r}
+dep_ontime_arr_late <- flights |> 
+  filter(arr_delay > 120 & dep_delay <= 0)
+```
+
+
+  - Were delayed by at least an hour, but made up over 30 minutes in flight
+```{r}
+# dep_60_arr_negative_30 <-
+#   flights |>
+#   filter(dep_delay >= 60, arr_delay < -30)
+```
+
+  - Departed between midnight and 6am (inclusive)
+
+```{r}
+overnight <- flights |> 
+  filter(dep_time >= 0, dep_time <= 600)
+```
+
+
+<br><br>
+
+
+### Q1b
+- How many flights have a missing `dep_time`? 
+  - What other variables are missing? 
+  - What might these rows represent?
+  
+  
+*Answer*:
+
+```{r}
+flights |> 
+  filter(is.na(dep_time)) |> 
+  nrow()
+```
+
+```{r}
+library(skimr)
+sum_flights <- skim(flights)
+
+sum_flights |> 
+  filter(n_missing > 0)
+```
+
+
+```{r}
+dep_time_nonNA <- flights |> 
+  filter(!is.na(dep_time))
+
+nrow(dep_time_nonNA) / nrow(flights)
+```
+
+
+```{r}
+missing_dep <- flights |> 
+  filter(is.na(dep_time))
+
+missing_dep |> filter(!is.na(arr_time))
+
+```
+
+
+<br><br>
+
+
+### Q1c
+
+Why is `NA^0` not missing? Why is `NA | TRUE` not missing? Why is `FALSE & NA` not missing? Can you figure out the general rule? (`NA * 0` is a tricky counterexample!)
+
+*Answer*:
+
+```{r}
+NA^0
+```
+
+
+```{r}
+NA | TRUE
+```
+
+
+```{r}
+FALSE & NA
+```
+
+```{r}
+NA * 0
+```
+
+
+
+<br><br>
+
+
+### Q1d
+- Was there a flight on every day of 2013?
+
+*Answer*:
+
+```{r}
+flights |> 
+  distinct(month, day) |> 
+  nrow()
+```
+
+<br><br>
+
+
+
+
+
