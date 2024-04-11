@@ -2223,7 +2223,7 @@
     "href": "listing-danl-200-class.html",
     "title": "DANL 200 - Class Notes",
     "section": "",
-    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\nLecture 13 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 19, 2024\n\n\n\n\nLecture 14 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 21, 2024\n\n\n\n\nLecture 15 - Note\n\n\nBar Charts\n\n\nMarch 26, 2024\n\n\n\n\nLecture 16 - Note\n\n\nMidterm Exam Review; Filtering Observations\n\n\nApril 2, 2024\n\n\n\n\nLecture 17 - Note\n\n\nFiltering Observations; Arrange Observations\n\n\nApril 4, 2024\n\n\n\n\nLecture 18 - Note\n\n\nFiltering Observations; and more\n\n\nApril 11, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\nLecture 13 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 19, 2024\n\n\n\n\nLecture 14 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 21, 2024\n\n\n\n\nLecture 15 - Note\n\n\nBar Charts\n\n\nMarch 26, 2024\n\n\n\n\nLecture 16 - Note\n\n\nMidterm Exam Review; Filtering Observations\n\n\nApril 2, 2024\n\n\n\n\nLecture 17 - Note\n\n\nFiltering Observations; Arrange Observations\n\n\nApril 4, 2024\n\n\n\n\nLecture 18 - Note\n\n\nFiltering Observations; and more\n\n\nApril 9, 2024\n\n\n\n\nLecture 19 - Note\n\n\nFiltering Observations; and more\n\n\nApril 11, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-lec/danl-200-lec-01-2024-0123.html#instructor-1",
@@ -5423,5 +5423,26 @@
     "title": "Lecture 18",
     "section": "Columns: select(), rename(), relocate(), and mutate()",
     "text": "Columns: select(), rename(), relocate(), and mutate()\nLet’s do Classwork 10!"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-19-2024-0411.html",
+    "href": "danl-class/danl-200-note-19-2024-0411.html",
+    "title": "Lecture 19 - Note",
+    "section": "",
+    "text": "We need to install the nycflights13 package.\n\nRun install.packages(\"nycflights13\") in the R Console.\n\n\nlibrary(tidyverse)\nlibrary(nycflights13)\nflights &lt;- nycflights13::flights\n\n??flights"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-19-2024-0411.html#question-1",
+    "href": "danl-class/danl-200-note-19-2024-0411.html#question-1",
+    "title": "Lecture 19 - Note",
+    "section": "Question 1",
+    "text": "Question 1\n\nQ1a\n\nFind all flights that\n\nWere delayed by at least an hour, but made up over 30 minutes in flight\n\n\nAnswer:\n\nlibrary(tidyverse)\nlibrary(nycflights13)\n\nflights &lt;- flights\n\nmadeup_30 &lt;- flights |&gt; \n  filter(dep_delay &gt;= 60 &\n         dep_delay - arr_delay &gt; 30)\n\nmadeup_30 &lt;- flights |&gt; \n  filter(dep_delay &gt;= 60,\n         dep_delay - arr_delay &gt; 30)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-19-2024-0411.html#question-2.-arrange-observations-with-arrange",
+    "href": "danl-class/danl-200-note-19-2024-0411.html#question-2.-arrange-observations-with-arrange",
+    "title": "Lecture 19 - Note",
+    "section": "Question 2. Arrange observations with arrange()",
+    "text": "Question 2. Arrange observations with arrange()\n\nQ2a\n\ndf &lt;- data.frame(num = c(1, 4, NA, 2, NA, 3, 7),\n                 chr = c(\"A\", \"A\", \"A\", \"B\", \"X\", \"Z\", \"D\"))\n\nHow could you use arrange() to sort all missing values to the start? (Hint: use is.na()).\nAnswer:\n\n# Ascending order \ndf |&gt; \n  arrange(num)\n\n  num chr\n1   1   A\n2   2   B\n3   3   Z\n4   4   A\n5   7   D\n6  NA   A\n7  NA   X\n\n\n\n# Descending order \ndf |&gt; \n  arrange(desc(num)) # or -num\n\n  num chr\n1   7   D\n2   4   A\n3   3   Z\n4   2   B\n5   1   A\n6  NA   A\n7  NA   X\n\n\n\nas.numeric(TRUE)\n\n[1] 1\n\nas.numeric(FALSE)\n\n[1] 0\n\n\n\nis.na(df$num)\n\n[1] FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE\n\n\n\nas.numeric(is.na(df$num))\n\n[1] 0 0 1 0 1 0 0\n\n\n\ndf |&gt; \n  arrange(desc(is.na(num)))\n\n  num chr\n1  NA   A\n2  NA   X\n3   1   A\n4   4   A\n5   2   B\n6   3   Z\n7   7   D\n\ndf |&gt; \n  arrange( -is.na(num) )\n\n  num chr\n1  NA   A\n2  NA   X\n3   1   A\n4   4   A\n5   2   B\n6   3   Z\n7   7   D\n\n\n\ndf |&gt; \n  arrange( -is.na(num), -num )\n\n  num chr\n1  NA   A\n2  NA   X\n3   7   D\n4   4   A\n5   3   Z\n6   2   B\n7   1   A\n\n\n\ndf |&gt; \n  arrange( -is.na(num), chr )\n\n  num chr\n1  NA   A\n2  NA   X\n3   1   A\n4   4   A\n5   2   B\n6   7   D\n7   3   Z\n\n\n\n\n\nQ2b\n\nSort flights to find the most delayed flights.\nFind the flights that left earliest.\n\nAnswer:\n\nmost_delayed &lt;- flights |&gt; \n  arrange(-dep_delay)\n\n\nleft_earliest &lt;- flights |&gt; \n  arrange(dep_delay)\n\n\n\n\nQ2c\nSort flights to find the fastest (highest speed) flights.\n\\[\n\\text{speed} = \\frac{\\text{distance}}{\\text{time}}\n\\]\nAnswer:\n\nspeed &lt;- flights |&gt; \n  arrange( - (distance / air_time) )\n\n\n\n\nQ2d\nWhich flights traveled the farthest? Which traveled the shortest?\nAnswer:\n\nfarthest &lt;- flights |&gt; \n  arrange(-distance)\n\nshortest &lt;- flights |&gt; \n  arrange(distance)"
   }
 ]

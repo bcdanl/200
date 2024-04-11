@@ -3,7 +3,7 @@ title: Lecture 18 - Note
 subtitle: Filtering Observations; and more
 author: Byeong-Hak Choe
 institute: SUNY Geneseo
-date: 2024-04-11
+date: 2024-04-09
 format: 
   html
     # toc: true

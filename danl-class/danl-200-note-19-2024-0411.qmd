@@ -1,0 +1,338 @@
+---
+title: Lecture 19 - Note
+subtitle: Filtering Observations; and more
+author: Byeong-Hak Choe
+institute: SUNY Geneseo
+date: 2024-04-11
+format: 
+  html
+    # toc: true
+    # toc-depth: 2
+    # toc-expand: true
+    # toc-title: Contents
+# code-fold: true
+code-tools: true
+
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  fig-width: 9
+  fig-height: 6
+---
+```{r}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(broom)
+library(hrbrthemes)
+
+theme_set(theme_ipsum() +
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = element_text(size = rel(1.5) ),
+                axis.title.y = element_text(size = rel(1.5) ))
+          )
+
+```
+
+
+# `flights` data.frame
+We need to install the `nycflights13` package.
+
+  - Run `install.packages("nycflights13")` in the R Console.
+
+
+```{r}
+library(tidyverse)
+library(nycflights13)
+flights <- nycflights13::flights
+
+??flights
+
+```
+<br>
+
+# Classwork 9
+
+## Question 1
+
+### Q1a
+- Find all flights that
+  - Were delayed by at least an hour, but made up over 30 minutes in flight
+  
+
+*Answer*:
+
+
+```{r}
+library(tidyverse)
+library(nycflights13)
+
+flights <- flights
+
+madeup_30 <- flights |> 
+  filter(dep_delay >= 60 &
+         dep_delay - arr_delay > 30)
+
+madeup_30 <- flights |> 
+  filter(dep_delay >= 60,
+         dep_delay - arr_delay > 30)
+
+```
+
+
+## Question 2. Arrange observations with `arrange()`
+
+### Q2a
+
+```{r}
+df <- data.frame(num = c(1, 4, NA, 2, NA, 3, 7),
+                 chr = c("A", "A", "A", "B", "X", "Z", "D"))
+```
+
+How could you use `arrange()` to sort all missing values to the start? (Hint: use `is.na()`).
+
+*Answer*:
+```{r}
+# Ascending order 
+df |> 
+  arrange(num)
+```
+
+
+```{r}
+# Descending order 
+df |> 
+  arrange(desc(num)) # or -num
+```
+
+```{r}
+as.numeric(TRUE)
+as.numeric(FALSE)
+```
+
+```{r}
+is.na(df$num)
+```
+
+
+```{r}
+as.numeric(is.na(df$num))
+```
+
+
+```{r}
+df |> 
+  arrange(desc(is.na(num)))
+
+
+df |> 
+  arrange( -is.na(num) )
+```
+
+```{r}
+
+df |> 
+  arrange( -is.na(num), -num )
+```
+
+```{r}
+
+df |> 
+  arrange( -is.na(num), chr )
+```
+
+<br><br>
+
+
+### Q2b
+- Sort flights to find the most delayed flights. 
+- Find the flights that left earliest.
+
+*Answer*:
+```{r}
+most_delayed <- flights |> 
+  arrange(-dep_delay)
+```
+
+```{r}
+left_earliest <- flights |> 
+  arrange(dep_delay)
+```
+
+<br><br>
+
+
+### Q2c
+Sort flights to find the fastest (highest speed) flights.
+
+$$
+\text{speed} = \frac{\text{distance}}{\text{time}}
+$$
+
+*Answer*:
+```{r}
+speed <- flights |> 
+  arrange( - (distance / air_time) )
+```
+
+<br><br>
+
+### Q2d
+Which flights traveled the farthest? Which traveled the shortest?
+
+*Answer*:
+```{r}
+farthest <- flights |> 
+  arrange(-distance)
+
+shortest <- flights |> 
+  arrange(distance)
+```
+
+<br><br>
+
+
+# `select()`
+
+```{r}
+time_var_only <- flights |> 
+  select(year, month, day) 
+```
+
+```{r}
+flights |> 
+  select(year:day) 
+```
+
+```{r}
+flights |> 
+  select(year:carrier) 
+```
+
+```{r}
+colon_origin <- flights |> 
+  select(year:carrier, origin) 
+```
+
+
+```{r}
+removal_year <- flights |> 
+  select(-year)
+```
+
+
+```{r}
+removal_year_timehour <- flights |> 
+  select(-year, -time_hour)
+```
+
+
+```{r}
+flights |> 
+  select(-(year:day))
+```
+
+```{r}
+dep <- flights |> 
+  select(starts_with("dep"))
+```
+
+
+```{r}
+delay <- flights |> 
+  select(ends_with("delay"))
+```
+
+
+
+```{r}
+delay_dep <- flights |> 
+  select(ends_with("delay"), starts_with("dep"))
+```
+
+# Rename
+
+```{r}
+rename_tailnum <- flights |> 
+  rename(tail_num = tailnum)
+```
+
+# Relocate
+
+```{r}
+reloc_timehour_airtime <- flights |> 
+  relocate(time_hour, air_time)
+```
+
+
+```{r}
+reloc_before <- flights |> 
+  relocate(year:dep_time,
+           .before = time_hour)
+```
+
+
+```{r}
+reloc_after <- flights |> 
+  relocate(starts_with("arr"),
+           .after = dep_time)
+```
+
+
+# Add a new varialbe with `mutate()`
+
+```{r}
+flights |> 
+  select(dep_time) |> 
+  mutate(
+     hour= dep_time %/% 100,
+    minute = dep_time %% 100,
+    constant = 1000,
+    dep_time_twice = dep_time * 2,
+    dep_time_div = dep_time / 2
+  )
+```
+
+
+
+```{r}
+flights |> 
+  select(year:day, ends_with("delay"), air_time) |> 
+  mutate(
+    gain = dep_delay - arr_delay,
+    hours = air_time / 60,
+    gain_per_hours = gain / hours
+  )
+```
+
+```{r}
+
+flights |> 
+  mutate(
+    gain = dep_delay - arr_delay,
+    hours = air_time / 60,
+    .before = 1
+  )
+```
+
+```{r}
+
+flights |> 
+  mutate(
+    gain = dep_delay - arr_delay,
+    hours = air_time / 60,
+    .after = day
+  )
+```
+
+
+```{r}
+
+flights |> 
+  mutate(
+    gain = dep_delay - arr_delay,
+    hours = air_time / 60
+  )
+```
