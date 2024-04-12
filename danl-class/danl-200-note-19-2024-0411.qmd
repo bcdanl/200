@@ -1,6 +1,6 @@
 ---
 title: Lecture 19 - Note
-subtitle: Filtering Observations; and more
+subtitle: Classwork 9; `select()`, `rename()`, `relocate()`, and `mutate()`
 author: Byeong-Hak Choe
 institute: SUNY Geneseo
 date: 2024-04-11
