@@ -1,9 +1,9 @@
 ---
 title: Lecture 19 - Note
-subtitle: Classwork 9; `select()`, `rename()`, `relocate()`, and `mutate()`
+subtitle: mutate()
 author: Byeong-Hak Choe
 institute: SUNY Geneseo
-date: 2024-04-11
+date: 2024-04-16
 format: 
   html
     # toc: true
@@ -53,286 +53,207 @@ flights <- nycflights13::flights
 ```
 <br>
 
-# Classwork 9
-
-## Question 1
-
-### Q1a
-- Find all flights that
-  - Were delayed by at least an hour, but made up over 30 minutes in flight
-  
-
-*Answer*:
-
-
-```{r}
-library(tidyverse)
-library(nycflights13)
-
-flights <- flights
-
-madeup_30 <- flights |> 
-  filter(dep_delay >= 60 &
-         dep_delay - arr_delay > 30)
-
-madeup_30 <- flights |> 
-  filter(dep_delay >= 60,
-         dep_delay - arr_delay > 30)
-
-```
-
-
-## Question 2. Arrange observations with `arrange()`
-
-### Q2a
-
-```{r}
-df <- data.frame(num = c(1, 4, NA, 2, NA, 3, 7),
-                 chr = c("A", "A", "A", "B", "X", "Z", "D"))
-```
-
-How could you use `arrange()` to sort all missing values to the start? (Hint: use `is.na()`).
-
-*Answer*:
-```{r}
-# Ascending order 
-df |> 
-  arrange(num)
-```
-
-
-```{r}
-# Descending order 
-df |> 
-  arrange(desc(num)) # or -num
-```
-
-```{r}
-as.numeric(TRUE)
-as.numeric(FALSE)
-```
-
-```{r}
-is.na(df$num)
-```
-
-
-```{r}
-as.numeric(is.na(df$num))
-```
-
-
-```{r}
-df |> 
-  arrange(desc(is.na(num)))
-
-
-df |> 
-  arrange( -is.na(num) )
-```
-
-```{r}
-
-df |> 
-  arrange( -is.na(num), -num )
-```
-
-```{r}
-
-df |> 
-  arrange( -is.na(num), chr )
-```
-
-<br><br>
-
-
-### Q2b
-- Sort flights to find the most delayed flights. 
-- Find the flights that left earliest.
-
-*Answer*:
-```{r}
-most_delayed <- flights |> 
-  arrange(-dep_delay)
-```
-
-```{r}
-left_earliest <- flights |> 
-  arrange(dep_delay)
-```
-
-<br><br>
-
-
-### Q2c
-Sort flights to find the fastest (highest speed) flights.
-
-$$
-\text{speed} = \frac{\text{distance}}{\text{time}}
-$$
-
-*Answer*:
-```{r}
-speed <- flights |> 
-  arrange( - (distance / air_time) )
-```
-
-<br><br>
-
-### Q2d
-Which flights traveled the farthest? Which traveled the shortest?
-
-*Answer*:
-```{r}
-farthest <- flights |> 
-  arrange(-distance)
-
-shortest <- flights |> 
-  arrange(distance)
-```
-
-<br><br>
-
-
-# `select()`
-
-```{r}
-time_var_only <- flights |> 
-  select(year, month, day) 
-```
-
-```{r}
-flights |> 
-  select(year:day) 
-```
-
-```{r}
-flights |> 
-  select(year:carrier) 
-```
-
-```{r}
-colon_origin <- flights |> 
-  select(year:carrier, origin) 
-```
-
-
-```{r}
-removal_year <- flights |> 
-  select(-year)
-```
-
-
-```{r}
-removal_year_timehour <- flights |> 
-  select(-year, -time_hour)
-```
-
-
-```{r}
-flights |> 
-  select(-(year:day))
-```
-
-```{r}
-dep <- flights |> 
-  select(starts_with("dep"))
-```
-
-
-```{r}
-delay <- flights |> 
-  select(ends_with("delay"))
-```
-
-
-
-```{r}
-delay_dep <- flights |> 
-  select(ends_with("delay"), starts_with("dep"))
-```
-
-# Rename
-
-```{r}
-rename_tailnum <- flights |> 
-  rename(tail_num = tailnum)
-```
-
-# Relocate
-
-```{r}
-reloc_timehour_airtime <- flights |> 
-  relocate(time_hour, air_time)
-```
-
-
-```{r}
-reloc_before <- flights |> 
-  relocate(year:dep_time,
-           .before = time_hour)
-```
-
-
-```{r}
-reloc_after <- flights |> 
-  relocate(starts_with("arr"),
-           .after = dep_time)
-```
-
-
-# Add a new varialbe with `mutate()`
 
 ```{r}
 flights |> 
   select(dep_time) |> 
   mutate(
-     hour= dep_time %/% 100,
-    minute = dep_time %% 100,
-    constant = 1000,
-    dep_time_twice = dep_time * 2,
-    dep_time_div = dep_time / 2
-  )
+    hour = dep_time %/% 100,
+    minute = dep_time %% 100
+    )
 ```
-
-
 
 ```{r}
 flights |> 
   select(year:day, ends_with("delay"), air_time) |> 
+  mutate(gain = dep_delay - arr_delay,
+         hours = air_time / 60,
+         gain_per_hour = gain / hours ) 
+```
+
+```{r}
+flights |> 
   mutate(
     gain = dep_delay - arr_delay,
-    hours = air_time / 60,
-    gain_per_hours = gain / hours
+    speed = distance / air_time * 60,
+    .before = dep_time
   )
 ```
 
 ```{r}
-
 flights |> 
   mutate(
     gain = dep_delay - arr_delay,
-    hours = air_time / 60,
-    .before = 1
+    speed = distance / air_time * 60,
+    .after = day  
   )
 ```
+
+# lead() and lag()
+
+```{r}
+df <- data.frame( x = 1:10 )
+
+df <- df |> 
+  mutate(x_lag = lag(x),
+         x_lead = lead(x))
+```
+
+
+
+```{r}
+df_gdp <- data.frame(
+  Year = 2015:2022,
+  GDP = c(100, 105, 109, 113, 
+          118, 121, 119, 118)) 
+
+df_gdp <- df_gdp |>            
+  mutate(GDP_lag = lag(GDP),
+         GDP_chg = GDP - GDP_lag,
+         GDP_growth_pct = 100 * GDP_chg / GDP)
+```
+
+
+# `ifelse()`
+
+```{r}
+flight_season <- flights |> 
+  select(month) |> 
+  mutate(summer_month = ifelse(month %in% c(6,7,8),
+                               TRUE,
+                               FALSE
+                               )
+         )
+```
+
+
+# Ranking functions
+```{r}
+rank_me <- data.frame( x = c(10, 5, 1, 5, 5, NA) )
+
+rank_me_asce <- rank_me |> 
+  mutate(x_min_rank = min_rank(x),
+         x_dense_rank = dense_rank(x),
+         x_row_number = row_number(x),
+         x_perc_rank = percent_rank(x) )
+         
+rank_me_desc <- rank_me |> 
+  mutate(x_min_rank = min_rank(-x), # instead of -x, we can use desc(x) 
+         x_dense_rank = dense_rank(-x),
+         x_row_number = row_number(-x), 
+         x_perc_rank = percent_rank(-x) )
+```
+
+
+# Useful math/datatype functions
+```{r}
+df <- data.frame( x = c(1:10) ) |> 
+  mutate(x_log = log(x),
+         x_log10 = log10(x),
+         x_exp = exp(x),
+         x_sqrt = sqrt(x),
+         x_sqrt_round = round(x_sqrt, 2),
+         x_fct = factor(x),
+         x_chr = as.character(x),
+         x_num = as.numeric(x),
+         x_int = as.integer(x) )
+```
+
+
+# Classwork 10
+
+## Question 1
+
+
+### Q1a
+Brainstorm as many ways as possible to select `dep_time`, `dep_delay`, `arr_time`, and `arr_delay` from `flights`.
+
+```{r}
+# 1
+q1a_manually <- flights |> 
+  select(dep_time, dep_delay, arr_time, arr_delay)
+
+# 2
+q1a_helper <- flights |> 
+  select(starts_with("dep_"), 
+         starts_with("arr_"))
+
+
+# 3
+q1a_helper2 <- flights |> 
+  select(ends_with("_time"), 
+         ends_with("_delay"),
+         ) # we need to remove some variables here
+
+
+```
+
+<br>
+
+### Q1b
+Rename `air_time` to `air_time_min` to indicate units of measurement and move it to the beginning of the data.frame.
 
 ```{r}
 
-flights |> 
-  mutate(
-    gain = dep_delay - arr_delay,
-    hours = air_time / 60,
-    .after = day
-  )
 ```
 
+
+<br><br>
+
+## Question 2
+
+### Q2a
+- Currently `dep_time` and `sched_dep_time` are convenient to look at, but hard to compute with because their values are represented with format HHMM or HMM (H for hour and M for minute).
+- Convert them to a more convenient representation of **number of minutes since midnight**.
 
 ```{r}
 
-flights |> 
-  mutate(
-    gain = dep_delay - arr_delay,
-    hours = air_time / 60
-  )
 ```
+
+
+<br>
+
+### Q2b
+Compare `air_time` with `arr_time` - `dep_time`. What do you expect to see? What do you see? What do you need to do to fix it?
+
+```{r}
+
+```
+
+<br>
+
+
+### Q2c
+Compare `dep_time`, `sched_dep_time`, and `dep_delay`. How would you expect those three numbers to be related?
+
+```{r}
+
+```
+
+
+
+<br>
+
+### Q2d
+Find the 20 most delayed flights using a ranking function. How do you want to handle ties?
+
+```{r}
+
+```
+
+
+<br>
+
+### Q2e
+Read the following CSV file, NVDA.csv, as a data.frame with the name `nvda`:
+
+```{r}
+nvda <- read_csv("https://bcdanl.github.io/data/NVDA.csv")
+```
+
+Describe the distribution of the percentage change in Close price of Nvidia stock.
+
+```{r}
+
+```
+
