@@ -1,7 +1,7 @@
 ---
 title: Classwork 10
-subtitle: Selecting variables with `select()`; Adding a new variable with `mutate()`
-date: 2024-04-11
+subtitle: Working on variables with `select()`, `rename()`, and `relocate()`; Adding a new variable with `mutate()`
+date: 2024-04-16
 execute: 
   echo: true
   warning: false
@@ -30,7 +30,7 @@ theme_set(theme_ipsum() +
 
 
 
-# Question 1. Select columns with `select()`
+# Question 1. `select()`; `rename()`; and `relocate()`
 
 ## Q1a.
 
@@ -38,17 +38,8 @@ theme_set(theme_ipsum() +
 
 <br>
 
+
 ## Q1b.
-
-- Does the result of running the following code surprise us? How do the select helpers deal with case by default? How can we change that default?
-
-```{r, echo = T, eval = F}
-select(flights, contains("TIME"))
-```
-
-<br>
-
-## Q1c.
 - Rename `air_time` to `air_time_min` to indicate units of measurement and move it to the beginning of the data frame.
 
 
@@ -174,5 +165,40 @@ nvda <- read_csv("https://bcdanl.github.io/data/NVDA.csv")
 
 - Describe the distribution of the percentage change in `Close` price of Nvidia stock.
 
+<br>
 
+## Q2f.
+- Use the `gapminder` data.frame for Q2f:
+```{r}
+#| echo: true
+#| eval: false
+
+# install.packages("gapminder")
+library(gapminder)
+gapminder <- gapminder::gapminder
+
+```
+
+- Provide the R code to create a **dotplot** that displays the values of `country`, sorted by `lifeExp` within each `continent` for the `year` 2007.
+
+<br>
+
+
+## Q2g.
+- Use the `gapminder` data.frame for Q2g.
+- Use the `gapminder` data.frame for Q2f:
+```{r}
+#| echo: true
+#| eval: false
+
+# install.packages("gapminder")
+library(gapminder)
+gapminder <- gapminder::gapminder
+
+```
+
+- Provide the R code to describe a time trend of `lifeExp` for both North Korea and South Korea in one ggplot figure.
+
+
+<br>
 

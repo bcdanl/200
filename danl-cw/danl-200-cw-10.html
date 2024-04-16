@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Byeong-Hak Choe">
-<meta name="dcterms.date" content="2024-04-11">
+<meta name="dcterms.date" content="2024-04-16">
 
 <title>Classwork 10 | Byeong-Hak Choe</title>
 <style>
@@ -104,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../assets/css/font.css">
 <meta property="og:title" content="Classwork 10 | Byeong-Hak Choe">
-<meta property="og:description" content="Selecting variables with select(); Adding a new variable with mutate()">
+<meta property="og:description" content="Working on variables with select(), rename(), and relocate(); Adding a new variable with mutate()">
 <meta property="og:image" content="/assets/img/posts.png">
 <meta property="og:site-name" content="B.H. CHOE&amp;nbsp;&amp;nbsp;&amp;nbsp;">
 </head>
@@ -225,11 +225,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#question-1.-select-columns-with-select" id="toc-question-1.-select-columns-with-select" class="nav-link active" data-scroll-target="#question-1.-select-columns-with-select">Question 1. Select columns with <code>select()</code></a>
+  <li><a href="#question-1.-select-rename-and-relocate" id="toc-question-1.-select-rename-and-relocate" class="nav-link active" data-scroll-target="#question-1.-select-rename-and-relocate">Question 1. <code>select()</code>; <code>rename()</code>; and <code>relocate()</code></a>
   <ul>
   <li><a href="#q1a." id="toc-q1a." class="nav-link" data-scroll-target="#q1a.">Q1a.</a></li>
   <li><a href="#q1b." id="toc-q1b." class="nav-link" data-scroll-target="#q1b.">Q1b.</a></li>
-  <li><a href="#q1c." id="toc-q1c." class="nav-link" data-scroll-target="#q1c.">Q1c.</a></li>
   </ul></li>
   <li><a href="#question-2.-add-new-variables-with-mutate" id="toc-question-2.-add-new-variables-with-mutate" class="nav-link" data-scroll-target="#question-2.-add-new-variables-with-mutate">Question 2. Add new variables with <code>mutate()</code></a>
   <ul>
@@ -238,6 +237,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#q2c." id="toc-q2c." class="nav-link" data-scroll-target="#q2c.">Q2c.</a></li>
   <li><a href="#q2d." id="toc-q2d." class="nav-link" data-scroll-target="#q2d.">Q2d.</a></li>
   <li><a href="#q2e." id="toc-q2e." class="nav-link" data-scroll-target="#q2e.">Q2e.</a></li>
+  <li><a href="#q2f." id="toc-q2f." class="nav-link" data-scroll-target="#q2f.">Q2f.</a></li>
+  <li><a href="#q2g." id="toc-q2g." class="nav-link" data-scroll-target="#q2g.">Q2g.</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -248,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Classwork 10</h1>
-<p class="subtitle lead">Selecting variables with <code>select()</code>; Adding a new variable with <code>mutate()</code></p>
+<p class="subtitle lead">Working on variables with <code>select()</code>, <code>rename()</code>, and <code>relocate()</code>; Adding a new variable with <code>mutate()</code></p>
 </div>
 
 
@@ -265,14 +266,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 11, 2024</p>
+      <p class="date">April 16, 2024</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 11, 2024</p>
+      <p class="date-modified">April 15, 2024</p>
     </div>
   </div>
     
@@ -281,8 +282,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="question-1.-select-columns-with-select" class="level1">
-<h1>Question 1. Select columns with <code>select()</code></h1>
+<section id="question-1.-select-rename-and-relocate" class="level1">
+<h1>Question 1. <code>select()</code>; <code>rename()</code>; and <code>relocate()</code></h1>
 <section id="q1a." class="level2">
 <h2 class="anchored" data-anchor-id="q1a.">Q1a.</h2>
 <ul>
@@ -292,16 +293,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="q1b." class="level2">
 <h2 class="anchored" data-anchor-id="q1b.">Q1b.</h2>
-<ul>
-<li>Does the result of running the following code surprise us? How do the select helpers deal with case by default? How can we change that default?</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(flights, <span class="fu">contains</span>(<span class="st">"TIME"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br></p>
-</section>
-<section id="q1c." class="level2">
-<h2 class="anchored" data-anchor-id="q1c.">Q1c.</h2>
 <ul>
 <li>Rename <code>air_time</code> to <code>air_time_min</code> to indicate units of measurement and move it to the beginning of the data frame.</li>
 </ul>
@@ -347,11 +338,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Read the following CSV file, <code>NVDA.csv</code>, as a data.frame with the name <code>nvda</code>:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nvda <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bcdanl.github.io/data/NVDA.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nvda <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bcdanl.github.io/data/NVDA.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Describe the distribution of the percentage change in <code>Close</code> price of Nvidia stock.</li>
 </ul>
+<p><br></p>
+</section>
+<section id="q2f." class="level2">
+<h2 class="anchored" data-anchor-id="q2f.">Q2f.</h2>
+<ul>
+<li>Use the <code>gapminder</code> data.frame for Q2f:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("gapminder")</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> gapminder<span class="sc">::</span>gapminder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Provide the R code to create a <strong>dotplot</strong> that displays the values of <code>country</code>, sorted by <code>lifeExp</code> within each <code>continent</code> for the <code>year</code> 2007.</li>
+</ul>
+<p><br></p>
+</section>
+<section id="q2g." class="level2">
+<h2 class="anchored" data-anchor-id="q2g.">Q2g.</h2>
+<ul>
+<li>Use the <code>gapminder</code> data.frame for Q2g.</li>
+<li>Use the <code>gapminder</code> data.frame for Q2f:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("gapminder")</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> gapminder<span class="sc">::</span>gapminder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Provide the R code to describe a time trend of <code>lifeExp</code> for both North Korea and South Korea in one ggplot figure.</li>
+</ul>
+<p><br></p>
 
 
 </section>
