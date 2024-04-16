@@ -55,6 +55,63 @@ theme_set(theme_fivethirtyeight()+
 
 
 
+## Announcement
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/dist-danl200-02-spring-2024-midterm.png" width="850px">
+</p>
+
+
+## Announcement
+### Homework Assignments
+
+- There will be two more homework assignments.
+
+- The single lowest homework score will be dropped when calculating the total homework score. 
+
+- Each homework except for the homework with the lowest score accounts for **25%** of the total homework score.
+
+
+
+## Announcement
+### Team Project
+
+- A team can be composed of two, three, four, or five members.
+
+- One representative for a team must send Byeong-Hak an email at *bchoe@geneseo* with the following details by April 23, Tuesday, 11:59 P.M:
+  - Subject Line: DANL-200-team
+  - Email Body:
+    - Member 1: Last Name, First Name
+    - Member 2: Last Name, First Name
+    - Member 3: Last Name, First Name (optional)
+    - Member 4: Last Name, First Name (optional) 
+    - Member 5: Last Name, First Name (optional)
+
+
+## Announcement
+### Team Project
+
+- The project is about presenting your findings through data analysis using `skim`, `ggplot`, and `dplyr` functions on your personal website.
+
+- Think of this project as a more comprehensive homework assignment.
+
+- Details of the project will be announced next week.
+  - Each team must choose one `data.frame` for the project.
+  - It is okay to use more than one single `data.frames` if the `data.frames` are *related*.
+  - While I plan to provide a list of `data.frames` for the project, I give each team an option to freely choose own `data.frame` for the project upon Choe's approval.
+
+- While this is team work, your website and its corresponding GitHub repository will be independently assessed for the project.
+
+
+## Announcement
+### Schedule
+
+- Homework 4 Due: April 30, 2024, Tuesday
+- Homework 5 Due: May 9, 2024, Thursday
+- Final Exam: May 14, 2024, Friday, 3:30 P.M.-5:30 P.M.
+- Project Due: May 16, 2024, Thursday, 11:59 P.M.
+
+
 
 ## Data Transformation
 ### Pipe (`|>`) Operator

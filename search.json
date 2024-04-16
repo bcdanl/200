@@ -5584,5 +5584,40 @@
     "title": "Lecture 19",
     "section": "Columns: select(), rename(), relocate(), and mutate()",
     "text": "Columns: select(), rename(), relocate(), and mutate()\nLet’s do Q2f and Q2g in Classwork 10!"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-19-2024-0416.html#announcement",
+    "href": "danl-lec/danl-200-lec-19-2024-0416.html#announcement",
+    "title": "Lecture 19",
+    "section": "Announcement",
+    "text": "Announcement"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-19-2024-0416.html#announcement-1",
+    "href": "danl-lec/danl-200-lec-19-2024-0416.html#announcement-1",
+    "title": "Lecture 19",
+    "section": "Announcement",
+    "text": "Announcement\nHomework Assignments\n\nThere will be two more homework assignments.\nThe single lowest homework score will be dropped when calculating the total homework score.\nEach homework except for the homework with the lowest score accounts for 25% of the total homework score."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-19-2024-0416.html#announcement-2",
+    "href": "danl-lec/danl-200-lec-19-2024-0416.html#announcement-2",
+    "title": "Lecture 19",
+    "section": "Announcement",
+    "text": "Announcement\nTeam Project\n\nA team can be composed of two, three, four, or five members.\nOne representative for a team must send Byeong-Hak an email at bchoe@geneseo with the following details by April 23, Tuesday, 11:59 P.M:\n\nSubject Line: DANL-200-team\nEmail Body:\n\nMember 1: Last Name, First Name\nMember 2: Last Name, First Name\nMember 3: Last Name, First Name (optional)\nMember 4: Last Name, First Name (optional)\nMember 5: Last Name, First Name (optional)"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-19-2024-0416.html#announcement-3",
+    "href": "danl-lec/danl-200-lec-19-2024-0416.html#announcement-3",
+    "title": "Lecture 19",
+    "section": "Announcement",
+    "text": "Announcement\nTeam Project\n\nThe project is about presenting your findings through data analysis using skim, ggplot, and dplyr functions on your personal website.\nThink of this project as a more comprehensive homework assignment.\nDetails of the project will be announced next week.\n\nEach team must choose one data.frame for the project.\nIt is okay to use more than one single data.frames if the data.frames are related.\nWhile I plan to provide a list of data.frames for the project, I give each team an option to freely choose own data.frame for the project upon Choe’s approval.\n\nWhile this is team work, your website and its corresponding GitHub repository will be independently assessed for the project."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-19-2024-0416.html#announcement-4",
+    "href": "danl-lec/danl-200-lec-19-2024-0416.html#announcement-4",
+    "title": "Lecture 19",
+    "section": "Announcement",
+    "text": "Announcement\nSchedule\n\nHomework 4 Due: April 30, 2024, Tuesday\nHomework 5 Due: May 9, 2024, Thursday\nFinal Exam: May 14, 2024, Friday, 3:30 P.M.-5:30 P.M.\nProject Due: May 16, 2024, Thursday, 11:59 P.M."
   }
 ]
