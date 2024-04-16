@@ -1,0 +1,505 @@
+---
+title: Lecture 19
+subtitle: Add a new variable with `mutate()`
+format:
+  clean-revealjs:
+    self-contained: true
+    incremental: true
+    code-annotations: hover
+
+    # logo: logo-title-slide.png
+author:
+  - name: Byeong-Hak Choe
+    email: bchoe@geneseo.edu
+    affiliations: SUNY Geneseo
+date: 2024-04-16
+execute: 
+  eval: true
+  echo: true
+callout-icon: false
+
+from: markdown+emoji
+include-after-body: target-hover.html # effect.html
+
+# bibliography: refs.bib
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+
+
+theme_set(theme_fivethirtyeight()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(0,10,0,0)),
+                axis.text.x = element_text(size = rel(1.5)),
+                axis.text.y = element_text(size = rel(1.5)),
+                strip.text = element_text(size = rel(1.5)),
+                legend.position = "top",
+                legend.text = element_text(size = rel(1.5)),
+                legend.title = element_text(size = rel(1.5))
+                )
+          )
+```
+
+
+
+
+## Data Transformation
+### Pipe (`|>`) Operator
+<!-- ### `dplyr` basics -->
+
+- Because the first argument is a `data.frame` and the output is a `data.frame`, `dplyr` verbs work well with the **pipe**, `|>` 
+  - **Ctrl + Shift + M** for Windows; **command + Shift + M** for Mac. 
+
+
+- The **pipe** (`|>`) takes the thing on its left and passes it along to the function on its right so that
+  - `f(x, y)` is equivalent to `x |> f(y)`. 
+  - e.g., `filter(DATA_FRAME, LOGICAL_STATEMENT)` is equivalent to `DATA_FRAME |>  filter(LOGICAL_STATEMENT)`.
+
+
+- The easiest way to pronounce the **pipe** (`|>`) is “**then**”. 
+  - The **pipe** (`|>`) is super useful when we have <u>*a chain of data transforming operations*</u> to do.
+
+
+## Data Transformation
+### `dplyr` basics
+
+- `data.frame |> filter(LOGICAL_CONDITIONS)`
+- `data.frame |> arrange(VARIABLES)`
+- `data.frame |> distinct(VARIABLES)`
+- `data.frame |> select(VARIABLES)`
+- `data.frame |> rename(NEW_VARIABLE = EXISTING_VARIABLE)`
+- `data.frame |> mutate(NEW_VARIABLE = ... )`
+- `data.frame |> relocate(VARIABLES)`
+- `data.frame |> group_by(VARIABLES)`
+- `data.frame |> summarize(NEW_VARIABLE = ...)`
+
+
+- The subsequent arguments describe what to do with the data.frame, mostly using the variable names.
+- The result is a `data.frame`.
+
+
+
+# Add new variables with `mutate()` {background-color="#1c4982"}
+
+
+
+## Add new variables with `mutate()`
+###  Arithmetic operations
+
+:::{.nonincremental}
+- `mutate()` is useful to add new variables that are functions of existing variables.
+  - New variables can be a result of arithmetic operations.
+  - Arithmetic operators: `+`, `-`, `*`, `/`, `^`
+  - Modular arithmetic: `%/%` (integer division) and `%%` (remainder).
+
+:::
+```{.r}
+flights |> 
+  select(dep_time) |> 
+  mutate(
+    hour = dep_time %/% 100,
+    minute = dep_time %% 100
+    )
+```
+
+
+
+
+## Add new variables with `mutate()`
+:::{.nonincremental}
+
+- A new variable can be based on the new variable within the `mutate()` function.
+
+:::
+
+```{.r}
+flights |> 
+  select(year:day, ends_with("delay"), air_time) |> 
+  mutate(gain = dep_delay - arr_delay,
+         hours = air_time / 60,
+         gain_per_hour = gain / hours ) 
+```
+
+
+
+
+## Add new variables with `mutate()`
+::: {.nonincremental}
+::: {.panel-tabset}
+## `.before`
+- We can use the `.before` argument to add the variables to the position of a column:
+
+```{.r}
+flights |> 
+  mutate(
+    gain = dep_delay - arr_delay,
+    speed = distance / air_time * 60,
+    .before = 1  # try different position numbers.
+  )
+```
+
+- The `.` is a sign that `.before` is an **argument** to the function, not the name of variable.
+
+
+
+## `.after`
+- In both `.before` and `.after`, we can use the variable name instead of a position number.
+
+```{.r}
+flights |> 
+  mutate(
+    gain = dep_delay - arr_delay,
+    speed = distance / air_time * 60,
+    .after = day  
+  )
+```
+
+
+:::
+:::
+
+
+## Add new variables with `mutate()`
+###  Useful creation functions
+
+<!-- - There are many functions for creating new variables that we can use with `mutate()`. -->
+  1. Offsets: `lead()` and `lag()`
+  
+  2. If-else conditions: `ifelse()`
+  
+  3. Ranking functions: `min_rank()`, `dense_rank()`, `percent_rank()`, `row_number()`, and more
+  
+  4. Other useful functions: `log()`, `log10()`, `exp()`, `sqrt()`, `round()`, `as.character()`, `as.numeric()`, `as.integer()`, and more
+
+  5. Factor-related functions: `factor()`, `fct_reorder()`, and more
+  
+  6. String-related functions: `str_detect()`, `str_replace()`, `str_replace_all()`, `str_sub()`, and more
+
+
+## Add new variables with `mutate()`
+###  1. `lead()` and `lag()`
+
+:::{.nonincremental}
+
+- Offsets: `lead()` and `lag()` allow us to refer to leading or lagging values.
+
+::: {.panel-tabset}
+## Offsets
+```{.r}
+df <- data.frame( x = 1:10 )
+
+df <- df |> 
+  mutate(x_lag = lag(x),
+         x_lead = lead(x))
+```
+
+
+## Change
+<!-- - These functions are useful for calculating a change in a time-series variable -->
+
+:::: {.columns}
+::: {.column width="50%"}
+- A change in GDP in year $y$ and a percentage change in GDP in year $y$ are calculated as follows:
+
+
+$$
+\begin{align}
+\Delta GDP_{y} = GDP_{y} - GDP_{y-1}
+\end{align}
+$$
+
+$$
+\begin{align}
+\%\Delta GDP_{y} = \frac{GDP_{y} - GDP_{y-1}}{GDP_{y}}
+\end{align}
+$$
+:::
+
+::: {.column width="50%"}
+```{.r}
+df <- data.frame(
+  Year = 2015:2022,
+  GDP = c(100, 105, 109, 113, 
+          118, 121, 119, 118)) 
+
+df <- df |>            
+  mutate(GDP_chg = GDP - lag(GDP),
+         GDP_growth_pct = 
+           100 * GDP_chg/GDP)
+```
+:::
+
+
+::::
+
+::::
+
+:::
+
+## Add new variables with `mutate()`
+###  2. `ifelse()`
+
+```{.r}
+flight_season <- flights |> 
+  mutate(summer_month = ifelse(month %in% c(6, 7, 8), 
+                               TRUE, 
+                               FALSE))
+```
+
+- To create new variables based on a condition, use `ifelse()` 
+  - `ifelse(CONDITION, <if TRUE>, <else>)`
+
+
+
+## Add new variables with `mutate()`
+###  3. Ranking functions
+
+
+
+```{.r}
+rank_me <- data.frame( x = c(10, 5, 1, 5, 5, NA) )
+
+rank_me_asce <- rank_me |> 
+  mutate(x_min_rank = min_rank(x),
+         x_dense_rank = dense_rank(x),
+         x_row_number = row_number(x),
+         x_perc_rank = percent_rank(x) )
+         
+rank_me_desc <- rank_me |> 
+  mutate(x_min_rank = min_rank(-x), # instead of -x, we can use desc(x) 
+         x_dense_rank = dense_rank(-x),
+         x_row_number = row_number(-x), 
+         x_perc_rank = percent_rank(-x) )
+```
+
+- To create new variables based on an order of values: `min_rank()`, `dense_rank()`,  `row_number()`, `percent_rank()`, and more
+
+
+
+
+## Add new variables with `mutate()`
+###  4. Other useful functions
+```{.r}
+df <- data.frame( x = c(1:10) ) |> 
+  mutate(x_log = log(x),
+         x_log10 = log10(x),
+         x_exp = exp(x),
+         x_sqrt = sqrt(x),
+         x_sqrt_round = round(x_sqrt, 2),
+         x_fct = factor(x),
+         x_chr = as.character(x),
+         x_num = as.numeric(x),
+         x_int = as.integer(x) )
+```
+
+
+- We can use math functions as well as as.DATATYPE functions:
+  - `log()`, `log10()`, `exp()`, `sqrt()`, `round(VAR, digit)`, `factor()`, `as.character()`, `as.numeric()`, `as.integer()`, and more
+
+
+
+
+
+## Columns: `select()`, `rename()`, `relocate()`, and `mutate()`
+
+
+Let's do [Classwork 10](https://bcdanl.github.io/200/danl-cw/danl-200-cw-10.html)!
+
+
+
+## Add new variables with `mutate()`
+###  5. Factors
+
+
+::: {.panel-tabset}
+## `factor()`
+
+```{.r}
+df <- data.frame(
+  city = c("Rochester", "Buffalo", 
+           "Geneseo", "Syracus"),
+  income = c(80,  82,  70, 75) )
+
+df <- df |> 
+  mutate( city_fct = factor(city) )
+
+df$city
+df$city_fct
+```
+
+- In `R`, factors are categorical variables, variables that have a fixed and known set of possible values.
+- We can use a factor variable to sort categories in a useful way.
+
+
+## `factor()` w/ levels
+
+```{.r}
+NY_cities <- c("Geneseo", "Rochester", 
+               "Buffalo", "Syracus")
+df <- df |> 
+  mutate(city_fct_new = 
+           factor(city, 
+                  levels = NY_cities)
+  )
+  
+levels(df$city_fct)
+levels(df$city_fct_new)
+```
+
+- If we ever need to set the order of levels directly, we can do so with `levels`.
+
+
+
+## `fct_reorder()`
+
+```{.r}
+df <- df |> 
+        mutate(city_reorder = fct_reorder(city_fct, income) )
+```
+
+
+- We can reorder the levels using `fct_reorder(f, x, fun)`, which can take three arguments.
+  - `f`: the factor whose levels we want to modify.
+  - `x`: a numeric vector that we want to use to reorder the levels.
+  - Optionally, `fun`: a function that's used if there are multiple values of `x` for each value of `f`. 
+  - The default value for `fun` is *median*.
+  
+:::
+
+
+## Add new variables with `mutate()`
+### `ggplot` with a factor variable - Sorted bar chart/dot plot
+
+:::: {.columns}
+
+:::{.nonincremental}
+- It's often useful to change the order of the factor levels in a visualization.
+- Imagine we want to explore the average income across cities.
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| eval: true
+
+df <- data.frame(
+  city = c("Rochester", "Buffalo", 
+           "Geneseo", "Syracus"),
+  income = c(80,  82,  70, 75) )
+
+df <- df |> 
+  mutate( city_fct = factor(city) )
+
+ggplot(df,
+       aes(x = income,
+           y = city)) +
+  geom_col() +
+  hrbrthemes::theme_ipsum() +
+  theme(axis.title.x = element_text(size = rel(2)),
+        axis.title.y = element_text(size = rel(2)),
+        axis.text.x = element_text(size = rel(2)),
+        axis.text.y = element_text(size = rel(2)),
+        )
+```
+:::
+
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| eval: true
+
+df <- df |> mutate(city_reorder = reorder(city_fct, income) )
+
+ggplot(df,
+       aes(x = income,
+           y = city_reorder)) +
+  geom_col() +
+  hrbrthemes::theme_ipsum() +
+  theme(axis.title.x = element_text(size = rel(2)),
+        axis.title.y = element_text(size = rel(2)),
+        axis.text.x = element_text(size = rel(2)),
+        axis.text.y = element_text(size = rel(2)),
+        )
+```
+:::
+
+
+::::
+
+
+
+## Add new variables with `mutate()`
+###  6. Strings
+
+
+
+::: {.panel-tabset}
+## `str_detect()`
+
+
+```{.r}
+df_str <- data.frame(
+  fruit = c("apple", "banana", "pear")
+)
+
+df_str <- df_str |> 
+  mutate( fruit_e = str_detect(fruit, "e")
+  )
+
+```
+
+- `str_detect()` returns `TRUE` if a character value matches a pattern. Otherwise, `FALSE`.
+
+
+
+## `str_replace()`
+
+```{.r}
+df_str <- df_str |> 
+  mutate(fruit_replace = str_replace(fruit, "a", "-"),
+         fruit_replace_all = str_replace_all(fruit, "a", "-")
+         )
+
+```
+
+
+- `str_replace()` and `str_replace_all()` allow us to replace matches with new strings.
+- `str_replace_all()` can perform multiple replacements by supplying a named vector.
+
+
+
+## `str_sub()`
+
+
+```{.r}
+df_str <- df_str |> 
+  mutate(fruit_sub1 = str_sub(fruit, 1, 3),
+         fruit_sub2 = str_sub(fruit, -3, -1)
+  )
+
+```
+
+
+- We can extract parts of a string using `str_sub()`.
+
+- `str_sub()` takes `start` and `end` arguments which give the position of the substring.
+
+:::
+
+
+
