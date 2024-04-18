@@ -3,7 +3,7 @@ title: Lecture 19 - Note
 subtitle: mutate()
 author: Byeong-Hak Choe
 institute: SUNY Geneseo
-date: 2024-04-16
+date: 2024-04-18
 format: 
   html
     # toc: true
@@ -48,115 +48,7 @@ library(tidyverse)
 library(nycflights13)
 flights <- nycflights13::flights
 
-??flights
-
-```
-<br>
-
-
-```{r}
-flights |> 
-  select(dep_time) |> 
-  mutate(
-    hour = dep_time %/% 100,
-    minute = dep_time %% 100
-    )
-```
-
-```{r}
-flights |> 
-  select(year:day, ends_with("delay"), air_time) |> 
-  mutate(gain = dep_delay - arr_delay,
-         hours = air_time / 60,
-         gain_per_hour = gain / hours ) 
-```
-
-```{r}
-flights |> 
-  mutate(
-    gain = dep_delay - arr_delay,
-    speed = distance / air_time * 60,
-    .before = dep_time
-  )
-```
-
-```{r}
-flights |> 
-  mutate(
-    gain = dep_delay - arr_delay,
-    speed = distance / air_time * 60,
-    .after = day  
-  )
-```
-
-# lead() and lag()
-
-```{r}
-df <- data.frame( x = 1:10 )
-
-df <- df |> 
-  mutate(x_lag = lag(x),
-         x_lead = lead(x))
-```
-
-
-
-```{r}
-df_gdp <- data.frame(
-  Year = 2015:2022,
-  GDP = c(100, 105, 109, 113, 
-          118, 121, 119, 118)) 
-
-df_gdp <- df_gdp |>            
-  mutate(GDP_lag = lag(GDP),
-         GDP_chg = GDP - GDP_lag,
-         GDP_growth_pct = 100 * GDP_chg / GDP)
-```
-
-
-# `ifelse()`
-
-```{r}
-flight_season <- flights |> 
-  select(month) |> 
-  mutate(summer_month = ifelse(month %in% c(6,7,8),
-                               TRUE,
-                               FALSE
-                               )
-         )
-```
-
-
-# Ranking functions
-```{r}
-rank_me <- data.frame( x = c(10, 5, 1, 5, 5, NA) )
-
-rank_me_asce <- rank_me |> 
-  mutate(x_min_rank = min_rank(x),
-         x_dense_rank = dense_rank(x),
-         x_row_number = row_number(x),
-         x_perc_rank = percent_rank(x) )
-         
-rank_me_desc <- rank_me |> 
-  mutate(x_min_rank = min_rank(-x), # instead of -x, we can use desc(x) 
-         x_dense_rank = dense_rank(-x),
-         x_row_number = row_number(-x), 
-         x_perc_rank = percent_rank(-x) )
-```
-
-
-# Useful math/datatype functions
-```{r}
-df <- data.frame( x = c(1:10) ) |> 
-  mutate(x_log = log(x),
-         x_log10 = log10(x),
-         x_exp = exp(x),
-         x_sqrt = sqrt(x),
-         x_sqrt_round = round(x_sqrt, 2),
-         x_fct = factor(x),
-         x_chr = as.character(x),
-         x_num = as.numeric(x),
-         x_int = as.integer(x) )
+# ??flights
 ```
 
 
@@ -191,10 +83,11 @@ q1a_helper2 <- flights |>
 <br>
 
 ### Q1b
-Rename `air_time` to `air_time_min` to indicate units of measurement and move it to the beginning of the data.frame.
+Rename `air_time` to `air_time_minutes` to indicate units of measurement and move it to the beginning of the data.frame.
 
 ```{r}
-
+flights <- flights |> 
+  rename(air_time_minutes = air_time)
 ```
 
 
@@ -207,17 +100,35 @@ Rename `air_time` to `air_time_min` to indicate units of measurement and move it
 - Convert them to a more convenient representation of **number of minutes since midnight**.
 
 ```{r}
-
+q2a <- flights |> 
+  select(air_time_minutes, arr_time,
+         dep_time, sched_dep_time, dep_delay) |> 
+  mutate(arr_time_hour = arr_time %/% 100,
+         arr_time_minutes = arr_time %% 100,
+         dep_time_hour = dep_time %/% 100,
+         dep_time_minutes = dep_time %% 100,
+         sched_dep_time_hour = sched_dep_time %/% 100,
+         sched_dep_time_minutes = sched_dep_time %% 100) |> 
+  mutate(arr_time = arr_time_hour * 60 + arr_time_minutes,
+         dep_time = dep_time_hour * 60 + dep_time_minutes,
+         sched_dep_time = sched_dep_time_hour * 60 + sched_dep_time_minutes
+         )
 ```
 
 
 <br>
 
 ### Q2b
-Compare `air_time` with `arr_time` - `dep_time`. What do you expect to see? What do you see? What do you need to do to fix it?
+Compare `air_time_minutes` with `arr_time` - `dep_time`. What do you expect to see? What do you see? What do you need to do to fix it?
 
 ```{r}
-
+q2b <- q2a |> 
+  mutate(diff = arr_time - dep_time,
+         .after = air_time_minutes) |> 
+  mutate(TF = air_time_minutes == diff,
+         .before = 1) |> 
+  mutate(how_many = sum(TF, na.rm = TRUE),
+         .before = 1)
 ```
 
 <br>
@@ -227,7 +138,14 @@ Compare `air_time` with `arr_time` - `dep_time`. What do you expect to see? What
 Compare `dep_time`, `sched_dep_time`, and `dep_delay`. How would you expect those three numbers to be related?
 
 ```{r}
+q2c <- q2a |>
+  mutate(dep_delay_maunal = dep_time - sched_dep_time,
+         .after = dep_delay) |> 
+  mutate(TF = dep_delay_maunal == dep_delay,
+         .before = dep_delay)
 
+library(skimr)
+skim(q2c$TF)
 ```
 
 
@@ -235,9 +153,27 @@ Compare `dep_time`, `sched_dep_time`, and `dep_delay`. How would you expect thos
 <br>
 
 ### Q2d
-Find the 20 most delayed flights using a ranking function. How do you want to handle ties?
+- Find the 20 most delayed flights using a ranking function. 
+- How do you want to handle ties?
 
 ```{r}
+q2d_dense <- flights |> 
+  select(dep_delay, carrier) |> 
+  arrange(-dep_delay) |> 
+  mutate(rank_min = min_rank(-dep_delay),
+         rank_den = dense_rank(-dep_delay),
+         rank_row = row_number(-dep_delay)
+         ) |> 
+  filter(rank_den <= 20)
+
+q2d_min <- flights |> 
+  select(dep_delay, carrier) |> 
+  arrange(-dep_delay) |> 
+  mutate(rank_min = min_rank(-dep_delay),
+         rank_den = dense_rank(-dep_delay),
+         rank_row = row_number(-dep_delay)
+         ) |> 
+  filter(rank_min <= 20)
 
 ```
 
@@ -251,9 +187,12 @@ Read the following CSV file, NVDA.csv, as a data.frame with the name `nvda`:
 nvda <- read_csv("https://bcdanl.github.io/data/NVDA.csv")
 ```
 
-Describe the distribution of the percentage change in Close price of Nvidia stock.
+Describe the distribution of the daily percentage change in `Close` price of `Nvidia` stock.
 
 ```{r}
-
+q2e <- nvda |> 
+  mutate(lag_Close = lag(Close),
+         chg_Close = Close - lag_Close,
+         .after = Close)
 ```
 
