@@ -8,7 +8,7 @@ execute:
   message: false
 ---
 
-<font size = "5">Welcome to our Lecture 18 Discussion Board! 👋 </font>
+<font size = "5">Welcome to our Lecture 19 Discussion Board! 👋 </font>
 
 
 This space is designed for you to engage with your classmates about the material covered in Lecture 19 slides.

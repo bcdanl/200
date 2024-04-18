@@ -1,0 +1,1223 @@
+---
+title: Lecture 20
+subtitle: Grouped Summaries with `group_by() |> summarize()`
+format:
+  clean-revealjs:
+    self-contained: true
+    incremental: false
+    code-annotations: hover
+
+    # logo: logo-title-slide.png
+author:
+  - name: Byeong-Hak Choe
+    email: bchoe@geneseo.edu
+    affiliations: SUNY Geneseo
+date: 2024-04-18
+execute: 
+  eval: true
+  echo: true
+callout-icon: false
+
+from: markdown+emoji
+include-after-body: target-hover.html # effect.html
+
+# bibliography: refs.bib
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+
+
+theme_set(theme_fivethirtyeight()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(0,10,0,0)),
+                axis.text.x = element_text(size = rel(1.5)),
+                axis.text.y = element_text(size = rel(1.5)),
+                strip.text = element_text(size = rel(1.5)),
+                legend.position = "top",
+                legend.text = element_text(size = rel(1.5)),
+                legend.title = element_text(size = rel(1.5))
+                )
+          )
+```
+
+
+
+
+## Data Transformation
+### `dplyr` basics
+
+:::{.incremental}
+- `data.frame |> filter(LOGICAL_CONDITIONS)`
+- `data.frame |> arrange(VARIABLES)`
+- `data.frame |> distinct(VARIABLES)`
+- `data.frame |> select(VARIABLES)`
+- `data.frame |> rename(NEW_VARIABLE = EXISTING_VARIABLE)`
+- `data.frame |> mutate(NEW_VARIABLE = ... )`
+- `data.frame |> relocate(VARIABLES)`
+- `data.frame |> group_by(VARIABLES)`
+- `data.frame |> summarize(NEW_VARIABLE = ...)`
+  - The result is a `data.frame`.
+
+:::
+
+# Grouped Summaries with `group_by() |> summarize()` {background-color="#1c4982"}
+
+
+## Grouped Summaries with `summarize()`
+
+- `summarize()` or `summarise()` collapses a data frame to a single row. 
+- `summarize()` can be used for making summary statistics for a variable:
+  - E.g., `mean()`, `sd()`, `median()`, `min()`, `quantile(..., prob = ...)`, `max()`.
+
+```{.r}
+df <- data.frame( x = c(1:10) )
+df_sum <- df |> 
+  summarize(
+    x_mean = mean(x),
+    x_sd = sd(x),
+    x_min = min(x),
+    x_q1 = quantile(x, probs = .25),
+    x_median = median(x),
+    x_q1 = quantile(x, probs = .75),
+    x_max = max(x) )
+```
+
+
+
+## Grouped Summaries with `summarize()`
+### Group oeprations
+
+- How can we efficiently calculate the mean value of `score` for each `group`?
+  
+```{.r}
+df <- data.frame(
+  group = c("A", "B", "A", "B"),
+  score = c(50, 65, 70, 85)
+)
+```
+
+1. We can filter observations by group, and then calculate the mean.
+  - We need to repeat this as many as the number of groups.
+
+2. The more efficient way is making grouped summaries with `summarize()` and `group_by()`. 
+
+
+
+
+## What does `group_by()` do?
+
+:::: {.columns}
+::: {.column width="50%"}
+
+  - `group_by(VARIABLES)` does NOT explicitly change anything in a data.frame:
+
+```{.r}
+df |> 
+  group_by(group) 
+  
+```
+
+```{r}
+#| echo: false
+
+df_sum <- data.frame(
+  group = c("A", "B", "A", "B"),
+  score = c(50, 65, 70, 85)
+) |> 
+  group_by(group)
+
+# Create a DT datatable without search box and 'Show entries' dropdown
+DT::datatable(df_sum, rownames = FALSE,
+              options = list(
+  dom = 't', # This sets the DOM layout without the search box ('f') and 'Show entries' dropdown ('l')
+  paging = FALSE, # Disable pagination
+  columnDefs = list(list(
+    targets = "_all", # Applies to all columns
+    orderable = FALSE # Disables sorting
+  ))
+), callback = htmlwidgets::JS("
+  // Change header background and text color
+  $('thead th').css('background-color', '#1c4982');
+  $('thead th').css('color', 'white');
+
+  // Loop through each row and alternate background color
+  $('tbody tr').each(function(index) {
+    if (index % 2 == 0) {
+      $(this).css('background-color', '#d1dae6'); // Light color for even rows
+    } else {
+      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows
+    }
+  });
+
+  // Set text color for all rows
+  $('tbody tr').css('color', 'black');
+
+  // Add hover effect
+  $('tbody tr').hover(
+    function() {
+      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row
+    }, 
+    function() {
+      var index = $(this).index();
+      if (index % 2 == 0) {
+        $(this).css('background-color', '#d1dae6'); // Restore even row color
+      } else {
+        $(this).css('background-color', '#9fb2cb'); // Restore odd row color
+      }
+    }
+  );
+")
+)
+```
+
+:::
+
+::: {.column width="50%"}
+
+  - `group_by(VARIABLES)` IMPLICITLY arranges and groups a data.frame by `VARIABLES`:
+
+$$
+_{\text{}}
+$$
+
+```{r}
+#| echo: false
+
+df <- data.frame(
+  group = c("A", "A", "B", "B"),
+  score = c(50, 70, 65, 85)
+)
+
+# Create a DT datatable without search box and 'Show entries' dropdown
+DT::datatable(df, rownames = FALSE,
+              options = list(
+  dom = 't', # This sets the DOM layout without the search box ('f') and 'Show entries' dropdown ('l')
+  paging = FALSE, # Disable pagination
+  columnDefs = list(list(
+    targets = "_all", # Applies to all columns
+    orderable = FALSE # Disables sorting
+  ))
+), callback = htmlwidgets::JS("
+  // Change header background and text color
+  $('thead th').css('background-color', '#1c4982');
+  $('thead th').css('color', 'white');
+
+  // Loop through each row and alternate background color
+  $('tbody tr').each(function(index) {
+    if (index % 2 == 0) {
+      $(this).css('background-color', '#d1dae6'); // Light color for even rows
+    } else {
+      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows
+    }
+  });
+
+  // Set text color for all rows
+  $('tbody tr').css('color', 'black');
+
+  // Add hover effect
+  $('tbody tr').hover(
+    function() {
+      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row
+    }, 
+    function() {
+      var index = $(this).index();
+      if (index % 2 == 0) {
+        $(this).css('background-color', '#d1dae6'); // Restore even row color
+      } else {
+        $(this).css('background-color', '#9fb2cb'); // Restore odd row color
+      }
+    }
+  );
+")
+)
+
+```
+:::
+
+::::
+
+
+
+## Grouped Summaries with `summarize()`
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- `summarize()` is not terribly useful unless we pair it with `group_by()`.
+
+```{.r}
+df <- data.frame(
+  group = c("A", "B", "A", "B"),
+  score = c(50, 65, 70, 85)
+)
+
+df_sum <- df |> 
+  group_by(group) |> 
+  summarize(
+    mean_val = mean(score)
+    )
+```
+
+:::
+
+::: {.column width="50%"}
+
+
+```{r}
+#| echo: false
+
+df_sum <- data.frame(
+  group = c("A", "B", "A", "B"),
+  score = c(50, 65, 70, 85)
+) |> 
+  group_by(group)
+
+# Create a DT datatable without search box and 'Show entries' dropdown
+DT::datatable(df_sum, rownames = FALSE,
+              options = list(
+  dom = 't', # This sets the DOM layout without the search box ('f') and 'Show entries' dropdown ('l')
+  paging = FALSE, # Disable pagination
+  columnDefs = list(list(
+    targets = "_all", # Applies to all columns
+    orderable = FALSE # Disables sorting
+  ))
+), callback = htmlwidgets::JS("
+  // Change header background and text color
+  $('thead th').css('background-color', '#1c4982');
+  $('thead th').css('color', 'white');
+
+  // Loop through each row and alternate background color
+  $('tbody tr').each(function(index) {
+    if (index % 2 == 0) {
+      $(this).css('background-color', '#d1dae6'); // Light color for even rows
+    } else {
+      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows
+    }
+  });
+
+  // Set text color for all rows
+  $('tbody tr').css('color', 'black');
+
+  // Add hover effect
+  $('tbody tr').hover(
+    function() {
+      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row
+    }, 
+    function() {
+      var index = $(this).index();
+      if (index % 2 == 0) {
+        $(this).css('background-color', '#d1dae6'); // Restore even row color
+      } else {
+        $(this).css('background-color', '#9fb2cb'); // Restore odd row color
+      }
+    }
+  );
+")
+)
+```
+
+<br>
+
+```{r}
+#| echo: false
+
+df_sum <- data.frame(
+  group = c("A", "A", "B", "B"),
+  score = c(50, 70, 65, 85)
+) |> 
+  group_by(group) |> 
+  summarize(mean_val = mean(score))
+
+# Create a DT datatable without search box and 'Show entries' dropdown
+DT::datatable(df_sum, rownames = FALSE,
+              options = list(
+  dom = 't', # This sets the DOM layout without the search box ('f') and 'Show entries' dropdown ('l')
+  paging = FALSE, # Disable pagination
+  columnDefs = list(list(
+    targets = "_all", # Applies to all columns
+    orderable = FALSE # Disables sorting
+  ))
+), callback = htmlwidgets::JS("
+  // Change header background and text color
+  $('thead th').css('background-color', '#1c4982');
+  $('thead th').css('color', 'white');
+
+  // Loop through each row and alternate background color
+  $('tbody tr').each(function(index) {
+    if (index % 2 == 0) {
+      $(this).css('background-color', '#d1dae6'); // Light color for even rows
+    } else {
+      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows
+    }
+  });
+
+  // Set text color for all rows
+  $('tbody tr').css('color', 'black');
+
+  // Add hover effect
+  $('tbody tr').hover(
+    function() {
+      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row
+    }, 
+    function() {
+      var index = $(this).index();
+      if (index % 2 == 0) {
+        $(this).css('background-color', '#d1dae6'); // Restore even row color
+      } else {
+        $(this).css('background-color', '#9fb2cb'); // Restore odd row color
+      }
+    }
+  );
+")
+)
+```
+:::
+
+::::
+
+
+## Grouped Summaries with `summarize()`
+### Removing Missing Values for Group Operations
+
+
+::: {.panel-tabset}
+## (1)
+- `na.rm` argument removes `NA` prior to computation when using summary functions.
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{.r}
+flights |> 
+  summarize(delay = mean(dep_delay,
+                         na.rm = TRUE))
+```
+:::
+
+::: {.column width="50%"}
+
+```{.r}
+by_day <- flights |> 
+  group_by(year, month, day)
+
+by_day |> 
+  summarize(delay = mean(dep_delay, 
+                         na.rm = TRUE))
+```
+:::
+
+::::
+
+
+
+## (2)
+
+- What happens if we don’t set `na.rm = T`?
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{.r}
+flights |> 
+  group_by(year, month, day) |> 
+  summarize(mean = mean(dep_delay))
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{.r}
+flights |> 
+  group_by(year, month, day) |> 
+  summarize(mean = 
+              mean(dep_delay,
+                   na.rm = TRUE))
+```
+
+:::
+
+- We have to provide `na.rm = T` to summary functions (e.g., `mean()`, `sum()`) if we need to avoid getting `NA` when using the summary functions, .
+
+
+
+::::
+
+:::
+
+## Grouped Summaries with `summarize()`
+### Count the number of observations with `n()`
+
+- The `n()` function counts the number of observations for *each group*:
+
+```{.r}
+df <- data.frame(
+  group = c("A", "B", "A", "B", "A"),
+  score = c(50, 65, 70, 85, NA) )
+
+df_sum <- df |> 
+  group_by(group) |> 
+  summarize(
+    mean_val = mean(score, na.rm = T),
+    n = n() )
+```
+
+<!-- - How can we count the number of observations with non-missing values? -->
+- When doing any group operation, it’s always a good idea to include either a count, or a count of non-missing values.
+
+
+
+
+
+## Grouped Summaries with `summarize()`
+### Example Exercises
+
+
+::: {.panel-tabset}
+## (1)
+- Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.
+
+
+- Describe the distribution of a plane's average arrival delay.
+  - How long is the longest average arrival delay?
+  
+  
+- Calculate the average arrival delay for each date.
+  - Given that the arrival delay is positive, calculate the average arrival delay for each date.
+  
+
+
+
+## (2)
+- Why is distance to some destinations more variable than to others?
+
+- When do the first and last flights leave each day?
+
+- Which destinations have the most carriers?
+
+- Which destination have the most number of flights?
+
+- Which destination have the most number of cancelled flights?
+
+
+
+
+
+## (3)
+- Which airplane flew the longest cumulative distance?
+
+- How can we calculate the height of bars in a histogram?
+
+- For each date, how many flights left before 5am? 
+
+- For each date, what proportion of flights are delayed by more than an hour?
+
+- For each airline, how many flights are cancelled?
+
+
+:::
+
+
+## Grouped Summaries with `summarize()`
+### Example 1
+
+**Q**. Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.
+
+
+::: {.panel-tabset}
+## Step 1
+- Make the data.frame we need:
+```{.r}
+by_dest <- flights |> 
+  group_by(dest) |> 
+  summarize( count = n(),
+    dist = mean(distance, na.rm = TRUE),
+    delay = mean(arr_delay, na.rm = TRUE) )
+```
+
+
+## Step 2
+- Make data visualization
+```{.r}
+ggplot(data = by_dest, 
+       mapping = aes(x = dist, y = delay)) +
+  geom_point(aes(size = count), alpha = 1/3) +
+  geom_smooth(se = FALSE)
+```
+
+
+## Step 3
+- Consider removing outliers.
+  - It is not uncommon to remove outliers to see an "average" or "typical" relationship.
+  
+```{.r}
+by_dest2 <- by_dest |> 
+  filter(count > 20, 
+         dest != "HNL")
+```
+
+
+## Step 4
+- Do data visualization again without outliers.
+  
+```{.r}
+ggplot(data = by_dest2, 
+       mapping = aes(x = dist, y = delay)) +
+  geom_point(aes(size = count), alpha = 1/3) +
+  geom_smooth(se = FALSE)
+```
+
+
+
+:::
+
+
+
+
+## Grouped Summaries with `summarize()`
+### Example 2
+
+
+::: {.panel-tabset}
+
+
+## (0)
+
+- Suppose missing values (`NA`) in `dep_delay` or `arr_delay` represent cancelled flights.
+
+  **Q**. Use `filter()` to create the data.frame `not_cancelled` that includes all observations in `flights` except for those with cancelled flights.
+
+```{.r}
+not_cancelled <- flights |> 
+  filter( !( is.na(dep_delay) | is.na(arr_delay) ) )
+```
+
+
+## (1)
+**Q**. Describe the distribution of a plane's average arrival delay.
+  - Airplanes are identified by their tail number (`tailnum`)
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{.r}
+delays <- not_cancelled |> 
+  group_by(tailnum) |> 
+  summarize(
+    delay = mean(arr_delay)
+  )
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{.r}
+ggplot(data = delays, 
+       mapping = aes(x = delay)) + 
+  geom_freqpoly(binwidth = 10)
+```
+
+:::
+
+::::
+
+## (2)
+**Q**. How long is the longest average arrival delay?
+```{.r}
+delays |> 
+  arrange(-delay)
+```
+
+
+
+:::
+
+
+
+## Grouped Summaries with `summarize()`
+### Example 3
+
+**Q**. Calculate the average arrival delay for each date.
+
+**Q**. Given that the arrival delay is positive, calculate the average arrival delay for each date.
+
+
+```{.r}
+not_cancelled |> 
+  group_by(year, month, day) |> 
+  summarize(avg_delay1 = mean(arr_delay),
+            avg_delay2 = mean(arr_delay[arr_delay > 0]) ) 
+```
+
+- `x[Logical condition regarding x]` lets us filter observations from variable `x` when calculating summary (e.g. `mean()`, `sum()`).
+
+
+## Grouped Summaries with `summarize()`
+### Example 4
+
+**Q**. Why is distance to some destinations more variable than to others?
+  - We can use `sd(x)` to measure how much variation a variable `x` has.
+
+```{.r}
+not_cancelled |> 
+  group_by(dest) |> 
+  summarize(distance_sd = sd(distance)) |> 
+  arrange(desc(distance_sd))
+```
+
+
+
+## Grouped Summaries with `summarize()`
+### Example 5
+
+
+**Q**. When do the first and last flights leave each day?
+
+::: {.panel-tabset}
+
+## `min()` and `max()`
+
+```{.r}
+not_cancelled |> 
+  group_by(year, month, day) |> 
+  summarize(first = min(dep_time), 
+            last = max(dep_time) )
+```
+
+
+
+## `first()` and `last()`
+- `first(x)` and `last(x)` returns the first and last element of `x`:
+  - `nth(x, 2)` returns the second element of `x`
+
+```{.r}
+not_cancelled |> 
+  group_by(year, month, day) |> 
+  summarize(first_dep = first(dep_time),
+            last_dep = last(dep_time) )
+```
+
+
+## `range()`
+- `range()` returns a vector containing the minimum and maximum of a variable:
+
+```{.r}
+not_cancelled |> 
+  group_by(year, month, day) |> 
+  mutate(r = min_rank(desc(dep_time))) |> 
+  filter(r %in% range(r) )
+```
+
+
+:::
+
+
+
+
+## Grouped Summaries with `summarize()`
+### Example 6 - Counts
+
+::: {.panel-tabset}
+
+## `n_distinct()`
+
+**Q**. Which destinations have the most carriers?
+
+  - We can use `n_distinct()` to count the number of unique/distinct values 
+
+```{.r}
+not_cancelled |> 
+  group_by(dest) |> 
+  summarise(n_carriers = n_distinct(carrier)) |> 
+  arrange(-n_carriers)
+```
+
+
+
+## `count()`
+**Q**. Which destination have the most number of flights?
+
+  - `count(x)` counts the number of observations for each value in variable `x`:
+  - `df |> count(x)` is equivalent to `df |> group_by(x) |> summarise(n = n())`
+
+
+```{.r}
+not_cancelled |> 
+  count(dest)
+```
+
+  <!-- - `sort = TRUE` will show the largest groups at the top. -->
+
+
+## `count(x, wt = ...)`
+
+**Q**. Which airplane flew the longest cumulative distance?
+
+  - We can use `count(x, wt = NUMERIC_VARIABLE)` to calculate the sum of values in `NUMERIC_VARIABLE` for each group of `x`:
+
+```{.r}
+not_cancelled |> 
+  count(tailnum, wt = distance)
+```
+
+
+
+
+## `count()` with `cut_width()`
+
+**Q**. How can we calculate the height of bars in a histogram?
+
+  - We can do so by combining `count()` and `cut_width()`:
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{.r}
+ggplot(diamonds) +
+  geom_histogram(aes(x = carat), 
+                 binwidth = 0.5)
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{.r}
+diamonds |> 
+  count(cut_width(carat, 0.5))
+```
+
+:::
+::::
+
+:::
+
+
+
+
+## Grouped Summaries with `summarize()`
+### `sum()` and `mean()` of logical values
+
+
+- Counts and proportions of logical values can be useful: 
+  - E.g., `sum(!is.na(x))`, `sum(y > 10)`, `mean(z == 0)`.
+
+::: {.panel-tabset}
+
+## Example]
+
+:::: {.columns}
+::: {.column width="25%"}
+```{r}
+#| echo: false
+
+df <- data.frame(
+  x = c("A", "A", "B", NA),
+  y = c(7, 8, 11, 12),
+  z = c(3, 2, 1, 0)
+)
+# Create a DT datatable without search box and 'Show entries' dropdown
+DT::datatable(df, rownames = FALSE,
+              options = list(
+  dom = 't', # This sets the DOM layout without the search box ('f') and 'Show entries' dropdown ('l')
+  paging = FALSE, # Disable pagination
+  columnDefs = list(list(
+    targets = "_all", # Applies to all columns
+    orderable = FALSE # Disables sorting
+  ))
+), callback = htmlwidgets::JS("
+  // Change header background and text color
+  $('thead th').css('background-color', '#1c4982');
+  $('thead th').css('color', 'white');
+
+  // Loop through each row and alternate background color
+  $('tbody tr').each(function(index) {
+    if (index % 2 == 0) {
+      $(this).css('background-color', '#d1dae6'); // Light color for even rows
+    } else {
+      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows
+    }
+  });
+
+  // Set text color for all rows
+  $('tbody tr').css('color', 'black');
+
+  // Add hover effect
+  $('tbody tr').hover(
+    function() {
+      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row
+    }, 
+    function() {
+      var index = $(this).index();
+      if (index % 2 == 0) {
+        $(this).css('background-color', '#d1dae6'); // Restore even row color
+      } else {
+        $(this).css('background-color', '#9fb2cb'); // Restore odd row color
+      }
+    }
+  );
+")
+)
+```
+
+:::
+
+::: {.column width="5%"}
+
+:::
+
+::: {.column width="70%"}
+```{r}
+#| echo: false
+
+df_sum <- df |> 
+  summarise(`sum(!is.na(x))` = sum(!is.na(x)),
+            `sum(y > 10)` = sum(y > 10),
+            `mean(z == 0)` = mean(z == 0))
+
+# Create a DT datatable without search box and 'Show entries' dropdown
+DT::datatable(df_sum, rownames = FALSE,
+              options = list(
+  dom = 't', # This sets the DOM layout without the search box ('f') and 'Show entries' dropdown ('l')
+  paging = FALSE, # Disable pagination
+  columnDefs = list(list(
+    targets = "_all", # Applies to all columns
+    orderable = FALSE # Disables sorting
+  ))
+), callback = htmlwidgets::JS("
+  // Change header background and text color
+  $('thead th').css('background-color', '#1c4982');
+  $('thead th').css('color', 'white');
+
+  // Loop through each row and alternate background color
+  $('tbody tr').each(function(index) {
+    if (index % 2 == 0) {
+      $(this).css('background-color', '#d1dae6'); // Light color for even rows
+    } else {
+      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows
+    }
+  });
+
+  // Set text color for all rows
+  $('tbody tr').css('color', 'black');
+
+  // Add hover effect
+  $('tbody tr').hover(
+    function() {
+      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row
+    }, 
+    function() {
+      var index = $(this).index();
+      if (index % 2 == 0) {
+        $(this).css('background-color', '#d1dae6'); // Restore even row color
+      } else {
+        $(this).css('background-color', '#9fb2cb'); // Restore odd row color
+      }
+    }
+  );
+")
+)
+
+```
+
+- `TRUE` is 1 and `FALSE` is 0.
+:::
+
+::::
+
+
+## Q1
+**Q**. For each date, how many flights left before 5am? 
+
+
+## Q2
+**Q**. For each date, what proportion of flights are delayed by more than an hour?
+
+
+## Q3
+**Q**. For each airline, how many flights are cancelled?
+
+
+
+:::
+
+
+## Grouped Summaries with `summarize()`
+### Grouping by Multiple Variables
+
+
+- When we group by multiple variables, each summary peels off one level of the grouping.
+
+```{.r}
+daily <- flights |> 
+  group_by(year, month, day)
+
+per_day <- daily |> 
+  summarize(flights = n())
+
+per_month <- per_day |> 
+  summarize(flights = sum(flights))
+
+per_year  <- per_month |> 
+  summarize(flights = sum(flights))
+```
+
+
+
+## Grouped Summaries with `summarize()`
+### Ungrouping
+
+
+- If we need to remove grouping, and return to operations on ungrouped data, we can use `ungroup()`.
+
+
+```{.r}
+daily <- flights |> 
+  group(year, month, day)
+
+daily |> 
+  ungroup() |>             # no longer grouped by date
+  summarize(flights = n())  # all flights
+```
+
+
+
+# Grouped `mutate()` and `filter()` {background-color="#1c4982"}
+  
+
+## Grouped `mutate()` and `filter()`
+
+- Grouping is most useful in conjunction with `summarize()`, but we can also do convenient operations with `mutate()` and `filter()`.
+
+::: {.panel-tabset}
+## Example 1
+
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| echo: false
+
+df <- data.frame(
+  grade = c("A", "A", "B", "B", "C"),
+  score = c(100, 96, 85, 83, 76)
+)
+
+# Create a DT datatable without search box and 'Show entries' dropdown
+DT::datatable(df, rownames = FALSE,
+              options = list(
+  dom = 't', # This sets the DOM layout without the search box ('f') and 'Show entries' dropdown ('l')
+  paging = FALSE, # Disable pagination
+  columnDefs = list(list(
+    targets = "_all", # Applies to all columns
+    orderable = FALSE # Disables sorting
+  ))
+), callback = htmlwidgets::JS("
+  // Change header background and text color
+  $('thead th').css('background-color', '#1c4982');
+  $('thead th').css('color', 'white');
+
+  // Loop through each row and alternate background color
+  $('tbody tr').each(function(index) {
+    if (index % 2 == 0) {
+      $(this).css('background-color', '#d1dae6'); // Light color for even rows
+    } else {
+      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows
+    }
+  });
+
+  // Set text color for all rows
+  $('tbody tr').css('color', 'black');
+
+  // Add hover effect
+  $('tbody tr').hover(
+    function() {
+      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row
+    }, 
+    function() {
+      var index = $(this).index();
+      if (index % 2 == 0) {
+        $(this).css('background-color', '#d1dae6'); // Restore even row color
+      } else {
+        $(this).css('background-color', '#9fb2cb'); // Restore odd row color
+      }
+    }
+  );
+")
+)
+
+```
+:::
+
+::: {.column width="50%"}
+```{.r}
+df_filter <- df |> 
+  group_by(grade) |> 
+  filter( n() < 2)
+```
+
+```{r}
+#| echo: false
+
+df_filter <- df |> 
+  group_by(grade) |> 
+  filter( n() < 2)
+
+# Create a DT datatable without search box and 'Show entries' dropdown
+DT::datatable(df_filter, rownames = FALSE,
+              options = list(
+  dom = 't', # This sets the DOM layout without the search box ('f') and 'Show entries' dropdown ('l')
+  paging = FALSE, # Disable pagination
+  columnDefs = list(list(
+    targets = "_all", # Applies to all columns
+    orderable = FALSE # Disables sorting
+  ))
+), callback = htmlwidgets::JS("
+  // Change header background and text color
+  $('thead th').css('background-color', '#1c4982');
+  $('thead th').css('color', 'white');
+
+  // Loop through each row and alternate background color
+  $('tbody tr').each(function(index) {
+    if (index % 2 == 0) {
+      $(this).css('background-color', '#d1dae6'); // Light color for even rows
+    } else {
+      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows
+    }
+  });
+
+  // Set text color for all rows
+  $('tbody tr').css('color', 'black');
+
+  // Add hover effect
+  $('tbody tr').hover(
+    function() {
+      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row
+    }, 
+    function() {
+      var index = $(this).index();
+      if (index % 2 == 0) {
+        $(this).css('background-color', '#d1dae6'); // Restore even row color
+      } else {
+        $(this).css('background-color', '#9fb2cb'); // Restore odd row color
+      }
+    }
+  );
+")
+)
+```
+
+:::
+
+::::
+
+
+
+## Example 2
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{.r}
+df_mutate <- df |> 
+  group_by(grade) |> 
+  mutate(mean = mean(score))
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+
+df_mutate <- df |> 
+  group_by(grade) |> 
+  mutate(mean = mean(score))
+
+
+# Create a DT datatable without search box and 'Show entries' dropdown
+DT::datatable(df_mutate, rownames = FALSE,
+              options = list(
+  dom = 't', # This sets the DOM layout without the search box ('f') and 'Show entries' dropdown ('l')
+  paging = FALSE, # Disable pagination
+  columnDefs = list(list(
+    targets = "_all", # Applies to all columns
+    orderable = FALSE # Disables sorting
+  ))
+), callback = htmlwidgets::JS("
+  // Change header background and text color
+  $('thead th').css('background-color', '#1c4982');
+  $('thead th').css('color', 'white');
+
+  // Loop through each row and alternate background color
+  $('tbody tr').each(function(index) {
+    if (index % 2 == 0) {
+      $(this).css('background-color', '#d1dae6'); // Light color for even rows
+    } else {
+      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows
+    }
+  });
+
+  // Set text color for all rows
+  $('tbody tr').css('color', 'black');
+
+  // Add hover effect
+  $('tbody tr').hover(
+    function() {
+      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row
+    }, 
+    function() {
+      var index = $(this).index();
+      if (index % 2 == 0) {
+        $(this).css('background-color', '#d1dae6'); // Restore even row color
+      } else {
+        $(this).css('background-color', '#9fb2cb'); // Restore odd row color
+      }
+    }
+  );
+")
+)
+```
+
+:::
+
+::::
+
+
+## worst
+- Find the worst members of each group:
+  - E.g., For each date, find the 10 worst flights in terms of `arr_delay`.
+
+
+
+
+## threshold
+- Find all groups bigger than a threshold:
+  - E.g., Find the destination airport that had flights from NYC more than 17250 times in 2013.
+
+
+
+## per group metrics
+- We can compute per group metrics:
+  - E.g., For destination, calculate the rankings of flights that departed on January 1 in terms of `arr_delay`
+
+
+
+:::
+
+
