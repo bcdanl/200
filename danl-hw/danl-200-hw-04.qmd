@@ -23,7 +23,7 @@ library(skimr)
 
 # Direction
 
-- Download the [Homework 4](https://bcdanl.github.io/200/danl-hw/danl-200-hw-04.html) Quarto document, `danl-200-hw-04-q.qmd`, by clicking [this link](https://drive.google.com/file/d/1NT5nKWEjwi536RYxIkoZrdUVfDzllA54/view?usp=share_link).
+- Download the Homework 4 Quarto document, `danl-200-hw-04-q.qmd`, by clicking [this link](https://drive.google.com/file/d/1NT5nKWEjwi536RYxIkoZrdUVfDzllA54/view?usp=share_link).
 
 - Provide both your answer to each sub question in **Question 1 of Homework 4** in the `danl-200-hw-04-q.qmd`.
 
