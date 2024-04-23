@@ -228,7 +228,7 @@
     "href": "index.html#bullet-classwork",
     "title": "DANL 200-02: Introduction to Data Analytics, Spring 2024",
     "section": "\\(\\bullet\\,\\) Classwork ⌨️",
-    "text": "\\(\\bullet\\,\\) Classwork ⌨️\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nClasswork 10\n\n\nApril 16, 2024\n\n\n\n\nClasswork 9\n\n\nApril 4, 2024\n\n\n\n\nClasswork 8\n\n\nMarch 26, 2024\n\n\n\n\nClasswork 7\n\n\nMarch 19, 2024\n\n\n\n\nClasswork 6\n\n\nFebruary 13, 2024\n\n\n\n\nClasswork 5\n\n\nFebruary 8, 2024\n\n\n\n\nClasswork 4\n\n\nFebruary 6, 2024\n\n\n\n\nClasswork 3\n\n\nFebruary 1, 2024\n\n\n\n\nClasswork 2\n\n\nJanuary 30, 2024\n\n\n\n\nClasswork 1\n\n\nJanuary 25, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Classwork ⌨️\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nClasswork 11\n\n\nApril 23, 2024\n\n\n\n\nClasswork 10\n\n\nApril 16, 2024\n\n\n\n\nClasswork 9\n\n\nApril 4, 2024\n\n\n\n\nClasswork 8\n\n\nMarch 26, 2024\n\n\n\n\nClasswork 7\n\n\nMarch 19, 2024\n\n\n\n\nClasswork 6\n\n\nFebruary 13, 2024\n\n\n\n\nClasswork 5\n\n\nFebruary 8, 2024\n\n\n\n\nClasswork 4\n\n\nFebruary 6, 2024\n\n\n\n\nClasswork 3\n\n\nFebruary 1, 2024\n\n\n\n\nClasswork 2\n\n\nJanuary 30, 2024\n\n\n\n\nClasswork 1\n\n\nJanuary 25, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-homework",
@@ -4645,7 +4645,7 @@
     "href": "listing-danl-200-cw.html",
     "title": "DANL 200 - Classwork",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 1\n\n\nComputer Basics\n\n\nJanuary 25, 2024\n\n\n\n\nClasswork 2\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio with Quarto\n\n\nJanuary 30, 2024\n\n\n\n\nClasswork 3\n\n\nMarkdown Basics\n\n\nFebruary 1, 2024\n\n\n\n\nClasswork 4\n\n\nQuarto Website Basics\n\n\nFebruary 6, 2024\n\n\n\n\nClasswork 5\n\n\nR Basics\n\n\nFebruary 8, 2024\n\n\n\n\nClasswork 6\n\n\nggplot - First Steps; Aethetic Mappings; Facets\n\n\nFebruary 13, 2024\n\n\n\n\nClasswork 7\n\n\nggplot - Geometric Objects; Statistical Transformation; and Position Adjustment\n\n\nMarch 19, 2024\n\n\n\n\nClasswork 8\n\n\nFall 2023 DANL 200 Midterm Exam 1\n\n\nMarch 26, 2024\n\n\n\n\nClasswork 9\n\n\nFiltering observations\n\n\nApril 4, 2024\n\n\n\n\nClasswork 10\n\n\nWorking on variables with select(), rename(), and relocate(); Adding a new variable with mutate()\n\n\nApril 16, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 1\n\n\nComputer Basics\n\n\nJanuary 25, 2024\n\n\n\n\nClasswork 2\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio with Quarto\n\n\nJanuary 30, 2024\n\n\n\n\nClasswork 3\n\n\nMarkdown Basics\n\n\nFebruary 1, 2024\n\n\n\n\nClasswork 4\n\n\nQuarto Website Basics\n\n\nFebruary 6, 2024\n\n\n\n\nClasswork 5\n\n\nR Basics\n\n\nFebruary 8, 2024\n\n\n\n\nClasswork 6\n\n\nggplot - First Steps; Aethetic Mappings; Facets\n\n\nFebruary 13, 2024\n\n\n\n\nClasswork 7\n\n\nggplot - Geometric Objects; Statistical Transformation; and Position Adjustment\n\n\nMarch 19, 2024\n\n\n\n\nClasswork 8\n\n\nFall 2023 DANL 200 Midterm Exam 1\n\n\nMarch 26, 2024\n\n\n\n\nClasswork 9\n\n\nFiltering observations\n\n\nApril 4, 2024\n\n\n\n\nClasswork 10\n\n\nWorking on variables with select(), rename(), and relocate(); Adding a new variable with mutate()\n\n\nApril 16, 2024\n\n\n\n\nClasswork 11\n\n\nSummarize data.frame with summarize()\n\n\nApril 23, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-hw/danl-200-hw-01.html",
@@ -5835,70 +5835,70 @@
     "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-5",
     "title": "Lecture 20",
     "section": "Grouped Summaries with summarize()",
-    "text": "Grouped Summaries with summarize()\nExample Exercises\n\n(1)(2)(3)\n\n\n\nDescribe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.\nDescribe the distribution of a plane’s average arrival delay.\n\nHow long is the longest average arrival delay?\n\nCalculate the average arrival delay for each date.\n\nGiven that the arrival delay is positive, calculate the average arrival delay for each date.\n\n\n\n\n\nWhy is distance to some destinations more variable than to others?\nWhen do the first and last flights leave each day?\nWhich destinations have the most carriers?\nWhich destination have the most number of flights?\nWhich destination have the most number of cancelled flights?\n\n\n\n\nWhich airplane flew the longest cumulative distance?\nHow can we calculate the height of bars in a histogram?\nFor each date, how many flights left before 5am?\nFor each date, what proportion of flights are delayed by more than an hour?\nFor each airline, how many flights are cancelled?"
+    "text": "Grouped Summaries with summarize()\nLet’s do Classwork 11!"
   },
   {
     "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-6",
     "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-6",
     "title": "Lecture 20",
     "section": "Grouped Summaries with summarize()",
-    "text": "Grouped Summaries with summarize()\nExample 1\nQ. Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.\n\nStep 1Step 2Step 3Step 4\n\n\n\nMake the data.frame we need:\n\nby_dest &lt;- flights |&gt; \n  group_by(dest) |&gt; \n  summarize( count = n(),\n    dist = mean(distance, na.rm = TRUE),\n    delay = mean(arr_delay, na.rm = TRUE) )\n\n\n\nMake data visualization\n\nggplot(data = by_dest, \n       mapping = aes(x = dist, y = delay)) +\n  geom_point(aes(size = count), alpha = 1/3) +\n  geom_smooth(se = FALSE)\n\n\n\nConsider removing outliers.\n\nIt is not uncommon to remove outliers to see an “average” or “typical” relationship.\n\n\nby_dest2 &lt;- by_dest |&gt; \n  filter(count &gt; 20, \n         dest != \"HNL\")\n\n\n\nDo data visualization again without outliers.\n\nggplot(data = by_dest2, \n       mapping = aes(x = dist, y = delay)) +\n  geom_point(aes(size = count), alpha = 1/3) +\n  geom_smooth(se = FALSE)"
+    "text": "Grouped Summaries with summarize()\nExample Exercises\n\n(1)(2)(3)\n\n\n\nDescribe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.\nDescribe the distribution of a plane’s average arrival delay.\n\nHow long is the longest average arrival delay?\n\nCalculate the average arrival delay for each date.\n\nGiven that the arrival delay is positive, calculate the average arrival delay for each date.\n\n\n\n\n\nWhy is distance to some destinations more variable than to others?\nWhen do the first and last flights leave each day?\nWhich destinations have the most carriers?\nWhich destination have the most number of flights?\nWhich destination have the most number of cancelled flights?\n\n\n\n\nWhich airplane flew the longest cumulative distance?\nHow can we calculate the height of bars in a histogram?\nFor each date, how many flights left before 5am?\nFor each date, what proportion of flights are delayed by more than an hour?\nFor each airline, how many flights are cancelled?"
   },
   {
     "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-7",
     "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-7",
     "title": "Lecture 20",
     "section": "Grouped Summaries with summarize()",
-    "text": "Grouped Summaries with summarize()\nExample 2\n\n(0)(1)(2)\n\n\n\nSuppose missing values (NA) in dep_delay or arr_delay represent cancelled flights.\nQ. Use filter() to create the data.frame not_cancelled that includes all observations in flights except for those with cancelled flights.\n\nnot_cancelled &lt;- flights |&gt; \n  filter( !( is.na(dep_delay) | is.na(arr_delay) ) )\n\n\nQ. Describe the distribution of a plane’s average arrival delay. - Airplanes are identified by their tail number (tailnum)\n\n\ndelays &lt;- not_cancelled |&gt; \n  group_by(tailnum) |&gt; \n  summarize(\n    delay = mean(arr_delay)\n  )\n\nggplot(data = delays, \n       mapping = aes(x = delay)) + \n  geom_freqpoly(binwidth = 10)\n\n\n\n\nQ. How long is the longest average arrival delay?\ndelays |&gt; \n  arrange(-delay)"
+    "text": "Grouped Summaries with summarize()\nExample 1\nQ. Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.\n\nStep 1Step 2Step 3Step 4\n\n\n\nMake the data.frame we need:\n\nby_dest &lt;- flights |&gt; \n  group_by(dest) |&gt; \n  summarize( count = n(),\n    dist = mean(distance, na.rm = TRUE),\n    delay = mean(arr_delay, na.rm = TRUE) )\n\n\n\nMake data visualization\n\nggplot(data = by_dest, \n       mapping = aes(x = dist, y = delay)) +\n  geom_point(aes(size = count), alpha = 1/3) +\n  geom_smooth(se = FALSE)\n\n\n\nConsider removing outliers.\n\nIt is not uncommon to remove outliers to see an “average” or “typical” relationship.\n\n\nby_dest2 &lt;- by_dest |&gt; \n  filter(count &gt; 20, \n         dest != \"HNL\")\n\n\n\nDo data visualization again without outliers.\n\nggplot(data = by_dest2, \n       mapping = aes(x = dist, y = delay)) +\n  geom_point(aes(size = count), alpha = 1/3) +\n  geom_smooth(se = FALSE)"
   },
   {
     "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-8",
     "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-8",
     "title": "Lecture 20",
     "section": "Grouped Summaries with summarize()",
-    "text": "Grouped Summaries with summarize()\nExample 3\nQ. Calculate the average arrival delay for each date.\nQ. Given that the arrival delay is positive, calculate the average arrival delay for each date.\nnot_cancelled |&gt; \n  group_by(year, month, day) |&gt; \n  summarize(avg_delay1 = mean(arr_delay),\n            avg_delay2 = mean(arr_delay[arr_delay &gt; 0]) ) \n\nx[Logical condition regarding x] lets us filter observations from variable x when calculating summary (e.g. mean(), sum())."
+    "text": "Grouped Summaries with summarize()\nExample 2\n\n(0)(1)(2)\n\n\n\nSuppose missing values (NA) in dep_delay or arr_delay represent cancelled flights.\nQ. Use filter() to create the data.frame not_cancelled that includes all observations in flights except for those with cancelled flights.\n\nnot_cancelled &lt;- flights |&gt; \n  filter( !( is.na(dep_delay) | is.na(arr_delay) ) )\n\n\nQ. Describe the distribution of a plane’s average arrival delay. - Airplanes are identified by their tail number (tailnum)\n\n\ndelays &lt;- not_cancelled |&gt; \n  group_by(tailnum) |&gt; \n  summarize(\n    delay = mean(arr_delay)\n  )\n\nggplot(data = delays, \n       mapping = aes(x = delay)) + \n  geom_freqpoly(binwidth = 10)\n\n\n\n\nQ. How long is the longest average arrival delay?\ndelays |&gt; \n  arrange(-delay)"
   },
   {
     "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-9",
     "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-9",
     "title": "Lecture 20",
     "section": "Grouped Summaries with summarize()",
-    "text": "Grouped Summaries with summarize()\nExample 4\nQ. Why is distance to some destinations more variable than to others? - We can use sd(x) to measure how much variation a variable x has.\nnot_cancelled |&gt; \n  group_by(dest) |&gt; \n  summarize(distance_sd = sd(distance)) |&gt; \n  arrange(desc(distance_sd))"
+    "text": "Grouped Summaries with summarize()\nExample 3\nQ. Calculate the average arrival delay for each date.\nQ. Given that the arrival delay is positive, calculate the average arrival delay for each date.\nnot_cancelled |&gt; \n  group_by(year, month, day) |&gt; \n  summarize(avg_delay1 = mean(arr_delay),\n            avg_delay2 = mean(arr_delay[arr_delay &gt; 0]) ) \n\nx[Logical condition regarding x] lets us filter observations from variable x when calculating summary (e.g. mean(), sum())."
   },
   {
     "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-10",
     "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-10",
     "title": "Lecture 20",
     "section": "Grouped Summaries with summarize()",
-    "text": "Grouped Summaries with summarize()\nExample 5\nQ. When do the first and last flights leave each day?\n\nmin() and max()first() and last()range()\n\n\nnot_cancelled |&gt; \n  group_by(year, month, day) |&gt; \n  summarize(first = min(dep_time), \n            last = max(dep_time) )\n\n\n\nfirst(x) and last(x) returns the first and last element of x:\n\nnth(x, 2) returns the second element of x\n\n\nnot_cancelled |&gt; \n  group_by(year, month, day) |&gt; \n  summarize(first_dep = first(dep_time),\n            last_dep = last(dep_time) )\n\n\n\nrange() returns a vector containing the minimum and maximum of a variable:\n\nnot_cancelled |&gt; \n  group_by(year, month, day) |&gt; \n  mutate(r = min_rank(desc(dep_time))) |&gt; \n  filter(r %in% range(r) )"
+    "text": "Grouped Summaries with summarize()\nExample 4\nQ. Why is distance to some destinations more variable than to others? - We can use sd(x) to measure how much variation a variable x has.\nnot_cancelled |&gt; \n  group_by(dest) |&gt; \n  summarize(distance_sd = sd(distance)) |&gt; \n  arrange(desc(distance_sd))"
   },
   {
     "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-11",
     "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-11",
     "title": "Lecture 20",
     "section": "Grouped Summaries with summarize()",
-    "text": "Grouped Summaries with summarize()\nExample 6 - Counts\n\nn_distinct()count()count(x, wt = ...)count() with cut_width()\n\n\nQ. Which destinations have the most carriers?\n\nWe can use n_distinct() to count the number of unique/distinct values\n\nnot_cancelled |&gt; \n  group_by(dest) |&gt; \n  summarise(n_carriers = n_distinct(carrier)) |&gt; \n  arrange(-n_carriers)\n\n\nQ. Which destination have the most number of flights?\n\ncount(x) counts the number of observations for each value in variable x:\ndf |&gt; count(x) is equivalent to df |&gt; group_by(x) |&gt; summarise(n = n())\n\nnot_cancelled |&gt; \n  count(dest)\n\n\n\nQ. Which airplane flew the longest cumulative distance?\n\nWe can use count(x, wt = NUMERIC_VARIABLE) to calculate the sum of values in NUMERIC_VARIABLE for each group of x:\n\nnot_cancelled |&gt; \n  count(tailnum, wt = distance)\n\n\nQ. How can we calculate the height of bars in a histogram?\n\nWe can do so by combining count() and cut_width():\n\n\n\nggplot(diamonds) +\n  geom_histogram(aes(x = carat), \n                 binwidth = 0.5)\n\ndiamonds |&gt; \n  count(cut_width(carat, 0.5))"
+    "text": "Grouped Summaries with summarize()\nExample 5\nQ. When do the first and last flights leave each day?\n\nmin() and max()first() and last()range()\n\n\nnot_cancelled |&gt; \n  group_by(year, month, day) |&gt; \n  summarize(first = min(dep_time), \n            last = max(dep_time) )\n\n\n\nfirst(x) and last(x) returns the first and last element of x:\n\nnth(x, 2) returns the second element of x\n\n\nnot_cancelled |&gt; \n  group_by(year, month, day) |&gt; \n  summarize(first_dep = first(dep_time),\n            last_dep = last(dep_time) )\n\n\n\nrange() returns a vector containing the minimum and maximum of a variable:\n\nnot_cancelled |&gt; \n  group_by(year, month, day) |&gt; \n  mutate(r = min_rank(desc(dep_time))) |&gt; \n  filter(r %in% range(r) )"
   },
   {
     "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-12",
     "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-12",
     "title": "Lecture 20",
     "section": "Grouped Summaries with summarize()",
-    "text": "Grouped Summaries with summarize()\nsum() and mean() of logical values\n\nCounts and proportions of logical values can be useful:\n\nE.g., sum(!is.na(x)), sum(y &gt; 10), mean(z == 0).\n\n\n\nExample]Q1Q2Q3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTRUE is 1 and FALSE is 0.\n\n\n\n\n\nQ. For each date, how many flights left before 5am?\n\n\nQ. For each date, what proportion of flights are delayed by more than an hour?\n\n\nQ. For each airline, how many flights are cancelled?"
+    "text": "Grouped Summaries with summarize()\nExample 6 - Counts\n\nn_distinct()count()count(x, wt = ...)count() with cut_width()\n\n\nQ. Which destinations have the most carriers?\n\nWe can use n_distinct() to count the number of unique/distinct values\n\nnot_cancelled |&gt; \n  group_by(dest) |&gt; \n  summarise(n_carriers = n_distinct(carrier)) |&gt; \n  arrange(-n_carriers)\n\n\nQ. Which destination have the most number of flights?\n\ncount(x) counts the number of observations for each value in variable x:\ndf |&gt; count(x) is equivalent to df |&gt; group_by(x) |&gt; summarise(n = n())\n\nnot_cancelled |&gt; \n  count(dest)\n\n\n\nQ. Which airplane flew the longest cumulative distance?\n\nWe can use count(x, wt = NUMERIC_VARIABLE) to calculate the sum of values in NUMERIC_VARIABLE for each group of x:\n\nnot_cancelled |&gt; \n  count(tailnum, wt = distance)\n\n\nQ. How can we calculate the height of bars in a histogram?\n\nWe can do so by combining count() and cut_width():\n\n\n\nggplot(diamonds) +\n  geom_histogram(aes(x = carat), \n                 binwidth = 0.5)\n\ndiamonds |&gt; \n  count(cut_width(carat, 0.5))"
   },
   {
     "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-13",
     "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-13",
     "title": "Lecture 20",
     "section": "Grouped Summaries with summarize()",
-    "text": "Grouped Summaries with summarize()\nGrouping by Multiple Variables\n\nWhen we group by multiple variables, each summary peels off one level of the grouping.\n\ndaily &lt;- flights |&gt; \n  group_by(year, month, day)\n\nper_day &lt;- daily |&gt; \n  summarize(flights = n())\n\nper_month &lt;- per_day |&gt; \n  summarize(flights = sum(flights))\n\nper_year  &lt;- per_month |&gt; \n  summarize(flights = sum(flights))"
+    "text": "Grouped Summaries with summarize()\nsum() and mean() of logical values\n\nCounts and proportions of logical values can be useful:\n\nE.g., sum(!is.na(x)), sum(y &gt; 10), mean(z == 0).\n\n\n\nExampleQ1Q2Q3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTRUE is 1 and FALSE is 0.\n\n\n\n\n\nQ. For each date, how many flights left before 5am?\n\n\nQ. For each date, what proportion of flights are delayed by more than an hour?\n\n\nQ. For each airline, how many flights are cancelled?"
   },
   {
     "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-14",
     "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-14",
     "title": "Lecture 20",
     "section": "Grouped Summaries with summarize()",
-    "text": "Grouped Summaries with summarize()\nUngrouping\n\nIf we need to remove grouping, and return to operations on ungrouped data, we can use ungroup().\n\ndaily &lt;- flights |&gt; \n  group(year, month, day)\n\ndaily |&gt; \n  ungroup() |&gt;             # no longer grouped by date\n  summarize(flights = n())  # all flights"
+    "text": "Grouped Summaries with summarize()\nGrouping by Multiple Variables\n\nWhen we group by multiple variables, each summary peels off one level of the grouping.\n\ndaily &lt;- flights |&gt; \n  group_by(year, month, day)\n\nper_day &lt;- daily |&gt; \n  summarize(flights = n())\n\nper_month &lt;- per_day |&gt; \n  summarize(flights = sum(flights))\n\nper_year  &lt;- per_month |&gt; \n  summarize(flights = sum(flights))"
   },
   {
     "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-mutate-and-filter-1",
@@ -5927,5 +5927,75 @@
     "title": "Homework 4",
     "section": "",
     "text": "Create a blog post featuring data analysis on the health_cust data.frame and publish it on your GitHub website using your Quarto document for Homework 2.\n\nIf you have not completed on Homework 2, please take this opportunity to do so.\n\n\n\nhealth_cust &lt;- read_csv(\n  'https://bcdanl.github.io/data/custdata_rev.csv'\n)"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-11.html",
+    "href": "danl-cw/danl-200-cw-11.html",
+    "title": "Classwork 11",
+    "section": "",
+    "text": "For Question 1, run the following R command to read the nyc_dogs_cleaned.csv file.\n\n\nnyc_dogs &lt;- read_csv('https://bcdanl.github.io/data/nyc_dogs_cleaned.csv')\n\n\n\n\n  \n\n\n\n\n\n\nFind the five most popular breeds.\n\nAnswer:\n\n\n\n\n\nProvide both (1) ggplot code and (2) a simple comment to describe the relationship between the five popular breeds and borough.\n\nAnswer:\n\n\n\n\n\nFind the five most popular breeds in each borough.\n\nAnswer:\n\n\n\n\n\nFind the five most popular dog names for each gender.\n\nAnswer:\n\n\n\n\n\nFind the five most popular dog names for each gender in each borough.\n\nAnswer:\n\n\n\n\n\nAssume that all dogs in the nyc_dogs data frame are alive as of today.\n\nProvide both (1) ggplot code and (2) a simple comment to describe the distribution of age for each borough.\n\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-11.html#q1a",
+    "href": "danl-cw/danl-200-cw-11.html#q1a",
+    "title": "Classwork 11",
+    "section": "",
+    "text": "Find the five most popular breeds.\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-11.html#q1b",
+    "href": "danl-cw/danl-200-cw-11.html#q1b",
+    "title": "Classwork 11",
+    "section": "",
+    "text": "Provide both (1) ggplot code and (2) a simple comment to describe the relationship between the five popular breeds and borough.\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-11.html#q1c",
+    "href": "danl-cw/danl-200-cw-11.html#q1c",
+    "title": "Classwork 11",
+    "section": "",
+    "text": "Find the five most popular breeds in each borough.\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-11.html#q1d",
+    "href": "danl-cw/danl-200-cw-11.html#q1d",
+    "title": "Classwork 11",
+    "section": "",
+    "text": "Find the five most popular dog names for each gender.\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-11.html#q1e",
+    "href": "danl-cw/danl-200-cw-11.html#q1e",
+    "title": "Classwork 11",
+    "section": "",
+    "text": "Find the five most popular dog names for each gender in each borough.\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-11.html#q1f",
+    "href": "danl-cw/danl-200-cw-11.html#q1f",
+    "title": "Classwork 11",
+    "section": "",
+    "text": "Assume that all dogs in the nyc_dogs data frame are alive as of today.\n\nProvide both (1) ggplot code and (2) a simple comment to describe the distribution of age for each borough.\n\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-20-2024-0423.html",
+    "href": "danl-lec/danl-200-lec-20-2024-0423.html",
+    "title": "Lecture 20",
+    "section": "",
+    "text": "data.frame |&gt; filter(LOGICAL_CONDITIONS)\ndata.frame |&gt; arrange(VARIABLES)\ndata.frame |&gt; distinct(VARIABLES)\ndata.frame |&gt; select(VARIABLES)\ndata.frame |&gt; rename(NEW_VARIABLE = EXISTING_VARIABLE)\ndata.frame |&gt; mutate(NEW_VARIABLE = ... )\ndata.frame |&gt; relocate(VARIABLES)\ndata.frame |&gt; group_by(VARIABLES)\ndata.frame |&gt; summarize(NEW_VARIABLE = ...)\n\nThe result is a data.frame."
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-15",
+    "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-15",
+    "title": "Lecture 20",
+    "section": "Grouped Summaries with summarize()",
+    "text": "Grouped Summaries with summarize()\nUngrouping\n\nIf we need to remove grouping, and return to operations on ungrouped data, we can use ungroup().\n\ndaily &lt;- flights |&gt; \n  group(year, month, day)\n\ndaily |&gt; \n  ungroup() |&gt;             # no longer grouped by date\n  summarize(flights = n())  # all flights"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-16",
+    "href": "danl-lec/danl-200-lec-20-2024-0423.html#grouped-summaries-with-summarize-16",
+    "title": "Lecture 20",
+    "section": "Grouped Summaries with summarize()",
+    "text": "Grouped Summaries with summarize()\nLet’s do Classwork 12!"
   }
 ]

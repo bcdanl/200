@@ -480,6 +480,12 @@ df_sum <- df |>
 
 
 
+## Grouped Summaries with `summarize()`
+
+
+Let's do [Classwork 11](https://bcdanl.github.io/200/danl-cw/danl-200-cw-11.html)!
+
+
 
 
 ## Grouped Summaries with `summarize()`
@@ -608,7 +614,7 @@ not_cancelled <- flights |>
 
 ## (1)
 **Q**. Describe the distribution of a plane's average arrival delay.
-  - Airplanes are identified by their tail number (`tailnum`)
+- Airplanes are identified by their tail number (`tailnum`)
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -670,7 +676,7 @@ not_cancelled |>
 ### Example 4
 
 **Q**. Why is distance to some destinations more variable than to others?
-  - We can use `sd(x)` to measure how much variation a variable `x` has.
+- We can use `sd(x)` to measure how much variation a variable `x` has.
 
 ```{.r}
 not_cancelled |> 
@@ -818,7 +824,7 @@ diamonds |>
 
 ::: {.panel-tabset}
 
-## Example]
+## Example
 
 :::: {.columns}
 ::: {.column width="25%"}
@@ -1219,5 +1225,12 @@ DT::datatable(df_mutate, rownames = FALSE,
 
 
 :::
+
+
+
+## Grouped Summaries with `summarize()`
+
+
+Let's do [Classwork 12](https://bcdanl.github.io/200/danl-cw/danl-200-cw-12.html)!
 
 
