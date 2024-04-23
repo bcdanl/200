@@ -2223,7 +2223,7 @@
     "href": "listing-danl-200-class.html",
     "title": "DANL 200 - Class Notes",
     "section": "",
-    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\nLecture 13 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 19, 2024\n\n\n\n\nLecture 14 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 21, 2024\n\n\n\n\nLecture 15 - Note\n\n\nBar Charts\n\n\nMarch 26, 2024\n\n\n\n\nLecture 16 - Note\n\n\nMidterm Exam Review; Filtering Observations\n\n\nApril 2, 2024\n\n\n\n\nLecture 17 - Note\n\n\nFiltering Observations; Arrange Observations\n\n\nApril 4, 2024\n\n\n\n\nLecture 18 - Note\n\n\nFiltering Observations; and more\n\n\nApril 9, 2024\n\n\n\n\nLecture 19 - Note\n\n\nmutate()\n\n\nApril 18, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\nLecture 13 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 19, 2024\n\n\n\n\nLecture 14 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 21, 2024\n\n\n\n\nLecture 15 - Note\n\n\nBar Charts\n\n\nMarch 26, 2024\n\n\n\n\nLecture 16 - Note\n\n\nMidterm Exam Review; Filtering Observations\n\n\nApril 2, 2024\n\n\n\n\nLecture 17 - Note\n\n\nFiltering Observations; Arrange Observations\n\n\nApril 4, 2024\n\n\n\n\nLecture 18 - Note\n\n\nFiltering Observations; and more\n\n\nApril 9, 2024\n\n\n\n\nLecture 19 - Note\n\n\nmutate()\n\n\nApril 18, 2024\n\n\n\n\nLecture 19 - Note\n\n\nmutate() / group_by() / summarize()\n\n\nApril 23, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-lec/danl-200-lec-01-2024-0123.html#instructor-1",
@@ -5997,5 +5997,40 @@
     "title": "Lecture 20",
     "section": "Grouped Summaries with summarize()",
     "text": "Grouped Summaries with summarize()\nLet’s do Classwork 12!"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-20-2024-0423.html",
+    "href": "danl-class/danl-200-note-20-2024-0423.html",
+    "title": "Lecture 19 - Note",
+    "section": "",
+    "text": "Read the following CSV file, NVDA.csv, as a data.frame with the name nvda:\n\nnvda &lt;- read_csv(\"https://bcdanl.github.io/data/NVDA.csv\")\n\nDescribe the distribution of the daily percentage change in Close price of Nvidia stock.\n\nq2e &lt;- nvda |&gt; \n  mutate(lag_Close = lag(Close),\n         chg_Close = Close - lag_Close,\n         pct_chg_Close = 100 * chg_Close / Close, \n         .after = Close)\n\n\nggplot(q2e, \n       aes(x = pct_chg_Close)) +\n  geom_histogram(bins = 240)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-20-2024-0423.html#classwork-10",
+    "href": "danl-class/danl-200-note-20-2024-0423.html#classwork-10",
+    "title": "Lecture 19 - Note",
+    "section": "",
+    "text": "Read the following CSV file, NVDA.csv, as a data.frame with the name nvda:\n\nnvda &lt;- read_csv(\"https://bcdanl.github.io/data/NVDA.csv\")\n\nDescribe the distribution of the daily percentage change in Close price of Nvidia stock.\n\nq2e &lt;- nvda |&gt; \n  mutate(lag_Close = lag(Close),\n         chg_Close = Close - lag_Close,\n         pct_chg_Close = 100 * chg_Close / Close, \n         .after = Close)\n\n\nggplot(q2e, \n       aes(x = pct_chg_Close)) +\n  geom_histogram(bins = 240)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-20-2024-0423.html#levels",
+    "href": "danl-class/danl-200-note-20-2024-0423.html#levels",
+    "title": "Lecture 19 - Note",
+    "section": "Levels",
+    "text": "Levels\n\ndf &lt;- df |&gt; \n  mutate(city_fct_new = \n           factor(city,\n                  levels = c(\"Geneseo\", \"Rochester\", \"Buffalo\", \"Syracus\") ))\n\ndf$city_fct\n\n[1] Rochester Buffalo   Geneseo   Syracus  \nLevels: Buffalo Geneseo Rochester Syracus\n\ndf$city_fct_new\n\n[1] Rochester Buffalo   Geneseo   Syracus  \nLevels: Geneseo Rochester Buffalo Syracus\n\n\n\nggplot(df) +\n  geom_point(aes(x = income, y = city))\n\n\n\n\n\nggplot(df) +\n  geom_point(aes(x = income, y = city_fct))\n\n\n\n\n\nggplot(df) +\n  geom_point(aes(x = income, y = city_fct_new))"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-20-2024-0423.html#fct_reorder",
+    "href": "danl-class/danl-200-note-20-2024-0423.html#fct_reorder",
+    "title": "Lecture 19 - Note",
+    "section": "fct_reorder",
+    "text": "fct_reorder\n\ndf &lt;- df |&gt; \n  mutate(city_by_income = \n           fct_reorder(city_fct,\n                       income),\n         city_by_income_desc = \n           fct_reorder(city_fct,\n                       -income)\n         )\n\ndf$city_by_income\n\n[1] Rochester Buffalo   Geneseo   Syracus  \nLevels: Geneseo Syracus Rochester Buffalo\n\n\n\nggplot(df,\n       aes(x = income, y = city_by_income)) +\n  geom_point()\n\n\n\n\n\nggplot(df,\n       aes(x = income, y = city_by_income)) +\n  geom_bar(stat = \"identity\")\n\n\n\n\n\nggplot(df,\n       aes(x = income, y = city_by_income_desc)) +\n  geom_bar(stat = \"identity\")\n\n\n\n\n\nmultiple observations\n\ndf2 &lt;- data.frame(\n  city = c(\"Rochester\", \"Buffalo\", \n           \"Geneseo\", \"Syracus\", \n           \"Rochester\", \"Buffalo\", \n           \"Geneseo\", \"Syracus\",\n           \"Rochester\", \"Buffalo\", \n           \"Geneseo\", \"Syracus\"),\n  income = c(80,  82,  70, 75,\n             60,  92,  70, 105,\n             70,  52,  70, 35) \n  )\n\ndf2 &lt;- df2 |&gt; \n  mutate(city_fct = factor(city),\n         city_by_income = \n           fct_reorder(city_fct,\n                       income)\n           )\n\ndf2$city_by_income\n\n [1] Rochester Buffalo   Geneseo   Syracus   Rochester Buffalo   Geneseo  \n [8] Syracus   Rochester Buffalo   Geneseo   Syracus  \nLevels: Geneseo Rochester Syracus Buffalo"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-20-2024-0423.html#classwork-10---q2f",
+    "href": "danl-class/danl-200-note-20-2024-0423.html#classwork-10---q2f",
+    "title": "Lecture 19 - Note",
+    "section": "Classwork 10 - Q2f",
+    "text": "Classwork 10 - Q2f\n\n# install.packages(\"gapminder\")\nlibrary(gapminder)\ngapminder &lt;- gapminder::gapminder\n\nProvide the R code to create a dotplot that displays the values of country, sorted by lifeExp within each continent for the year 2007.\n\ngapminder_2007 &lt;- gapminder |&gt; \n  filter(year == 2007)\n\nlength( unique(gapminder_2007$country) )\n\n[1] 142\n\ngapminder_2007 &lt;- gapminder_2007 |&gt; \n  mutate(country_by_life = fct_reorder(country,\n                                       lifeExp))\n\n# gapminder_2007$country_by_life\n\n\nggplot(gapminder_2007,\n       aes(x = lifeExp,\n           y = country_by_life)) +\n  geom_point() +\n  facet_wrap(continent ~ .,\n             scales = \"free_y\")"
   }
 ]
