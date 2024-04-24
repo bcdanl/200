@@ -58,6 +58,9 @@ website:
       - text: &nbsp;
       - text: <font size ="5" ><b>- Midterm Exam </b></font><font size ="5" color="#194493">{{< fa solid bookmark >}}</font>
         href: danl-200-midterm.qmd
+      - text: &nbsp;
+      - text: <font size ="5" ><b>- Team Project </b></font><font size ="5" color="#194493">{{< fa solid pen-to-square >}}</font>
+        href: danl-200-team-project.qmd
 
   page-footer: 
     border: false
