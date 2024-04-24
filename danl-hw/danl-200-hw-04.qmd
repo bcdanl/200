@@ -153,6 +153,19 @@ Provide both (1) ggplot code and (2) a simple comment to describe how the propor
 ### Q1e.
 - Calculate the proportion of restaurants that had violation related to `contamination` or `mice` in each `BORO`.
 
+*Tips*: Use `str_to_lower()` to convert character values to lower case.
+
+```{r}
+#| eval: false
+#| echo: true
+df <- data.frame(
+  chr = c("ABC", "dEf")
+)
+
+df <- df |> 
+  mutate(chr_lower = str_to_lower(chr))
+```
+
 *Answer*:
 ```{r}
 
