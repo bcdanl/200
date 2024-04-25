@@ -3,7 +3,7 @@ title: Team Project
 subtitle: What You Should Do for the Team Project
 author: Byeong-Hak Choe
 institute: SUNY Geneseo
-date: 2024-04-24
+date: 2024-04-25
 format: 
   html
     # toc: true
@@ -39,12 +39,16 @@ theme_set(theme_ipsum() +
 
 ## Team Project
 
-- Publish the webpage of your team's data analysis on each team member's website, hosted in GitHub.
-  - For the project, a team must choose one of the following data.frames:
-    - `beer_markets`
-    - `nyc_housing_sales`
+- Publish the webpage of your team's data analysis on **each team member's website**, hosted in GitHub.
+  - The due for the project is May 16, 2024, Thursday, 11:59 P.M.
+  - Please notify Byeong-Hak Choe if any team member fails to participate in the project by May 8, 2024. You can report this issue by emailing [bchoe@geneseo.edu](mailto:bchoe@geneseo.edu) after May 8, 2024.
+
+<br>
 
 ## Project Data
+- For the project, a team must choose one of the following data.frames:
+  - `beer_markets`
+  - `nyc_housing_sales`
 
 ### Beer Market Data
 ```{r}
