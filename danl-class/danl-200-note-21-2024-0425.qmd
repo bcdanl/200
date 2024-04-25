@@ -1,0 +1,239 @@
+---
+title: Note 21
+subtitle: mutate() / group_by() / summarize()
+author: Byeong-Hak Choe
+institute: SUNY Geneseo
+date: 2024-04-23
+format: 
+  html
+    # toc: true
+    # toc-depth: 2
+    # toc-expand: true
+    # toc-title: Contents
+# code-fold: true
+code-tools: true
+
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  fig-width: 9
+  fig-height: 6
+---
+```{r}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(broom)
+library(hrbrthemes)
+
+theme_set(theme_ipsum() +
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = element_text(size = rel(1.5) ),
+                axis.title.y = element_text(size = rel(1.5) ))
+          )
+
+```
+
+
+## Classwork 10 - Q2f
+
+```{r}
+# install.packages("gapminder")
+library(gapminder)
+gapminder <- gapminder::gapminder
+```
+
+
+Provide the R code to create a dotplot that displays the values of country, sorted by lifeExp within each continent for the year 2007.
+
+
+```{r}
+gapminder_2007 <- gapminder |> 
+  filter(year == 2007)
+
+length( unique(gapminder_2007$country) )
+
+gapminder_2007 <- gapminder_2007 |> 
+  mutate(country_by_life = fct_reorder(country,
+                                       lifeExp))
+
+# gapminder_2007$country_by_life
+
+
+
+```
+
+```{r}
+#| fig-height: 15
+ggplot(gapminder_2007,
+       aes(x = lifeExp,
+           y = country_by_life)) +
+  geom_point() +
+  facet_wrap(continent ~ .,
+             scales = "free_y")
+```
+
+<br>
+
+
+### Q2g
+Provide the R code to describe a time trend of `lifeExp` for both North Korea and South Korea in one ggplot figure.
+
+```{r}
+korea <- gapminder |> 
+  filter(str_detect(country, "Korea"))
+
+korea2 <- gapminder |> 
+  filter(country %in% c("Korea, Dem. Rep.", "Korea, Rep."))
+
+```
+
+
+```{r}
+ggplot(korea, aes(x = year, y = lifeExp)) +
+  geom_line(aes(color = country)) +
+  geom_point()
+
+```
+
+
+# summarize()
+
+```{r}
+df <- data.frame( x = c(1:10) )
+df_sum <- df |> 
+  summarize(x_mean = mean(x),
+            x_sd = sd(x),
+            x_mean = mean(x),
+            x_min = min(x),
+            x_q1 = quantile(x, prob = .25),
+            x_median = median(x),
+            x_q3 = quantile(x, prob = .75),
+            x_max = max(x)
+            )
+
+
+df_mutate <- df |> 
+  mutate(x_mean = mean(x),
+            x_sd = sd(x),
+            x_mean = mean(x),
+            x_min = min(x),
+            x_q1 = quantile(x, prob = .25),
+            x_median = median(x),
+            x_q3 = quantile(x, prob = .75),
+            x_max = max(x)
+            )
+```
+
+
+
+```{r}
+df <- data.frame(
+  group = c("A", "B", "A", "B"),
+  score = c(50, 65, 70, 85)
+)
+df
+
+df |> 
+  group_by(group)
+
+
+```
+
+
+```{r}
+df_sum <- df |> 
+  group_by(group) |> 
+  summarize(score_mean = mean(score))
+```
+
+
+
+```{r}
+library(nycflights13)
+
+df_dep_delay <- flights |> 
+  summarise(dep_delay_mean = mean(dep_delay),
+            dep_delay_mean_rmNA = mean(dep_delay, na.rm = T),
+            )
+
+library(skimr)
+
+skim(flights$dep_delay)
+
+```
+
+```{r}
+by_day <- flights |> 
+  group_by(year, month, day) |> 
+  summarise(delay = mean(dep_delay, na.rm = T)) |> 
+  arrange(-delay)
+
+
+ggplot(by_day) +
+  geom_histogram(aes(x = delay))
+```
+
+# n()
+
+```{r}
+df <- data.frame(
+  group = c("A", "B", "A", "B", "A"),
+  score = c(50, 65, 70, 85, NA) )
+
+df_sum <- df |> 
+  group_by(group) |> 
+  summarize(
+    mean_val = mean(score, na.rm = T),
+    n = n() )
+```
+
+
+
+# Classwork 11
+
+```{r}
+nyc_dogs <- read_csv('https://bcdanl.github.io/data/nyc_dogs_cleaned.csv')
+```
+## Q1a
+Find the five most popular breeds.
+
+```{r}
+q1a <- nyc_dogs |> 
+  group_by(breed) |> 
+  summarise(n = n()) 
+```
+
+```{r}
+q1a_count <- nyc_dogs |> 
+  count(breed)
+```
+
+
+```{r}
+q1a <- nyc_dogs |> 
+  group_by(breed) |> 
+  summarise(n = n()) |> 
+  arrange(-n)
+```
+
+
+## Q1b
+
+Provide both (1) ggplot code and (2) a simple comment to describe how the distribution of the five popular breeds varies by borough.
+
+
+```{r}
+q1a_top5 <- q1a |> 
+  filter(!is.na(breed)) |> 
+  mutate(ranking = dense_rank(-n)) |> 
+  filter(ranking <= 5)
+
+q1b <- nyc_dogs |> 
+  filter(breed %in% q1a_top5$breed)
+
+# ggplot(q1b) + ...
+```
+
