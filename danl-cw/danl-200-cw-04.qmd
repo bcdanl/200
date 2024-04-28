@@ -64,6 +64,11 @@ from: markdown+emoji
   
   3. When inserting an image file to a blog post, use a relative path, i.e., a file name of the image file.
 
+<br>
+
+![](https://bcdanl.github.io/lec_figs/quarto-blog.gif)
+- After posting a new blog locally, do not forget using the 3-step `git` commands to update your online website with the new blog post.
+
 <br><br>
 
 ## Practice Problems

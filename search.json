@@ -60,7 +60,7 @@
     "href": "listing-danl-200-hw.html",
     "title": "DANL 200 - Homework",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and R Basics\n\n\nFebruary 14, 2024\n\n\n\n\nHomework 2\n\n\nData Visualization Basics\n\n\nMarch 27, 2024\n\n\n\n\nHomework 3\n\n\nData Visualization Basics\n\n\nMarch 28, 2024\n\n\n\n\nHomework 4\n\n\nData Visualization and Data Transformation\n\n\nApril 24, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and R Basics\n\n\nFebruary 14, 2024\n\n\n\n\nHomework 2\n\n\nData Visualization Basics\n\n\nMarch 27, 2024\n\n\n\n\nHomework 3\n\n\nData Visualization Basics\n\n\nMarch 28, 2024\n\n\n\n\nHomework 4\n\n\nData Visualization and Data Transformation\n\n\nApril 26, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-hw/danl-200-hw-03.html",
@@ -291,7 +291,7 @@
     "href": "index.html#bullet-homework",
     "title": "DANL 200-02: Introduction to Data Analytics, Spring 2024",
     "section": "\\(\\bullet\\,\\) Homework 💻",
-    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 4\n\n\nApril 24, 2024\n\n\n\n\nHomework 3\n\n\nMarch 28, 2024\n\n\n\n\nHomework 2\n\n\nMarch 27, 2024\n\n\n\n\nHomework 1\n\n\nFebruary 14, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 4\n\n\nApril 26, 2024\n\n\n\n\nHomework 3\n\n\nMarch 28, 2024\n\n\n\n\nHomework 2\n\n\nMarch 27, 2024\n\n\n\n\nHomework 1\n\n\nFebruary 14, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "danl-class/danl-200-note-20-2024-0423.html",
@@ -634,7 +634,7 @@
     "href": "danl-cw/danl-200-cw-04.html",
     "title": "Classwork 4",
     "section": "",
-    "text": "_quarto.yml configures the website:\n\nIt determines the structure of the website.\n\ne.g., Navigation bar, themes, HTML options, etc.\n\nIf _quarto.yml is edited, use quarto render to render all qmd and ipynb files.\n\nindex.qmd renders index.html, the front page of the website.\n\nDo not create Quarto files something like index2.qmd within the working directory.\n\nblog-listing.qmd configures the blog listing page.\nposts directory includes sub-directories of blog posts.\nimg directory can be used to store picture files.\n\n\n\n\nA file in the working directory can have its own web address.\n\nFor example, if you have resume-example.pdf in your working directory, it has the web address, https://USERNAME.github.io/resume-example.pdf.\n\nWhen naming a file in the website, do not have any space in a file name!\nBe systematic when naming a series of files in the website.\n\nE.g., danl-200-cw-01.qmd, danl-200-cw-02.qmd, danl-200-cw-03.qmd.\n\n\n\n\n\n\n\nRules\n\nOne blog post corresponds to:\n\n\nOne sub-directory in the posts directory.\nOne *.qmd file.\n\n\nPut all files for one blog post (e.g., *.qmd, *.png) in one corresponding sub-directory in the posts directory.\nWhen inserting an image file to a blog post, use a relative path, i.e., a file name of the image file.\n\n\n\n\n\n\n\nDecorate your website:\n\n\nReplace YOUR NAME with your name in _quarto.yml and index.qmd.\nDescribe yourself in index.qmd.\nAdd the picture (png) file of your profile photo to img directory. Then correct img/profile.png in index.qmd accordingly.\nCorrect links for your resumé, linkedin, email, and social media.\n\n\nAdd a link of page of “R Basics” to the navigation bar using danl-200-quarto.qmd.\nUse the 3-step git commands (git add, git commit, and git push) to update your website.\n\n\n\n\n\n\nQuarto - Creating a Website\nQuarto - HTML Basics\nQuarto - HTML Code Blocks\nQuarto - HTML Theming\nQuarto - Creating a Blog"
+    "text": "_quarto.yml configures the website:\n\nIt determines the structure of the website.\n\ne.g., Navigation bar, themes, HTML options, etc.\n\nIf _quarto.yml is edited, use quarto render to render all qmd and ipynb files.\n\nindex.qmd renders index.html, the front page of the website.\n\nDo not create Quarto files something like index2.qmd within the working directory.\n\nblog-listing.qmd configures the blog listing page.\nposts directory includes sub-directories of blog posts.\nimg directory can be used to store picture files.\n\n\n\n\nA file in the working directory can have its own web address.\n\nFor example, if you have resume-example.pdf in your working directory, it has the web address, https://USERNAME.github.io/resume-example.pdf.\n\nWhen naming a file in the website, do not have any space in a file name!\nBe systematic when naming a series of files in the website.\n\nE.g., danl-200-cw-01.qmd, danl-200-cw-02.qmd, danl-200-cw-03.qmd.\n\n\n\n\n\n\n\nRules\n\nOne blog post corresponds to:\n\n\nOne sub-directory in the posts directory.\nOne *.qmd file.\n\n\nPut all files for one blog post (e.g., *.qmd, *.png) in one corresponding sub-directory in the posts directory.\nWhen inserting an image file to a blog post, use a relative path, i.e., a file name of the image file.\n\n\n\n - After posting a new blog locally, do not forget using the 3-step git commands to update your online website with the new blog post.\n\n\n\n\n\nDecorate your website:\n\n\nReplace YOUR NAME with your name in _quarto.yml and index.qmd.\nDescribe yourself in index.qmd.\nAdd the picture (png) file of your profile photo to img directory. Then correct img/profile.png in index.qmd accordingly.\nCorrect links for your resumé, linkedin, email, and social media.\n\n\nAdd a link of page of “R Basics” to the navigation bar using danl-200-quarto.qmd.\nUse the 3-step git commands (git add, git commit, and git push) to update your website.\n\n\n\n\n\n\nQuarto - Creating a Website\nQuarto - HTML Basics\nQuarto - HTML Code Blocks\nQuarto - HTML Theming\nQuarto - Creating a Blog"
   },
   {
     "objectID": "danl-cw/danl-200-cw-04.html#website-files",
@@ -648,7 +648,7 @@
     "href": "danl-cw/danl-200-cw-04.html#blogging",
     "title": "Classwork 4",
     "section": "",
-    "text": "Rules\n\nOne blog post corresponds to:\n\n\nOne sub-directory in the posts directory.\nOne *.qmd file.\n\n\nPut all files for one blog post (e.g., *.qmd, *.png) in one corresponding sub-directory in the posts directory.\nWhen inserting an image file to a blog post, use a relative path, i.e., a file name of the image file."
+    "text": "Rules\n\nOne blog post corresponds to:\n\n\nOne sub-directory in the posts directory.\nOne *.qmd file.\n\n\nPut all files for one blog post (e.g., *.qmd, *.png) in one corresponding sub-directory in the posts directory.\nWhen inserting an image file to a blog post, use a relative path, i.e., a file name of the image file.\n\n\n\n - After posting a new blog locally, do not forget using the 3-step git commands to update your online website with the new blog post."
   },
   {
     "objectID": "danl-cw/danl-200-cw-04.html#practice-problems",
