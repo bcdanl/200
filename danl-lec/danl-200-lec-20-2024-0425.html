@@ -2471,6 +2471,15 @@ HTMLWidgets.widget({
     var table = $table.DataTable(options);
     $el.data('datatable', table);
 
+    if ('rowGroup' in options) {
+      // Maintain RowGroup dataSrc when columns are reordered (#1109)
+      table.on('column-reorder', function(e, settings, details) {
+        var oldDataSrc = table.rowGroup().dataSrc();
+        var newDataSrc = details.mapping[oldDataSrc];
+        table.rowGroup().dataSrc(newDataSrc);
+      });
+    }
+
     // Unregister previous Crosstalk event subscriptions, if they exist
     if (instance.ctfilterSubscription) {
       instance.ctfilterHandle.off("change", instance.ctfilterSubscription);
@@ -2561,6 +2570,7 @@ HTMLWidgets.widget({
     };
 
     if (data.filter !== 'none') {
+      if (!data.hasOwnProperty('filterSettings')) data.filterSettings = {};
 
       filterRow.each(function(i, td) {
 
@@ -2624,7 +2634,7 @@ HTMLWidgets.widget({
             }
           });
           var $input2 = $x.children('select');
-          filter = $input2.selectize({
+          filter = $input2.selectize($.extend({
             options: $input2.data('options').map(function(v, i) {
               return ({text: v, value: v});
             }),
@@ -2643,8 +2653,7 @@ HTMLWidgets.widget({
               $td.data('filter', value.length > 0);
               table.draw();  // redraw table, and filters will be applied
             }
-          });
-          if (searchCol) filter[0].selectize.setValue(JSON.parse(searchCol));
+          }, data.filterSettings.select));
           filter[0].selectize.on('blur', function() {
             $x.hide().trigger('hide'); $input.parent().show(); $input.trigger('blur');
           });
@@ -2653,10 +2662,12 @@ HTMLWidgets.widget({
           var fun = function() {
             searchColumn(i, $input.val()).draw();
           };
-          if (server) {
-            fun = $.fn.dataTable.util.throttle(fun, options.searchDelay);
-          }
-          $input.on('input', fun);
+          // throttle searching for server-side processing
+          var throttledFun = $.fn.dataTable.util.throttle(fun, options.searchDelay);
+          $input.on('input', function(e, immediate) {
+            // always bypass throttling when immediate = true (via the updateSearch method)
+            (immediate || !server) ? fun() : throttledFun();
+          });
         } else if (inArray(type, ['number', 'integer', 'date', 'time'])) {
           var $x0 = $x;
           $x = $x0.children('div').first();
@@ -2742,13 +2753,11 @@ HTMLWidgets.widget({
               filter.val(v);
             }
           });
-          var formatDate = function(d, isoFmt) {
+          var formatDate = function(d) {
             d = scaleBack(d, scale);
             if (type === 'number') return d;
             if (type === 'integer') return parseInt(d);
             var x = new Date(+d);
-            var fmt = ('filterDateFmt' in data) ? data.filterDateFmt[i] : undefined;
-            if (fmt !== undefined && isoFmt === false) return x[fmt.method].apply(x, fmt.params);
             if (type === 'date') {
               var pad0 = function(x) {
                 return ('0' + x).substr(-2, 2);
@@ -2769,7 +2778,7 @@ HTMLWidgets.widget({
             start: [r1, r2],
             range: {min: r1, max: r2},
             connect: true
-          }, opts));
+          }, opts, data.filterSettings.slider));
           if (scale > 1) (function() {
             var t1 = r1, t2 = r2;
             var val = filter.val();
@@ -2784,13 +2793,28 @@ HTMLWidgets.widget({
                 start: [t1, t2],
                 range: {min: t1, max: t2},
                 connect: true
-              }, opts), true);
+              }, opts, data.filterSettings.slider), true);
               val = filter.val();
             }
             r1  = t1; r2 = t2;
           })();
+          // format with active column renderer, if defined
+          var colDef = data.options.columnDefs.find(function(def) {
+            return (def.targets === i || inArray(i, def.targets)) && 'render' in def;
+          });
           var updateSliderText = function(v1, v2) {
-            $span1.text(formatDate(v1, false)); $span2.text(formatDate(v2, false));
+            // we only know how to use function renderers
+            if (colDef && typeof colDef.render === 'function') {
+              var restore = function(v) {
+                v = scaleBack(v, scale);
+                return inArray(type, ['date', 'time']) ? new Date(+v) : v;
+              }
+              $span1.text(colDef.render(restore(v1), 'display'));
+              $span2.text(colDef.render(restore(v2), 'display'));
+            } else {
+              $span1.text(formatDate(v1));
+              $span2.text(formatDate(v2));
+            }
           };
           updateSliderText(r1, r2);
           var updateSlider = function(e) {
@@ -2823,7 +2847,7 @@ HTMLWidgets.widget({
         // processing
         if (server) {
           // if a search string has been pre-set, search now
-          if (searchCol) searchColumn(i, searchCol).draw();
+          if (searchCol) $input.trigger('input').trigger('change');
           return;
         }
 
@@ -2869,15 +2893,7 @@ HTMLWidgets.widget({
         $.fn.dataTable.ext.search.push(customFilter);
 
         // search for the preset search strings if it is non-empty
-        if (searchCol) {
-          if (inArray(type, ['factor', 'logical'])) {
-            filter[0].selectize.setValue(JSON.parse(searchCol));
-          } else if (type === 'character') {
-            $input.trigger('input');
-          } else if (inArray(type, ['number', 'integer', 'date', 'time'])) {
-            $input.trigger('change');
-          }
-        }
+        if (searchCol) $input.trigger('input').trigger('change');
 
       });
 
@@ -3139,6 +3155,9 @@ HTMLWidgets.widget({
         updateColsSelected();
         updateCellsSelected();
       })
+      updateRowsSelected();
+      updateColsSelected();
+      updateCellsSelected();
     }
 
     var selMode = data.selection.mode, selTarget = data.selection.target;
@@ -3525,8 +3544,9 @@ HTMLWidgets.widget({
           console.log('The search keyword for column ' + i + ' is undefined')
           return;
         }
-        $(td).find('input').first().val(v).trigger('input');
-        searchColumn(i, v);
+        // Update column search string and values on linked filter widgets.
+        // 'input' for factor and char filters, 'change' for numeric filters.
+        $(td).find('input').first().val(v).trigger('input', [true]).trigger('change');
       });
       table.draw();
     }
@@ -3674,7 +3694,7 @@ color: #333;
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Lecture 20</h1>
-  <p class="subtitle">Grouped Summaries with <code>group_by() |&gt; summarize()</code></p>
+  <p class="subtitle">Group Operations</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -3770,8 +3790,8 @@ Byeong-Hak Choe
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-6eab414f0b9b9482d487" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-6eab414f0b9b9482d487">{"x":{"filter":"none","vertical":false,"data":[["A","B","A","B"],[50,65,70,85]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>group<\/th>\n      <th>score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"group","targets":0},{"name":"score","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-1283f58d5eee6da6aa37" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1283f58d5eee6da6aa37">{"x":{"filter":"none","vertical":false,"data":[["A","B","A","B"],[50,65,70,85]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>group<\/th>\n      <th>score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"group","targets":0},{"name":"score","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -3784,8 +3804,8 @@ _{\text{}}
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-ab22fd16b9f8123ce624" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ab22fd16b9f8123ce624">{"x":{"filter":"none","vertical":false,"data":[["A","A","B","B"],[50,70,65,85]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>group<\/th>\n      <th>score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"group","targets":0},{"name":"score","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-361fb8dde427a075f710" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-361fb8dde427a075f710">{"x":{"filter":"none","vertical":false,"data":[["A","A","B","B"],[50,70,65,85]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>group<\/th>\n      <th>score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"group","targets":0},{"name":"score","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -3812,16 +3832,16 @@ _{\text{}}
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-6e05d80bf759fc596940" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-6e05d80bf759fc596940">{"x":{"filter":"none","vertical":false,"data":[["A","B","A","B"],[50,65,70,85]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>group<\/th>\n      <th>score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"group","targets":0},{"name":"score","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d453f9161b3fa35ad70e" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d453f9161b3fa35ad70e">{"x":{"filter":"none","vertical":false,"data":[["A","B","A","B"],[50,65,70,85]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>group<\/th>\n      <th>score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"group","targets":0},{"name":"score","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
 </div>
 </div>
 <p><br></p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-9c8e983dad1e92256990" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-9c8e983dad1e92256990">{"x":{"filter":"none","vertical":false,"data":[["A","B"],[60,75]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>group<\/th>\n      <th>mean_val<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"group","targets":0},{"name":"mean_val","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-30cbac24c507f3c03f98" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-30cbac24c507f3c03f98">{"x":{"filter":"none","vertical":false,"data":[["A","B"],[60,75]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>group<\/th>\n      <th>mean_val<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"group","targets":0},{"name":"mean_val","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -3897,248 +3917,107 @@ _{\text{}}
 </section>
 <section id="grouped-summaries-with-summarize-5" class="slide level2">
 <h2>Grouped Summaries with <code>summarize()</code></h2>
-<p>Let’s do <a href="https://bcdanl.github.io/200/danl-cw/danl-200-cw-11.html">Classwork 11</a>!</p>
+<h3 id="ungrouping">Ungrouping</h3>
+<ul>
+<li>If we need to remove grouping, and return to operations on ungrouped data, we can use <code>ungroup()</code>.</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>daily <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">group</span>(year, month, day)</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a>daily <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span>             <span class="co"># no longer grouped by date</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">summarize</span>(<span class="at">flights =</span> <span class="fu">n</span>())  <span class="co"># all flights</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="grouped-summaries-with-summarize-6" class="slide level2">
-<h2>Grouped Summaries with <code>summarize()</code></h2>
-<h3 id="example-exercises">Example Exercises</h3>
+<section id="count-the-observations-in-each-group-with-count" class="slide level2">
+<h2>Count the observations in each group with <code>count()</code></h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-2-1">(1)</a></li><li><a href="#tabset-2-2">(2)</a></li><li><a href="#tabset-2-3">(3)</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-2-1"><code>count()</code></a></li><li><a href="#tabset-2-2"><code>count()</code> with <code>cut_width()</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<ul>
-<li><p>Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.</p></li>
-<li><p>Describe the distribution of a plane’s average arrival delay.</p>
-<ul>
-<li>How long is the longest average arrival delay?</li>
-</ul></li>
-<li><p>Calculate the average arrival delay for each date.</p>
-<ul>
-<li>Given that the arrival delay is positive, calculate the average arrival delay for each date.</li>
-</ul></li>
-</ul>
-</div>
-<div id="tabset-2-2">
-<ul>
-<li><p>Why is distance to some destinations more variable than to others?</p></li>
-<li><p>When do the first and last flights leave each day?</p></li>
-<li><p>Which destinations have the most carriers?</p></li>
-<li><p>Which destination have the most number of flights?</p></li>
-<li><p>Which destination have the most number of cancelled flights?</p></li>
-</ul>
-</div>
-<div id="tabset-2-3">
-<ul>
-<li><p>Which airplane flew the longest cumulative distance?</p></li>
-<li><p>How can we calculate the height of bars in a histogram?</p></li>
-<li><p>For each date, how many flights left before 5am?</p></li>
-<li><p>For each date, what proportion of flights are delayed by more than an hour?</p></li>
-<li><p>For each airline, how many flights are cancelled?</p></li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="grouped-summaries-with-summarize-7" class="slide level2">
-<h2>Grouped Summaries with <code>summarize()</code></h2>
-<h3 id="example-1">Example 1</h3>
-<p><strong>Q</strong>. Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.</p>
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-3-1">Step 1</a></li><li><a href="#tabset-3-2">Step 2</a></li><li><a href="#tabset-3-3">Step 3</a></li><li><a href="#tabset-3-4">Step 4</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1">
-<ul>
-<li>Make the data.frame we need:</li>
-</ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>by_dest <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">group_by</span>(dest) <span class="sc">|&gt;</span> </span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">summarize</span>( <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb10-4"><a href="#cb10-4"></a>    <span class="at">dist =</span> <span class="fu">mean</span>(distance, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb10-5"><a href="#cb10-5"></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-3-2">
-<ul>
-<li>Make data visualization</li>
-</ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> by_dest, </span>
-<span id="cb11-2"><a href="#cb11-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dist, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> count), <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-3-3">
-<ul>
-<li>Consider removing outliers.
-<ul>
-<li>It is not uncommon to remove outliers to see an “average” or “typical” relationship.</li>
-</ul></li>
-</ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>by_dest2 <span class="ot">&lt;-</span> by_dest <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>, </span>
-<span id="cb12-3"><a href="#cb12-3"></a>         dest <span class="sc">!=</span> <span class="st">&quot;HNL&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-3-4">
-<ul>
-<li>Do data visualization again without outliers.</li>
-</ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> by_dest2, </span>
-<span id="cb13-2"><a href="#cb13-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dist, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> count), <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="grouped-summaries-with-summarize-8" class="slide level2">
-<h2>Grouped Summaries with <code>summarize()</code></h2>
-<h3 id="example-2">Example 2</h3>
-<div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-4-1">(0)</a></li><li><a href="#tabset-4-2">(1)</a></li><li><a href="#tabset-4-3">(2)</a></li></ul>
-<div class="tab-content">
-<div id="tabset-4-1">
-<ul>
-<li><p>Suppose missing values (<code>NA</code>) in <code>dep_delay</code> or <code>arr_delay</code> represent cancelled flights.</p>
-<p><strong>Q</strong>. Use <code>filter()</code> to create the data.frame <code>not_cancelled</code> that includes all observations in <code>flights</code> except for those with cancelled flights.</p></li>
-</ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>not_cancelled <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">filter</span>( <span class="sc">!</span>( <span class="fu">is.na</span>(dep_delay) <span class="sc">|</span> <span class="fu">is.na</span>(arr_delay) ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-4-2">
-<p><strong>Q</strong>. Describe the distribution of a plane’s average arrival delay. - Airplanes are identified by their tail number (<code>tailnum</code>)</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>delays <span class="ot">&lt;-</span> not_cancelled <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">group_by</span>(tailnum) <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb15-4"><a href="#cb15-4"></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay)</span>
-<span id="cb15-5"><a href="#cb15-5"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> delays, </span>
-<span id="cb16-2"><a href="#cb16-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> delay)) <span class="sc">+</span> </span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-<div id="tabset-4-3">
-<p><strong>Q</strong>. How long is the longest average arrival delay?</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>delays <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>delay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="grouped-summaries-with-summarize-9" class="slide level2">
-<h2>Grouped Summaries with <code>summarize()</code></h2>
-<h3 id="example-3">Example 3</h3>
-<p><strong>Q</strong>. Calculate the average arrival delay for each date.</p>
-<p><strong>Q</strong>. Given that the arrival delay is positive, calculate the average arrival delay for each date.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span> </span>
-<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">summarize</span>(<span class="at">avg_delay1 =</span> <span class="fu">mean</span>(arr_delay),</span>
-<span id="cb18-4"><a href="#cb18-4"></a>            <span class="at">avg_delay2 =</span> <span class="fu">mean</span>(arr_delay[arr_delay <span class="sc">&gt;</span> <span class="dv">0</span>]) ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><code>x[Logical condition regarding x]</code> lets us filter observations from variable <code>x</code> when calculating summary (e.g. <code>mean()</code>, <code>sum()</code>).</li>
-</ul>
-</section>
-<section id="grouped-summaries-with-summarize-10" class="slide level2">
-<h2>Grouped Summaries with <code>summarize()</code></h2>
-<h3 id="example-4">Example 4</h3>
-<p><strong>Q</strong>. Why is distance to some destinations more variable than to others? - We can use <code>sd(x)</code> to measure how much variation a variable <code>x</code> has.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">group_by</span>(dest) <span class="sc">|&gt;</span> </span>
-<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">summarize</span>(<span class="at">distance_sd =</span> <span class="fu">sd</span>(distance)) <span class="sc">|&gt;</span> </span>
-<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(distance_sd))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="grouped-summaries-with-summarize-11" class="slide level2">
-<h2>Grouped Summaries with <code>summarize()</code></h2>
-<h3 id="example-5">Example 5</h3>
-<p><strong>Q</strong>. When do the first and last flights leave each day?</p>
-<div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-5-1"><code>min()</code> and <code>max()</code></a></li><li><a href="#tabset-5-2"><code>first()</code> and <code>last()</code></a></li><li><a href="#tabset-5-3"><code>range()</code></a></li></ul>
-<div class="tab-content">
-<div id="tabset-5-1">
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span> </span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">summarize</span>(<span class="at">first =</span> <span class="fu">min</span>(dep_time), </span>
-<span id="cb20-4"><a href="#cb20-4"></a>            <span class="at">last =</span> <span class="fu">max</span>(dep_time) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-5-2">
-<ul>
-<li><code>first(x)</code> and <code>last(x)</code> returns the first and last element of <code>x</code>:
-<ul>
-<li><code>nth(x, 2)</code> returns the second element of <code>x</code></li>
-</ul></li>
-</ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span> </span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">summarize</span>(<span class="at">first_dep =</span> <span class="fu">first</span>(dep_time),</span>
-<span id="cb21-4"><a href="#cb21-4"></a>            <span class="at">last_dep =</span> <span class="fu">last</span>(dep_time) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-5-3">
-<ul>
-<li><code>range()</code> returns a vector containing the minimum and maximum of a variable:</li>
-</ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span> </span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">mutate</span>(<span class="at">r =</span> <span class="fu">min_rank</span>(<span class="fu">desc</span>(dep_time))) <span class="sc">|&gt;</span> </span>
-<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">filter</span>(r <span class="sc">%in%</span> <span class="fu">range</span>(r) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="grouped-summaries-with-summarize-12" class="slide level2">
-<h2>Grouped Summaries with <code>summarize()</code></h2>
-<h3 id="example-6---counts">Example 6 - Counts</h3>
-<div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-6-1"><code>n_distinct()</code></a></li><li><a href="#tabset-6-2"><code>count()</code></a></li><li><a href="#tabset-6-3"><code>count(x, wt = ...)</code></a></li><li><a href="#tabset-6-4"><code>count()</code> with <code>cut_width()</code></a></li></ul>
-<div class="tab-content">
-<div id="tabset-6-1">
-<p><strong>Q</strong>. Which destinations have the most carriers?</p>
-<ul>
-<li>We can use <code>n_distinct()</code> to count the number of unique/distinct values</li>
-</ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">group_by</span>(dest) <span class="sc">|&gt;</span> </span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">summarise</span>(<span class="at">n_carriers =</span> <span class="fu">n_distinct</span>(carrier)) <span class="sc">|&gt;</span> </span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n_carriers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-6-2">
 <p><strong>Q</strong>. Which destination have the most number of flights?</p>
 <ul>
 <li><code>count(x)</code> counts the number of observations for each value in variable <code>x</code>:</li>
-<li><code>df |&gt; count(x)</code> is equivalent to <code>df |&gt; group_by(x) |&gt; summarise(n = n())</code></li>
+<li><code>df |&gt; count(x)</code> is similar to <code>df |&gt; group_by(x) |&gt; summarise(n = n())</code></li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">count</span>(dest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">count</span>(dest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><!-- - `sort = TRUE` will show the largest groups at the top. --></p>
 </div>
-<div id="tabset-6-3">
-<p><strong>Q</strong>. Which airplane flew the longest cumulative distance?</p>
-<ul>
-<li>We can use <code>count(x, wt = NUMERIC_VARIABLE)</code> to calculate the sum of values in <code>NUMERIC_VARIABLE</code> for each group of <code>x</code>:</li>
-</ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">count</span>(tailnum, <span class="at">wt =</span> distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-6-4">
+<div id="tabset-2-2">
 <p><strong>Q</strong>. How can we calculate the height of bars in a histogram?</p>
 <ul>
 <li>We can do so by combining <code>count()</code> and <code>cut_width()</code>:</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">ggplot</span>(diamonds) <span class="sc">+</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> carat), </span>
-<span id="cb26-3"><a href="#cb26-3"></a>                 <span class="at">binwidth =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ggplot</span>(diamonds) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> carat), </span>
+<span id="cb12-3"><a href="#cb12-3"></a>                 <span class="at">binwidth =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>diamonds <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">count</span>(<span class="fu">cut_width</span>(carat, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>diamonds <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">count</span>(<span class="fu">cut_width</span>(carat, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="grouped-summaries-with-summarize-13" class="slide level2">
+<section id="grouped-summaries-with-summarize-6" class="slide level2">
+<h2>Grouped Summaries with <code>summarize()</code></h2>
+<h3 id="n_distinct"><code>n_distinct()</code></h3>
+<p><strong>Q</strong>. Which destinations have the most carriers?</p>
+<ul>
+<li>We can use <code>n_distinct()</code> to count the number of unique/distinct values .</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">group_by</span>(dest) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">summarize</span>(<span class="at">n_carriers =</span> <span class="fu">n_distinct</span>(carrier)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>n_carriers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="grouped-slice-with-slice_" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1>Grouped slice with <code>slice_*()</code></h1>
+
+</section>
+<section id="grouped-slice-with-slice_-1" class="slide level2">
+<h2>Grouped slice with <code>slice_()</code></h2>
+<ul>
+<li><code>slice_*</code> functions allow us extract specific observations within each group:
+<ul>
+<li><code>df |&gt; slice_head(n = N)</code> takes the first <code>N</code> observations in each group.</li>
+<li><code>df |&gt; slice_tail(n = N)</code> takes the last <code>N</code> observations in each group.</li>
+<li><code>df |&gt; slice_min(x, n = N)</code> takes the observations with the <code>N</code> smallest value of variable <code>x</code>.</li>
+<li><code>df |&gt; slice_max(x, n = N)</code> takes the observations with the <code>N</code> largest value of variable <code>x</code>.
+<ul>
+<li><code>slice_min()</code> and <code>slice_max()</code> keep tied values.</li>
+</ul></li>
+<li><code>df |&gt; slice_sample(n = N)</code> takes <code>N</code> random observations.</li>
+</ul></li>
+</ul>
+</section>
+<section id="grouped-summaries-with-summarize-7" class="slide level2">
+<h2>Grouped Summaries with <code>summarize()</code></h2>
+<h3 id="grouping-by-multiple-variables">Grouping by Multiple Variables</h3>
+<ul>
+<li>When we group by multiple variables, each summary peels off one level of the grouping.</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>daily <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">group_by</span>(year, month, day)</span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a>per_day <span class="ot">&lt;-</span> daily <span class="sc">|&gt;</span> </span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">summarize</span>(<span class="at">flights =</span> <span class="fu">n</span>())</span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a>per_month <span class="ot">&lt;-</span> per_day <span class="sc">|&gt;</span> </span>
+<span id="cb15-8"><a href="#cb15-8"></a>  <span class="fu">summarize</span>(<span class="at">flights =</span> <span class="fu">sum</span>(flights))</span>
+<span id="cb15-9"><a href="#cb15-9"></a></span>
+<span id="cb15-10"><a href="#cb15-10"></a>per_year  <span class="ot">&lt;-</span> per_month <span class="sc">|&gt;</span> </span>
+<span id="cb15-11"><a href="#cb15-11"></a>  <span class="fu">summarize</span>(<span class="at">flights =</span> <span class="fu">sum</span>(flights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="grouped-summaries-with-summarize-8" class="slide level2">
+<h2>Grouped Summaries with <code>summarize()</code></h2>
+<p>Let’s do <a href="https://bcdanl.github.io/200/danl-cw/danl-200-cw-11.html">Classwork 11</a>!</p>
+</section>
+<section id="grouped-summaries-with-summarize-9" class="slide level2">
 <h2>Grouped Summaries with <code>summarize()</code></h2>
 <h3 id="sum-and-mean-of-logical-values"><code>sum()</code> and <code>mean()</code> of logical values</h3>
 <ul>
@@ -4148,16 +4027,16 @@ _{\text{}}
 </ul></li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-7-1">Example</a></li><li><a href="#tabset-7-2">Q1</a></li><li><a href="#tabset-7-3">Q2</a></li><li><a href="#tabset-7-4">Q3</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-3-1">Example</a></li><li><a href="#tabset-3-2">Q1</a></li><li><a href="#tabset-3-3">Q2</a></li><li><a href="#tabset-3-4">Q3</a></li></ul>
 <div class="tab-content">
-<div id="tabset-7-1">
+<div id="tabset-3-1">
 <div class="columns">
 <div class="column" style="width:25%;">
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-01d80f38e50c14a75730" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-01d80f38e50c14a75730">{"x":{"filter":"none","vertical":false,"data":[["A","A","B",null],[7,8,11,12],[3,2,1,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>x<\/th>\n      <th>y<\/th>\n      <th>z<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":[1,2]},{"name":"x","targets":0},{"name":"y","targets":1},{"name":"z","targets":2}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-23d86cb7103e6e870cee" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-23d86cb7103e6e870cee">{"x":{"filter":"none","vertical":false,"data":[["A","A","B",null],[7,8,11,12],[3,2,1,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>x<\/th>\n      <th>y<\/th>\n      <th>z<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":[1,2]},{"name":"x","targets":0},{"name":"y","targets":1},{"name":"z","targets":2}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
 </div>
 </div>
 </div><div class="column" style="width:5%;">
@@ -4166,8 +4045,8 @@ _{\text{}}
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-7bb35268b61f6bf27168" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7bb35268b61f6bf27168">{"x":{"filter":"none","vertical":false,"data":[[3],[2],[0.25]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>sum(!is.na(x))<\/th>\n      <th>sum(y &gt; 10)<\/th>\n      <th>mean(z == 0)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":[0,1,2]},{"name":"sum(!is.na(x))","targets":0},{"name":"sum(y > 10)","targets":1},{"name":"mean(z == 0)","targets":2}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-28ee2dfafb8d51cb8db2" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-28ee2dfafb8d51cb8db2">{"x":{"filter":"none","vertical":false,"data":[[3],[2],[0.25]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>sum(!is.na(x))<\/th>\n      <th>sum(y &gt; 10)<\/th>\n      <th>mean(z == 0)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":[0,1,2]},{"name":"sum(!is.na(x))","targets":0},{"name":"sum(y > 10)","targets":1},{"name":"mean(z == 0)","targets":2}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
 </div>
 </div>
 <ul>
@@ -4176,48 +4055,17 @@ _{\text{}}
 </div>
 </div>
 </div>
-<div id="tabset-7-2">
+<div id="tabset-3-2">
 <p><strong>Q</strong>. For each date, how many flights left before 5am?</p>
 </div>
-<div id="tabset-7-3">
+<div id="tabset-3-3">
 <p><strong>Q</strong>. For each date, what proportion of flights are delayed by more than an hour?</p>
 </div>
-<div id="tabset-7-4">
+<div id="tabset-3-4">
 <p><strong>Q</strong>. For each airline, how many flights are cancelled?</p>
 </div>
 </div>
 </div>
-</section>
-<section id="grouped-summaries-with-summarize-14" class="slide level2">
-<h2>Grouped Summaries with <code>summarize()</code></h2>
-<h3 id="grouping-by-multiple-variables">Grouping by Multiple Variables</h3>
-<ul>
-<li>When we group by multiple variables, each summary peels off one level of the grouping.</li>
-</ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>daily <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
-<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">group_by</span>(year, month, day)</span>
-<span id="cb28-3"><a href="#cb28-3"></a></span>
-<span id="cb28-4"><a href="#cb28-4"></a>per_day <span class="ot">&lt;-</span> daily <span class="sc">|&gt;</span> </span>
-<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">summarize</span>(<span class="at">flights =</span> <span class="fu">n</span>())</span>
-<span id="cb28-6"><a href="#cb28-6"></a></span>
-<span id="cb28-7"><a href="#cb28-7"></a>per_month <span class="ot">&lt;-</span> per_day <span class="sc">|&gt;</span> </span>
-<span id="cb28-8"><a href="#cb28-8"></a>  <span class="fu">summarize</span>(<span class="at">flights =</span> <span class="fu">sum</span>(flights))</span>
-<span id="cb28-9"><a href="#cb28-9"></a></span>
-<span id="cb28-10"><a href="#cb28-10"></a>per_year  <span class="ot">&lt;-</span> per_month <span class="sc">|&gt;</span> </span>
-<span id="cb28-11"><a href="#cb28-11"></a>  <span class="fu">summarize</span>(<span class="at">flights =</span> <span class="fu">sum</span>(flights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="grouped-summaries-with-summarize-15" class="slide level2">
-<h2>Grouped Summaries with <code>summarize()</code></h2>
-<h3 id="ungrouping">Ungrouping</h3>
-<ul>
-<li>If we need to remove grouping, and return to operations on ungrouped data, we can use <code>ungroup()</code>.</li>
-</ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>daily <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
-<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">group</span>(year, month, day)</span>
-<span id="cb29-3"><a href="#cb29-3"></a></span>
-<span id="cb29-4"><a href="#cb29-4"></a>daily <span class="sc">|&gt;</span> </span>
-<span id="cb29-5"><a href="#cb29-5"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span>             <span class="co"># no longer grouped by date</span></span>
-<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">summarize</span>(<span class="at">flights =</span> <span class="fu">n</span>())  <span class="co"># all flights</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="grouped-mutate-and-filter" class="title-slide slide level1 center" data-background-color="#1c4982">
@@ -4230,50 +4078,50 @@ _{\text{}}
 <li>Grouping is most useful in conjunction with <code>summarize()</code>, but we can also do convenient operations with <code>mutate()</code> and <code>filter()</code>.</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-8-1">Example 1</a></li><li><a href="#tabset-8-2">Example 2</a></li><li><a href="#tabset-8-3">worst</a></li><li><a href="#tabset-8-4">threshold</a></li><li><a href="#tabset-8-5">per group metrics</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-4-1"><code>filter()</code></a></li><li><a href="#tabset-4-2"><code>mutate()</code></a></li><li><a href="#tabset-4-3">Worst</a></li><li><a href="#tabset-4-4">Threshold</a></li><li><a href="#tabset-4-5">Per group metrics</a></li></ul>
 <div class="tab-content">
-<div id="tabset-8-1">
+<div id="tabset-4-1">
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-c14015579d838ea81113" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-c14015579d838ea81113">{"x":{"filter":"none","vertical":false,"data":[["A","A","B","B","C"],[100,96,85,83,76]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>grade<\/th>\n      <th>score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"grade","targets":0},{"name":"score","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-fdf19cfe9a3b53551fcf" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-fdf19cfe9a3b53551fcf">{"x":{"filter":"none","vertical":false,"data":[["A","A","B","B","C"],[100,96,85,83,76]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>grade<\/th>\n      <th>score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"grade","targets":0},{"name":"score","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>df_filter <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">group_by</span>(grade) <span class="sc">|&gt;</span> </span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">filter</span>( <span class="fu">n</span>() <span class="sc">&lt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>df_filter <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">group_by</span>(grade) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">filter</span>( <span class="fu">n</span>() <span class="sc">&lt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-7594e55f6e0b928582df" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7594e55f6e0b928582df">{"x":{"filter":"none","vertical":false,"data":[["C"],[76]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>grade<\/th>\n      <th>score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"grade","targets":0},{"name":"score","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-c92e70cf1ffcb42ddb98" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c92e70cf1ffcb42ddb98">{"x":{"filter":"none","vertical":false,"data":[["C"],[76]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>grade<\/th>\n      <th>score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":1},{"name":"grade","targets":0},{"name":"score","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-8-2">
+<div id="tabset-4-2">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>df_mutate <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">group_by</span>(grade) <span class="sc">|&gt;</span> </span>
-<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">mutate</span>(<span class="at">mean =</span> <span class="fu">mean</span>(score))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>df_mutate <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">group_by</span>(grade) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">mutate</span>(<span class="at">mean =</span> <span class="fu">mean</span>(score))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-d643d55c62f9c23790f0" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d643d55c62f9c23790f0">{"x":{"filter":"none","vertical":false,"data":[["A","A","B","B","C"],[100,96,85,83,76],[98,98,84,84,76]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>grade<\/th>\n      <th>score<\/th>\n      <th>mean<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":[1,2]},{"name":"grade","targets":0},{"name":"score","targets":1},{"name":"mean","targets":2}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-1c1c9c6afb64f4b7d9ad" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1c1c9c6afb64f4b7d9ad">{"x":{"filter":"none","vertical":false,"data":[["A","A","B","B","C"],[100,96,85,83,76],[98,98,84,84,76]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>grade<\/th>\n      <th>score<\/th>\n      <th>mean<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"className":"dt-right","targets":[1,2]},{"name":"grade","targets":0},{"name":"score","targets":1},{"name":"mean","targets":2}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-8-3">
+<div id="tabset-4-3">
 <ul>
 <li>Find the worst members of each group:
 <ul>
@@ -4281,7 +4129,7 @@ _{\text{}}
 </ul></li>
 </ul>
 </div>
-<div id="tabset-8-4">
+<div id="tabset-4-4">
 <ul>
 <li>Find all groups bigger than a threshold:
 <ul>
@@ -4289,7 +4137,7 @@ _{\text{}}
 </ul></li>
 </ul>
 </div>
-<div id="tabset-8-5">
+<div id="tabset-4-5">
 <ul>
 <li>We can compute per group metrics:
 <ul>
@@ -4299,9 +4147,183 @@ _{\text{}}
 </div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="group-operations---examples" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1>Group Operations - Examples</h1>
+
 </section>
-<section id="grouped-summaries-with-summarize-16" class="slide level2">
-<h2>Grouped Summaries with <code>summarize()</code></h2>
+<section id="group-operations---examples-1" class="slide level2">
+<h2>Group Operations - Examples</h2>
+<h3 id="example-exercises">Example Exercises</h3>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-5-1">(1)</a></li><li><a href="#tabset-5-2">(2)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<ul>
+<li><p>Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.</p></li>
+<li><p>Describe the distribution of a plane’s average arrival delay.</p>
+<ul>
+<li>How long is the longest average arrival delay?</li>
+</ul></li>
+<li><p>Calculate the average arrival delay for each date.</p>
+<ul>
+<li>Given that the arrival delay is positive, calculate the average arrival delay for each date.</li>
+</ul></li>
+</ul>
+</div>
+<div id="tabset-5-2">
+<ul>
+<li><p>Why is distance to some destinations more variable than to others?</p></li>
+<li><p>When do the first and last flights leave each day?</p></li>
+<li><p>For each date, how many flights left before 5am?</p></li>
+<li><p>For each date, what proportion of flights are delayed by more than an hour?</p></li>
+<li><p>For each airline, how many flights are cancelled?</p></li>
+</ul>
+<!-- - Which destination have the most number of cancelled flights? -->
+</div>
+</div>
+</div>
+</section>
+<section id="group-operations" class="slide level2">
+<h2>Group Operations</h2>
+<h3 id="example-1">Example 1</h3>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-6-1">(0)</a></li><li><a href="#tabset-6-2">(1)</a></li><li><a href="#tabset-6-3">(2)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<ul>
+<li><p>Suppose missing values (<code>NA</code>) in <code>dep_delay</code> or <code>arr_delay</code> represent cancelled flights.</p>
+<p><strong>Q</strong>. Use <code>filter()</code> to create the data.frame <code>not_cancelled</code> that includes all observations in <code>flights</code> except for those with cancelled flights.</p></li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>not_cancelled <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">filter</span>( <span class="sc">!</span>( <span class="fu">is.na</span>(dep_delay) <span class="sc">|</span> <span class="fu">is.na</span>(arr_delay) ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-6-2">
+<p><strong>Q</strong>. Describe the distribution of a plane’s average arrival delay. - Airplanes are identified by their tail number (<code>tailnum</code>)</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>delays <span class="ot">&lt;-</span> not_cancelled <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">group_by</span>(tailnum) <span class="sc">|&gt;</span> </span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb19-4"><a href="#cb19-4"></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay)</span>
+<span id="cb19-5"><a href="#cb19-5"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> delays, </span>
+<span id="cb20-2"><a href="#cb20-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> delay)) <span class="sc">+</span> </span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tabset-6-3">
+<p><strong>Q</strong>. How long is the longest average arrival delay?</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>delays <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>delay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="group-operations-1" class="slide level2">
+<h2>Group Operations</h2>
+<h3 id="example-2">Example 2</h3>
+<p><strong>Q</strong>. Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.</p>
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-7-1">Step 1</a></li><li><a href="#tabset-7-2">Step 2</a></li><li><a href="#tabset-7-3">Step 3</a></li><li><a href="#tabset-7-4">Step 4</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1">
+<ul>
+<li>Make the data.frame we need:</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>by_dest <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">group_by</span>(dest) <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">summarize</span>( <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb22-4"><a href="#cb22-4"></a>    <span class="at">dist =</span> <span class="fu">mean</span>(distance, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb22-5"><a href="#cb22-5"></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-7-2">
+<ul>
+<li>Make data visualization</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> by_dest, </span>
+<span id="cb23-2"><a href="#cb23-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dist, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> count), <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-7-3">
+<ul>
+<li>Consider removing outliers.
+<ul>
+<li>It is not uncommon to remove outliers to see an “average” or “typical” relationship.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>by_dest2 <span class="ot">&lt;-</span> by_dest <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>, </span>
+<span id="cb24-3"><a href="#cb24-3"></a>         dest <span class="sc">!=</span> <span class="st">&quot;HNL&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-7-4">
+<ul>
+<li>Do data visualization again without outliers.</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> by_dest2, </span>
+<span id="cb25-2"><a href="#cb25-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dist, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> count), <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="group-operations-2" class="slide level2">
+<h2>Group Operations</h2>
+<h3 id="example-3">Example 3</h3>
+<p><strong>Q</strong>. Calculate the average arrival delay for each date.</p>
+<p><strong>Q</strong>. Given that the arrival delay is positive, calculate the average arrival delay for each date.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span> </span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">summarize</span>(<span class="at">avg_delay1 =</span> <span class="fu">mean</span>(arr_delay),</span>
+<span id="cb26-4"><a href="#cb26-4"></a>            <span class="at">avg_delay2 =</span> <span class="fu">mean</span>(arr_delay[arr_delay <span class="sc">&gt;</span> <span class="dv">0</span>]) ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>x[Logical condition regarding x]</code> lets us filter observations from variable <code>x</code> when calculating summary (e.g. <code>mean()</code>, <code>sum()</code>).</li>
+</ul>
+</section>
+<section id="group-operations-3" class="slide level2">
+<h2>Group Operations</h2>
+<h3 id="example-4">Example 4</h3>
+<p><strong>Q</strong>. Why is distance to some destinations more variable than to others? - We can use <code>sd(x)</code> to measure how much variation a variable <code>x</code> has.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">group_by</span>(dest) <span class="sc">|&gt;</span> </span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">summarize</span>(<span class="at">distance_sd =</span> <span class="fu">sd</span>(distance)) <span class="sc">|&gt;</span> </span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(distance_sd))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="group-operations-4" class="slide level2">
+<h2>Group Operations</h2>
+<h3 id="example-5">Example 5</h3>
+<p><strong>Q</strong>. When do the first and last flights leave each day?</p>
+<div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-8-1"><code>min()</code> and <code>max()</code></a></li><li><a href="#tabset-8-2"><code>first()</code> and <code>last()</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">summarize</span>(<span class="at">first =</span> <span class="fu">min</span>(dep_time), </span>
+<span id="cb28-4"><a href="#cb28-4"></a>            <span class="at">last =</span> <span class="fu">max</span>(dep_time) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-8-2">
+<ul>
+<li><code>first(x)</code> and <code>last(x)</code> returns the first and last element of <code>x</code>:
+<ul>
+<li><code>nth(x, 2)</code> returns the second element of <code>x</code></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span> </span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">summarize</span>(<span class="at">first_dep =</span> <span class="fu">first</span>(dep_time),</span>
+<span id="cb29-4"><a href="#cb29-4"></a>            <span class="at">last_dep =</span> <span class="fu">last</span>(dep_time) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="group-operations-5" class="slide level2">
+<h2>Group Operations</h2>
 <p>Let’s do <a href="https://bcdanl.github.io/200/danl-cw/danl-200-cw-12.html">Classwork 12</a>!</p>
 
 <div class="footer footer-default">

@@ -1,6 +1,6 @@
 ---
 title: Lecture 20
-subtitle: Grouped Summaries with `group_by() |> summarize()`
+subtitle: Group Operations
 format:
   clean-revealjs:
     self-contained: true
@@ -480,306 +480,42 @@ df_sum <- df |>
 
 
 
-## Grouped Summaries with `summarize()`
-
-
-Let's do [Classwork 11](https://bcdanl.github.io/200/danl-cw/danl-200-cw-11.html)!
-
-
-
 
 ## Grouped Summaries with `summarize()`
-### Example Exercises
+### Ungrouping
 
+
+- If we need to remove grouping, and return to operations on ungrouped data, we can use `ungroup()`.
+
+
+```{.r}
+daily <- flights |> 
+  group(year, month, day)
+
+daily |> 
+  ungroup() |>             # no longer grouped by date
+  summarize(flights = n())  # all flights
+```
+
+
+
+## Count the observations in each group with `count()`
 
 ::: {.panel-tabset}
-## (1)
-- Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.
-
-
-- Describe the distribution of a plane's average arrival delay.
-  - How long is the longest average arrival delay?
-  
-  
-- Calculate the average arrival delay for each date.
-  - Given that the arrival delay is positive, calculate the average arrival delay for each date.
-  
-
-
-
-## (2)
-- Why is distance to some destinations more variable than to others?
-
-- When do the first and last flights leave each day?
-
-- Which destinations have the most carriers?
-
-- Which destination have the most number of flights?
-
-- Which destination have the most number of cancelled flights?
-
-
-
-
-
-## (3)
-- Which airplane flew the longest cumulative distance?
-
-- How can we calculate the height of bars in a histogram?
-
-- For each date, how many flights left before 5am? 
-
-- For each date, what proportion of flights are delayed by more than an hour?
-
-- For each airline, how many flights are cancelled?
-
-
-:::
-
-
-## Grouped Summaries with `summarize()`
-### Example 1
-
-**Q**. Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.
-
-
-::: {.panel-tabset}
-## Step 1
-- Make the data.frame we need:
-```{.r}
-by_dest <- flights |> 
-  group_by(dest) |> 
-  summarize( count = n(),
-    dist = mean(distance, na.rm = TRUE),
-    delay = mean(arr_delay, na.rm = TRUE) )
-```
-
-
-## Step 2
-- Make data visualization
-```{.r}
-ggplot(data = by_dest, 
-       mapping = aes(x = dist, y = delay)) +
-  geom_point(aes(size = count), alpha = 1/3) +
-  geom_smooth(se = FALSE)
-```
-
-
-## Step 3
-- Consider removing outliers.
-  - It is not uncommon to remove outliers to see an "average" or "typical" relationship.
-  
-```{.r}
-by_dest2 <- by_dest |> 
-  filter(count > 20, 
-         dest != "HNL")
-```
-
-
-## Step 4
-- Do data visualization again without outliers.
-  
-```{.r}
-ggplot(data = by_dest2, 
-       mapping = aes(x = dist, y = delay)) +
-  geom_point(aes(size = count), alpha = 1/3) +
-  geom_smooth(se = FALSE)
-```
-
-
-
-:::
-
-
-
-
-## Grouped Summaries with `summarize()`
-### Example 2
-
-
-::: {.panel-tabset}
-
-
-## (0)
-
-- Suppose missing values (`NA`) in `dep_delay` or `arr_delay` represent cancelled flights.
-
-  **Q**. Use `filter()` to create the data.frame `not_cancelled` that includes all observations in `flights` except for those with cancelled flights.
-
-```{.r}
-not_cancelled <- flights |> 
-  filter( !( is.na(dep_delay) | is.na(arr_delay) ) )
-```
-
-
-## (1)
-**Q**. Describe the distribution of a plane's average arrival delay.
-- Airplanes are identified by their tail number (`tailnum`)
-
-:::: {.columns}
-::: {.column width="50%"}
-
-```{.r}
-delays <- not_cancelled |> 
-  group_by(tailnum) |> 
-  summarize(
-    delay = mean(arr_delay)
-  )
-```
-
-:::
-
-::: {.column width="50%"}
-
-```{.r}
-ggplot(data = delays, 
-       mapping = aes(x = delay)) + 
-  geom_freqpoly(binwidth = 10)
-```
-
-:::
-
-::::
-
-## (2)
-**Q**. How long is the longest average arrival delay?
-```{.r}
-delays |> 
-  arrange(-delay)
-```
-
-
-
-:::
-
-
-
-## Grouped Summaries with `summarize()`
-### Example 3
-
-**Q**. Calculate the average arrival delay for each date.
-
-**Q**. Given that the arrival delay is positive, calculate the average arrival delay for each date.
-
-
-```{.r}
-not_cancelled |> 
-  group_by(year, month, day) |> 
-  summarize(avg_delay1 = mean(arr_delay),
-            avg_delay2 = mean(arr_delay[arr_delay > 0]) ) 
-```
-
-- `x[Logical condition regarding x]` lets us filter observations from variable `x` when calculating summary (e.g. `mean()`, `sum()`).
-
-
-## Grouped Summaries with `summarize()`
-### Example 4
-
-**Q**. Why is distance to some destinations more variable than to others?
-- We can use `sd(x)` to measure how much variation a variable `x` has.
-
-```{.r}
-not_cancelled |> 
-  group_by(dest) |> 
-  summarize(distance_sd = sd(distance)) |> 
-  arrange(desc(distance_sd))
-```
-
-
-
-## Grouped Summaries with `summarize()`
-### Example 5
-
-
-**Q**. When do the first and last flights leave each day?
-
-::: {.panel-tabset}
-
-## `min()` and `max()`
-
-```{.r}
-not_cancelled |> 
-  group_by(year, month, day) |> 
-  summarize(first = min(dep_time), 
-            last = max(dep_time) )
-```
-
-
-
-## `first()` and `last()`
-- `first(x)` and `last(x)` returns the first and last element of `x`:
-  - `nth(x, 2)` returns the second element of `x`
-
-```{.r}
-not_cancelled |> 
-  group_by(year, month, day) |> 
-  summarize(first_dep = first(dep_time),
-            last_dep = last(dep_time) )
-```
-
-
-## `range()`
-- `range()` returns a vector containing the minimum and maximum of a variable:
-
-```{.r}
-not_cancelled |> 
-  group_by(year, month, day) |> 
-  mutate(r = min_rank(desc(dep_time))) |> 
-  filter(r %in% range(r) )
-```
-
-
-:::
-
-
-
-
-## Grouped Summaries with `summarize()`
-### Example 6 - Counts
-
-::: {.panel-tabset}
-
-## `n_distinct()`
-
-**Q**. Which destinations have the most carriers?
-
-  - We can use `n_distinct()` to count the number of unique/distinct values 
-
-```{.r}
-not_cancelled |> 
-  group_by(dest) |> 
-  summarise(n_carriers = n_distinct(carrier)) |> 
-  arrange(-n_carriers)
-```
-
-
 
 ## `count()`
 **Q**. Which destination have the most number of flights?
 
   - `count(x)` counts the number of observations for each value in variable `x`:
-  - `df |> count(x)` is equivalent to `df |> group_by(x) |> summarise(n = n())`
+  - `df |> count(x)` is similar to `df |> group_by(x) |> summarise(n = n())`
 
 
 ```{.r}
-not_cancelled |> 
+flights |> 
   count(dest)
 ```
 
   <!-- - `sort = TRUE` will show the largest groups at the top. -->
-
-
-## `count(x, wt = ...)`
-
-**Q**. Which airplane flew the longest cumulative distance?
-
-  - We can use `count(x, wt = NUMERIC_VARIABLE)` to calculate the sum of values in `NUMERIC_VARIABLE` for each group of `x`:
-
-```{.r}
-not_cancelled |> 
-  count(tailnum, wt = distance)
-```
-
 
 
 
@@ -810,7 +546,74 @@ diamonds |>
 :::
 ::::
 
+
 :::
+
+
+
+
+
+## Grouped Summaries with `summarize()`
+### `n_distinct()`
+
+**Q**. Which destinations have the most carriers?
+
+  - We can use `n_distinct()` to count the number of unique/distinct values .
+
+```{.r}
+flights |> 
+  group_by(dest) |> 
+  summarize(n_carriers = n_distinct(carrier)) |> 
+  arrange(-n_carriers)
+```
+
+
+
+
+# Grouped slice with `slice_*()` {background-color="#1c4982"}
+
+
+## Grouped slice with `slice_()`
+
+- `slice_*` functions allow us extract specific observations within each group:
+  - `df |> slice_head(n = N)` takes the first `N` observations in each group.
+  - `df |> slice_tail(n = N)` takes the last `N` observations in each group.
+  - `df |> slice_min(x, n = N)` takes the observations with the `N` smallest value of variable `x`.
+  - `df |> slice_max(x, n = N)` takes the observations with the `N` largest value of variable `x`.
+    - `slice_min()` and `slice_max()` keep tied values.
+  - `df |> slice_sample(n = N)` takes `N` random observations.
+
+
+
+
+
+## Grouped Summaries with `summarize()`
+### Grouping by Multiple Variables
+
+
+- When we group by multiple variables, each summary peels off one level of the grouping.
+
+```{.r}
+daily <- flights |> 
+  group_by(year, month, day)
+
+per_day <- daily |> 
+  summarize(flights = n())
+
+per_month <- per_day |> 
+  summarize(flights = sum(flights))
+
+per_year  <- per_month |> 
+  summarize(flights = sum(flights))
+```
+
+
+## Grouped Summaries with `summarize()`
+
+
+Let's do [Classwork 11](https://bcdanl.github.io/200/danl-cw/danl-200-cw-11.html)!
+
+
 
 
 
@@ -962,55 +765,14 @@ DT::datatable(df_sum, rownames = FALSE,
 :::
 
 
-## Grouped Summaries with `summarize()`
-### Grouping by Multiple Variables
-
-
-- When we group by multiple variables, each summary peels off one level of the grouping.
-
-```{.r}
-daily <- flights |> 
-  group_by(year, month, day)
-
-per_day <- daily |> 
-  summarize(flights = n())
-
-per_month <- per_day |> 
-  summarize(flights = sum(flights))
-
-per_year  <- per_month |> 
-  summarize(flights = sum(flights))
-```
-
-
-
-## Grouped Summaries with `summarize()`
-### Ungrouping
-
-
-- If we need to remove grouping, and return to operations on ungrouped data, we can use `ungroup()`.
-
-
-```{.r}
-daily <- flights |> 
-  group(year, month, day)
-
-daily |> 
-  ungroup() |>             # no longer grouped by date
-  summarize(flights = n())  # all flights
-```
-
-
-
 # Grouped `mutate()` and `filter()` {background-color="#1c4982"}
-  
 
 ## Grouped `mutate()` and `filter()`
 
 - Grouping is most useful in conjunction with `summarize()`, but we can also do convenient operations with `mutate()` and `filter()`.
 
 ::: {.panel-tabset}
-## Example 1
+## `filter()`
 
 
 :::: {.columns}
@@ -1133,7 +895,7 @@ DT::datatable(df_filter, rownames = FALSE,
 
 
 
-## Example 2
+## `mutate()`
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -1205,20 +967,20 @@ DT::datatable(df_mutate, rownames = FALSE,
 ::::
 
 
-## worst
+## Worst
 - Find the worst members of each group:
   - E.g., For each date, find the 10 worst flights in terms of `arr_delay`.
 
 
 
 
-## threshold
+## Threshold
 - Find all groups bigger than a threshold:
   - E.g., Find the destination airport that had flights from NYC more than 17250 times in 2013.
 
 
 
-## per group metrics
+## Per group metrics
 - We can compute per group metrics:
   - E.g., For destination, calculate the rankings of flights that departed on January 1 in terms of `arr_delay`
 
@@ -1227,10 +989,237 @@ DT::datatable(df_mutate, rownames = FALSE,
 :::
 
 
+# Group Operations - Examples {background-color="#1c4982"}
 
-## Grouped Summaries with `summarize()`
+## Group Operations - Examples
+### Example Exercises
+
+
+::: {.panel-tabset}
+## (1)
+- Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.
+
+
+- Describe the distribution of a plane's average arrival delay.
+  - How long is the longest average arrival delay?
+  
+  
+- Calculate the average arrival delay for each date.
+  - Given that the arrival delay is positive, calculate the average arrival delay for each date.
+  
+
+
+
+## (2)
+- Why is distance to some destinations more variable than to others?
+
+- When do the first and last flights leave each day?
+
+- For each date, how many flights left before 5am? 
+
+- For each date, what proportion of flights are delayed by more than an hour?
+
+- For each airline, how many flights are cancelled?
+
+<!-- - Which destination have the most number of cancelled flights? -->
+
+
+:::
+
+
+
+## Group Operations
+### Example 1
+
+
+::: {.panel-tabset}
+
+
+## (0)
+
+- Suppose missing values (`NA`) in `dep_delay` or `arr_delay` represent cancelled flights.
+
+  **Q**. Use `filter()` to create the data.frame `not_cancelled` that includes all observations in `flights` except for those with cancelled flights.
+
+```{.r}
+not_cancelled <- flights |> 
+  filter( !( is.na(dep_delay) | is.na(arr_delay) ) )
+```
+
+
+## (1)
+**Q**. Describe the distribution of a plane's average arrival delay.
+- Airplanes are identified by their tail number (`tailnum`)
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{.r}
+delays <- not_cancelled |> 
+  group_by(tailnum) |> 
+  summarize(
+    delay = mean(arr_delay)
+  )
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{.r}
+ggplot(data = delays, 
+       mapping = aes(x = delay)) + 
+  geom_freqpoly(binwidth = 10)
+```
+
+:::
+
+::::
+
+## (2)
+**Q**. How long is the longest average arrival delay?
+```{.r}
+delays |> 
+  arrange(-delay)
+```
+
+
+
+:::
+
+
+
+
+
+## Group Operations
+### Example 2
+
+**Q**. Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.
+
+
+::: {.panel-tabset}
+## Step 1
+- Make the data.frame we need:
+```{.r}
+by_dest <- flights |> 
+  group_by(dest) |> 
+  summarize( count = n(),
+    dist = mean(distance, na.rm = TRUE),
+    delay = mean(arr_delay, na.rm = TRUE) )
+```
+
+
+## Step 2
+- Make data visualization
+```{.r}
+ggplot(data = by_dest, 
+       mapping = aes(x = dist, y = delay)) +
+  geom_point(aes(size = count), alpha = 1/3) +
+  geom_smooth(se = FALSE)
+```
+
+
+## Step 3
+- Consider removing outliers.
+  - It is not uncommon to remove outliers to see an "average" or "typical" relationship.
+  
+```{.r}
+by_dest2 <- by_dest |> 
+  filter(count > 20, 
+         dest != "HNL")
+```
+
+
+## Step 4
+- Do data visualization again without outliers.
+  
+```{.r}
+ggplot(data = by_dest2, 
+       mapping = aes(x = dist, y = delay)) +
+  geom_point(aes(size = count), alpha = 1/3) +
+  geom_smooth(se = FALSE)
+```
+
+
+
+:::
+
+
+
+
+
+## Group Operations
+### Example 3
+
+**Q**. Calculate the average arrival delay for each date.
+
+**Q**. Given that the arrival delay is positive, calculate the average arrival delay for each date.
+
+
+```{.r}
+not_cancelled |> 
+  group_by(year, month, day) |> 
+  summarize(avg_delay1 = mean(arr_delay),
+            avg_delay2 = mean(arr_delay[arr_delay > 0]) ) 
+```
+
+- `x[Logical condition regarding x]` lets us filter observations from variable `x` when calculating summary (e.g. `mean()`, `sum()`).
+
+
+## Group Operations
+### Example 4
+
+**Q**. Why is distance to some destinations more variable than to others?
+- We can use `sd(x)` to measure how much variation a variable `x` has.
+
+```{.r}
+not_cancelled |> 
+  group_by(dest) |> 
+  summarize(distance_sd = sd(distance)) |> 
+  arrange(desc(distance_sd))
+```
+
+
+
+## Group Operations
+### Example 5
+
+**Q**. When do the first and last flights leave each day?
+
+::: {.panel-tabset}
+
+## `min()` and `max()`
+
+```{.r}
+not_cancelled |> 
+  group_by(year, month, day) |> 
+  summarize(first = min(dep_time), 
+            last = max(dep_time) )
+```
+
+
+
+## `first()` and `last()`
+- `first(x)` and `last(x)` returns the first and last element of `x`:
+  - `nth(x, 2)` returns the second element of `x`
+
+```{.r}
+not_cancelled |> 
+  group_by(year, month, day) |> 
+  summarize(first_dep = first(dep_time),
+            last_dep = last(dep_time) )
+```
+
+
+:::
+
+
+
+
+## Group Operations
 
 
 Let's do [Classwork 12](https://bcdanl.github.io/200/danl-cw/danl-200-cw-12.html)!
+
 
 
