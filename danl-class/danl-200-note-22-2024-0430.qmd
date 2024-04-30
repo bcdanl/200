@@ -1,0 +1,234 @@
+---
+title: Note 22
+subtitle: group_by() 
+author: Byeong-Hak Choe
+institute: SUNY Geneseo
+date: 2024-04-30
+format: 
+  html
+    # toc: true
+    # toc-depth: 2
+    # toc-expand: true
+    # toc-title: Contents
+# code-fold: true
+code-tools: true
+
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  fig-width: 9
+  fig-height: 6
+---
+```{r}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(broom)
+library(hrbrthemes)
+
+theme_set(theme_ipsum() +
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = element_text(size = rel(1.5) ),
+                axis.title.y = element_text(size = rel(1.5) ))
+          )
+
+```
+
+
+```{r}
+library(nycflights13)
+
+```
+
+
+# ungroup()
+
+```{r}
+daily <- flights |> 
+  group_by(year, month, day)
+
+by_day <- daily |> 
+  summarize(flights = n())
+
+all_days <- daily |> 
+  ungroup() |>             # no longer grouped by date
+  summarize(flights = n())  # all flights
+```
+
+
+# count()
+
+```{r}
+n_dest <- flights |> 
+  count(dest) |> 
+  arrange(-n)
+```
+
+
+
+```{r}
+n_dest2 <- flights |> 
+  group_by(dest) |> 
+  count() |> 
+  arrange(-n)
+```
+
+
+```{r}
+n_dest3 <- flights |> 
+  group_by(dest) |> 
+  summarize(n = n()) |> 
+  arrange(-n)
+
+```
+
+
+```{r}
+ggplot(diamonds) +
+  geom_histogram(aes(x = carat),
+                 binwidth = .5)
+```
+
+```{r}
+diamonds |> 
+  count(cut_width(carat, .5))
+```
+
+
+```{r}
+df_dest <- flights |> 
+  count(dest)
+```
+
+
+# n_distinct()
+
+```{r}
+flights <- flights
+```
+
+
+```{r}
+df_n_distinct <- flights |> 
+  summarise(n_dest = n_distinct(dest))
+```
+
+```{r}
+by_dest <- flights |> 
+  group_by(dest) |> 
+  summarise(n_dest = n_distinct(carrier)) |> 
+  arrange(-n_dest)
+```
+
+
+# group_by() with multiple variables
+
+```{r}
+daily <- flights |> 
+  group_by(year, month, day)
+
+per_day <- daily |> 
+  summarize(flights = n())
+
+per_month <- per_day |> 
+  summarize(flights = sum(flights))
+
+per_year  <- per_month |> 
+  summarize(flights = sum(flights))
+```
+
+
+# Classwork 11
+```{r}
+nyc_dogs <- read_csv('https://bcdanl.github.io/data/nyc_dogs_cleaned.csv')
+```
+
+## Q1a
+Top 5 most popular breeds
+```{r}
+top_5_breeds <- nyc_dogs |> 
+  count(breed) |> 
+  arrange(-n) |> 
+  filter(!is.na(breed)) |> 
+  slice_head(n = 5)
+```
+
+
+## Q1b
+Provide both (1) ggplot code and (2) a simple comment to describe how the distribution of the five popular breeds varies by borough.
+
+
+```{r}
+only_top_5 <- nyc_dogs |> 
+  filter(breed == "yorkshire terrier" |
+           breed == "shih tzu" |
+           breed == "chihuahua" |
+           breed == "labrador" |
+           breed == "pit bull" )
+
+only_top_5 <- nyc_dogs |> 
+  filter(breed %in% c("yorkshire terrier", "shih tzu", "chihuahua", "labrador", "pit bull"))
+
+top_5_breeds$breed
+
+only_top_5 <- nyc_dogs |> 
+  filter(breed %in% top_5_breeds$breed)
+```
+
+
+```{r}
+#| fig-height: 9
+ggplot(only_top_5, aes(y = breed)) +
+  geom_bar() +
+  facet_wrap(borough ~.)
+  
+```
+
+## Q1c
+Find the five most popular breeds in each borough.
+```{r}
+q1c <- nyc_dogs |> 
+  group_by(borough) |> 
+  count(breed) |> 
+  filter(!is.na(breed)) |> 
+  slice_max(n, n = 5)
+```
+
+
+```{r}
+q1c_rank <- nyc_dogs |> 
+  group_by(borough) |> 
+  count(breed) |> 
+  arrange(borough, -n) |> 
+  filter(!is.na(breed)) |> 
+  mutate(ranking = dense_rank(-n)) |> # ranking within a group
+  filter(ranking <= 5 )
+
+```
+
+```{r}
+q1c_head <- nyc_dogs |> 
+  group_by(borough) |> 
+  count(breed) |> 
+  arrange(borough, -n) |> 
+  filter(!is.na(breed)) |> 
+  slice_head(n = 5)
+```
+
+
+## Q1d
+Find the five most popular dog names for each gender.
+
+```{r}
+q1d <- nyc_dogs |> 
+  filter(!is.na(gender)) |> 
+  filter(!is.na(name)) |> 
+  group_by(gender) |> 
+  count(name) |> 
+  slice_max(n, n = 5)
+```
+
+
+

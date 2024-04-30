@@ -3021,7 +3021,7 @@
     "href": "listing-danl-200-class.html",
     "title": "DANL 200 - Class Notes",
     "section": "",
-    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\nLecture 13 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 19, 2024\n\n\n\n\nLecture 14 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 21, 2024\n\n\n\n\nLecture 15 - Note\n\n\nBar Charts\n\n\nMarch 26, 2024\n\n\n\n\nLecture 16 - Note\n\n\nMidterm Exam Review; Filtering Observations\n\n\nApril 2, 2024\n\n\n\n\nLecture 17 - Note\n\n\nFiltering Observations; Arrange Observations\n\n\nApril 4, 2024\n\n\n\n\nLecture 18 - Note\n\n\nFiltering Observations; and more\n\n\nApril 9, 2024\n\n\n\n\nLecture 19 - Note\n\n\nmutate()\n\n\nApril 18, 2024\n\n\n\n\nLecture 19 - Note\n\n\nmutate() / group_by() / summarize()\n\n\nApril 23, 2024\n\n\n\n\nNote 21\n\n\nmutate() / group_by() / summarize()\n\n\nApril 23, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "All class Quarto documents are stored in:\nthis GitHub Repository.\nHTML outputs from the class Quarto documents are provided below:\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 6 - Note\n\n\nR Basics\n\n\nFebruary 7, 2024\n\n\n\n\nLecture 7 - Note\n\n\nR Basics\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8 - Note\n\n\nR Basics; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9 - Note\n\n\nHomework 1 Review\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10 - Note\n\n\nAesthetic Mappings\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\nLecture 13 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 19, 2024\n\n\n\n\nLecture 14 - Note\n\n\nFacets; Data Visualization Process; Geometric Objects\n\n\nMarch 21, 2024\n\n\n\n\nLecture 15 - Note\n\n\nBar Charts\n\n\nMarch 26, 2024\n\n\n\n\nLecture 16 - Note\n\n\nMidterm Exam Review; Filtering Observations\n\n\nApril 2, 2024\n\n\n\n\nLecture 17 - Note\n\n\nFiltering Observations; Arrange Observations\n\n\nApril 4, 2024\n\n\n\n\nLecture 18 - Note\n\n\nFiltering Observations; and more\n\n\nApril 9, 2024\n\n\n\n\nLecture 19 - Note\n\n\nmutate()\n\n\nApril 18, 2024\n\n\n\n\nLecture 19 - Note\n\n\nmutate() / group_by() / summarize()\n\n\nApril 23, 2024\n\n\n\n\nNote 21\n\n\nmutate() / group_by() / summarize()\n\n\nApril 23, 2024\n\n\n\n\nNote 22\n\n\ngroup_by()\n\n\nApril 30, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-lec/danl-200-lec-01-2024-0123.html#instructor-1",
@@ -5850,5 +5850,40 @@
     "title": "Lecture 20",
     "section": "Group Operations",
     "text": "Group Operations\nLet’s do Classwork 12!"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-22-2024-0430.html",
+    "href": "danl-class/danl-200-note-22-2024-0430.html",
+    "title": "Note 22",
+    "section": "",
+    "text": "library(nycflights13)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-22-2024-0430.html#q1a",
+    "href": "danl-class/danl-200-note-22-2024-0430.html#q1a",
+    "title": "Note 22",
+    "section": "Q1a",
+    "text": "Q1a\nTop 5 most popular breeds\n\ntop_5_breeds &lt;- nyc_dogs |&gt; \n  count(breed) |&gt; \n  arrange(-n) |&gt; \n  filter(!is.na(breed)) |&gt; \n  slice_head(n = 5)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-22-2024-0430.html#q1b",
+    "href": "danl-class/danl-200-note-22-2024-0430.html#q1b",
+    "title": "Note 22",
+    "section": "Q1b",
+    "text": "Q1b\nProvide both (1) ggplot code and (2) a simple comment to describe how the distribution of the five popular breeds varies by borough.\n\nonly_top_5 &lt;- nyc_dogs |&gt; \n  filter(breed == \"yorkshire terrier\" |\n           breed == \"shih tzu\" |\n           breed == \"chihuahua\" |\n           breed == \"labrador\" |\n           breed == \"pit bull\" )\n\nonly_top_5 &lt;- nyc_dogs |&gt; \n  filter(breed %in% c(\"yorkshire terrier\", \"shih tzu\", \"chihuahua\", \"labrador\", \"pit bull\"))\n\ntop_5_breeds$breed\n\n[1] \"yorkshire terrier\" \"shih tzu\"          \"chihuahua\"        \n[4] \"labrador\"          \"pit bull\"         \n\nonly_top_5 &lt;- nyc_dogs |&gt; \n  filter(breed %in% top_5_breeds$breed)\n\n\nggplot(only_top_5, aes(y = breed)) +\n  geom_bar() +\n  facet_wrap(borough ~.)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-22-2024-0430.html#q1c",
+    "href": "danl-class/danl-200-note-22-2024-0430.html#q1c",
+    "title": "Note 22",
+    "section": "Q1c",
+    "text": "Q1c\nFind the five most popular breeds in each borough.\n\nq1c &lt;- nyc_dogs |&gt; \n  group_by(borough) |&gt; \n  count(breed) |&gt; \n  filter(!is.na(breed)) |&gt; \n  slice_max(n, n = 5)\n\n\nq1c_rank &lt;- nyc_dogs |&gt; \n  group_by(borough) |&gt; \n  count(breed) |&gt; \n  arrange(borough, -n) |&gt; \n  filter(!is.na(breed)) |&gt; \n  mutate(ranking = dense_rank(-n)) |&gt; # ranking within a group\n  filter(ranking &lt;= 5 )\n\n\nq1c_head &lt;- nyc_dogs |&gt; \n  group_by(borough) |&gt; \n  count(breed) |&gt; \n  arrange(borough, -n) |&gt; \n  filter(!is.na(breed)) |&gt; \n  slice_head(n = 5)"
+  },
+  {
+    "objectID": "danl-class/danl-200-note-22-2024-0430.html#q1d",
+    "href": "danl-class/danl-200-note-22-2024-0430.html#q1d",
+    "title": "Note 22",
+    "section": "Q1d",
+    "text": "Q1d\nFind the five most popular dog names for each gender.\n\nq1d &lt;- nyc_dogs |&gt; \n  filter(!is.na(gender)) |&gt; \n  filter(!is.na(name)) |&gt; \n  group_by(gender) |&gt; \n  count(name) |&gt; \n  slice_max(n, n = 5)"
   }
 ]
