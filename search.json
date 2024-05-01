@@ -284,7 +284,7 @@
     "href": "index.html#bullet-classwork",
     "title": "DANL 200-02: Introduction to Data Analytics, Spring 2024",
     "section": "\\(\\bullet\\,\\) Classwork ⌨️",
-    "text": "\\(\\bullet\\,\\) Classwork ⌨️\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nClasswork 11\n\n\nApril 23, 2024\n\n\n\n\nClasswork 10\n\n\nApril 16, 2024\n\n\n\n\nClasswork 9\n\n\nApril 4, 2024\n\n\n\n\nClasswork 8\n\n\nMarch 26, 2024\n\n\n\n\nClasswork 7\n\n\nMarch 19, 2024\n\n\n\n\nClasswork 6\n\n\nFebruary 13, 2024\n\n\n\n\nClasswork 5\n\n\nFebruary 8, 2024\n\n\n\n\nClasswork 4\n\n\nFebruary 6, 2024\n\n\n\n\nClasswork 3\n\n\nFebruary 1, 2024\n\n\n\n\nClasswork 2\n\n\nJanuary 30, 2024\n\n\n\n\nClasswork 1\n\n\nJanuary 25, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Classwork ⌨️\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nClasswork 12\n\n\nMay 2, 2024\n\n\n\n\nClasswork 11\n\n\nApril 23, 2024\n\n\n\n\nClasswork 10\n\n\nApril 16, 2024\n\n\n\n\nClasswork 9\n\n\nApril 4, 2024\n\n\n\n\nClasswork 8\n\n\nMarch 26, 2024\n\n\n\n\nClasswork 7\n\n\nMarch 19, 2024\n\n\n\n\nClasswork 6\n\n\nFebruary 13, 2024\n\n\n\n\nClasswork 5\n\n\nFebruary 8, 2024\n\n\n\n\nClasswork 4\n\n\nFebruary 6, 2024\n\n\n\n\nClasswork 3\n\n\nFebruary 1, 2024\n\n\n\n\nClasswork 2\n\n\nJanuary 30, 2024\n\n\n\n\nClasswork 1\n\n\nJanuary 25, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-homework",
@@ -5394,7 +5394,7 @@
     "href": "listing-danl-200-lec.html",
     "title": "DANL 200 - Lecture",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and Installing the Tools\n\n\nJanuary 23, 2024\n\n\n\n\nLecture 2\n\n\nInstalling the DANL Tools\n\n\nJanuary 25, 2024\n\n\n\n\nLecture 3\n\n\nInstalling the DANL Tools\n\n\nJanuary 30, 2024\n\n\n\n\nLecture 4\n\n\nInstalling the DANL Tools\n\n\nFebruary 1, 2024\n\n\n\n\nLecture 5\n\n\nWebsite Basics\n\n\nFebruary 6, 2024\n\n\n\n\nLecture 6\n\n\nR Basics\n\n\nFebruary 8, 2024\n\n\n\n\nLecture 7\n\n\nR Basics; Data Visualization\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8\n\n\nWorking with data.frame; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9\n\n\nData Visualization - Aesthetic Mappings and Facets\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10\n\n\nData Visualization - Aesthetic Mappings and Facets\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11\n\n\nData Visualization - Aesthetic Mappings and Facets\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12\n\n\nData Visualization - Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\nLecture 13\n\n\nData Visualization - Geometric Objects\n\n\nMarch 19, 2024\n\n\n\n\nLecture 14\n\n\nData Visualization - Bar Charts\n\n\nMarch 21, 2024\n\n\n\n\nLecture 15\n\n\nData Visualization - Bar Charts\n\n\nMarch 26, 2024\n\n\n\n\nLecture 16\n\n\nFiltering observations with filter()\n\n\nApril 2, 2024\n\n\n\n\nLecture 17\n\n\nFiltering observations with filter(); Arrange observations with arrange()\n\n\nApril 4, 2024\n\n\n\n\nLecture 18\n\n\nSelect variables with select(); Rename variables with rename(); Relocate variables with relocate(); Add a new variable with mutate()\n\n\nApril 11, 2024\n\n\n\n\nLecture 19\n\n\nAdd a new variable with mutate()\n\n\nApril 16, 2024\n\n\n\n\nLecture 20\n\n\nGroup Operations\n\n\nApril 25, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and Installing the Tools\n\n\nJanuary 23, 2024\n\n\n\n\nLecture 2\n\n\nInstalling the DANL Tools\n\n\nJanuary 25, 2024\n\n\n\n\nLecture 3\n\n\nInstalling the DANL Tools\n\n\nJanuary 30, 2024\n\n\n\n\nLecture 4\n\n\nInstalling the DANL Tools\n\n\nFebruary 1, 2024\n\n\n\n\nLecture 5\n\n\nWebsite Basics\n\n\nFebruary 6, 2024\n\n\n\n\nLecture 6\n\n\nR Basics\n\n\nFebruary 8, 2024\n\n\n\n\nLecture 7\n\n\nR Basics; Data Visualization\n\n\nFebruary 13, 2024\n\n\n\n\nLecture 8\n\n\nWorking with data.frame; Data Visualization\n\n\nFebruary 15, 2024\n\n\n\n\nLecture 9\n\n\nData Visualization - Aesthetic Mappings and Facets\n\n\nFebruary 22, 2024\n\n\n\n\nLecture 10\n\n\nData Visualization - Aesthetic Mappings and Facets\n\n\nFebruary 29, 2024\n\n\n\n\nLecture 11\n\n\nData Visualization - Aesthetic Mappings and Facets\n\n\nMarch 5, 2024\n\n\n\n\nLecture 12\n\n\nData Visualization - Geometric Objects\n\n\nMarch 7, 2024\n\n\n\n\nLecture 13\n\n\nData Visualization - Geometric Objects\n\n\nMarch 19, 2024\n\n\n\n\nLecture 14\n\n\nData Visualization - Bar Charts\n\n\nMarch 21, 2024\n\n\n\n\nLecture 15\n\n\nData Visualization - Bar Charts\n\n\nMarch 26, 2024\n\n\n\n\nLecture 16\n\n\nFiltering observations with filter()\n\n\nApril 2, 2024\n\n\n\n\nLecture 17\n\n\nFiltering observations with filter(); Arrange observations with arrange()\n\n\nApril 4, 2024\n\n\n\n\nLecture 18\n\n\nColumns - select(), rename(), relocate(), and mutate()\n\n\nApril 11, 2024\n\n\n\n\nLecture 19\n\n\nAdd a new variable with mutate()\n\n\nApril 16, 2024\n\n\n\n\nLecture 20\n\n\nGroup Operations\n\n\nApril 25, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-qa/danl-200-qa-18.html",
@@ -5471,7 +5471,7 @@
     "href": "listing-danl-200-cw.html",
     "title": "DANL 200 - Classwork",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 1\n\n\nComputer Basics\n\n\nJanuary 25, 2024\n\n\n\n\nClasswork 2\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio with Quarto\n\n\nJanuary 30, 2024\n\n\n\n\nClasswork 3\n\n\nMarkdown Basics\n\n\nFebruary 1, 2024\n\n\n\n\nClasswork 4\n\n\nQuarto Website Basics\n\n\nFebruary 6, 2024\n\n\n\n\nClasswork 5\n\n\nR Basics\n\n\nFebruary 8, 2024\n\n\n\n\nClasswork 6\n\n\nggplot - First Steps; Aethetic Mappings; Facets\n\n\nFebruary 13, 2024\n\n\n\n\nClasswork 7\n\n\nggplot - Geometric Objects; Statistical Transformation; and Position Adjustment\n\n\nMarch 19, 2024\n\n\n\n\nClasswork 8\n\n\nFall 2023 DANL 200 Midterm Exam 1\n\n\nMarch 26, 2024\n\n\n\n\nClasswork 9\n\n\nFiltering observations\n\n\nApril 4, 2024\n\n\n\n\nClasswork 10\n\n\nWorking on variables with select(), rename(), and relocate(); Adding a new variable with mutate()\n\n\nApril 16, 2024\n\n\n\n\nClasswork 11\n\n\nSummarize data.frame with summarize()\n\n\nApril 23, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 1\n\n\nComputer Basics\n\n\nJanuary 25, 2024\n\n\n\n\nClasswork 2\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio with Quarto\n\n\nJanuary 30, 2024\n\n\n\n\nClasswork 3\n\n\nMarkdown Basics\n\n\nFebruary 1, 2024\n\n\n\n\nClasswork 4\n\n\nQuarto Website Basics\n\n\nFebruary 6, 2024\n\n\n\n\nClasswork 5\n\n\nR Basics\n\n\nFebruary 8, 2024\n\n\n\n\nClasswork 6\n\n\nggplot - First Steps; Aethetic Mappings; Facets\n\n\nFebruary 13, 2024\n\n\n\n\nClasswork 7\n\n\nggplot - Geometric Objects; Statistical Transformation; and Position Adjustment\n\n\nMarch 19, 2024\n\n\n\n\nClasswork 8\n\n\nFall 2023 DANL 200 Midterm Exam 1\n\n\nMarch 26, 2024\n\n\n\n\nClasswork 9\n\n\nFiltering observations\n\n\nApril 4, 2024\n\n\n\n\nClasswork 10\n\n\nWorking on variables with select(), rename(), and relocate(); Adding a new variable with mutate()\n\n\nApril 16, 2024\n\n\n\n\nClasswork 11\n\n\nSummarize data.frame with summarize()\n\n\nApril 23, 2024\n\n\n\n\nClasswork 12\n\n\nData Transformation\n\n\nMay 2, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "blog-listing.html",
@@ -5997,5 +5997,61 @@
     "title": "Homework 5",
     "section": "Q3b",
     "text": "Q3b\n\nEnsure that the blog post assigned in Homework 4 has an appropriate thumbnail by including an image file in the blog post’s directory with a proper YAML header option."
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-12.html",
+    "href": "danl-cw/danl-200-cw-12.html",
+    "title": "Classwork 12",
+    "section": "",
+    "text": "beer_markets &lt;- read_csv('https://bcdanl.github.io/data/beer_markets_all.csv')\n\n\n\n\n  \n\n\n\n\n\nUse skimr::skim() to get summary statistics (e.g, mean, standard deviation, median, minimum, maximum) about the price for one bottle of beer (12 oz) for each brand when there was promo and when there was not.\nAnswer:\n\n\n\n\n\nFor each household, calculate the number of beer transactions.\nFor each household, calculate the proportion of each beer brand choice.\n\nAnswer:\n\n\n\n\n\nAmong households that purchased BUD LIGHT at least once, what proportion only bought BUD LIGHT?\nAmong households that purchased BUSCH LIGHT at least once, what proportion only bought BUSCH LIGHT?\nAmong households that purchased COORS LIGHT at least once, what proportion only bought COORS LIGHT?\nAmong households that purchased MILLER LITE at least once, what proportion only bought MILLER LITE?\nAmong households that purchased NATURAL LIGHT at least once, what proportion only bought NATURAL LIGHT?\nWhich beer brand does have the largest proportion of such loyal consumers?\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-12.html#question-1",
+    "href": "danl-cw/danl-200-cw-12.html#question-1",
+    "title": "Classwork 12",
+    "section": "",
+    "text": "Use skimr::skim() to get summary statistics (e.g, mean, standard deviation, median, minimum, maximum) about the price for one bottle of beer (12 oz) for each brand when there was promo and when there was not.\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-12.html#question-2",
+    "href": "danl-cw/danl-200-cw-12.html#question-2",
+    "title": "Classwork 12",
+    "section": "",
+    "text": "For each household, calculate the number of beer transactions.\nFor each household, calculate the proportion of each beer brand choice.\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-12.html#question-3",
+    "href": "danl-cw/danl-200-cw-12.html#question-3",
+    "title": "Classwork 12",
+    "section": "",
+    "text": "Among households that purchased BUD LIGHT at least once, what proportion only bought BUD LIGHT?\nAmong households that purchased BUSCH LIGHT at least once, what proportion only bought BUSCH LIGHT?\nAmong households that purchased COORS LIGHT at least once, what proportion only bought COORS LIGHT?\nAmong households that purchased MILLER LITE at least once, what proportion only bought MILLER LITE?\nAmong households that purchased NATURAL LIGHT at least once, what proportion only bought NATURAL LIGHT?\nWhich beer brand does have the largest proportion of such loyal consumers?\n\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-12.html#question-4",
+    "href": "danl-cw/danl-200-cw-12.html#question-4",
+    "title": "Classwork 12",
+    "section": "Question 4",
+    "text": "Question 4\nUse skimr::skim() to get summary statistics (e.g, mean, standard deviation, median, minimum, maximum) about sale_price for each borough.\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-12.html#question-5",
+    "href": "danl-cw/danl-200-cw-12.html#question-5",
+    "title": "Classwork 12",
+    "section": "Question 5",
+    "text": "Question 5\nAdd the new variable, age, to data.frame, nyc_housing_sales, using the year and year_built variables.\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-12.html#question-6",
+    "href": "danl-cw/danl-200-cw-12.html#question-6",
+    "title": "Classwork 12",
+    "section": "Question 6",
+    "text": "Question 6\nProvide both (1) ggplot code and (2) a simple comment to describe how the daily trend of sale_price varies by borough, on average.\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-200-cw-12.html#question-7",
+    "href": "danl-cw/danl-200-cw-12.html#question-7",
+    "title": "Classwork 12",
+    "section": "Question 7",
+    "text": "Question 7\nIdentify the neighborhood with the highest average housing sales price for each month of each year.\nAnswer:"
   }
 ]

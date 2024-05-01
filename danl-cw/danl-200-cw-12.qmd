@@ -1,0 +1,158 @@
+---
+title: Classwork 12
+subtitle: Data Transformation
+date: 2024-05-02
+execute: 
+  echo: true
+  warning: false
+  message: false
+  
+from: markdown+emoji
+---
+```{r}
+#| include: false
+
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+library(nycflights13)
+
+theme_set(theme_ipsum() +
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = element_text(size = rel(1.5)),
+                axis.title.y = element_text(size = rel(1.5)),
+                legend.title = element_text(size=rel(1.25))
+                ))
+```
+
+
+
+# Part 1 - Beer Markets
+
+```{r}
+beer_markets <- read_csv('https://bcdanl.github.io/data/beer_markets_all.csv')
+```
+
+
+```{r}
+#| echo: false
+#| eval: true
+#| results: asis
+rmarkdown::paged_table(beer_markets) 
+```
+
+<br><br>
+
+
+## Question 1
+Use skimr::skim() to get summary statistics (e.g, mean, standard deviation, median, minimum, maximum) about the price for one bottle of beer (12 oz) for each `brand` when there was promo and when there was not.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+## Question 2
+
+- For each household, calculate the number of beer transactions.
+- For each household, calculate the proportion of each beer brand choice.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+## Question 3
+- Among households that purchased BUD LIGHT at least once, what proportion only bought BUD LIGHT?
+
+- Among households that purchased BUSCH LIGHT at least once, what proportion only bought BUSCH LIGHT?
+
+- Among households that purchased COORS LIGHT at least once, what proportion only bought COORS LIGHT?
+
+- Among households that purchased MILLER LITE at least once, what proportion only bought MILLER LITE?
+
+- Among households that purchased NATURAL LIGHT at least once, what proportion only bought NATURAL LIGHT?
+
+- Which beer brand does have the largest proportion of such loyal consumers?
+
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+
+
+
+# Part 2 - NYC Housing Markets
+
+```{r}
+nyc_housing_sales <- read_csv('https://bcdanl.github.io/data/nyc_housing_sales_2006-2023.csv')
+```
+
+
+```{r}
+#| echo: false
+#| eval: true
+#| results: asis
+rmarkdown::paged_table(nyc_housing_sales) 
+```
+
+<br><br>
+
+## Question 4
+Use skimr::skim() to get summary statistics (e.g, mean, standard deviation, median, minimum, maximum) about `sale_price` for each `borough`.
+
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+## Question 5
+Add the new variable, `age`, to data.frame, nyc_housing_sales, using the `year` and `year_built` variables.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+## Question 6
+Provide both (1) ggplot code and (2) a simple comment to describe how the daily trend of `sale_price` varies by `borough`, on average.
+
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>
+
+
+
+## Question 7
+Identify the neighborhood with the highest average housing sales price for each month of each year.
+
+*Answer*:
+```{r}
+
+```
+
+<br><br>

@@ -1,6 +1,6 @@
 ---
 title: Lecture 18
-subtitle: Select variables with `select()`; Rename variables with `rename()`; Relocate variables with `relocate()`; Add a new variable with `mutate()`
+subtitle: Columns - `select()`, `rename()`, `relocate()`, and `mutate()`
 format:
   clean-revealjs:
     self-contained: true
