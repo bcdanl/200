@@ -6102,5 +6102,12 @@
     "title": "Note 23",
     "section": "",
     "text": "Assume that all dogs in the nyc_dogs data frame are alive as of today.\nProvide both (1) ggplot code and (2) a simple comment to describe the distribution of age for each borough.\n\n\nnyc_dogs &lt;- nyc_dogs |&gt; \n  mutate(age = 2024 - birth_year)\n\nggplot(nyc_dogs, aes(x = age)) +\n  geom_histogram()\n\n\n\n\n\ndf &lt;- data.frame(\n  group = c(\"A\", \"B\", \"A\", \"B\"),\n  score = c(50, 65, 70, 85)\n)\n\ndf_sum &lt;- df |&gt; \n  group_by(group) |&gt; \n  summarize(\n    mean_val = mean(score)\n    )\n\ndf_sum_mutate &lt;- df |&gt; \n  group_by(group) |&gt; \n  mutate(\n    mean_val = mean(score)\n    )"
+  },
+  {
+    "objectID": "danl-lec/danl-200-lec-20-2024-0425.html#student-course-evaluation-sce",
+    "href": "danl-lec/danl-200-lec-20-2024-0425.html#student-course-evaluation-sce",
+    "title": "Lecture 20",
+    "section": "Student Course Evaluation (SCE)",
+    "text": "Student Course Evaluation (SCE)\n\nI have tried to improve your learning experience in this course.\nI value your feedback immensely.\nI request for your participation in the Student Course Evaluation (SCE).\nTake 10 minutes right now to complete the SCE.\nOn your laptop, access the SCE form for DANL 200 as follows:\nHere are the web-link and steps to do so:\n\nGo to myGeneseo.edu\nClick the KnightWeb\nClick on the “Surveys” option\nChoose DANL 200 (class for which you want to fill out the SCE) and then complete the SCE survey."
   }
 ]

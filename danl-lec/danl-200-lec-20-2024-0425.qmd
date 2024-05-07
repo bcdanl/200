@@ -54,6 +54,19 @@ theme_set(theme_fivethirtyeight()+
 ```
 
 
+## Student Course Evaluation (SCE)
+
+- I have tried to improve your learning experience in this course.
+- I value your feedback immensely.
+- I request for your participation in the Student Course Evaluation (SCE).
+- Take 10 minutes right now to complete the SCE.
+- On your laptop, access the SCE form for DANL 200 as follows:
+- Here are the web-link and steps to do so:
+  1. Go to [myGeneseo.edu](https://my.geneseo.edu/dashboard)
+  2. Click the KnightWeb
+  3. Click on the "Surveys" option
+  4. Choose DANL 200 (class for which you want to fill out the SCE) and then complete the SCE survey.
+
 
 
 ## Data Transformation
