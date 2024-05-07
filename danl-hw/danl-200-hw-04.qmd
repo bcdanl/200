@@ -19,6 +19,14 @@ execute:
 
 library(tidyverse)
 library(skimr)
+library(DT)
+library(hrbrthemes)
+
+theme_set(theme_ipsum() +
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = element_text(size = rel(1.5) ),
+                axis.title.y = element_text(size = rel(1.5) ))
+          )
 ```
 
 # Direction
@@ -109,7 +117,11 @@ What are the mean, standard deviation, first quartile, median, third quartile, a
 
 *Answer*:
 ```{r}
+q1a <- restaurant |> 
+  group_by(GRADE) |> 
+  skim()
 
+q1a
 ```
 
 <br><br>
@@ -120,7 +132,11 @@ What are the mean, standard deviation, first quartile, median, third quartile, a
 
 *Answer*:
 ```{r}
+q1b <- restaurant |> 
+  filter(GRADE == 'A') |> 
+  count(BORO)
 
+datatable(q1b)
 ```
 
 <br>
@@ -130,11 +146,42 @@ What are the mean, standard deviation, first quartile, median, third quartile, a
 - Provide both (1) ggplot code and (2) a simple comment to describe how the distribution of `SCORE` varies by `GRADE` and `CRITICAL FLAG`.
 
 
-
 *Answer*:
 ```{r}
-
+# Boxplot
+ggplot(restaurant) +
+  geom_boxplot(aes(x = SCORE, y = GRADE, fill = GRADE),
+               show.legend = F) +
+  facet_grid( `CRITICAL FLAG` ~ . )
 ```
+
+```{r}
+# Histograms
+ggplot(restaurant) +
+  geom_histogram(aes(x = SCORE), binwidth = 1 ) +
+  facet_grid( `CRITICAL FLAG` ~ GRADE )
+```
+
+```{r}
+# Histograms with varying x- scale across facets
+ggplot(restaurant) +
+  geom_histogram(aes(x = SCORE), binwidth = 1 ) +
+  facet_grid( `CRITICAL FLAG` ~ GRADE, scales = 'free_x' )
+```
+
+```{r}
+# Histograms with varying x- and y- scales across facets
+ggplot(restaurant) +
+  geom_histogram(aes(x = SCORE), binwidth = 1 ) +
+  facet_wrap( `CRITICAL FLAG` ~ GRADE, scales = 'free' )
+```
+
+
+- Mostly,
+  - The values of SCORE for GRADE A ranges from 0 to 13.
+  - The values of SCORE for GRADE B ranges 13 to 27.
+  - The values of SCORE for GRADE C ranges 24 to 75.
+- For Not Critical type, two SCORE values around 1 and 12 are most common, while 12 is the single most common SCORE value for Critical type.
 
 <br><br>
 
@@ -145,8 +192,16 @@ Provide both (1) ggplot code and (2) a simple comment to describe how the propor
 
 *Answer*:
 ```{r}
-
+ggplot(restaurant) +
+  geom_bar(aes(y = `CRITICAL FLAG`,
+               x = after_stat(prop), group = 1)) +
+  facet_grid( GRADE ~ BORO )
 ```
+- For `GRADE` A, the probability distribution of `CRITICAL FLAG` are similar across `BOROs`
+
+- For `GRADE` B, the restaurants in Staten Island are more likely to be Critical than in other `BOROs`
+
+- For `GRADE` C, the restaurants in Bronx are more likely to be Critical than in other `BOROs`
 
 <br><br>
 
@@ -168,7 +223,18 @@ df <- df |>
 
 *Answer*:
 ```{r}
+q1e <- restaurant |> 
+  mutate(`VIOLATION DESCRIPTION` = str_to_lower(`VIOLATION DESCRIPTION`),
+         contamination_mice = ifelse(str_detect(`VIOLATION DESCRIPTION`, 'contamination') | 
+                                       str_detect(`VIOLATION DESCRIPTION`, 'mice'), 
+                                     T, F)
+         ) |> 
+  group_by(BORO) |> 
+  summarise(n = n(),
+            n_contamination_mice = sum(contamination_mice),
+            prop = 100 * n_contamination_mice / n)
 
+datatable(q1e)
 ```
 
 <br><br>
@@ -182,7 +248,22 @@ df <- df |>
 
 *Answer*:
 ```{r}
+q1f <- restaurant %>% 
+  select(DBA, BORO) %>% 
+  group_by(BORO, DBA) %>% 
+  summarize(n = n()) %>% 
+  mutate(ranking = dense_rank(-n)) %>% 
+  filter(ranking <= 3) %>% 
+  arrange(BORO, ranking)
 
+datatable(q1f)
+
+q1f_ <- restaurant %>% 
+  group_by(DBA) %>% 
+  count() %>% 
+  arrange(-n)
+
+datatable(q1f_)
 ```
 
 <br><br>
@@ -195,7 +276,16 @@ df <- df |>
 
 *Answer*:
 ```{r}
+top10 <- q1f_ |> 
+  ungroup() |> 
+  slice_max(n, n = 10)
 
+q1g <- restaurant |> 
+  filter(DBA %in% top10$DBA)
+
+ggplot(q1g, aes(y = DBA, fill = DBA)) +
+  geom_bar(show.legend = F) +
+  facet_wrap(BORO ~ .)
 ```
 
 <br><br>
