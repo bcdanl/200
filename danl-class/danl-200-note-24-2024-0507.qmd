@@ -1,0 +1,175 @@
+---
+title: Note 24
+subtitle: group operations
+author: Byeong-Hak Choe
+institute: SUNY Geneseo
+date: 2024-05-07
+format: 
+  html
+    # toc: true
+    # toc-depth: 2
+    # toc-expand: true
+    # toc-title: Contents
+# code-fold: true
+code-tools: true
+
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  fig-width: 9
+  fig-height: 6
+---
+```{r}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(broom)
+library(hrbrthemes)
+library(nycflights13)
+theme_set(theme_ipsum() +
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = element_text(size = rel(1.5) ),
+                axis.title.y = element_text(size = rel(1.5) ))
+          )
+
+```
+
+
+
+
+# group operations
+
+```{r}
+not_cancelled <- flights |> 
+  filter(!(is.na(dep_delay) | is.na(arr_delay)))
+```
+
+Q. Describe the distribution of a plane’s average arrival delay. 
+
+- Airplanes are identified by their tail number (tailnum)
+
+```{r}
+by_tailnum <- not_cancelled |> 
+  group_by(tailnum) |> 
+  summarise(mean_delay = mean(dep_delay, na.rm = T),
+            n = n())
+```
+
+```{r}
+ggplot(by_tailnum, aes(x = mean_delay)) +
+  geom_histogram(bins = 100)
+```
+
+
+
+Q. How long is the longest average arrival delay?
+```{r}
+by_tailnum <- by_tailnum |> 
+  arrange(-mean_delay)
+```
+
+Q. Describe the relationship between (1) the average distance from airports in New York City to a destination airport and (2) the average arrival dealy experienced on flights to that specific airport.
+
+
+```{r}
+by_dest <- not_cancelled |> 
+  group_by(dest) |> 
+  summarise(n = n(),
+            dist = mean(distance, na.rm = T),
+            delay = mean(arr_delay, na.rm = T))
+```
+
+
+```{r}
+ggplot(by_dest, aes(x = dist, y = delay)) +
+  geom_point(alpha = .4) +
+  geom_smooth()
+```
+
+
+
+```{r}
+by_dest2 <- by_dest |> 
+  filter(dist <= 3000)
+
+ggplot(by_dest2, aes(x = dist, y = delay)) +
+  geom_point(alpha = .4) +
+  geom_smooth()
+```
+
+
+
+
+```{r}
+by_dest3 <- by_dest |> 
+  filter(dist <= 3000, delay > 0)
+
+ggplot(by_dest3, aes(x = dist, y = delay)) +
+  geom_point(alpha = .4) +
+  geom_smooth()
+```
+
+
+
+
+
+
+
+
+```{r}
+by_dest3 <- by_dest |> 
+  filter(dist <= 3000, n > 500)
+
+ggplot(by_dest3, aes(x = dist, y = delay)) +
+  geom_point(alpha = .4, aes(size = n)) +
+  geom_smooth()
+```
+
+Q. Calculate the average arrival delay for each date.
+Q. Given that the arrival delay is positive, calculate the average arrival delay for each date.
+```{r}
+
+by_day <- not_cancelled |> 
+  group_by(year, month, day) |> 
+  summarize(avg_delay = mean(arr_delay, na.rm = T),
+            avg_delay_pos = mean(arr_delay[arr_delay > 0], na.rm = T),
+            )
+
+```
+
+
+
+```{r}
+by_dest_sd <- not_cancelled |> 
+  group_by(dest) |> 
+  summarize(dist_sd = sd(distance)) |> 
+  arrange(-dist_sd)
+```
+
+
+Q. When do the first and last flights leave each day?
+
+```{r}
+first_last <- not_cancelled |> 
+  group_by(year, month, day) |> 
+  summarize(first = min(dep_time, na.rm = T),
+            last = max(dep_time, na.rm = T)
+            )
+```
+
+
+
+# Classwork 12
+
+```{r}
+beer_markets <- read_csv('https://bcdanl.github.io/data/beer_markets_all.csv')
+```
+
+
+
+
+
+
+
