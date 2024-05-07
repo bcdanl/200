@@ -65,7 +65,7 @@ rmarkdown::paged_table(nyc_dogs)
 
 ## Q1b
 
-- Provide both (1) ggplot code and (2) a simple comment to describe the relationship between the five popular `breed`s and `borough`. 
+- Provide both (1) ggplot code and (2) a simple comment to describe how the distribution of the five popular `breed`s varies by `borough`. 
 
 *Answer*:
 ```{r}

@@ -669,7 +669,7 @@
     "href": "danl-cw/danl-200-cw-11.html",
     "title": "Classwork 11",
     "section": "",
-    "text": "For Question 1, run the following R command to read the nyc_dogs_cleaned.csv file.\n\n\nnyc_dogs &lt;- read_csv('https://bcdanl.github.io/data/nyc_dogs_cleaned.csv')\n\n\n\n\n  \n\n\n\n\n\n\nFind the five most popular breeds.\n\nAnswer:\n\n\n\n\n\nProvide both (1) ggplot code and (2) a simple comment to describe the relationship between the five popular breeds and borough.\n\nAnswer:\n\n\n\n\n\nFind the five most popular breeds in each borough.\n\nAnswer:\n\n\n\n\n\nFind the five most popular dog names for each gender.\n\nAnswer:\n\n\n\n\n\nFind the five most popular dog names for each gender in each borough.\n\nAnswer:\n\n\n\n\n\nAssume that all dogs in the nyc_dogs data frame are alive as of today.\n\nProvide both (1) ggplot code and (2) a simple comment to describe the distribution of age for each borough.\n\n\nAnswer:"
+    "text": "For Question 1, run the following R command to read the nyc_dogs_cleaned.csv file.\n\n\nnyc_dogs &lt;- read_csv('https://bcdanl.github.io/data/nyc_dogs_cleaned.csv')\n\n\n\n\n  \n\n\n\n\n\n\nFind the five most popular breeds.\n\nAnswer:\n\n\n\n\n\nProvide both (1) ggplot code and (2) a simple comment to describe how the distribution of the five popular breeds varies by borough.\n\nAnswer:\n\n\n\n\n\nFind the five most popular breeds in each borough.\n\nAnswer:\n\n\n\n\n\nFind the five most popular dog names for each gender.\n\nAnswer:\n\n\n\n\n\nFind the five most popular dog names for each gender in each borough.\n\nAnswer:\n\n\n\n\n\nAssume that all dogs in the nyc_dogs data frame are alive as of today.\n\nProvide both (1) ggplot code and (2) a simple comment to describe the distribution of age for each borough.\n\n\nAnswer:"
   },
   {
     "objectID": "danl-cw/danl-200-cw-11.html#q1a",
@@ -683,7 +683,7 @@
     "href": "danl-cw/danl-200-cw-11.html#q1b",
     "title": "Classwork 11",
     "section": "",
-    "text": "Provide both (1) ggplot code and (2) a simple comment to describe the relationship between the five popular breeds and borough.\n\nAnswer:"
+    "text": "Provide both (1) ggplot code and (2) a simple comment to describe how the distribution of the five popular breeds varies by borough.\n\nAnswer:"
   },
   {
     "objectID": "danl-cw/danl-200-cw-11.html#q1c",
