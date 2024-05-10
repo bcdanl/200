@@ -6003,56 +6003,56 @@
     "href": "danl-cw/danl-200-cw-12.html",
     "title": "Classwork 12",
     "section": "",
-    "text": "beer_markets &lt;- read_csv('https://bcdanl.github.io/data/beer_markets_all.csv')\n\n\n\n\n  \n\n\n\n\n\nUse skimr::skim() to get summary statistics (e.g, mean, standard deviation, median, minimum, maximum) about the price for one bottle of beer (12 oz) for each brand when there was promo and when there was not.\nAnswer:\n\n\n\n\n\nFor each household, calculate the number of beer transactions.\nFor each household, calculate the proportion of each beer brand choice.\n\nAnswer:\n\n\n\n\n\nAmong households that purchased BUD LIGHT at least once, what proportion only bought BUD LIGHT?\nAmong households that purchased BUSCH LIGHT at least once, what proportion only bought BUSCH LIGHT?\nAmong households that purchased COORS LIGHT at least once, what proportion only bought COORS LIGHT?\nAmong households that purchased MILLER LITE at least once, what proportion only bought MILLER LITE?\nAmong households that purchased NATURAL LIGHT at least once, what proportion only bought NATURAL LIGHT?\nWhich beer brand does have the largest proportion of such loyal consumers?\n\nAnswer:"
+    "text": "beer_markets &lt;- read_csv('https://bcdanl.github.io/data/beer_markets_all.csv')\n\n\n\n\n  \n\n\n\n\n\nUse skimr::skim() to get summary statistics (e.g, mean, standard deviation, median, minimum, maximum) about the price for one bottle of beer (12 oz) for each brand when there was promo and when there was not.\nAnswer:\n\n\nCode\nq1 &lt;- beer_markets |&gt; \n  mutate(bottle_floz = 12 * beer_floz) |&gt; \n  group_by(brand) |&gt; \n  skim()\n\n\n\n\n\n  \n\n\n\n\n\n\n\nFor each household, calculate the number of beer transactions.\nFor each household, calculate the proportion of each beer brand choice.\n\nAnswer:\n\n\nCode\nq2 &lt;- beer_markets %&gt;% \n  count(hh, brand) %&gt;% \n  group_by(hh) %&gt;% \n  mutate(n_tot = sum(n)) %&gt;%  # n_tot : the number of beer transactions\n  arrange(hh, brand) %&gt;% \n  mutate( prop = n / n_tot ) # prop: the proportion of each beer brand choice\n\n\n\n\n\n  \n\n\n\n\n\n\n\nAmong households that purchased BUD LIGHT at least once, what proportion only bought BUD LIGHT?\nAmong households that purchased BUSCH LIGHT at least once, what proportion only bought BUSCH LIGHT?\nAmong households that purchased COORS LIGHT at least once, what proportion only bought COORS LIGHT?\nAmong households that purchased MILLER LITE at least once, what proportion only bought MILLER LITE?\nAmong households that purchased NATURAL LIGHT at least once, what proportion only bought NATURAL LIGHT?\nWhich beer brand does have the largest proportion of such loyal consumers?\n\nAnswer:\n\n\nCode\nq3 &lt;- beer_markets %&gt;% \n  mutate(bud = ifelse(brand==\"BUD LIGHT\", 1, 0), # 1 if brand==\"BUD LIGHT\"; 0 otherwise\n         busch = ifelse(brand==\"BUSCH LIGHT\", 1, 0),\n         coors = ifelse(brand==\"COORS LIGHT\", 1, 0),\n         miller = ifelse(brand==\"MILLER LITE\", 1, 0),\n         natural = ifelse(brand==\"NATURAL LIGHT\", 1, 0),\n         .after = hh) %&gt;% \n  select(hh:natural) %&gt;%  # select the variables we need\n  group_by(hh) %&gt;% \n  summarise(n_transactions = n(), # number of beer transactions for each hh\n            n_bud = sum(bud), # number of BUD LIGHT transactions for each hh\n            n_busch = sum(busch), \n            n_coors = sum(coors), \n            n_miller = sum(miller), \n            n_natural = sum(natural) \n  ) %&gt;% \n  summarise(loyal_bud = sum(n_transactions == n_bud) / sum(n_bud &gt; 0), \n              # sum(n_transactions == n_bud) : the number of households that purchased BUD LIGHT only\n              # sum(n_bud &gt; 0) : the number of households that purchased BUD LIGHT at least once.\n            loyal_busch = sum(n_transactions == n_busch) / sum(n_busch &gt; 0),\n            loyal_coors = sum(n_transactions == n_coors) / sum(n_coors &gt; 0),\n            loyal_miller = sum(n_transactions == n_miller) / sum(n_miller &gt; 0),\n            loyal_natural = sum(n_transactions == n_natural) / sum(n_natural &gt; 0)\n  )"
   },
   {
     "objectID": "danl-cw/danl-200-cw-12.html#question-1",
     "href": "danl-cw/danl-200-cw-12.html#question-1",
     "title": "Classwork 12",
     "section": "",
-    "text": "Use skimr::skim() to get summary statistics (e.g, mean, standard deviation, median, minimum, maximum) about the price for one bottle of beer (12 oz) for each brand when there was promo and when there was not.\nAnswer:"
+    "text": "Use skimr::skim() to get summary statistics (e.g, mean, standard deviation, median, minimum, maximum) about the price for one bottle of beer (12 oz) for each brand when there was promo and when there was not.\nAnswer:\n\n\nCode\nq1 &lt;- beer_markets |&gt; \n  mutate(bottle_floz = 12 * beer_floz) |&gt; \n  group_by(brand) |&gt; \n  skim()"
   },
   {
     "objectID": "danl-cw/danl-200-cw-12.html#question-2",
     "href": "danl-cw/danl-200-cw-12.html#question-2",
     "title": "Classwork 12",
     "section": "",
-    "text": "For each household, calculate the number of beer transactions.\nFor each household, calculate the proportion of each beer brand choice.\n\nAnswer:"
+    "text": "For each household, calculate the number of beer transactions.\nFor each household, calculate the proportion of each beer brand choice.\n\nAnswer:\n\n\nCode\nq2 &lt;- beer_markets %&gt;% \n  count(hh, brand) %&gt;% \n  group_by(hh) %&gt;% \n  mutate(n_tot = sum(n)) %&gt;%  # n_tot : the number of beer transactions\n  arrange(hh, brand) %&gt;% \n  mutate( prop = n / n_tot ) # prop: the proportion of each beer brand choice"
   },
   {
     "objectID": "danl-cw/danl-200-cw-12.html#question-3",
     "href": "danl-cw/danl-200-cw-12.html#question-3",
     "title": "Classwork 12",
     "section": "",
-    "text": "Among households that purchased BUD LIGHT at least once, what proportion only bought BUD LIGHT?\nAmong households that purchased BUSCH LIGHT at least once, what proportion only bought BUSCH LIGHT?\nAmong households that purchased COORS LIGHT at least once, what proportion only bought COORS LIGHT?\nAmong households that purchased MILLER LITE at least once, what proportion only bought MILLER LITE?\nAmong households that purchased NATURAL LIGHT at least once, what proportion only bought NATURAL LIGHT?\nWhich beer brand does have the largest proportion of such loyal consumers?\n\nAnswer:"
+    "text": "Among households that purchased BUD LIGHT at least once, what proportion only bought BUD LIGHT?\nAmong households that purchased BUSCH LIGHT at least once, what proportion only bought BUSCH LIGHT?\nAmong households that purchased COORS LIGHT at least once, what proportion only bought COORS LIGHT?\nAmong households that purchased MILLER LITE at least once, what proportion only bought MILLER LITE?\nAmong households that purchased NATURAL LIGHT at least once, what proportion only bought NATURAL LIGHT?\nWhich beer brand does have the largest proportion of such loyal consumers?\n\nAnswer:\n\n\nCode\nq3 &lt;- beer_markets %&gt;% \n  mutate(bud = ifelse(brand==\"BUD LIGHT\", 1, 0), # 1 if brand==\"BUD LIGHT\"; 0 otherwise\n         busch = ifelse(brand==\"BUSCH LIGHT\", 1, 0),\n         coors = ifelse(brand==\"COORS LIGHT\", 1, 0),\n         miller = ifelse(brand==\"MILLER LITE\", 1, 0),\n         natural = ifelse(brand==\"NATURAL LIGHT\", 1, 0),\n         .after = hh) %&gt;% \n  select(hh:natural) %&gt;%  # select the variables we need\n  group_by(hh) %&gt;% \n  summarise(n_transactions = n(), # number of beer transactions for each hh\n            n_bud = sum(bud), # number of BUD LIGHT transactions for each hh\n            n_busch = sum(busch), \n            n_coors = sum(coors), \n            n_miller = sum(miller), \n            n_natural = sum(natural) \n  ) %&gt;% \n  summarise(loyal_bud = sum(n_transactions == n_bud) / sum(n_bud &gt; 0), \n              # sum(n_transactions == n_bud) : the number of households that purchased BUD LIGHT only\n              # sum(n_bud &gt; 0) : the number of households that purchased BUD LIGHT at least once.\n            loyal_busch = sum(n_transactions == n_busch) / sum(n_busch &gt; 0),\n            loyal_coors = sum(n_transactions == n_coors) / sum(n_coors &gt; 0),\n            loyal_miller = sum(n_transactions == n_miller) / sum(n_miller &gt; 0),\n            loyal_natural = sum(n_transactions == n_natural) / sum(n_natural &gt; 0)\n  )"
   },
   {
     "objectID": "danl-cw/danl-200-cw-12.html#question-4",
     "href": "danl-cw/danl-200-cw-12.html#question-4",
     "title": "Classwork 12",
     "section": "Question 4",
-    "text": "Question 4\nUse skimr::skim() to get summary statistics (e.g, mean, standard deviation, median, minimum, maximum) about sale_price for each borough.\nAnswer:"
+    "text": "Question 4\nUse skimr::skim() to get summary statistics (e.g, mean, standard deviation, median, minimum, maximum) about sale_price for each borough.\nAnswer:\n\n\nCode\nq4 &lt;- nyc_housing_sales |&gt; \n  group_by(borough) |&gt; \n  skim(sale_price)\n\n\n\n\nData summary\n\n\nName\ngroup_by(nyc_housing_sale…\n\n\nNumber of rows\n200913\n\n\nNumber of columns\n22\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\nnumeric\n1\n\n\n________________________\n\n\n\nGroup variables\nborough\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nborough\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nsale_price\nBronx\n0\n1\n470269.4\n403341.4\n1\n315000\n417000\n545000\n17062000\n▇▁▁▁▁\n\n\nsale_price\nBrooklyn\n0\n1\n828342.5\n899816.4\n1\n417000\n620000\n920000\n25500000\n▇▁▁▁▁\n\n\nsale_price\nManhattan\n0\n1\n8076326.2\n7885675.7\n1\n3076642\n6000000\n10600000\n77100000\n▇▁▁▁▁\n\n\nsale_price\nQueens\n0\n1\n611494.2\n1046660.6\n1\n375000\n540000\n750000\n139874900\n▇▁▁▁▁\n\n\nsale_price\nStaten Island\n0\n1\n494624.0\n389728.7\n1\n350000\n455000\n595000\n35000000\n▇▁▁▁▁"
   },
   {
     "objectID": "danl-cw/danl-200-cw-12.html#question-5",
     "href": "danl-cw/danl-200-cw-12.html#question-5",
     "title": "Classwork 12",
     "section": "Question 5",
-    "text": "Question 5\nAdd the new variable, age, to data.frame, nyc_housing_sales, using the year and year_built variables.\nAnswer:"
+    "text": "Question 5\nAdd the new variable, age, to data.frame, nyc_housing_sales, using the year and year_built variables.\nAnswer:\n\n\nCode\nnyc_housing_sales &lt;- nyc_housing_sales |&gt; \n  mutate(age = year - year_built, \n         .before = year)"
   },
   {
     "objectID": "danl-cw/danl-200-cw-12.html#question-6",
     "href": "danl-cw/danl-200-cw-12.html#question-6",
     "title": "Classwork 12",
     "section": "Question 6",
-    "text": "Question 6\nProvide both (1) ggplot code and (2) a simple comment to describe how the daily trend of sale_price varies by borough, on average.\nAnswer:"
+    "text": "Question 6\nProvide both (1) ggplot code and (2) a simple comment to describe how the daily trend of the distribution of sale_price varies by borough, on average.\nAnswer:\n\n\nCode\nggplot(nyc_housing_sales, \n       aes(x = sale_date, y = sale_price)) +\n  geom_point(size = .25, alpha = .1) +\n  geom_smooth(aes(color = borough, fill = borough)) +\n  facet_wrap(borough~., scales = 'free_y')\n\n\n\n\n\n\n\n\nRemoving outliers for each borough could lead to a better visualization:\n\n\n\nCode\nq6 &lt;- nyc_housing_sales |&gt; \n  group_by(borough, year) |&gt; \n  mutate(lower = quantile(sale_price, .1), # 10th percentile\n         upper = quantile(sale_price, .9)  # 90th percentile\n         ) |&gt; \n  filter(sale_price &lt; upper, sale_price &gt; lower) # non-outliers\n\nggplot(q6, \n       aes(x = sale_date, y = log10(sale_price))) +\n  geom_point(size = .25, alpha = .1) +\n  geom_smooth(aes(color = borough, fill = borough)) +\n  facet_wrap(borough~.)"
   },
   {
     "objectID": "danl-cw/danl-200-cw-12.html#question-7",
     "href": "danl-cw/danl-200-cw-12.html#question-7",
     "title": "Classwork 12",
     "section": "Question 7",
-    "text": "Question 7\nIdentify the neighborhood with the highest average housing sales price for each month of each year.\nAnswer:"
+    "text": "Question 7\nIdentify the neighborhood with the highest average housing sales price for each month of each year.\nAnswer:\n\n\nCode\nq7 &lt;- nyc_housing_sales |&gt; \n  mutate(borough_neighborhood = str_c(borough, ', ', neighborhood)) |&gt; # to display borough info\n  group_by(year, month, borough_neighborhood) |&gt; \n  summarise(mean_sale_price = mean(sale_price, na.rm = T),\n            n = n()) |&gt; \n  slice_max(mean_sale_price, n = 1)"
   },
   {
     "objectID": "danl-class/danl-200-note-23-2024-0502.html",

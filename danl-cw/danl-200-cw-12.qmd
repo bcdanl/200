@@ -2,11 +2,11 @@
 title: Classwork 12
 subtitle: Data Transformation
 date: 2024-05-02
+code-fold: true
 execute: 
   echo: true
   warning: false
   message: false
-  
 from: markdown+emoji
 ---
 ```{r}
@@ -18,7 +18,6 @@ library(tidyverse)
 library(skimr)
 library(ggthemes)
 library(hrbrthemes)
-library(nycflights13)
 
 theme_set(theme_ipsum() +
           theme(strip.background =element_rect(fill="lightgray"),
@@ -33,6 +32,7 @@ theme_set(theme_ipsum() +
 # Part 1 - Beer Markets
 
 ```{r}
+#| code-fold: false
 beer_markets <- read_csv('https://bcdanl.github.io/data/beer_markets_all.csv')
 ```
 
@@ -52,9 +52,19 @@ Use skimr::skim() to get summary statistics (e.g, mean, standard deviation, medi
 
 *Answer*:
 ```{r}
-
+q1 <- beer_markets |> 
+  mutate(bottle_floz = 12 * beer_floz) |> 
+  group_by(brand) |> 
+  skim()
 ```
 
+
+```{r}
+#| echo: false
+#| eval: true
+#| results: asis
+rmarkdown::paged_table(q1) 
+```
 <br><br>
 
 
@@ -65,9 +75,20 @@ Use skimr::skim() to get summary statistics (e.g, mean, standard deviation, medi
 
 *Answer*:
 ```{r}
-
+q2 <- beer_markets %>% 
+  count(hh, brand) %>% 
+  group_by(hh) %>% 
+  mutate(n_tot = sum(n)) %>%  # n_tot : the number of beer transactions
+  arrange(hh, brand) %>% 
+  mutate( prop = n / n_tot ) # prop: the proportion of each beer brand choice
 ```
 
+```{r}
+#| echo: false
+#| eval: true
+#| results: asis
+rmarkdown::paged_table(q2) 
+```
 <br><br>
 
 ## Question 3
@@ -86,9 +107,39 @@ Use skimr::skim() to get summary statistics (e.g, mean, standard deviation, medi
 
 *Answer*:
 ```{r}
+q3 <- beer_markets %>% 
+  mutate(bud = ifelse(brand=="BUD LIGHT", 1, 0), # 1 if brand=="BUD LIGHT"; 0 otherwise
+         busch = ifelse(brand=="BUSCH LIGHT", 1, 0),
+         coors = ifelse(brand=="COORS LIGHT", 1, 0),
+         miller = ifelse(brand=="MILLER LITE", 1, 0),
+         natural = ifelse(brand=="NATURAL LIGHT", 1, 0),
+         .after = hh) %>% 
+  select(hh:natural) %>%  # select the variables we need
+  group_by(hh) %>% 
+  summarise(n_transactions = n(), # number of beer transactions for each hh
+            n_bud = sum(bud), # number of BUD LIGHT transactions for each hh
+            n_busch = sum(busch), 
+            n_coors = sum(coors), 
+            n_miller = sum(miller), 
+            n_natural = sum(natural) 
+  ) %>% 
+  summarise(loyal_bud = sum(n_transactions == n_bud) / sum(n_bud > 0), 
+              # sum(n_transactions == n_bud) : the number of households that purchased BUD LIGHT only
+              # sum(n_bud > 0) : the number of households that purchased BUD LIGHT at least once.
+            loyal_busch = sum(n_transactions == n_busch) / sum(n_busch > 0),
+            loyal_coors = sum(n_transactions == n_coors) / sum(n_coors > 0),
+            loyal_miller = sum(n_transactions == n_miller) / sum(n_miller > 0),
+            loyal_natural = sum(n_transactions == n_natural) / sum(n_natural > 0)
+  )
 
 ```
 
+```{r}
+#| echo: false
+#| eval: true
+#| results: asis
+rmarkdown::paged_table(q3) 
+```
 <br><br>
 
 
@@ -98,6 +149,7 @@ Use skimr::skim() to get summary statistics (e.g, mean, standard deviation, medi
 # Part 2 - NYC Housing Markets
 
 ```{r}
+#| code-fold: false
 nyc_housing_sales <- read_csv('https://bcdanl.github.io/data/nyc_housing_sales_2006-2023.csv')
 ```
 
@@ -117,32 +169,104 @@ Use skimr::skim() to get summary statistics (e.g, mean, standard deviation, medi
 
 *Answer*:
 ```{r}
-
+q4 <- nyc_housing_sales |> 
+  group_by(borough) |> 
+  skim(sale_price)
 ```
 
+```{r}
+#| echo: false
+#| eval: true
+#| results: asis
+q4
+```
 <br><br>
 
 
 ## Question 5
-Add the new variable, `age`, to data.frame, nyc_housing_sales, using the `year` and `year_built` variables.
+Add the new variable, `age`, to data.frame, `nyc_housing_sales`, using the `year` and `year_built` variables.
 
 *Answer*:
 ```{r}
+nyc_housing_sales <- nyc_housing_sales |> 
+  mutate(age = year - year_built, 
+         .before = year)
 
 ```
 
+```{r}
+#| echo: false
+#| eval: true
+#| results: asis
+rmarkdown::paged_table(nyc_housing_sales) 
+```
 <br><br>
 
 
 ## Question 6
-Provide both (1) ggplot code and (2) a simple comment to describe how the daily trend of `sale_price` varies by `borough`, on average.
+Provide both (1) ggplot code and (2) a simple comment to describe how the daily trend of the distribution of  `sale_price` varies by `borough`, on average.
 
 
 *Answer*:
 ```{r}
-
+#| eval: false
+ggplot(nyc_housing_sales, 
+       aes(x = sale_date, y = sale_price)) +
+  geom_point(size = .25, alpha = .1) +
+  geom_smooth(aes(color = borough, fill = borough)) +
+  facet_wrap(borough~., scales = 'free_y')
 ```
 
+```{r}
+#| echo: false
+#| eval: true
+ggplot(nyc_housing_sales, 
+       aes(x = sale_date, y = sale_price)) +
+  geom_point(size = .25, alpha = .1) +
+  geom_smooth(aes(color = borough, fill = borough)) +
+  facet_wrap(borough~., scales = 'free_y') +
+  scale_y_comma() +
+  theme(legend.position = 'top')
+```
+
+
+- Removing outliers for each borough could lead to a better visualization:
+
+```{r}
+#| eval: false
+
+q6 <- nyc_housing_sales |> 
+  group_by(borough, year) |> 
+  mutate(lower = quantile(sale_price, .1), # 10th percentile
+         upper = quantile(sale_price, .9)  # 90th percentile
+         ) |> 
+  filter(sale_price < upper, sale_price > lower) # non-outliers
+
+ggplot(q6, 
+       aes(x = sale_date, y = log10(sale_price))) +
+  geom_point(size = .25, alpha = .1) +
+  geom_smooth(aes(color = borough, fill = borough)) +
+  facet_wrap(borough~.)
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+q6 <- nyc_housing_sales |> 
+  group_by(borough, year) |> 
+  mutate(lower = quantile(sale_price, .1), # 10th percentile
+         upper = quantile(sale_price, .9)  # 90th percentile
+         ) |> 
+  filter(sale_price < upper, sale_price > lower) # non-outliers
+
+ggplot(q6, 
+       aes(x = sale_date, y = sale_price)) +
+  geom_point(size = .25, alpha = .1) +
+  geom_smooth(aes(color = borough, fill = borough)) +
+  facet_wrap(borough~., scales = 'free_y') +
+  theme(legend.position = 'top')
+```
 <br><br>
 
 
@@ -152,7 +276,19 @@ Identify the neighborhood with the highest average housing sales price for each 
 
 *Answer*:
 ```{r}
-
+q7 <- nyc_housing_sales |> 
+  mutate(borough_neighborhood = str_c(borough, ', ', neighborhood)) |> # to display borough info
+  group_by(year, month, borough_neighborhood) |> 
+  summarise(mean_sale_price = mean(sale_price, na.rm = T),
+            n = n()) |> 
+  slice_max(mean_sale_price, n = 1) 
 ```
 
+```{r}
+#| echo: false
+#| eval: true
+#| results: asis
+rmarkdown::paged_table(q7) 
+```
+<br><br>
 <br><br>
