@@ -4,7 +4,7 @@ subtitle: Data Visualization and Data Transformation
 date: last-modified
 from: markdown+emoji
 comments: false
-code-fold: false
+code-fold: true
 
 execute: 
   warning: false
@@ -14,11 +14,19 @@ execute:
   fig-align: center
 ---
 ```{r}
-#| eval: true
 #| include: false
 
 library(tidyverse)
 library(skimr)
+library(DT)
+library(hrbrthemes)
+
+theme_set(theme_ipsum() +
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = element_text(size = rel(1.5)),
+                axis.title.y = element_text(size = rel(1.5)),
+                legend.title = element_text(size=rel(1.25))
+                ))
 ```
 
 # Direction
@@ -43,6 +51,7 @@ library(skimr)
 For Question 1, run the following R command to read the CSV file, `spotify_all.csv` as data.frame, `spotify_all`:
 
 ```{r}
+#| code-fold: false
 #| echo: true
 #| eval: true
 #| warning: false
@@ -90,7 +99,15 @@ The data.frame `spotify_all` includes information about Spotify users' playlists
 
 *Answer:*
 ```{r}
+q1a <- spotify_all |> 
+  count(artist_name, track_name) |> 
+  slice_max(n, n = 10)
+```
 
+```{r}
+#| echo: false
+
+datatable(q1a)
 ```
 
 <br><br>
@@ -103,8 +120,23 @@ The data.frame `spotify_all` includes information about Spotify users' playlists
 
 *Answer:*
 ```{r}
+q1b_artists <- spotify_all |> 
+  count(artist_name) |> 
+  slice_max(n, n= 5)
+
+q1b_songs <- spotify_all |> 
+  group_by(artist_name, track_name) |> 
+  summarise(n = n()) |> 
+  filter(artist_name %in% q1b_artists$artist_name) |> 
+  slice_max(n, n = 1)
 
 ```
+
+```{r}
+#| echo: false
+datatable(q1b_songs)
+```
+
 
 <br><br>
 
@@ -117,21 +149,70 @@ The data.frame `spotify_all` includes information about Spotify users' playlists
 
 *Answer:*
 ```{r}
+onedance_playlist <- spotify_all |> 
+  filter(artist_name == "Drake",
+         track_name == "One Dance") |> 
+  select(pid) |> 
+  distinct()
 
+drake_one_dance <- spotify_all |> 
+  filter(pid %in% onedance_playlist$pid)
 ```
+
+```{r}
+#| echo: false
+
+datatable(drake_one_dance)
+```
+
+```{r}
+after_drake <- drake_one_dance |> 
+  count(artist_name, track_name) |> 
+  slice_max(n, n = 2)
+```
+
+```{r}
+#| echo: false
+
+datatable(after_drake)
+```
+
 
 <br><br>
 
 
 ## Q1d
 
-Provide both (1) ggplot code and (2) a couple of sentences to describe the relationship between `pos` and the ten most popular artists.
-
+Provide both (1) ggplot code and (2) a couple of sentences to describe the how the distribution of `pos` varies by the ten most popular artists.
 
 *Answer:*
-```{r}
 
+```{r}
+#| fig-height: 10
+
+
+top10artists <- spotify_all |> 
+  count(artist_name) |> 
+  slice_max(n, n = 10)
+
+top10artists_pos <- spotify_all |> 
+  filter(artist_name %in% top10artists$artist_name)
+
+ggplot(top10artists_pos,
+       aes(x = pos, y = artist_name,
+           fill = artist_name)) +
+  geom_boxplot(show.legend = F)
 ```
+
+```{r}
+#| fig-height: 6
+
+ggplot(top10artists_pos,
+       aes(x = pos,
+           color = artist_name)) +
+  geom_freqpoly() 
+```
+
 
 <br><br>
 
@@ -146,9 +227,16 @@ Create the data.frame with `pid`-`artist` level of observations with the followi
 
 *Answer:*
 ```{r}
-
+q1e <- spotify_all |> 
+  group_by(pid, playlist_name, artist_name) |> 
+  summarise(n_artist = n())
 ```
 
+```{r}
+#| echo: false
+
+datatable(q1e)
+```
 <br><br><br>
 
 # Question 2. Climate Finance
@@ -161,6 +249,7 @@ Create the data.frame with `pid`-`artist` level of observations with the followi
 - Load the data.frame for Question 2.
 
 ```{r}
+#| code-fold: false
 #| eval: true
 #| echo: true
 path <- 'https://bcdanl.github.io/data/climate_finance_energy.csv'
@@ -214,9 +303,24 @@ How many `parties` have provided positive financial `contributions` to other `co
 
 *Answer:*
 ```{r}
-
+q2a <- climate_finance |> 
+  filter(Status == "provided",                      # filter by provided status
+         `Type of support` == "adaptation") |>      # filter by adaptation type
+  group_by(Party, Year) |>                          # group by Party and Year
+  summarise(Contribution = sum(Contribution, na.rm = T)) |>  # calculate total contribution
+  filter(Contribution > 0) |>                       # keep observations with positive contribution
+  group_by(Party) |>                                # group by Party (unnecessary step)
+  summarize(n_years = n()) |>                       # count number of observations
+  filter(n_years == 2018 - 2011 + 1)  |>            # keep Parties with 8 observations
+  select(Party, n_years) |> 
+  distinct()    # Remove duplicate observations in the data.frame
 ```
 
+```{r}
+#| echo: false
+
+datatable(q2a)
+```
 <br><br>
 
 
@@ -227,7 +331,30 @@ Provide both (1) ggplot code and (2) a simple comment to describe how the yearly
 
 *Answer:*
 ```{r}
+#| eval: false
 
+q2b <- climate_finance |> 
+  group_by(Energy, Status, Year) |> 
+  summarise(funding_tot = sum(Contribution, na.rm = T)) 
+
+ggplot(q2b, aes(x = Year, y = funding_tot)) +
+  geom_line(aes(color = Status)) +
+  geom_point() +
+  facet_wrap(Energy ~.)
+```
+
+
+```{r}
+#| echo: false
+q2b <- climate_finance |> 
+  group_by(Energy, Status, Year) |> 
+  summarise(funding_tot = sum(Contribution, na.rm = T)) 
+
+ggplot(q2b, aes(x = Year, y = funding_tot)) +
+  geom_line(aes(color = Status)) +
+  geom_point() +
+  facet_wrap(Energy ~.) +
+  scale_y_comma()
 ```
 
 <br><br>
@@ -240,9 +367,18 @@ For each `party`, calculate the total funding `contributions` that were `provide
 
 *Answer:*
 ```{r}
-
+q2c <- climate_finance |> 
+  filter(Status == "provided",
+         `Type of support` == "mitigation") |> 
+  group_by(Party, Year) |> 
+  summarise(Contribution = sum(Contribution, na.rm = T))
 ```
 
+```{r}
+#| echo: false
+
+datatable(q2c)
+```
 <br><br>
 
 
@@ -256,11 +392,7 @@ For each `party`, calculate the total funding `contributions` that were `provide
 ## Q3a
 - Write and publish a blog post on your GitHub website, featuring data analysis based on the `spotify_all` data.frame in Question 1 in Homework 5.
   - Ensure that the blog post has an appropriate thumbnail by including an image file in the blog post's directory with a proper YAML header option.
-  
-```{r}
-#| eval: false
-spotify_all <- read_csv('https://bcdanl.github.io/data/spotify_all.csv')
-```
+
 
 <br><br>
 

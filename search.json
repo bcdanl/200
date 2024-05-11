@@ -60,7 +60,7 @@
     "href": "listing-danl-200-hw.html",
     "title": "DANL 200 - Homework",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and R Basics\n\n\nFebruary 14, 2024\n\n\n\n\nHomework 2\n\n\nData Visualization Basics\n\n\nMarch 27, 2024\n\n\n\n\nHomework 3\n\n\nData Visualization Basics\n\n\nMarch 28, 2024\n\n\n\n\nHomework 4\n\n\nData Visualization and Data Transformation\n\n\nMay 1, 2024\n\n\n\n\nHomework 5\n\n\nData Visualization and Data Transformation\n\n\nMay 1, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and R Basics\n\n\nFebruary 14, 2024\n\n\n\n\nHomework 2\n\n\nData Visualization Basics\n\n\nMarch 27, 2024\n\n\n\n\nHomework 3\n\n\nData Visualization Basics\n\n\nMarch 28, 2024\n\n\n\n\nHomework 4\n\n\nData Visualization and Data Transformation\n\n\nMay 1, 2024\n\n\n\n\nHomework 5\n\n\nData Visualization and Data Transformation\n\n\nMay 11, 2024\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "danl-hw/danl-200-hw-03.html",
@@ -291,7 +291,7 @@
     "href": "index.html#bullet-homework",
     "title": "DANL 200-02: Introduction to Data Analytics, Spring 2024",
     "section": "\\(\\bullet\\,\\) Homework 💻",
-    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 5\n\n\nMay 1, 2024\n\n\n\n\nHomework 4\n\n\nMay 1, 2024\n\n\n\n\nHomework 3\n\n\nMarch 28, 2024\n\n\n\n\nHomework 2\n\n\nMarch 27, 2024\n\n\n\n\nHomework 1\n\n\nFebruary 14, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 5\n\n\nMay 11, 2024\n\n\n\n\nHomework 4\n\n\nMay 1, 2024\n\n\n\n\nHomework 3\n\n\nMarch 28, 2024\n\n\n\n\nHomework 2\n\n\nMarch 27, 2024\n\n\n\n\nHomework 1\n\n\nFebruary 14, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "danl-class/danl-200-note-20-2024-0423.html",
@@ -5905,35 +5905,35 @@
     "href": "danl-hw/danl-200-hw-05.html#q1a",
     "title": "Homework 5",
     "section": "Q1a",
-    "text": "Q1a\n\nFind the ten most popular song.\n\nA value of a song is defined as a combination of a artist_name value and a track_name value.\nWho are artists for those ten most popular song?\n\n\nAnswer:"
+    "text": "Q1a\n\nFind the ten most popular song.\n\nA value of a song is defined as a combination of a artist_name value and a track_name value.\nWho are artists for those ten most popular song?\n\n\nAnswer:\n\n\nCode\nq1a &lt;- spotify_all |&gt; \n  count(artist_name, track_name) |&gt; \n  slice_max(n, n = 10)"
   },
   {
     "objectID": "danl-hw/danl-200-hw-05.html#q1b",
     "href": "danl-hw/danl-200-hw-05.html#q1b",
     "title": "Homework 5",
     "section": "Q1b",
-    "text": "Q1b\n\nFind the five most popular artist in terms of the number of occurrences in the data.frame, spotify_all.\nWhat is the most popular song for each of the five most popular artist?\n\nAnswer:"
+    "text": "Q1b\n\nFind the five most popular artist in terms of the number of occurrences in the data.frame, spotify_all.\nWhat is the most popular song for each of the five most popular artist?\n\nAnswer:\n\n\nCode\nq1b_artists &lt;- spotify_all |&gt; \n  count(artist_name) |&gt; \n  slice_max(n, n= 5)\n\nq1b_songs &lt;- spotify_all |&gt; \n  group_by(artist_name, track_name) |&gt; \n  summarise(n = n()) |&gt; \n  filter(artist_name %in% q1b_artists$artist_name) |&gt; \n  slice_max(n, n = 1)"
   },
   {
     "objectID": "danl-hw/danl-200-hw-05.html#q1c",
     "href": "danl-hw/danl-200-hw-05.html#q1c",
     "title": "Homework 5",
     "section": "Q1c",
-    "text": "Q1c\n\nCreate a data.frame named drake_one_dance that includes all playlists featuring the song where track_name equals “One Dance” and artist_name equals “Drake”.\n\nEnsure that the data.frame drake_one_dance does not contain any playlists where the song “One Dance” by Drake is absent.\n\nWhat is the song with the highest frequency of appearances after Drake’s “One Dance” in the newly created data.frame, drake_one_dance?\n\nAnswer:"
+    "text": "Q1c\n\nCreate a data.frame named drake_one_dance that includes all playlists featuring the song where track_name equals “One Dance” and artist_name equals “Drake”.\n\nEnsure that the data.frame drake_one_dance does not contain any playlists where the song “One Dance” by Drake is absent.\n\nWhat is the song with the highest frequency of appearances after Drake’s “One Dance” in the newly created data.frame, drake_one_dance?\n\nAnswer:\n\n\nCode\nonedance_playlist &lt;- spotify_all |&gt; \n  filter(artist_name == \"Drake\",\n         track_name == \"One Dance\") |&gt; \n  select(pid) |&gt; \n  distinct()\n\ndrake_one_dance &lt;- spotify_all |&gt; \n  filter(pid %in% onedance_playlist$pid)\n\n\n\n\n\n\n\n\n\n\n\nCode\nafter_drake &lt;- drake_one_dance |&gt; \n  count(artist_name, track_name) |&gt; \n  slice_max(n, n = 2)"
   },
   {
     "objectID": "danl-hw/danl-200-hw-05.html#q1d",
     "href": "danl-hw/danl-200-hw-05.html#q1d",
     "title": "Homework 5",
     "section": "Q1d",
-    "text": "Q1d\nProvide both (1) ggplot code and (2) a couple of sentences to describe the relationship between pos and the ten most popular artists.\nAnswer:"
+    "text": "Q1d\nProvide both (1) ggplot code and (2) a couple of sentences to describe the how the distribution of pos varies by the ten most popular artists.\nAnswer:\n\n\nCode\ntop10artists &lt;- spotify_all |&gt; \n  count(artist_name) |&gt; \n  slice_max(n, n = 10)\n\ntop10artists_pos &lt;- spotify_all |&gt; \n  filter(artist_name %in% top10artists$artist_name)\n\nggplot(top10artists_pos,\n       aes(x = pos, y = artist_name,\n           fill = artist_name)) +\n  geom_boxplot(show.legend = F)\n\n\n\n\n\n\n\nCode\nggplot(top10artists_pos,\n       aes(x = pos,\n           color = artist_name)) +\n  geom_freqpoly()"
   },
   {
     "objectID": "danl-hw/danl-200-hw-05.html#q1e",
     "href": "danl-hw/danl-200-hw-05.html#q1e",
     "title": "Homework 5",
     "section": "Q1e",
-    "text": "Q1e\nCreate the data.frame with pid-artist level of observations with the following four variables:\n\npid: playlist id\nplaylist_name: name of playlist\nartist: name of the track’s primary artist, which appears only once within a playlist\nn_artist: number of occurrences of artist within a playlist\n\nAnswer:"
+    "text": "Q1e\nCreate the data.frame with pid-artist level of observations with the following four variables:\n\npid: playlist id\nplaylist_name: name of playlist\nartist: name of the track’s primary artist, which appears only once within a playlist\nn_artist: number of occurrences of artist within a playlist\n\nAnswer:\n\n\nCode\nq1e &lt;- spotify_all |&gt; \n  group_by(pid, playlist_name, artist_name) |&gt; \n  summarise(n_artist = n())"
   },
   {
     "objectID": "danl-hw/danl-200-hw-05.html#variable-description-1",
@@ -5947,21 +5947,21 @@
     "href": "danl-hw/danl-200-hw-05.html#q2a",
     "title": "Homework 5",
     "section": "Q2a",
-    "text": "Q2a\nHow many parties have provided positive financial contributions to other countries/regions for their adaptation projects for every year between 2011 and 2018?\nAnswer:"
+    "text": "Q2a\nHow many parties have provided positive financial contributions to other countries/regions for their adaptation projects for every year between 2011 and 2018?\nAnswer:\n\n\nCode\nq2a &lt;- climate_finance |&gt; \n  filter(Status == \"provided\",                      # filter by provided status\n         `Type of support` == \"adaptation\") |&gt;      # filter by adaptation type\n  group_by(Party, Year) |&gt;                          # group by Party and Year\n  summarise(Contribution = sum(Contribution, na.rm = T)) |&gt;  # calculate total contribution\n  filter(Contribution &gt; 0) |&gt;                       # keep observations with positive contribution\n  group_by(Party) |&gt;                                # group by Party (unnecessary step)\n  summarize(n_years = n()) |&gt;                       # count number of observations\n  filter(n_years == 2018 - 2011 + 1)  |&gt;            # keep Parties with 8 observations\n  select(Party, n_years) |&gt; \n  distinct()    # Remove duplicate observations in the data.frame"
   },
   {
     "objectID": "danl-hw/danl-200-hw-05.html#q2b",
     "href": "danl-hw/danl-200-hw-05.html#q2b",
     "title": "Homework 5",
     "section": "Q2b",
-    "text": "Q2b\nProvide both (1) ggplot code and (2) a simple comment to describe how the yearly trend of total funding Contribution varies by Energy and Status.\nAnswer:"
+    "text": "Q2b\nProvide both (1) ggplot code and (2) a simple comment to describe how the yearly trend of total funding Contribution varies by Energy and Status.\nAnswer:\n\n\nCode\nq2b &lt;- climate_finance |&gt; \n  group_by(Energy, Status, Year) |&gt; \n  summarise(funding_tot = sum(Contribution, na.rm = T)) \n\nggplot(q2b, aes(x = Year, y = funding_tot)) +\n  geom_line(aes(color = Status)) +\n  geom_point() +\n  facet_wrap(Energy ~.)"
   },
   {
     "objectID": "danl-hw/danl-200-hw-05.html#q2c",
     "href": "danl-hw/danl-200-hw-05.html#q2c",
     "title": "Homework 5",
     "section": "Q2c",
-    "text": "Q2c\nFor each party, calculate the total funding contributions that were provided for mitigation projects for each year.\nAnswer:"
+    "text": "Q2c\nFor each party, calculate the total funding contributions that were provided for mitigation projects for each year.\nAnswer:\n\n\nCode\nq2c &lt;- climate_finance |&gt; \n  filter(Status == \"provided\",\n         `Type of support` == \"mitigation\") |&gt; \n  group_by(Party, Year) |&gt; \n  summarise(Contribution = sum(Contribution, na.rm = T))"
   },
   {
     "objectID": "danl-hw/danl-200-hw-05.html#q2d",
@@ -5989,7 +5989,7 @@
     "href": "danl-hw/danl-200-hw-05.html#q3a",
     "title": "Homework 5",
     "section": "Q3a",
-    "text": "Q3a\n\nWrite and publish a blog post on your GitHub website, featuring data analysis based on the spotify_all data.frame in Question 1 in Homework 5.\n\nEnsure that the blog post has an appropriate thumbnail by including an image file in the blog post’s directory with a proper YAML header option.\n\n\n\nspotify_all &lt;- read_csv('https://bcdanl.github.io/data/spotify_all.csv')"
+    "text": "Q3a\n\nWrite and publish a blog post on your GitHub website, featuring data analysis based on the spotify_all data.frame in Question 1 in Homework 5.\n\nEnsure that the blog post has an appropriate thumbnail by including an image file in the blog post’s directory with a proper YAML header option."
   },
   {
     "objectID": "danl-hw/danl-200-hw-05.html#q3b",
