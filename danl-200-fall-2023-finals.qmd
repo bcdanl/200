@@ -1,0 +1,1216 @@
+---
+title: "Fall 2023 DANL 200-04/05 Final Exam - Questions"
+# subtitle: "Version 1"
+author: "Byeong-Hak Choe"
+institute: "SUNY Geneseo"
+date: "2023-12-15"
+format: 
+  html
+    # toc: true
+    # toc-depth: 2
+    # toc-expand: true
+    # toc-title: Contents
+
+code-fold: true
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  fig-width: 9
+  fig-height: 5
+---
+```{r}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(lubridate)
+library(hrbrthemes)
+library(taylor)
+library(ggthemes)
+
+knitr::opts_chunk$set(fig.width=9, fig.height=7)  
+
+theme_set(
+  theme_ipsum() +
+  theme(
+    legend.position = "top",
+        legend.title = element_text(face = "bold"),
+        legend.background = element_rect(size = 0.5,
+                                         linetype = 1,
+                                         color = "lightgray"),
+        strip.background = element_rect(fill = "#b2e39c"),
+        strip.text = element_text(size = rel(1)),
+        axis.title.x = element_text(size = rel(1.5),
+                                    margin = margin(7.5,0,0,0)),
+        axis.title.y = element_text(size = rel(1.5),
+                                    angle = 90,
+                                    margin = margin(0,7.5,0,0))
+                )
+          )
+
+```
+
+# Load R packages
+- Here we are loading all the R packages we need for the Final Exam, so that you do not need to load the R packages in your code.
+```{r}
+#| code-fold: false
+library(tidyverse)
+library(skimr)
+```
+
+
+<br><br>
+
+
+# Question 1
+
+- Below is the data.frame for Question 1.
+
+```{r}
+#| code-fold: false
+
+uk_soccer <- read_csv("https://bcdanl.github.io/data/premier_league_2022.csv")
+```
+
+- Below is the data.frame, `uk_soccer`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(uk_soccer,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+```{r}
+#| code-fold: false
+nrow(uk_soccer)
+ncol(uk_soccer)
+table(uk_soccer$Quarter)
+table(uk_soccer$Quarter_Num)
+```
+
+<br>
+
+## Variable description
+- **Date**:	The date when the match was played
+- **HomeTeam**:	The home team
+- **AwayTeam**:	The away team
+
+- **FTHG**:	The home team's goals after the match ends (full-time)
+- **FTAG**:	The away team's goals after the match ends (full-time)
+- **FTR**:	The match result after the match ends (full-time)
+  - The value of **FTR** is "H" if **FTHG** is greater than **FTAG**;
+  - The value of **FTR** is "D" if **FTHG** is equal to **FTAG**;
+  - The value of **FTR** is "A" if **FTHG** is less than **FTAG**.
+  
+- **HTHG**:	The home team's goals at the half-time of the match
+- **HTAG**:	The away team's goals at the half-time of the match
+- **HTR**:	The match result at the halftime of the match
+  - The value of **HTR** is "H" if **HTHG** is greater than **HTAG**;
+  - The value of **HTR** is "D" if **HTHG** is equal to **HTAG**;
+  - The value of **HTR** is "A" if **HTHG** is less than **HTAG**.
+ 
+```{r}
+#| code-fold: false
+nrow(uk_soccer)
+ncol(uk_soccer)
+table(uk_soccer$HomeTeam)
+table(uk_soccer$AwayTeam)
+table(uk_soccer$FTR)
+table(uk_soccer$HTR)
+class(uk_soccer$Date)
+class(uk_soccer$HomeTeam)
+class(uk_soccer$AwayTeam)
+class(uk_soccer$FTHG)
+class(uk_soccer$FTAG)
+class(uk_soccer$HTHG)
+class(uk_soccer$HTAG)
+```
+
+
+<br><br>
+
+## Q1a.
+Create the following two data.frames, **tott_home** and **tott_away**:
+
+  - **tott_home** includes all the observations whose **HomeTeam** is "Tottenham".
+  - **tott_home** includes only the two variables, **FTR** and **HTR**.
+  - **tott_away** includes all the observations whose **AwayTeam** is "Tottenham".
+  - **tott_away** includes only the two variables, **FTR** and **HTR**.
+
+**Answer**:
+```{r}
+tott_home <- uk_soccer |> 
+  filter(HomeTeam == "Tottenham") |> 
+  select(FTR, HTR)
+
+tott_away <- uk_soccer |> 
+  filter(AwayTeam == "Tottenham") |> 
+  select(FTR, HTR)
+```
+
+- Below is the data.frame, `tott_home`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(tott_home,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+- Below is the data.frame, `tott_away`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(tott_away,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+<br><br>
+
+## Q1b.
+- Create the following four data.frames.
+  1. **home_htr** that counts the number of observations for each value of **HTR** in **tott_home**.
+  2. **home_ftr** that counts the number of observations for each value of **FTR** in **tott_home**.
+  3.  **away_htr** that counts the number of observations for each value of **HTR** in **tott_away**.
+  4. **away_ftr** that counts the number of observations for each value of **FTR** in **tott_away**.
+
+**Answer**:
+```{r}
+home_htr <- tott_home |> count(HTR) 
+home_ftr <- tott_home |> count(FTR)
+away_htr <- tott_away |> count(HTR)
+away_ftr <- tott_away |> count(FTR)
+```
+
+
+- Below is the data.frame, `home_htr`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(home_htr,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+- Below is the data.frame, `home_ftr`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(home_ftr,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+- Below is the data.frame, `away_htr`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(away_htr,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+- Below is the data.frame, `away_ftr`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(away_ftr,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+<br><br>
+
+## Q1c. [Out of Coverage in Spring 2024, DANL 200-02]
+- Create the following two data.frames:
+  - **home_results** is created using **home_ftr** and **home_htr**;
+  - **away_results** is created using **away_ftr** and **away_htr**.
+
+**Answer**:
+```{r}
+home_results <- 
+  left_join(home_ftr, home_htr, 
+            by = c('FTR' = 'HTR')) |> 
+  rename(result = FTR, 
+         FTR = n.x, HTR = n.y) |> 
+  mutate(tott_location = "Home", .before = 1)
+
+away_results <- 
+  left_join(away_ftr, away_htr, 
+            by = c('FTR' = 'HTR')) |> 
+  rename(result = FTR, FTR = n.x, HTR = n.y) |> 
+  mutate(tott_location = "Away", .before = 1)
+```
+
+
+- Below is the data.frame, **home_results**.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(home_results,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+- Variable **result** in **home_results** is:
+  - **A** if the away team won the match;
+  - **D** if the home and away teams made draws;
+  - **H** if the home team won the match.
+- Variable **FTR** in **home_results** is variable **n** in **home_ftr**;
+- Variable **HTR** in **home_results** is variable **n** in **home_htr**;
+
+<br>
+
+- Below is the data.frame, **away_results**.
+```{r, results = 'asis'}
+rmarkdown::paged_table(away_results,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+- Variable **result** in **away_results** is:
+  - **A** if the away team won the match;
+  - **D** if the home and away teams made draws;
+  - **H** if the home team won the match.
+- Variable **FTR** in **away_results** is variable **n** in **away_ftr**;
+- Variable **HTR** in **away_results** is variable **n** in **away_htr**;
+
+<br><br>
+
+
+
+## Q1d.
+- For variable **result** in **home_results** data.frame, replace:
+  - "A" with "Lose";
+  - "D" with "Draw";
+  - "H" with "Win".
+  
+- For variable **result** in **away_results** data.frame, replace:
+  - "A" with "Win";
+  - "D" with "Draw";
+  - "H" with "Lose".
+
+**Answer**:
+```{r}
+home_results <- home_results |> 
+  mutate(result = ifelse(result == "A", "Lose",
+                         ifelse(result == "D", "Draw", "Win")))
+away_results <- away_results |> 
+  mutate(result = ifelse(result == "A", "Win",
+                         ifelse(result == "D", "Draw", "Lose")))
+```
+
+
+- Below is the data.frame, **home_results**.
+```{r, results = 'asis'}
+rmarkdown::paged_table(home_results,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+- Below is the data.frame, **away_results**.
+```{r, results = 'asis'}
+rmarkdown::paged_table(away_results,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+<br><br>
+
+## Q1e. [Out of Coverage in Spring 2024, DANL 200-02]
+- Create the data.frame, **tott_results**, that combines the two data.frames **home_results** and **away_results**.
+
+**Answer**:
+```{r}
+home_results <- home_results |> 
+  pivot_longer(cols = FTR:HTR,
+               names_to = "time",
+               values_to = "count")
+
+away_results <- away_results |> 
+  pivot_longer(cols = FTR:HTR,
+               names_to = "time",
+               values_to = "count")
+
+tott_results <- home_results |> 
+  rbind(away_results)
+```
+
+
+
+- Below is the data.frame, **tott_results**.
+```{r, results = 'asis'}
+rmarkdown::paged_table(tott_results,
+                       options = list(rows.print = 40,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+
+<br><br>
+
+## Q1f.
+
+- Provide R code to recreate the ggplot figure illustrating how Tottenham Hotspur's **result** varies by **time** and **tott_location**.
+  - Variable **time** is "Half-Time" if it is "HTR" in Q1e.
+  - Variable **time** is "Full-Time" if it is "FTR" in Q1e.
+  - Ensure that the order of values in **result**, **time**, and **tott_location** are properly set to recreate the ggplot.
+
+**Answer**:
+```{r}
+df <- tott_results |> 
+  mutate(result = factor(result, 
+                         levels = c("Win", "Draw", "Lose")),
+         time = ifelse(time == "FTR", 
+                       "Full-Time", "Half-Time"),
+         time = factor(time,
+                       levels = c("Half-Time", "Full-Time")),
+         tott_location = factor(tott_location,
+                                levels = c("Home", "Away")))
+
+ggplot(df, aes(x = result, 
+             y = count, fill = time)) + 
+  geom_col(position = 'dodge') +
+  facet_wrap(.~tott_location) +
+  scale_fill_wsj()
+```
+
+
+<br><br>
+
+## Q1g.
+- Provide a comment to illustrate how Tottenham Hotspur's performance varies by **time** and **tott_location** using the visualization in Q1f.
+
+**Answer**:
+<br><br><br><br>
+
+
+# Question 2
+
+- The following describes the context of the data.frame, `organ_donations`.
+  - In the United States, people are not signed up to be organ donors by default. In most states, you are assumed to not be an organ donor. When you sign up for a driver’s license, you can choose to opt in to the organ donation program. 
+  - It is probably not surprising that organ donation rates in the US are considerably lower than in other countries where organ donation is opt-out - you are assumed to be a donor unless you actively choose not to be.
+  - Outside of the opt-in and opt-out varieties of organ donation, there’s also “active choice.” Under active choice, when you sign up for a driver’s license, you are asked to choose whether or not to be a donor. You can choose yes or no, but now the “no” option is actively checking the “no” box rather than skipping the question entirely as you can with opt-in approaches.
+  - Some policymakers have been advocating for active choice, with a goal of increasing donation rates, and 41 US states were using an “active choice” frame for an organ donor registration question at their Department of Motor Vehicles (DMV) in 2014.
+  - So does active choice work? In July 2011, the state of California switched from opt-in to active choice.
+
+
+
+- Below is the data.frame for Question 1.
+
+```{r}
+#| code-fold: false
+organ_donations <- read_csv('https://bcdanl.github.io/data/organ_donations.csv')
+```
+
+- Below is the data.frame, `organ_donations`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(organ_donations,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+```{r}
+#| code-fold: false
+nrow(organ_donations)
+ncol(organ_donations)
+table(organ_donations$Quarter)
+table(organ_donations$Quarter_Num)
+```
+
+<br>
+
+## Variable description
+- `State`: The state
+- `Quarter`: Quarter of observation, in "Q"QYYYY format
+- `Rate`: Organ donation rate
+- `Quarter_Num`: Quarter of observation in numerical format. 
+  - `1 = Quarter 4, 2010`
+  
+
+
+<br>
+
+# Q2a
+- Add the new variable, `Cali`, to the data.frame, `organ_donations`.
+  - `Cali` is `TRUE` if `State == 'California'`.
+  - `Cali` is `FALSE` otherwise.
+
+- Locate the `Cali` variable after the `State` variable in the data.frame.
+
+**Answer**: 
+```{r}
+organ_donations <- organ_donations |>
+  mutate(Cali = State == 'California',
+         .after = State)
+```
+
+- Below is the data.frame, `organ_donations`.
+```{r, results = 'asis'}
+rmarkdown::paged_table(organ_donations,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+<br>
+
+- **Answer**:
+
+<br><br><br><br>
+
+
+# Q2b. [Out of Coverage in Spring 2024, DANL 200-02]
+-Separate the variable `Quarter` into `quarter` and `year`.
+
+  - `quarter` is `Q2`, `Q2`, `Q3`, or `Q4`.
+  
+  - `year` is `2010`, `2011`, or `2012`.
+
+**Answer**:
+```{r}
+organ_donations <- organ_donations |>
+  separate(Quarter, into = c('quarter', 'year'), sep = 2)
+```
+
+
+
+<br>
+
+- **Answer**:
+
+<br><br><br><br>
+
+
+# Q2c. [Out of Coverage in Spring 2024, DANL 200-02]
+- Count the number of unique values of `States`.
+  - In other words, how many states are in the data.frame, `organ_donations`?
+
+- Then, create the data.frame `CA_tmp`, which has only the California's observations from `organ_donations`.
+
+**Answer**:
+```{r}
+n_st <- nrow(organ_donations |> group_by(State) |> count())
+
+CA_tmp <- organ_donations |> 
+  filter(Cali == T)
+```
+
+- Below is the data.frame, `CA_tmp`.
+```{r, results = 'asis'}
+rmarkdown::paged_table(CA_tmp,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+<br>
+
+- **Answer**:
+
+<br><br><br><br>
+
+
+
+# Q2d. [Out of Coverage in Spring 2024, DANL 200-02]
+- Create the data.frame, `CA`, which repeats stacking the data.frame, `CA_tmp`, so that the number of observations in `CA` is the same as the one in `organ_donations`.
+  - Note: Use `rbind()`.
+
+- Then, change the name of variable, `Rate`, with `ca_rate` in the data.frame `CA`.
+
+- Then, keep only the `ca_rate` variable from the `CA` data.frame.
+
+**Answer**:
+```{r}
+CA <- rbind(CA_tmp, CA_tmp, CA_tmp, CA_tmp, CA_tmp, 
+            CA_tmp, CA_tmp, CA_tmp, CA_tmp, CA_tmp, 
+            CA_tmp, CA_tmp, CA_tmp, CA_tmp, CA_tmp, 
+            CA_tmp, CA_tmp, CA_tmp, CA_tmp, CA_tmp, 
+            CA_tmp, CA_tmp, CA_tmp, CA_tmp, CA_tmp, 
+            CA_tmp, CA_tmp) |> 
+  rename(ca_rate = Rate) |> 
+  select(ca_rate)
+```
+
+- Below is the data.frame, `CA`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(CA,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+<br>
+
+- **Answer**:
+
+<br><br><br><br>
+
+
+
+# Q2e. [Out of Coverage in Spring 2024, DANL 200-02]
+- Use the data.frame `CA` to add the new variable, `diff_rate`, to the data.frame, `organ_donations`
+  - `diff_rate` is (`ca_rate` in `CA`) - (`Rate` in `organ_donations`).
+  - Note: `cbind()` can be useful.
+  
+**Answer**:
+```{r}
+organ_donations <- cbind(organ_donations, CA) |> 
+  mutate(diff_rate = ca_rate - Rate,
+         .after = Rate)
+```
+
+- Below is the data.frame, `organ_donations`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(organ_donations,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+
+<br>
+
+- **Answer**:
+
+<br><br><br><br>
+
+
+# Q2f.
+- Consider the resulting data.frame in Q2e.
+
+- For each `Quarter_Num`, calculate the mean value of `diff_rate`.
+
+**Answer**:
+```{r}
+Q2f <- organ_donations |> 
+  group_by(Quarter_Num) |> 
+  summarise(mean_diff = mean(diff_rate, na.rm = T))
+```
+
+- Below is the resulting data.frame.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(Q2f,
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+<br>
+
+- **Answer**:
+
+<br><br><br><br>
+
+
+# Q2g.
+- Provide a ggplot code to visualize the quarterly trend of `mean_diff` using the resulting data.frame of Q2f, as follows.
+
+**Answer**:
+```{r}
+ggplot(Q2f, aes(Quarter_Num, mean_diff)) +
+  geom_line() +
+  geom_point() +
+  geom_vline(xintercept = 3, color = 'red', lty = 2) +
+  scale_x_continuous(breaks = 1:6) +
+  theme(axis.title.x = element_text(size = rel(2)),
+        axis.title.y = element_text(size = rel(2))
+        )
+```
+
+
+
+<br>
+
+- **Answer**:
+
+
+<br><br>
+<br><br>
+
+
+# Q2h.
+- Using the resulting visualization in Q2g, discuss the following question:
+  - What is the effect of active choice frame on organ donation rate? 
+
+**Answer**:
+
+<br>
+
+- **Answer**:
+
+
+<br><br>
+<br><br>
+
+
+# Question 3
+
+- Below is the data.frame for Question 3.
+
+```{r}
+#| code-fold: false
+taylor_albums <- read_csv("https://bcdanl.github.io/data/taylor_albums.csv")
+```
+
+- Below is the data.frame, `taylor_albums`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(taylor_albums |> 
+                         relocate(metacritic_score, user_score,
+                                  .after = album_name),
+                       options = list(rows.print = 20,
+                                      cols.print = 5,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+```{r}
+#| code-fold: false
+nrow(taylor_albums)
+ncol(taylor_albums)
+unique(taylor_albums$album_name)
+```
+
+<br>
+
+
+## Variable description
+
+- **album_name**: The name of the album. NA if the song was released separately from one of Taylor's studio albums or EPs.
+
+- **metacritic_score**: The official album rating from metacritic.
+
+- **user_score**: The user rating from metacritic.
+
+- **ep**: Logical. Is the album a full studio album (FALSE) or an extended play (TRUE).
+
+- **album_release**: The date the album was released, in the format (YYYY-MM-DD).
+
+
+## Q3a.
+- Provide R code to recreate the ggplot figure illustrating the Taylor Swift's  Album's **metacritic_score**s
+
+**Answer**:
+```{r}
+ggplot(data = taylor_albums |> filter(!is.na(metacritic_score)), 
+       aes(x = metacritic_score, 
+           y = fct_reorder(album_name, metacritic_score))) +
+  geom_col(aes(fill = album_name), show.legend = FALSE) +
+  scale_fill_albums() +
+  labs(y = NULL)  # labs() is not necessary
+```
+
+
+
+# Question 4.
+
+The following is the description and the data.frame for Question 4:
+
+The Nobel Prize in Economic Science in 2021 goes to David Card, Joshua Angrist and Guido Imbens, for their empirical contributions to labor economics, and  for their methodological contributions to the analysis of causal relationships.
+
+They have provided us with new insights about the labor market and shown what conclusions about cause and effect can be drawn from natural experiments. Their approach has spread to other fields and revolutionized empirical research.
+
+The following data.frame comes from the 1980 US Census and covers men born 1930–1939, which is used by Joshua Angrist and Alan Krueger's research article.
+
+- Below is the data.frame for Question 1.
+
+```{r}
+#| code-fold: false
+ak91_age <- read_csv(
+  'https://bcdanl.github.io/data/ak91_age.csv'
+)
+```
+
+- Below is the data.frame, `ak91_age`.
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(ak91_age |> 
+                         mutate(logW = round(logW, 2),
+                                Educ = round(Educ, 2),
+                                ),
+                       options = list(rows.print = 40,
+                                      cols.print = 6,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+```{r}
+#| code-fold: false
+nrow(ak91_age)
+ncol(ak91_age)
+```
+
+
+## Variable description
+- **QoB**: Quarter of birth
+- **YoB**: Year of birth (1930, 1931, ..., 1939)
+- **YoBQ**: Year and quarter of birth (1930 Q1, 1930 Q2, ..., 1939 Q4)
+- **logW**: the natural log of weekly wage
+- **Educ**: Years of education
+- **Q4**: `TRUE` if **QoB** == 4; `FALSE` otherwise.
+
+<br><br>
+
+# Q4a. 
+Provide a ggplot code to recreate the following figure.
+
+**Answer**:
+```{r}
+ggplot(ak91_age, aes(x = YoBQ, y = Educ)) +
+  geom_line() + 
+  geom_point( aes(color = Q4), size = 2.25 ) 
+```
+
+
+<br><br>
+
+
+# Q4b. 
+Provide a ggplot code to recreate the following figure.
+
+**Answer**:
+```{r}
+ggplot(ak91_age, aes(x = YoBQ, y = logW)) +
+  geom_line() + 
+  geom_point( aes(color = Q4), size = 2.25 ) 
+```
+
+
+# Q4c. 
+Provide a comment on the visulazations in Q4a and Q4b
+
+**Answer**:
+
+<br><br>
+
+
+
+
+# Question 5
+
+- The following is the data.frame for Question 5.
+
+```{r}
+#| code-fold: false
+holiday_movies <- read_csv("https://bcdanl.github.io/data/holiday_movies.csv")
+```
+
+- The data.frame **holiday_movies** comes from the Internet Movie Database (IMDb). 
+
+
+## Variable description
+
+- **tconst**: alphanumeric unique identifier of the title
+
+- **title_type**: the type/format of the title 
+  - (**movie**, **video**, or **tvMovie**)
+
+- **primary_title**: the more popular title / the title used by the filmmakers on promotional materials at the point of release
+
+- **simple_title**: the title in lowercase, with punctuation removed, for easier filtering and grouping
+
+- **year**: the release year of a title
+
+- **runtime_minutes**: primary runtime of the title, in minutes
+
+- **average_rating**: weighted average of all the individual user ratings on IMDb
+
+- **num_votes**: number of votes the title has received on IMDb (titles with fewer than 10 votes were not included in this dataset)
+
+<br>
+
+
+- The following is the data.frame, **holiday_movies**.
+```{r, results = 'asis'}
+rmarkdown::paged_table(holiday_movies,
+                       options = list(rows.print = 20,
+                                      cols.print = 6,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+<br>
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(holiday_movies |> select(primary_title),
+                       options = list(rows.print = 20,
+                                      cols.print = 6,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+<br>
+
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(holiday_movies |> select(simple_title, year),
+                       options = list(rows.print = 20,
+                                      cols.print = 6,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+<br>
+
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(holiday_movies |> select(runtime_minutes:num_votes),
+                       options = list(rows.print = 20,
+                                      cols.print = 6,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+<br>
+
+
+```{r}
+#| code-fold: false
+nrow(holiday_movies)
+ncol(holiday_movies)
+```
+
+<br>
+
+
+```{r}
+#| code-fold: false
+unique(holiday_movies$title_type)
+```
+
+<br>
+
+```{r}
+#| code-fold: false
+length(unique(holiday_movies$primary_title))
+unique(holiday_movies$primary_title)[1:50]
+```
+
+<br>
+
+```{r}
+#| code-fold: false
+length(unique(holiday_movies$simple_title))
+unique(holiday_movies$simple_title)[1:50]
+```
+
+
+<br>
+
+
+```{r}
+#| code-fold: false
+length(unique(holiday_movies$year))
+unique(holiday_movies$year)
+```
+
+<br>
+
+```{r}
+#| code-fold: false
+unique(holiday_movies$runtime_minutes)
+unique(holiday_movies$average_rating)
+```
+
+<br>
+
+
+- The following is another data.frame **holiday_movie_genres** that is related with the data.frame **holiday_movies**:
+
+```{r}
+#| code-fold: false
+holiday_movie_genres <- read_csv("https://bcdanl.github.io/data/holiday_movie_genres.csv")
+```
+
+
+```{r, results = 'asis'}
+rmarkdown::paged_table(holiday_movie_genres,
+                       options = list(rows.print = 20,
+                                      cols.print = 6,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+- The data.frame **holiday_movie_genres** include up to three genres associated with the titles that appear in the data.frame.
+
+
+```{r}
+#| code-fold: false
+unique(holiday_movie_genres$genres)
+```
+
+
+## Variable description
+
+  - **tconst**: alphanumeric unique identifier of the title
+  - **genres**: genres associated with the title, one row per genre
+
+
+<br><br>
+
+
+## Q5a. [Out of Coverage in Spring 2024, DANL 200-02]
+
+- Provide the R code to generate the data.frame, **holiday_movie_with_genres**, which combines the two data.frames, **holiday_movies** and **holiday_movie_genres**:
+
+**Answer**:
+```{r}
+holiday_movies_with_genres <- holiday_movie_genres |> 
+  left_join(holiday_movies)
+```
+
+
+- The following shows the first four variables in **holiday_movie_with_genres**:
+```{r, results = 'asis'}
+rmarkdown::paged_table(holiday_movies_with_genres,
+                       options = list(rows.print = 20,
+                                      cols.print = 6,
+                                      pages.print = 0,
+                                      paged.print = F
+                                      )) 
+```
+
+
+<br><br>
+
+## Q5b.
+
+- Provide the R code to see how the summary statistics---mean, median, standard deviation, minimum, maximum, first and third quartiles---of **average_rating** and **num_votes** varies by popular **genres** and **title_type**.
+
+  - Consider only the five popular **genres**, which are selected in terms of the number of titles for each genre.
+  - Removes the **video** type of the titles when calculating the summary statistics.
+
+**Answer**:
+```{r}
+#| eval: false
+popular_genres <- holiday_movies_with_genres |> 
+  group_by(genres) |> 
+  count() |> 
+  ungroup() |> 
+  slice_max(n, n = 5)
+
+holiday_movies_with_genres |> 
+  filter(genres %in% popular_genres$genres,
+         title_type != 'video') |> 
+  group_by(genres, title_type) |> 
+  skim(average_rating, num_votes) 
+
+```
+
+
+<br><br>
+
+## Q5c.
+
+- Provide R code to recreate the ggplot figure illustrating how the relationship between **log10(num_votes)** and **average_rating** varies by the popular **genres** and **title_type**.
+  - The five popular **genres** are selected in terms of the number of titles for each genre.
+  - The **video** type of the titles are removed in the ggplot figure.
+
+**Answer**:
+```{r}
+popular_genres <- holiday_movies_with_genres |> 
+  group_by(genres) |> 
+  count() |> 
+  ungroup() |> 
+  slice_max(n, n = 5)
+
+holiday_movies_with_genres |> 
+  filter(genres %in% popular_genres$genres,
+         title_type != 'video') |> 
+  group_by(genres) |> 
+  mutate(mean_rating = mean(average_rating, na.rm = T)) |> 
+  ggplot(aes(y = average_rating, x = log10(num_votes))) +
+  geom_point(alpha = .2) +
+  geom_smooth(aes(color = genres),
+              method = lm) +
+  # coord_cartesian(ylim = c(5,7)) +
+  facet_grid(title_type~ genres, scales = "free")
+```
+
+
+
+<br><br>
+
+## Q5d.
+
+- Provide a comment to illustrate how the relationship between **log10(num_votes)** and **average_rating** varies by the popular **genres** and **title_type**.
+
+**Answer**:
+
+<br><br>
+
+## Q5e.
+
+- Provide R code to recreate the ggplot figure illustrating the annual trend of the share of number of movies by popular genre from year 1975 to 2022.
+
+  - For genres that are not popular, categorize them as **"Other"**.
+  - Consider changing the order of categories in **genres**.
+
+**Answer**:
+```{r}
+df <- holiday_movies_with_genres |> 
+  mutate(genres = ifelse( !(genres %in% popular_genres$genres), "Other", genres )) |> 
+  group_by(year, genres) |> 
+  count() |> 
+  filter(year >= 1975, year <= 2022) 
+
+ggplot(df) +
+  geom_col(aes(x = year, y = n, 
+               fill = fct_reorder2(genres, year, n)), # fct_reorder2() is out of our coverage
+           position = 'fill', 
+           width = rel(1.25), # width = ... is out of our coverage
+           color = 'black') +
+  labs(y = "Share of number of movies by genre",  # labs() is not necessary
+       fill = "genres") +
+  scale_fill_brewer(palette = "Accent") # out of our coverage
+```
+
+
+<br>
+
+## Q5f.
+
+- Provide a comment to illustrate the annual trend of (1) the share of number of movies by popular genre from year 1975 to 2022.
+
+  - Which genre has become more popular since 2010?
+
+**Answer**:
+
+<br><br>
+
+## Q5g.
+
+- Add the following two variables---**christmas** and **holiday**---to the data.frame **holiday_movies_with_genres**:
+
+- **christmas**: 
+  - **TRUE** if the **simple_title** includes "christmas", "xmas", "x mas"
+  - **FALSE** otherwise
+  
+  
+- **holiday**: 
+  - **TRUE** if the **simple_title** includes "holiday"
+  - **FALSE** otherwise
+
+**Answer**:
+```{r}
+holiday_movies_with_genres <- holiday_movies_with_genres |> 
+  mutate(christmas = ifelse(str_detect(simple_title, "christmas") |
+                              str_detect(simple_title, "xmas") |
+                              str_detect(simple_title, "x mas"),
+                            T, F),
+         holiday = ifelse(str_detect(simple_title, "holiday"),
+                            T, F),
+         )
+```
+
+
+
+<br><br>
+
+## Q5h.
+
+- Provide R code to recreate the ggplot figure illustrating the annual trend of (1) the number of movie titles with "holiday" varies by **christmas**.
+
+**Answer**:
+```{r}
+df <- holiday_movies_with_genres |> 
+  group_by(year, christmas, holiday) |> 
+  count() 
+
+ggplot(df, aes(x = year, y = n, color = holiday)) +
+  geom_smooth() +
+  geom_point(alpha = .33) +
+  facet_wrap(christmas~., scales = "free")
+```
+
+
+
+<br><br>
+
+## Q5i.
+
+- Provide R code to recreate the ggplot figure illustrating how the mean value of **num_votes** varies by the popular **genres** for the titles with "christmas".
+
+**Answer**:
+```{r}
+df <- holiday_movies_with_genres |> 
+  filter(genres %in% popular_genres$genres) |> 
+  group_by(genres, christmas) |> 
+  summarise(mean_rating = mean(average_rating),
+            mean_votes = mean(num_votes)) |> 
+  filter(christmas == T) 
+
+ggplot(df, aes(x = mean_votes, y = fct_reorder(genres, mean_votes),
+             )) +
+  geom_point(size = 2) +
+  labs(y = "genres")  # labs() is not necessary
+
+```
+
