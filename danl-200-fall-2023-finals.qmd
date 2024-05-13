@@ -1,5 +1,5 @@
 ---
-title: "Fall 2023 DANL 200-04/05 Final Exam - Questions"
+title: "Fall 2023 DANL 200-04/05 Final Exams"
 # subtitle: "Version 1"
 author: "Byeong-Hak Choe"
 institute: "SUNY Geneseo"
@@ -75,7 +75,8 @@ uk_soccer <- read_csv("https://bcdanl.github.io/data/premier_league_2022.csv")
 
 - Below is the data.frame, `uk_soccer`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(uk_soccer,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -154,7 +155,8 @@ tott_away <- uk_soccer |>
 
 - Below is the data.frame, `tott_home`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(tott_home,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -166,7 +168,8 @@ rmarkdown::paged_table(tott_home,
 
 - Below is the data.frame, `tott_away`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(tott_away,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -195,7 +198,8 @@ away_ftr <- tott_away |> count(FTR)
 
 - Below is the data.frame, `home_htr`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(home_htr,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -207,7 +211,8 @@ rmarkdown::paged_table(home_htr,
 
 - Below is the data.frame, `home_ftr`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(home_ftr,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -219,7 +224,8 @@ rmarkdown::paged_table(home_ftr,
 
 - Below is the data.frame, `away_htr`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(away_htr,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -231,7 +237,8 @@ rmarkdown::paged_table(away_htr,
 
 - Below is the data.frame, `away_ftr`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(away_ftr,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -267,7 +274,8 @@ away_results <-
 
 - Below is the data.frame, **home_results**.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(home_results,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -286,7 +294,8 @@ rmarkdown::paged_table(home_results,
 <br>
 
 - Below is the data.frame, **away_results**.
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(away_results,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -329,7 +338,8 @@ away_results <- away_results |>
 
 
 - Below is the data.frame, **home_results**.
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(home_results,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -340,7 +350,8 @@ rmarkdown::paged_table(home_results,
 
 
 - Below is the data.frame, **away_results**.
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(away_results,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -373,7 +384,8 @@ tott_results <- home_results |>
 
 
 - Below is the data.frame, **tott_results**.
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(tott_results,
                        options = list(rows.print = 40,
                                       cols.print = 5,
@@ -442,7 +454,8 @@ organ_donations <- read_csv('https://bcdanl.github.io/data/organ_donations.csv')
 
 - Below is the data.frame, `organ_donations`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(organ_donations,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -487,7 +500,8 @@ organ_donations <- organ_donations |>
 ```
 
 - Below is the data.frame, `organ_donations`.
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(organ_donations,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -541,7 +555,8 @@ CA_tmp <- organ_donations |>
 ```
 
 - Below is the data.frame, `CA_tmp`.
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(CA_tmp,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -581,7 +596,8 @@ CA <- rbind(CA_tmp, CA_tmp, CA_tmp, CA_tmp, CA_tmp,
 
 - Below is the data.frame, `CA`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(CA,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -613,7 +629,8 @@ organ_donations <- cbind(organ_donations, CA) |>
 
 - Below is the data.frame, `organ_donations`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(organ_donations,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -645,7 +662,8 @@ Q2f <- organ_donations |>
 
 - Below is the resulting data.frame.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(Q2f,
                        options = list(rows.print = 20,
                                       cols.print = 5,
@@ -714,7 +732,8 @@ taylor_albums <- read_csv("https://bcdanl.github.io/data/taylor_albums.csv")
 
 - Below is the data.frame, `taylor_albums`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(taylor_albums |> 
                          relocate(metacritic_score, user_score,
                                   .after = album_name),
@@ -784,7 +803,8 @@ ak91_age <- read_csv(
 
 - Below is the data.frame, `ak91_age`.
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(ak91_age |> 
                          mutate(logW = round(logW, 2),
                                 Educ = round(Educ, 2),
@@ -883,7 +903,8 @@ holiday_movies <- read_csv("https://bcdanl.github.io/data/holiday_movies.csv")
 
 
 - The following is the data.frame, **holiday_movies**.
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(holiday_movies,
                        options = list(rows.print = 20,
                                       cols.print = 6,
@@ -894,7 +915,8 @@ rmarkdown::paged_table(holiday_movies,
 
 <br>
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(holiday_movies |> select(primary_title),
                        options = list(rows.print = 20,
                                       cols.print = 6,
@@ -906,7 +928,8 @@ rmarkdown::paged_table(holiday_movies |> select(primary_title),
 <br>
 
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(holiday_movies |> select(simple_title, year),
                        options = list(rows.print = 20,
                                       cols.print = 6,
@@ -918,7 +941,8 @@ rmarkdown::paged_table(holiday_movies |> select(simple_title, year),
 <br>
 
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(holiday_movies |> select(runtime_minutes:num_votes),
                        options = list(rows.print = 20,
                                       cols.print = 6,
@@ -989,7 +1013,8 @@ holiday_movie_genres <- read_csv("https://bcdanl.github.io/data/holiday_movie_ge
 ```
 
 
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(holiday_movie_genres,
                        options = list(rows.print = 20,
                                       cols.print = 6,
@@ -1028,7 +1053,8 @@ holiday_movies_with_genres <- holiday_movie_genres |>
 
 
 - The following shows the first four variables in **holiday_movie_with_genres**:
-```{r, results = 'asis'}
+```{r}
+#| results: asis
 rmarkdown::paged_table(holiday_movies_with_genres,
                        options = list(rows.print = 20,
                                       cols.print = 6,
